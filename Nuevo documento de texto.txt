@@ -1,0 +1,9 @@
+Reportes de equipos por:
+
+Equipos por departamento
+Equipos totales
+Por Marca
+Por característica
+Por Tipo
+
+*Actas de entrega
