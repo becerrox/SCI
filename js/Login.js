@@ -10,9 +10,9 @@ $(document).ready(function(){
 			url:'includes/LoginAjax.php',
 			data:{Usuario:Usuario,Contrasena:Contrasena},
 			success:function(response){
-				if(response.respuesta==true){
+				if(response.estatus=="success"){
 					$("#mensaje").html(response.mensaje);
-					window.location='registrousuario.html';
+					location.href='inicio.html';
 				}else{
 					$("#mensaje").html(response.mensaje);
 				}

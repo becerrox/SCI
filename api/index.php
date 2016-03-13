@@ -74,7 +74,7 @@ $app->delete("/equipos/{id:[0-9]+}",function($id) use($app){
 
 //Endpoints personal
 
-/*$personalService = new PersonalService;
+$personalService = new PersonalService;
 
 $app->get("/personals",function() use ($app,$personalService) {
     $data = $personalService->listar();
@@ -92,7 +92,7 @@ $app->put("/personals/{id:[0-9]+}",function($id) use($app){
 $app->delete("/personals/{id:[0-9]+}",function($id) use($app){
     echo "eliminacion de personal numero $id";
 });
-*/
+
 //Endpoint 
 
 $app->notFound(function () use ($app) {

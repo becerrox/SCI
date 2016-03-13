@@ -12,7 +12,7 @@ class PersonalService{
           foreach($personal as $pe){
                $personal[]=array(
                 "id" => $pe->id,
-                "CI_per" => $pe->CI_per,
+                "ci_per" => $pe->ci_per,
                 "apellidos" => $pe->apellidos,
                 "nombres" => $pe->nombres,
                 "cargo" => $pe->cargo,
@@ -33,8 +33,7 @@ class PersonalService{
             $personal=new Personal();
 
             $data=array(
-                    "id" => $pe->id,
-                    "CI_per" => $pe->CI_per,
+                    "ci_per" => $pe->ci_per,
                     "nombres" => $pe->nombres,
                     "apellidos" => $pe->apellidos,
                     "cargo" => $pe->cargo,
@@ -69,7 +68,7 @@ class PersonalService{
                     $pass = $modificar[0]->pass;
                 }
                 $data=array(
-                  "CI_per" => $pe->CI_per,
+                  "ci_per" => $pe->ci_per,
                   "nombres" => $pe->nombres,
                   "apellidos" => $pe->apellidos,
                   "cargo" => $pe->cargo,
@@ -106,6 +105,8 @@ class PersonalService{
                 return array("status" => 200, "mensaje" => 'Personal Eliminado');
             }else{
                 return array("status"=>404, "mensaje"=> "El registro intenta modificar no existe");
-       }
+           }
+     }
+
 }
 ?>
