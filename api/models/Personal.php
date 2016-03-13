@@ -10,7 +10,8 @@ use Phalcon\Mvc\Model,
     Phalcon\Mvc\Model\Behavior\SoftDelete;
 
 
-    class Personal extends Model{
+class Personal extends Model{
+
     public function initialize(){
       $this->addBehavior(
             new SoftDelete(
@@ -28,7 +29,7 @@ use Phalcon\Mvc\Model,
 
         $this->validate(new PresenceOf(
             array(
-                "field" => "CI_per",
+                "field" => "ci_per",
                 "message" => "La cédula es obligatoria"
                 )
             ));

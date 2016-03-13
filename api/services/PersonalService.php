@@ -9,23 +9,7 @@ class PersonalService{
       if(count($personal->toArray())==0){
             return array("status" => 404, "mensaje" => "No hay registros de personal");
       }else{
-          foreach($personal as $pe){
-               $personal[]=array(
-                "id" => $pe->id,
-                "ci_per" => $pe->ci_per,
-                "apellidos" => $pe->apellidos,
-                "nombres" => $pe->nombres,
-                "cargo" => $pe->cargo,
-                "telf_pers" => $pe->telf_pers,
-                "telf_casa" => $pe->telf_casa,
-                "correo" => $pe->correo,
-                "f_nac" => $pe->f_nac,
-                "usuario_creacion" => 0,
-                "usuario_modif" => 0,
-                "status" => $pe->status
-                );
-            }
-            return array("status" => 200, "mensaje" =>$users);
+            return array("status" => 200, "mensaje" =>$personal->toArray());
       }
     }
 
@@ -41,7 +25,6 @@ class PersonalService{
                     "telf_casa" => $pe->telf_casa,
                     "correo" => $pe->correo,
                     "f_nac" => $pe->f_nac,
-                    "id_Ubicacion_ubicacion" => $pe->id_Ubicacion_ubicacion,
                     "fecha_creacion" => date("Y-m-d h:i:s"),
                     "usuario_creacion" => 0,
                     "usuario_modif" => 0,

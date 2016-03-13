@@ -40,6 +40,12 @@ $app->post("/usuarios",function() use ($app,$usuarioService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
+$app->post("/usuarios/token",function() use ($app,$usuarioService) {
+    $usuario = json_decode($app->request->getRawBody());
+    $data = $usuarioService->solicitarToken($usuario);
+    response($app,$data,$data['status']);
+});
+
 $app->put("/usuarios/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
     $usuario = json_decode($app->request->getRawBody());
     $data = $usuarioService->modificar($id,$usuario);
@@ -76,20 +82,22 @@ $app->delete("/equipos/{id:[0-9]+}",function($id) use($app){
 
 $personalService = new PersonalService;
 
-$app->get("/personals",function() use ($app,$personalService) {
+$app->get("/personal",function() use ($app,$personalService) {
     $data = $personalService->listar();
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->post("/personals",function() use ($app){
-    echo 'registra un personal';
+$app->post("/personal",function() use ($app,$personalService){
+    $personal = json_decode($app->request->getRawBody());
+    $data = $personalService->nuevo($personal);
+    response($app,$data['mensaje'],$data['status']);
 });
 
-$app->put("/personals/{id:[0-9]+}",function($id) use($app){
+$app->put("/personal/{id:[0-9]+}",function($id) use($app){
     echo "edicion de personal numero $id";
 });
 
-$app->delete("/personals/{id:[0-9]+}",function($id) use($app){
+$app->delete("/personal/{id:[0-9]+}",function($id) use($app){
     echo "eliminacion de personal numero $id";
 });
 

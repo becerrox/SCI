@@ -95,34 +95,29 @@ class UsuariosService{
 
         public function solicitarToken($credentials){
 
-        if(isset($credentials->email) && isset($credentials->password)){
+        if(isset($credentials->usuario) && isset($credentials->pass)){
             
-            $user=Usuario::find(array("email='".utf8_encode($credentials->email)."' AND password ='".md5($credentials->password)."' AND autorizacion=1"));
+            $user=Usuario::find(array("usuario='".utf8_encode($credentials->usuario)."' AND pass ='".sha1($credentials->pass)."' AND status=1"));
             if(count($user)==0){
                     $mensaje=array(
-                    "email"=>$credentials->email,
-                    "error"=>"Credenciales incorrectas"
+                        "usuario"=>$credentials->usuario,
+                        "error"=>"Credenciales incorrectas"
                     );      
                     $datos=array("status"=>401, "data" => $mensaje);
                 }else{
                     $datos=array(
-                    "status" => 200,
-                    "id"=>$user[0]->id,
-                    "email"=>$user[0]->email,
-                    "hash_mail"=>md5($user[0]->email),
-                    "seudonimo"=>$user[0]->seudonimo,
-                    "token"=> $user[0]->token,
-                    "nombre_completo" => $user[0]->nombre_completo,
-                    "pais" => $user[0]->pais,
-                    "nivel" => $user[0]->nivel,
-                    "primera_vez" => $user[0]->primera_vez,
-                    "autorizacion" => $user[0]->autorizacion
+                        "id" => $user[0]->id,
+                        "status" => 200,
+                        "data_personal" => (Personal::findFirst("id_usuario = ".$user[0]->id)), 
+                        "usuario" => $user[0]->usuario,
+                        "nivel" => $user[0]->nivel,
+                        "token" => md5($credentials->usuario.$credentials->pass)
                     );          
                 }
 
                 return $datos;
         }else{
-            return array("status" => 300, "mensaje" => "Debes incluir tus credenciales");
+            return array("status" => 400, "mensaje" => "Debes incluir tus credenciales");
         }
 
          }

@@ -1,3 +1,5 @@
+
+// Servicio de login
 $(document).ready(function(){
 	$("#Iniciar").click(function(){
 		var Usuario=$('#username').val();
@@ -6,19 +8,20 @@ $(document).ready(function(){
 		console.log(Usuario,Contrasena);
 		$.ajax({
 			type:"POST",
-			dataType:'json',
-			url:'includes/LoginAjax.php',
-			data:{Usuario:Usuario,Contrasena:Contrasena},
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/usuarios/token',
+			data:JSON.stringify({usuario:Usuario,pass:Contrasena}),
 			success:function(response){
-				if(response.estatus=="success"){
-					$("#mensaje").html(response.mensaje);
-					location.href='inicio.html';
-				}else{
-					$("#mensaje").html(response.mensaje);
-				}
-			},error:function(){
-				console.log('HHHHHH general en el sistema');
+				sessionStorage.dataUsuario = JSON.stringify(response);
+				location.href='inicio.html';
+			},error:function(response){
+				console.log(response);
+				$("#mensaje").html(response.responseJSON.data.error);
 			}
 		});
 	});
 });
+
+
+//Servicio de listar equipos
