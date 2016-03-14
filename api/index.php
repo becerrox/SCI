@@ -70,9 +70,12 @@ $app->post("/equipos",function() use ($app,$equipoService){
     $equipo = json_decode($app->request->getRawBody());
     $data = $equipoService->nuevo($equipo);
     response($app,$data['mensaje'],$data['status']);
+});
 
-$app->put("/equipos/{id:[0-9]+}",function($id) use($app){
-    echo "edicion de equipo numero $id";
+$app->put("/equipos/{id:[0-9]+}",function($id) use ($app,$equipoService) {
+    $equipo = json_decode($app->request->getRawBody());
+    $data = $equipoService->modificar($id,$equipo);
+    response($app,$data['mensaje'],$data['status']);
 });
 
 $app->delete("/equipos/{id:[0-9]+}",function($id) use($app){
