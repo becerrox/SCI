@@ -14,7 +14,7 @@ $(document).ready(function(){
 			data:JSON.stringify({usuario:Usuario,pass:Contrasena}),
 			success:function(response){
 				sessionStorage.dataUsuario = JSON.stringify(response);
-				location.href='inicios.html';
+				location.href='inicio.html';
 			},error:function(response){
 				console.log(response);
 				$("#mensaje").html(response.responseJSON.data.error);
