@@ -100,34 +100,6 @@ $$;
 ALTER FUNCTION public.auditoriaresponsables() OWNER TO postgres;
 -- ddl-end --
 
--- object: public.auditpersonal | type: FUNCTION --
--- DROP FUNCTION IF EXISTS public.auditpersonal() CASCADE;
-CREATE FUNCTION public.auditpersonal ()
-	RETURNS trigger
-	LANGUAGE plpgsql
-	VOLATILE 
-	CALLED ON NULL INPUT
-	SECURITY INVOKER
-	COST 100
-	AS $$
-
-
-    BEGIN
-
-        INSERT INTO auditoria_personal VALUES (old.ci_per, old.nombres, old.apellidos, old.cargo, old.telf_pers, old.telf_casa, old.correo, old.f_nac, old.status);
-
-        RETURN NULL;
-
-    END;
-
-
-$$;
--- ddl-end --
-ALTER FUNCTION public.auditpersonal() OWNER TO postgres;
--- ddl-end --
-
--- object: public.auditusuario | type: FUNCTION --
--- DROP FUNCTION IF EXISTS public.auditusuario() CASCADE;
 CREATE FUNCTION public.auditusuario ()
 	RETURNS trigger
 	LANGUAGE plpgsql
@@ -256,44 +228,6 @@ CREATE SEQUENCE public.auditoria_equipos_id_equipo_seq
 	OWNED BY NONE;
 -- ddl-end --
 ALTER SEQUENCE public.auditoria_equipos_id_equipo_seq OWNER TO postgres;
--- ddl-end --
-
--- object: public.auditoria_personal | type: TABLE --
--- DROP TABLE IF EXISTS public.auditoria_personal CASCADE;
-CREATE TABLE public.auditoria_personal(
-	ci_per character varying(10) NOT NULL,
-	nombres character varying(40),
-	apellidos character varying(40),
-	cargo character varying(30) NOT NULL,
-	telf_pers numeric(12,0) NOT NULL,
-	telf_casa numeric(12,0),
-	correo character varying(50) NOT NULL,
-	f_nac date,
-	status integer,
-	fecha_modif timestamp DEFAULT now(),
-	gerencia character varying(30),
-	departamento character varying(30)
-);
--- ddl-end --
-COMMENT ON TABLE public.auditoria_personal IS 'Cambios o eliminaciones realizados en la tabla personal';
--- ddl-end --
-COMMENT ON COLUMN public.auditoria_personal.status IS '0=cerrada;1=abierta';
--- ddl-end --
-ALTER TABLE public.auditoria_personal OWNER TO postgres;
--- ddl-end --
-
--- object: public.auditoria_personal_id_personal_seq | type: SEQUENCE --
--- DROP SEQUENCE IF EXISTS public.auditoria_personal_id_personal_seq CASCADE;
-CREATE SEQUENCE public.auditoria_personal_id_personal_seq
-	INCREMENT BY 1
-	MINVALUE 1
-	MAXVALUE 9223372036854775807
-	START WITH 1
-	CACHE 1
-	NO CYCLE
-	OWNED BY NONE;
--- ddl-end --
-ALTER SEQUENCE public.auditoria_personal_id_personal_seq OWNER TO postgres;
 -- ddl-end --
 
 -- object: public.auditoria_responsables | type: TABLE --
@@ -634,53 +568,6 @@ COMMENT ON COLUMN public.equipo.status IS '0=cerrada;1=abierta';
 ALTER TABLE public.equipo OWNER TO postgres;
 -- ddl-end --
 
--- object: public.personal_id_personal_seq | type: SEQUENCE --
--- DROP SEQUENCE IF EXISTS public.personal_id_personal_seq CASCADE;
-CREATE SEQUENCE public.personal_id_personal_seq
-	INCREMENT BY 1
-	MINVALUE 1
-	MAXVALUE 9223372036854775807
-	START WITH 1
-	CACHE 1
-	NO CYCLE
-	OWNED BY NONE;
--- ddl-end --
-ALTER SEQUENCE public.personal_id_personal_seq OWNER TO postgres;
--- ddl-end --
-
--- object: public.personal | type: TABLE --
--- DROP TABLE IF EXISTS public.personal CASCADE;
-CREATE TABLE public.personal(
-	id integer NOT NULL DEFAULT nextval('public.personal_id_personal_seq'::regclass),
-	ci_per character varying(10) NOT NULL,
-	nombres character varying(40),
-	apellidos character varying(40),
-	cargo character varying(30) NOT NULL,
-	telf_pers numeric(12,0) NOT NULL,
-	telf_casa numeric(12,0),
-	correo character varying(50) NOT NULL,
-	f_nac date,
-	fecha_creacion timestamp NOT NULL,
-	fecha_modif timestamp DEFAULT now(),
-	usuario_creacion character varying(20) NOT NULL,
-	usuario_modif character varying(20),
-	status integer,
-	gerencia character varying(30),
-	departamento character varying(30),
-	id_usuario integer,
-	CONSTRAINT "PK_personal" PRIMARY KEY (id),
-	CONSTRAINT "UN_personal" UNIQUE (ci_per),
-	CONSTRAINT personal_uq UNIQUE (id_usuario)
-
-);
--- ddl-end --
-COMMENT ON TABLE public.personal IS 'Tabla del personal';
--- ddl-end --
-COMMENT ON COLUMN public.personal.status IS '0=cerrada;1=abierta';
--- ddl-end --
-ALTER TABLE public.personal OWNER TO postgres;
--- ddl-end --
-
 -- object: public.responsables_id_seq | type: SEQUENCE --
 -- DROP SEQUENCE IF EXISTS public.responsables_id_seq CASCADE;
 CREATE SEQUENCE public.responsables_id_seq
@@ -863,11 +750,21 @@ CREATE TABLE public.usuario(
 	usuario character varying(20) NOT NULL,
 	pass character varying(500) NOT NULL,
 	nivel integer NOT NULL,
+	ci_per character varying(10) NOT NULL,
+	nombres character varying(40),
+	apellidos character varying(40),
+	cargo character varying(30) NOT NULL,
+	gerencia character varying(30),
+	departamento character varying(30),
+	telf_pers numeric(12,0) NOT NULL,
+	telf_casa numeric(12,0),
+	correo character varying(50) NOT NULL,
+	f_nac date,
 	fecha_creacion timestamp NOT NULL,
 	fecha_modif timestamp DEFAULT now(),
 	usuario_creacion character varying(20) NOT NULL,
 	usuario_modif character varying(20),
-	status integer NOT NULL,
+	status integer,
 	CONSTRAINT "UN_usuario" UNIQUE (usuario),
 	CONSTRAINT pk_id PRIMARY KEY (id)
 
@@ -900,11 +797,7 @@ CREATE TRIGGER actualizarequipo
 
 -- object: actualizarpersonal | type: TRIGGER --
 -- DROP TRIGGER IF EXISTS actualizarpersonal ON public.personal CASCADE;
-CREATE TRIGGER actualizarpersonal
-	AFTER UPDATE
-	ON public.personal
-	FOR EACH ROW
-	EXECUTE PROCEDURE public.auditpersonal();
+
 -- ddl-end --
 
 -- object: actualizarresponsables | type: TRIGGER --
@@ -954,11 +847,6 @@ CREATE TRIGGER auditoriaresponsables
 
 -- object: auditpersonal | type: TRIGGER --
 -- DROP TRIGGER IF EXISTS auditpersonal ON public.personal CASCADE;
-CREATE TRIGGER auditpersonal
-	AFTER DELETE 
-	ON public.personal
-	FOR EACH ROW
-	EXECUTE PROCEDURE public.auditpersonal();
 -- ddl-end --
 
 -- object: auditusuario | type: TRIGGER --
@@ -972,9 +860,7 @@ CREATE TRIGGER auditusuario
 
 -- object: personal_fk | type: CONSTRAINT --
 -- ALTER TABLE public."aignación" DROP CONSTRAINT IF EXISTS personal_fk CASCADE;
-ALTER TABLE public."aignación" ADD CONSTRAINT personal_fk FOREIGN KEY (id_personal)
-REFERENCES public.personal (id) MATCH FULL
-ON DELETE SET NULL ON UPDATE CASCADE;
+
 -- ddl-end --
 
 -- object: entrada_fk | type: CONSTRAINT --
@@ -1000,9 +886,7 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- object: usuario_fk | type: CONSTRAINT --
 -- ALTER TABLE public.personal DROP CONSTRAINT IF EXISTS usuario_fk CASCADE;
-ALTER TABLE public.personal ADD CONSTRAINT usuario_fk FOREIGN KEY (id_usuario)
-REFERENCES public.usuario (id) MATCH FULL
-ON DELETE SET NULL ON UPDATE CASCADE;
+
 -- ddl-end --
 
 -- object: usuario_fk | type: CONSTRAINT --
@@ -1013,10 +897,7 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: personal_fk | type: CONSTRAINT --
--- ALTER TABLE public.solvencia DROP CONSTRAINT IF EXISTS personal_fk CASCADE;
-ALTER TABLE public.solvencia ADD CONSTRAINT personal_fk FOREIGN KEY (id_personal)
-REFERENCES public.personal (id) MATCH FULL
-ON DELETE SET NULL ON UPDATE CASCADE;
+
 -- ddl-end --
 
 -- object: categoria_general_bienes_fk | type: CONSTRAINT --

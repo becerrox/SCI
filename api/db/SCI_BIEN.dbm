@@ -1,0 +1,1077 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.8.2-alpha" last-position="0,108" last-zoom="0.4"
+	 default-schema="public" default-owner="postgres">
+<role name="telecom"
+      superuser="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<database name="sci2" encoding="UTF8" lc-collate="es_ES" lc-ctype="es_ES">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<function name="auditequipos"
+		window-func="false"
+		returns-setof="false"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="100"
+		row-amount="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<language name="plpgsql" sql-disabled="true"/>
+	<return-type>
+	<type name="trigger"/>
+	</return-type>
+	<definition><![CDATA[
+
+    BEGIN
+
+        INSERT INTO auditoria_equipos VALUES (old.item, old.descripcion, old.marca, old.modelo, old.serial, old.color, old.estado, old.cod_bien, old.cantidad, old.status);
+
+        RETURN NULL;
+
+    END;
+
+]]></definition>
+</function>
+
+<function name="auditoriabienesgenerales"
+		window-func="false"
+		returns-setof="false"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="100"
+		row-amount="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<language name="plpgsql" sql-disabled="true"/>
+	<return-type>
+	<type name="trigger"/>
+	</return-type>
+	<definition><![CDATA[
+
+    BEGIN
+
+        INSERT INTO auditoria_bienesgeneral VALUES (old.id,old.item,old.cod_general,old.cod_subcat,old,cod_catespf,old.descripcion,old.estatus_uso_bien,old.marca,old.modelo,old.serial,old.tipo_comp,old.colores,old.num_bien,old.estado_bien,old.status,old.fecha_modif);
+
+        RETURN NULL;
+
+    END;
+
+]]></definition>
+</function>
+
+<function name="auditoriaresponsables"
+		window-func="false"
+		returns-setof="false"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="100"
+		row-amount="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<language name="plpgsql" sql-disabled="true"/>
+	<return-type>
+	<type name="trigger"/>
+	</return-type>
+	<definition><![CDATA[
+
+ BEGIN
+
+        INSERT INTO auditoria_responsables VALUES (old.nombres, old.apellidos, old.departamento, old.gerencia, old.fecha_modif, old.status);
+
+        RETURN NULL;
+
+    END;
+
+]]></definition>
+</function>
+
+<function name="auditusuario"
+		window-func="false"
+		returns-setof="false"
+		behavior-type="CALLED ON NULL INPUT"
+		function-type="VOLATILE"
+		security-type="SECURITY INVOKER"
+		execution-cost="100"
+		row-amount="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<language name="plpgsql" sql-disabled="true"/>
+	<return-type>
+	<type name="trigger"/>
+	</return-type>
+	<definition><![CDATA[    BEGIN
+
+        INSERT INTO auditoria_usuario VALUES (old.usuario, old.pass, old.nivel, old.status, old.fecha_modif, old.ci_per, old.nombres, old.apellidos, old.cargo, old.gerencia, old.departamento, old.telf_pers, old.telf_casa, old.correo, old.f_nac);
+
+        RETURN NULL;
+
+    END;
+
+]]></definition>
+</function>
+
+<sequence name="aignación_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="aignación">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Detalles de asignaciones]]></comment>
+	<position x="1665.36" y="928"/>
+	<column name="id" not-null="true" sequence="public.&quot;aignación_id_seq&quot;">
+		<type name="integer"/>
+	</column>
+	<column name="fecha_asignacion">
+		<type name="timestamp"/>
+	</column>
+	<column name="tipo_asignación">
+		<type name="smallint"/>
+	</column>
+	<column name="id_personal">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_asignacion" type="pk-constr" table="public.&quot;aignación&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="auditoria_bienesgeneral">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Auditoria en cambios hechos en la tabla de bienes]]></comment>
+	<position x="36.4531" y="73.3571"/>
+	<column name="item">
+		<type name="integer"/>
+		<comment><![CDATA[Nro. Inventario]]></comment>
+	</column>
+	<column name="cod_general">
+		<type name="character varying" length="10"/>
+		<comment><![CDATA[Codigo categoria general]]></comment>
+	</column>
+	<column name="cod_subcat">
+		<type name="character varying" length="10"/>
+		<comment><![CDATA[Codigo sub-categoria]]></comment>
+	</column>
+	<column name="cod_catespf">
+		<type name="character varying" length="10"/>
+		<comment><![CDATA[Codigo categoria especifica]]></comment>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="150"/>
+	</column>
+	<column name="estatus_uso_bien">
+		<type name="integer"/>
+		<comment><![CDATA[Estatus del uso del bien]]></comment>
+	</column>
+	<column name="marca">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="modelo">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="serial">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tipo_comp">
+		<type name="character varying" length="30"/>
+		<comment><![CDATA[Tipo componente]]></comment>
+	</column>
+	<column name="colores">
+		<type name="integer"/>
+	</column>
+	<column name="num_bien">
+		<type name="integer"/>
+		<comment><![CDATA[numero de bien]]></comment>
+	</column>
+	<column name="estado_bien">
+		<type name="integer"/>
+		<comment><![CDATA[Estado del bien]]></comment>
+	</column>
+	<column name="status">
+		<type name="integer"/>
+	</column>
+	<column name="fecha_modif" default-value="now()">
+		<type name="timestamp"/>
+	</column>
+</table>
+
+<table name="auditoria_equipos">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Cambios o eliminaciones realizados en la tabla equipos]]></comment>
+	<position x="390.547" y="104.429"/>
+	<column name="item" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="marca">
+		<type name="character varying" length="15"/>
+	</column>
+	<column name="modelo">
+		<type name="character varying" length="15"/>
+	</column>
+	<column name="serial">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="color">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="estado" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="cod_bien">
+		<type name="character varying" length="15"/>
+	</column>
+	<column name="cantidad">
+		<type name="integer"/>
+	</column>
+	<column name="status" not-null="true">
+		<type name="integer"/>
+		<comment><![CDATA[0=cerrada;1=abierta]]></comment>
+	</column>
+	<column name="fecha_modif" default-value="now()">
+		<type name="timestamp"/>
+	</column>
+</table>
+
+<sequence name="auditoria_equipos_id_equipo_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="auditoria_responsables">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Cambios generados en la tabla responsables]]></comment>
+	<position x="799.109" y="148.357"/>
+	<column name="nombres">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="apellidos">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="departamento">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="gerencia">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="fecha_modif" default-value="now()">
+		<type name="timestamp"/>
+	</column>
+	<column name="status">
+		<type name="integer"/>
+		<comment><![CDATA[ 0=cerrada;1=abierta]]></comment>
+	</column>
+</table>
+
+<table name="auditoria_usuario">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Tabla de los usuarios]]></comment>
+	<position x="1109.66" y="78.3571"/>
+	<column name="usuario" not-null="true">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="pass" not-null="true">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="nivel" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="status">
+		<type name="integer"/>
+		<comment><![CDATA[0=cerrada;1=abierta]]></comment>
+	</column>
+	<column name="fecha_modif" default-value="now()">
+		<type name="timestamp"/>
+	</column>
+	<column name="ci_per" not-null="true">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="nombres">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="apellidos">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="cargo" not-null="true">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="gerencia">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="departamento">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="telf_pers" not-null="true">
+		<type name="numeric" length="12" precision="0"/>
+	</column>
+	<column name="telf_casa">
+		<type name="numeric" length="12" precision="0"/>
+	</column>
+	<column name="correo" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="f_nac">
+		<type name="date"/>
+	</column>
+</table>
+
+<sequence name="auditoria_usuario_id_usuario_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<sequence name="bienesgeneral_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="bienesgeneral">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Datos almacenados de los bienes]]></comment>
+	<position x="0" y="375.257"/>
+	<column name="id" not-null="true" sequence="public.bienesgeneral_id_seq">
+		<type name="integer"/>
+	</column>
+	<column name="item">
+		<type name="integer"/>
+		<comment><![CDATA[Nro. Inventario]]></comment>
+	</column>
+	<column name="cod_general">
+		<type name="character varying" length="10"/>
+		<comment><![CDATA[Codigo categoria general]]></comment>
+	</column>
+	<column name="cod_subcat">
+		<type name="character varying" length="10"/>
+		<comment><![CDATA[Codigo sub-categoria]]></comment>
+	</column>
+	<column name="cod_catespf">
+		<type name="character varying" length="10"/>
+		<comment><![CDATA[Codigo categoria especifica]]></comment>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="150"/>
+	</column>
+	<column name="estatus_uso_bien">
+		<type name="integer"/>
+		<comment><![CDATA[Estatus del uso del bien]]></comment>
+	</column>
+	<column name="marca">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="modelo">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="serial">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="tipo_comp">
+		<type name="character varying" length="30"/>
+		<comment><![CDATA[Tipo componente]]></comment>
+	</column>
+	<column name="colores">
+		<type name="integer"/>
+	</column>
+	<column name="num_bien">
+		<type name="integer"/>
+		<comment><![CDATA[numero de bien]]></comment>
+	</column>
+	<column name="estado_bien">
+		<type name="integer"/>
+		<comment><![CDATA[Estado del bien]]></comment>
+	</column>
+	<column name="status" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="fecha_modif" default-value="now()">
+		<type name="timestamp"/>
+	</column>
+	<column name="cat_unid_admin">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="fecha_elab">
+		<type name="date"/>
+	</column>
+	<column name="per_ini">
+		<type name="date"/>
+	</column>
+	<column name="per_culm">
+		<type name="date"/>
+	</column>
+	<constraint name="pk_bienes" type="pk-constr" table="public.bienesgeneral">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="un_bien_serial" type="uq-constr" table="public.bienesgeneral">
+		<columns names="serial" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="categoria_general_bienes_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="categoria_general_bienes">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Codigo general de los bienes]]></comment>
+	<position x="393.266" y="375.257"/>
+	<column name="id" not-null="true" sequence="public.categoria_general_bienes_id_seq">
+		<type name="integer"/>
+	</column>
+	<column name="codigo" not-null="true">
+		<type name="character varying" length="12"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="tipo" not-null="true">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk categoria_general_bienes" type="pk-constr" table="public.categoria_general_bienes">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="configuracion_bien_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="configuracion_bien">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[forma adquision, colores, estatus de uso de bien, condiciones fisicas, categoria de unidades administrativas]]></comment>
+	<position x="736.063" y="375.257"/>
+	<column name="id" not-null="true" sequence="public.configuracion_bien_id_seq">
+		<type name="integer"/>
+	</column>
+	<column name="codigo" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="tipo">
+		<type name="character varying" length="50"/>
+		<comment><![CDATA[forma adquision, colores, estatus de uso de bien, condiciones fisicas, marca]]></comment>
+	</column>
+	<constraint name="pk configuracion_bien" type="pk-constr" table="public.configuracion_bien">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="detalle_entrada_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="detalle_entrada">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1078.86" y="375.257"/>
+	<column name="id" not-null="true" sequence="public.detalle_entrada_id_seq">
+		<type name="integer"/>
+	</column>
+	<column name="id_equipos" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="cantidad" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="fecha_entrada" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="tipo_entrada">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="id_entrada">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_detalle_entrada" type="pk-constr" table="public.detalle_entrada">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="detalle_entrada_id_detalle_entrada_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<sequence name="detalle_salida_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="detalle_salida">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1430.8" y="375.257"/>
+	<column name="id" not-null="true" sequence="public.detalle_salida_id_seq">
+		<type name="integer"/>
+	</column>
+	<column name="id_salida_salida" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="id_equipos" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="cantidad" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="fecha_salida" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="tipo_salida">
+		<type name="character varying" length="40"/>
+	</column>
+	<constraint name="pk_detalle_salida" type="pk-constr" table="public.detalle_salida">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="detalle_salida_id_detallle_salida_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<sequence name="entrada_id_entrada_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="entrada">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Equipos que ingresan]]></comment>
+	<position x="902.5" y="615.957"/>
+	<column name="id" not-null="true" sequence="public.entrada_id_entrada_seq">
+		<type name="integer"/>
+	</column>
+	<column name="fecha_creacion" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="fecha_modif" default-value="now()">
+		<type name="timestamp"/>
+	</column>
+	<column name="cantidad" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="fecha_entrada" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="tipo_entrada">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="usuario_entrada">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="observacion">
+		<type name="character varying" length="200"/>
+	</column>
+	<column name="id_usuario">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_entrada" type="pk-constr" table="public.entrada">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="equipo_id_equipo_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="equipo">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Tabla de los equipos]]></comment>
+	<position x="31.5156" y="784.886"/>
+	<column name="id" not-null="true" sequence="public.equipo_id_equipo_seq">
+		<type name="integer"/>
+	</column>
+	<column name="item" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="descripcion">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="marca">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="modelo">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="serial">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="color">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="estado" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="cod_bien">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="cantidad">
+		<type name="integer"/>
+	</column>
+	<column name="ubicacion">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="status" not-null="true">
+		<type name="integer"/>
+		<comment><![CDATA[0=cerrada;1=abierta]]></comment>
+	</column>
+	<column name="encargado">
+		<type name="character varying" length="30"/>
+	</column>
+	<constraint name="pk_equipo" type="pk-constr" table="public.equipo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="un_equipo" type="uq-constr" table="public.equipo">
+		<columns names="serial" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="responsables_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="responsables">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Responsables de inventarios]]></comment>
+	<position x="412.087" y="779.886"/>
+	<column name="id" not-null="true" sequence="public.responsables_id_seq">
+		<type name="integer"/>
+	</column>
+	<column name="nombres">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="apellidos">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="departamento">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="gerencia">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="fecha_creacion">
+		<type name="timestamp"/>
+	</column>
+	<column name="fecha_modif" default-value="now()">
+		<type name="timestamp"/>
+	</column>
+	<column name="status">
+		<type name="integer"/>
+		<comment><![CDATA[ 0=cerrada;1=abierta]]></comment>
+	</column>
+	<constraint name="pk_serial" type="pk-constr" table="public.responsables">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="salida_id_salida_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="salida">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[equipos de salen]]></comment>
+	<position x="1534.65" y="735.243"/>
+	<column name="id" not-null="true" sequence="public.salida_id_salida_seq">
+		<type name="integer"/>
+	</column>
+	<column name="fecha_creacion" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="fecha_modif" default-value="now()">
+		<type name="timestamp"/>
+	</column>
+	<column name="cantidad" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="fecha_salida" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="tipo_salida">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="usuario_salida">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="observacion">
+		<type name="character varying" length="200"/>
+	</column>
+	<column name="id_usuario">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_salida" type="pk-constr" table="public.salida">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="solvencia_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="solvencia">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Detalles de solvencia]]></comment>
+	<position x="1690.65" y="1070.6"/>
+	<column name="id" not-null="true" sequence="public.solvencia_id_seq">
+		<type name="integer"/>
+	</column>
+	<column name="fecha_solvencia">
+		<type name="smallint"/>
+	</column>
+	<column name="id_personal">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_solvencia" type="pk-constr" table="public.solvencia">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="sub_categorias_bienes_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="sub_categorias_bienes">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Codigos de las subcategoria de bienes]]></comment>
+	<position x="410" y="614.157"/>
+	<column name="id" not-null="true" sequence="public.sub_categorias_bienes_id_seq">
+		<type name="integer"/>
+	</column>
+	<column name="codigo" not-null="true">
+		<type name="character varying" length="12"/>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="tipo" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="id_categoria_general_bienes">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk  sub_categorias_bienes" type="pk-constr" table="public.sub_categorias_bienes">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="ubicacion_id_Ubicacion_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="ubicacion">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Detalles de la ubicacion de los equipos y el personal]]></comment>
+	<position x="409.828" y="1006.66"/>
+	<column name="id" not-null="true" sequence="public.&quot;ubicacion_id_Ubicacion_seq&quot;">
+		<type name="integer"/>
+	</column>
+	<column name="nombre">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="id_personal">
+		<type name="integer"/>
+	</column>
+	<constraint name="pk_ubicacion" type="pk-constr" table="public.ubicacion">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="UN_ubicacion" type="uq-constr" table="public.ubicacion">
+		<columns names="nombre" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="usuario_id_usuario_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="usuario">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Tabla de los usuarios]]></comment>
+	<position x="875.882" y="838.086"/>
+	<column name="id" not-null="true" sequence="public.usuario_id_usuario_seq">
+		<type name="integer"/>
+	</column>
+	<column name="usuario" not-null="true">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="pass" not-null="true">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="nivel" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="ci_per" not-null="true">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="nombres">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="apellidos">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="cargo" not-null="true">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="unid_admin">
+		<type name="character varying" length="30"/>
+		<comment><![CDATA[Unidad Administrativa]]></comment>
+	</column>
+	<column name="telf_pers" not-null="true">
+		<type name="numeric" length="12" precision="0"/>
+	</column>
+	<column name="telf_casa">
+		<type name="numeric" length="12" precision="0"/>
+	</column>
+	<column name="correo" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="f_nac">
+		<type name="date"/>
+	</column>
+	<column name="fecha_creacion" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<column name="fecha_modif" default-value="now()">
+		<type name="timestamp"/>
+	</column>
+	<column name="usuario_creacion" not-null="true">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="usuario_modif">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="status">
+		<type name="integer"/>
+		<comment><![CDATA[0=cerrada;1=abierta]]></comment>
+	</column>
+	<constraint name="pk_id" type="pk-constr" table="public.usuario">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="UN_usuario" type="uq-constr" table="public.usuario">
+		<columns names="usuario" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<trigger name="actualizarbienes" firing-type="AFTER" per-line="true" constraint="false"
+	 ins-event="false" del-event="false" upd-event="true" trunc-event="false"
+	 table="public.bienesgeneral">
+		<function signature="public.auditoriabienesgenerales()"/>
+</trigger>
+
+<trigger name="actualizarequipo" firing-type="AFTER" per-line="true" constraint="false"
+	 ins-event="false" del-event="false" upd-event="true" trunc-event="false"
+	 table="public.equipo">
+		<function signature="public.auditequipos()"/>
+</trigger>
+
+<trigger name="actualizarresponsables" firing-type="AFTER" per-line="true" constraint="false"
+	 ins-event="false" del-event="false" upd-event="true" trunc-event="false"
+	 table="public.responsables">
+		<function signature="public.auditoriaresponsables()"/>
+</trigger>
+
+<trigger name="actualizarusuario" firing-type="AFTER" per-line="true" constraint="false"
+	 ins-event="false" del-event="false" upd-event="true" trunc-event="false"
+	 table="public.usuario">
+		<function signature="public.auditusuario()"/>
+</trigger>
+
+<trigger name="auditbienesgeneral" firing-type="AFTER" per-line="true" constraint="false"
+	 ins-event="false" del-event="true" upd-event="false" trunc-event="false"
+	 table="public.bienesgeneral">
+		<function signature="public.auditoriabienesgenerales()"/>
+</trigger>
+
+<trigger name="auditequipos" firing-type="AFTER" per-line="true" constraint="false"
+	 ins-event="false" del-event="true" upd-event="false" trunc-event="false"
+	 table="public.equipo">
+		<function signature="public.auditequipos()"/>
+</trigger>
+
+<trigger name="auditoriaresponsables" firing-type="AFTER" per-line="true" constraint="false"
+	 ins-event="false" del-event="true" upd-event="false" trunc-event="false"
+	 table="public.responsables">
+		<function signature="public.auditoriaresponsables()"/>
+</trigger>
+
+<trigger name="auditusuario" firing-type="AFTER" per-line="true" constraint="false"
+	 ins-event="false" del-event="true" upd-event="false" trunc-event="false"
+	 table="public.usuario">
+		<function signature="public.auditusuario()"/>
+</trigger>
+
+<relationship name="usuario_tiene_muchos_aignación" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#05db50"
+	 src-table="public.usuario"
+	 dst-table="public.&quot;aignación&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="usuario_tiene_muchos_solvencia" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#603d9e"
+	 src-table="public.usuario"
+	 dst-table="public.solvencia"
+	 src-required="false" dst-required="false"/>
+
+<constraint name="entrada_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.entrada" table="public.detalle_entrada">
+	<columns names="id_entrada" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="salida_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.salida" table="public.detalle_salida">
+	<columns names="id_salida_salida" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="usuario_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.usuario" table="public.entrada">
+	<columns names="id_usuario" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="usuario_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.usuario" table="public.salida">
+	<columns names="id_usuario" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="categoria_general_bienes_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="SET NULL" ref-table="public.categoria_general_bienes" table="public.sub_categorias_bienes">
+	<columns names="id_categoria_general_bienes" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_detalle_entrada_entrada" type="relfk"
+	 custom-color="#1d0b26"
+	 src-table="public.detalle_entrada"
+	 dst-table="public.entrada"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_detalle_salida_salida" type="relfk"
+	 custom-color="#93b55b"
+	 src-table="public.detalle_salida"
+	 dst-table="public.salida"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_entrada_usuario" type="relfk"
+	 custom-color="#82f964"
+	 src-table="public.entrada"
+	 dst-table="public.usuario"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_salida_usuario" type="relfk"
+	 custom-color="#5c94f3"
+	 src-table="public.salida"
+	 dst-table="public.usuario"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_sub_categorias_bienes_categoria_general_bienes" type="relfk"
+	 custom-color="#d8c3bf"
+	 src-table="public.sub_categorias_bienes"
+	 dst-table="public.categoria_general_bienes"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
