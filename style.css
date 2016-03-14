@@ -13,6 +13,14 @@ q:before, q:after { content:''}
 strong { font-weight: bold }
 em { font-style: sans-serif }
 .sans-serif { font-style: italic; }
+/* latin */
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Dosis Regular'), local('Dosis-Regular'), url(font/Dosis-Regular.ttf) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
 .aligncenter { display:block; margin:0 auto; }
 .alignleft { float:left; margin:10px; }
 .alignright { float:right;margin:10px; }
@@ -213,7 +221,7 @@ margin-top: 0px;
 }
 
 .menu{display:block;
-width:100%;}
+}
 
 .menu li{
 
