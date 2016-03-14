@@ -66,9 +66,10 @@ $app->get("/equipos",function() use ($app,$equipoService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->post("/equipos",function() use ($app){
-    echo 'registra un equipo';
-});
+$app->post("/equipos",function() use ($app,$equipoService){
+    $equipo = json_decode($app->request->getRawBody());
+    $data = $equipoService->nuevo($equipo);
+    response($app,$data['mensaje'],$data['status']);
 
 $app->put("/equipos/{id:[0-9]+}",function($id) use($app){
     echo "edicion de equipo numero $id";
