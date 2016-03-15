@@ -51,7 +51,7 @@ $(document).ready(function(){
 
 //Servicio de lis
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 	$("#RegistrarEquipo").click(function(){
 		var Codigo=$('#codigo').val();
 		var Descripcion=$("#descripcion").val();
