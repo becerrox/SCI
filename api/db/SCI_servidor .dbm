@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.8.2-alpha" last-position="424,427" last-zoom="0.75"
+<dbmodel pgmodeler-ver="0.8.2-alpha" last-position="0,427" last-zoom="0.75"
 	 default-schema="public" default-owner="postgres"
 	 default-collation="pg_catalog.&quot;default&quot;">
 <role name="telecom"
@@ -654,7 +654,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="id" not-null="true" sequence="public.entrada_id_entrada_seq">
 		<type name="integer"/>
 	</column>
-	<column name="fecha_creacion" not-null="true">
+	<column name="fecha_creacion" not-null="true" default-value="now()">
 		<type name="timestamp"/>
 	</column>
 	<column name="fecha_modif" default-value="now()">
@@ -781,7 +781,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="f_nac">
 		<type name="date"/>
 	</column>
-	<column name="fecha_creacion" not-null="true">
+	<column name="fecha_creacion" not-null="true" default-value="now()">
 		<type name="timestamp"/>
 	</column>
 	<column name="fecha_modif" default-value="now()">
@@ -922,7 +922,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="integer"/>
 	</column>
 	<column name="fecha_solvencia">
-		<type name="smallint"/>
+		<type name="date"/>
 	</column>
 	<column name="id_personal">
 		<type name="integer"/>
@@ -1020,7 +1020,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="nivel" not-null="true">
 		<type name="integer"/>
 	</column>
-	<column name="fecha_creacion" not-null="true">
+	<column name="fecha_creacion" not-null="true" default-value="now()">
 		<type name="timestamp"/>
 	</column>
 	<column name="fecha_modif" default-value="now()">
