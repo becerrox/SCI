@@ -72,6 +72,12 @@ $app->post("/equipos",function() use ($app,$equipoService){
     response($app,$data['mensaje'],$data['status']);
 });
 
+$app->post("/equipos/token",function() use ($app,$equipoService) {
+    $equipo = json_decode($app->request->getRawBody());
+    $data = $equipoService->solicitarToken($equipo);
+    response($app,$data,$data['status']);
+});
+
 $app->put("/equipos/{id:[0-9]+}",function($id) use ($app,$equipoService) {
     $equipo = json_decode($app->request->getRawBody());
     $data = $equipoService->modificar($id,$equipo);
@@ -105,10 +111,41 @@ $app->delete("/personal/{id:[0-9]+}",function($id) use($app){
     echo "eliminacion de personal numero $id";
 });
 
+//Endpoints Configuracion de bienes
+
+$configuracionbienService = new ConfiguracionbienService;
+
+$app->get("/configuracionbien",function() use ($app,$configuracionbienService) {
+    $data = $configuracionbienService->listar();
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/configuracionbien",function() use ($app,$configuracionbienService){
+    $configuracionbien = json_decode($app->request->getRawBody());
+    $data = $configuracionbienService->nuevo($configuracionbien);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/configuracionbien/token",function() use ($app,$configuracionbienService) {
+    $configuracionbien = json_decode($app->request->getRawBody());
+    $data = $configuracionbienService->solicitarToken($configuracionbien);
+    response($app,$data,$data['status']);
+});
+
+$app->put("/configuracionbien/{id:[0-9]+}",function($id) use ($app,$configuracionbienService) {
+    $configuracionbien = json_decode($app->request->getRawBody());
+    $data = $configuracionbienService->modificar($id,$configuracionbien);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/configuracionbiens/{id:[0-9]+}",function($id) use($app){
+    echo "eliminacion de configuracion de bien numero $id";
+});
+
 //Endpoint 
 
 $app->notFound(function () use ($app) {
-    response($app,array("estatus" => "404 Not Found", "mensaje" => 'This is not the resource you are looking for'),404);
+    response($app,array("estatus" => "404 Not Found", "mensaje" => 'Este no es el recurso que estás buscando'),404);
 });
 
 $app->handle();

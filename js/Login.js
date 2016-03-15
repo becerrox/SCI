@@ -25,3 +25,26 @@ $(document).ready(function(){
 
 
 //Servicio de listar equipos
+
+$(document).ready(function(){
+	$("#Registrar").click(function(){
+		var Codigo=$('#codigo').val();
+		var Descripcion=$("#descripcion").val();
+		var Tipo=$('#tipo').val();
+		//Location='registrousuario.html';
+		console.log(Codigo,Descripcion,Tipo);
+		$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/services/token',
+			data:JSON.stringify({codigo:Codigo,descripcion:Descripcion,tipo:Tipo}),
+			success:function(response){
+				location.href='inicio.html';
+			},error:function(response){
+				console.log(response);
+				$("#mensaje").html(response.responseJSON.data.error);
+			}
+		});
+	});
+});
