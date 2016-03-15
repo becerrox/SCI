@@ -1,7 +1,7 @@
 function valida_login(){
 
     var nombre = document.getElementById("username").value;
-    var contraseña = document.getElementById("contrasena").value;         
+    var contraseña = document.getElementById("contraseña").value;         
 
     if(nombre=="") {
     $('#alert').html('Debes Ingresar un usuario').slideDown(500);
@@ -18,10 +18,28 @@ function valida_login(){
               }
       else{
       $('#alert').html('').slideUp(300);
-
+      
         }
  }
+ // VALIDACIÓN SOLO LETRAS
+ function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
 
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
 function Validador(email){
           var tester = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-]+)\.)+([a-zA-Z0-9]{2,4})+$/;
           return tester.test(email);
@@ -113,13 +131,20 @@ function Validar_re(){
           else{
             $('#alert').html('').slideUp(300);
           }
-
+        
  }
 // Solo permite ingresar numeros.
  function soloNumeros(e){
 
   var key = window.Event ? e.which : e.keyCode
-return ((key >= 48 && key <= 57) || (key==8))
+return ((key >= 48 && key <= 57) || (key==8)) 
+
+} 
+// Solo permite ingresar numeros.
+ function soloNumerosCod(e){
+
+  var key = window.Event ? e.which : e.keyCode
+return ((key >= 48 && key <= 57) || (key==45) || (key==8)) 
 
 }
 
@@ -199,7 +224,7 @@ return ((key >= 48 && key <= 57) || (key==8))
           }
           else{
             $('#alert').html('').slideUp(300);
-          }
+          }        
         if(obsv==""){
             $('#alert').html('Debes ingresar un Usuario').slideDown(500);
             $('#obsv').focus();
@@ -207,7 +232,7 @@ return ((key >= 48 && key <= 57) || (key==8))
           }
           else{
             $('#alert').html('').slideUp(300);
-          }
+          }          
         if(ubica=="0"){
             $('#alert').html('Debes seleccionar una ubicación').slideDown(500);
             $('#ubica').focus();
@@ -215,7 +240,7 @@ return ((key >= 48 && key <= 57) || (key==8))
           }
           else{
             $('#alert').html('').slideUp(300);
-          }
+          } 
         if(encargado=="0"){
             $('#alert').html('Debes seleccionar a un encargado').slideDown(500);
             $('#encargado').focus();
@@ -223,6 +248,278 @@ return ((key >= 48 && key <= 57) || (key==8))
           }
           else{
             $('#alert').html('').slideUp(300);
+          }     
+       
+ }
+
+ function Validar_rb(){
+          var desc = document.getElementById('desc_bien').value;
+          var estatus= document.getElementById('estat_bien').value;
+          var marca = document.getElementById('marca_bien').value;
+          var modelo = document.getElementById('modelo_bien').value;
+          var serial = document.getElementById('serial').value;
+          var componentes = document.getElementById('componente_bien').value;
+          var color = document.getElementById('color_bien').value;
+          var n_bien = document.getElementById('n_bien').value;
+          var estado_bien = document.getElementById('estado_bien').value;
+          var unidades = document.getElementById('unidades_adm').value;
+          var dependencia = document.getElementById('dependencia_bien').value;
+          var unidad_trabajo = document.getElementById('unidad_trab_bien').value;
+          var autoridad_inst = document.getElementById('aut_max_inst').value;
+          var responsable_pa = document.getElementById('responsable_pa').value;
+          var responsable_ad = document.getElementById('responsable_ad').value;
+          var responsable_uso = document.getElementById('responsable_uso').value;
+          var sede = document.getElementById('sede').value;
+          var direccion_sede = document.getElementById('direccion_sede').value;
+          var estado = document.getElementById('estado').value;
+          var municipio = document.getElementById('municipio').value;
+          var ciudad = document.getElementById('ciudad').value;
+          var parroquia = document.getElementById('parroquia').value;
+          var fecha1 = document.getElementById('fecha1').value;
+          var fecha2 = document.getElementById('fecha2').value;
+          var f_elab = document.getElementById('fecha3').value;          
+
+          if(desc=="0"){
+            $('#alert').html('Debes seleccionar una descripción').slideDown(500);
+            $('#desc_bien').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }    
+          if(estatus=="0"){
+            $('#alert').html('Debes seleccionar un tipo de estatus').slideDown(500);
+            $('#estatus_bien').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(marca==""){
+            $('#alert').html('Debes ingresar una marca').slideDown(500);
+            $('#marca_bien').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+           if(modelo==""){
+            $('#alert').html('Debes ingresar un modelo').slideDown(500);
+            $('#modelo_bien').focus();
+            return false;
           }
 
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(serial==""){
+            $('#alert').html('Debes ingresar un serial').slideDown(500);
+            $('#serial').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+        if(componentes=="0"){
+            $('#alert').html('Debes seleccionar un componente').slideDown(500);
+            $('#componente_bien').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }        
+        if(color=="0"){
+            $('#alert').html('Debes seleccionar un color').slideDown(500);
+            $('#color_bien').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }          
+        if(n_bien==""){
+            $('#alert').html('Debes ingresar un número de bien').slideDown(500);
+            $('#n_bien').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          } 
+        if(estado_bien=="0"){
+            $('#alert').html('Debes seleccionar a un estado').slideDown(500);
+            $('#estado_bien').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }   
+        if(unidades=="0"){
+            $('#alert').html('Debes seleccionar una Unidad Administrativa').slideDown(500);
+            $('#unidades_adm').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          } 
+          if(dependencia==""){
+            $('#alert').html('Debes ingresar una dependencia').slideDown(500);
+            $('#dependencia_bien').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(unidad_trabajo==""){
+            $('#alert').html('Debes ingresar una unidad de trabajo').slideDown(500);
+            $('#unidad_trab_bien').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+           if(autoridad_inst==""){
+            $('#alert').html('Debes ingresar una autoridad').slideDown(500);
+            $('#aut_max_inst').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+           if(responsable_pa==""){
+            $('#alert').html('Debes ingresar un Responsable Patrimonial').slideDown(500);
+            $('#responsable_pa').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+           if(responsable_ad==""){
+            $('#alert').html('Debes ingresar un Responsable Administrativo').slideDown(500);
+            $('#responsable_ad').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(responsable_uso==""){
+            $('#alert').html('Debes ingresar un Responsable por Uso').slideDown(500);
+            $('#responsable_uso').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(sede==""){
+            $('#alert').html('Debes ingresar una sede').slideDown(500);
+            $('#sede').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+           if(direccion_sede==""){
+            $('#alert').html('Debes ingresar una direccion').slideDown(500);
+            $('#direccion_sede').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+           if(estado=="0"){
+            $('#alert').html('Debes seleccionar un estado').slideDown(500);
+            $('#estado').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+         if(municipio=="0"){
+            $('#alert').html('Debes seleccionar una municipio').slideDown(500);
+            $('#municipio').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+         if(ciudad=="0"){
+            $('#alert').html('Debes seleccionar una ciudad').slideDown(500);
+            $('#ciudad').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(parroquia=="0"){
+            $('#alert').html('Debes seleccionar una parroquia').slideDown(500);
+            $('#parroquia').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(fecha1==""){
+            $('#alert').html('Debes ingresar una fecha de Inicio').slideDown(500);
+            $('#fecha1').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(fecha2==""){
+            $('#alert').html('Debes ingresar una fecha de Culminación').slideDown(500);
+            $('#fecha2').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(f_elab==""){
+            $('#alert').html('Debes ingresar una fecha de Elaboración').slideDown(500);
+            $('#fecha3').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }     
+        
  }
+
+ function Validar_rc(){
+          var cod_general = document.getElementById('cod_cg').value;
+          var cod_sub = document.getElementById('cod_sc').value;
+          var cod_especifico = document.getElementById('cod_ce').value;
+          var descripcion = document.getElementById('desc_bien').value;
+
+
+          if(cod_general==""){
+            $('#alert').html('Debes ingresar un Código General').slideDown(500);
+            $('#cod_cg').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(cod_sub==""){
+            $('#alert').html('Debes ingresar una Sub-Categoría').slideDown(500);
+            $('#cod_sc').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(cod_especifico==""){
+            $('#alert').html('Debes ingresar una Categoría Específica').slideDown(500);
+            $('#cod_ce').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(descripcion==""){
+            $('#alert').html('Debes ingresar una Descripción').slideDown(500);
+            $('#desc_bien').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+}
