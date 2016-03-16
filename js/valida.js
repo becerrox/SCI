@@ -50,9 +50,7 @@ function Validar_re(){
           var nombres = document.getElementById('nombres').value;
           var email = document.getElementById('email').value;
           var telefono = document.getElementById('telefono').value;
-          var pass1 = document.getElementById('pass1').value;
-          var pass2 = document.getElementById('pass2').value;
-          var usuario = document.getElementById('usuario').value;
+          
 
           if(cedula==""){
             $('#alert').html('Debes ingresar una Cédula').slideDown(500);
@@ -97,39 +95,47 @@ function Validar_re(){
             $('#alert').html('').slideUp(300);
           }
 
+ }
+
+ function Validar_re_usu(){
+          var pass1 = document.getElementById('pass1').value;
+          var pass2 = document.getElementById('pass2').value;
+          var usuario = document.getElementById('usuario').value;
+
+
           if(pass1==""){
-            $('#alert').html('Debes ingresar una contraseña').slideDown(500);
+            $('#alert2').html('Debes ingresar una contraseña').slideDown(500);
             $('#pass1').focus();
             return false;
           }
           else{
-            $('#alert').html('').slideUp(300);
+            $('#alert2').html('').slideUp(300);
           }
           if(pass2==""){
-            $('#alert').html('Debes comprobar tu contraseña').slideDown(500);
+            $('#alert2').html('Debes comprobar tu contraseña').slideDown(500);
             $('#pass2').focus();
             return false;
           }
           else{
-            $('#alert').html('').slideUp(300);
+            $('#alert2').html('').slideUp(300);
           }
           if(pass2!=pass1){
-            $('#alert').html('Las contraseñas no coinciden').slideDown(500);
+            $('#alert2').html('Las contraseñas no coinciden').slideDown(500);
             $('#pass1').val('');
             $('#pass2').val('');
             $('#pass1').focus();
             return false;
           }
           else{
-            $('#alert').html('').slideUp(300);
+            $('#alert2').html('').slideUp(300);
           }
           if(usuario==""){
-            $('#alert').html('Debes ingresar un Usuario').slideDown(500);
+            $('#alert2').html('Debes ingresar un Usuario').slideDown(500);
             $('#usuario').focus();
             return false;
           }
           else{
-            $('#alert').html('').slideUp(300);
+            $('#alert2').html('').slideUp(300);
           }
         
  }

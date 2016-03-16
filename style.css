@@ -29,6 +29,7 @@ img.alignleft, img.alignright, img.aligncenter {
     margin-bottom: 11px;
 }
 
+
 .alignleft, img.alignleft{
 display: inline;
     float: left;
@@ -117,7 +118,10 @@ overflow: auto;
 #contenedor #alert {
   width: auto;
   margin-left: 0; }
+#contenedor #nacio { 
+  width: 40px; padding-left: 0px; margin-right: 0px;
 
+ }
 .fondo-form{
   background: lightblue;
   border-radius:6px;
@@ -333,6 +337,9 @@ text-decoration:none;
 .grid-6, .grid-7, .grid-8{
 width: 100%;
 }
+.grid-50 {
+  width: 33.3%;
+}
 @media (min-width: 785px) and (max-width: 979px) {
 .grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9{
 width: 33.3%;
@@ -386,6 +393,7 @@ margin-left:170px;
 #contenedor{
   width: 625px;
 }
+
 @media (max-width: 480px) {
 
 
