@@ -1,41 +1,43 @@
 <?php
 
-class ConfiguracionbienService{
+class SubcatService{
 
     public function listar(){
 
-      $configuracionbien=Configuracionbien::find("status=1");
+      $subcat=Subcat::find();
 
-      if(count($configuracionbien->toArray())==0){
+      if(count($subcat->toArray())==0){
             return array("status" => 404, "mensaje" => "No hay registros de configuración de bienes");
       }else{
-          foreach($configuracionbien as $cfb){
-               $configuracionbien[]=array(
-                "id" => $cfb->id,
-                "codigo" => $cfb->codigo,
-                "descripcion" => $cfb->descripcion,
-                "tipo" => $cfb->tipo
+          foreach($subcat as $scb){
+               $subcat[]=array(
+                "id" => $scb->id,
+                "codigo" => $scb->codigo,
+                "descripcion" => $scb->descripcion,
+                "tipo" => $scb->tipo,
+                "id_categoria_general_bienes" => $scb->id_categoria_general_bienes
                 );
             }
       }
         return array("status" => 200, "mensaje" =>$users);
     }
 
-        public function nuevo($cfb){
-            $configuracionbien=new configuracionbien();
+        public function nuevo($scb){
+            $subcat=new Subcat();
 
             $data=array(
-                "id" => $cfb->id,
-                "codigo" => $cfb->codigo,
-                "descripcion" => $cfb->descripcion,
-                "tipo" => $cfb->tipo
+                "id" => $scb->id,
+                "codigo" => $scb->codigo,
+                "descripcion" => $scb->descripcion,
+                "tipo" => $scb->tipo,
+                "id_categoria_general_bienes" => $scb->id_categoria_general_bienes                
                 );
 
-            if($configuracionbien->save($data)){
+            if($subcat->save($data)){
                     return array("status" => 201, "mensaje" => $data);
             }else{
                 $errors = array();
-                foreach ($configuracionbien->getMessages() as $message) {
+                foreach ($subcat->getMessages() as $message) {
                     $errors[] = $message->getMessage();
                 }
                 return array("status" => 400, "mensaje" =>$errors);
@@ -43,7 +45,7 @@ class ConfiguracionbienService{
         }
 
         public function modificar($id,$us){
-            $modificar=Configuracionbien::find($id);
+            $modificar=Subcat::find($id);
             if(count($modificar)>0){
                 if(isset($us->pass) && $us->pass !== '' && $us->pass !== null && $us->pass !== 'undefined'){
                     $pass = sha1($us->pass);
@@ -51,9 +53,9 @@ class ConfiguracionbienService{
                     $pass = $modificar[0]->pass;
                 }
                 $data=array(     
-                "codigo" => $cfb->codigo,
-                "descripcion" => $cfb->descripcion,
-                "tipo" => $cfb->tipo
+                "codigo" => $scb->codigo,
+                "descripcion" => $scb->descripcion,
+                "tipo" => $scb->tipo
                 );
 
                 if($modificar->update($data)){
@@ -62,7 +64,7 @@ class ConfiguracionbienService{
                 }
                 else{
                      $errors = array();
-                    foreach ($configuracionbien->getMessages() as $message) {
+                    foreach ($subcat->getMessages() as $message) {
                         $errors[] = $message->getMessage();
                     }
                     return array("status" => 400, "mensaje" =>$errors);
@@ -73,9 +75,9 @@ class ConfiguracionbienService{
         }
 
         public function eliminar($id){
-            $configuracionbien=Configuracionbien::find($id);
-            if(count($configuracionbien)){
-                $configuracionbien->delete();
+            $subcat=Subcat::find($id);
+            if(count($subcat)){
+                $subcat->delete();
                 return array("status" => 200, "mensaje" => 'Configuración Eliminada');
             }else{
                 return array("status"=>404, "mensaje"=> "El registro intenta modificar no existe");

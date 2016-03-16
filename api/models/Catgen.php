@@ -1,6 +1,6 @@
 <?php
 
-/* Entidad Equipo */
+/* Entidad Usuarios */
 
 use Phalcon\Mvc\Model,
     Phalcon\Mvc\Model\Message,
@@ -10,7 +10,7 @@ use Phalcon\Mvc\Model,
     Phalcon\Mvc\Model\Behavior\SoftDelete;
 
 
-class Configuracionbien extends Model{
+class Catgen extends Model{
     public function initialize(){
       $this->addBehavior(
             new SoftDelete(
@@ -26,31 +26,17 @@ class Configuracionbien extends Model{
  public function validation()
     {
 
-/*        $this->validate(new PresenceOf(
-            array(
-                "field" => "usuario",
-                "message" => "El campo usuario es obligatorio"
-                )
-            ));
-*/
         $this->validate(new PresenceOf(
             array(
-                "field" => "codigo",
-                "message" => "El campo código es obligatorio"
+                "field" => "cod_cg",
+                "message" => "El campo Categoría General es obligatorio"
                 )
             ));
-
+            
        $this->validate(new Uniqueness(
             array(
-                "field"  => "tipo",
-                "message" => "El campo tipo es obligatorio"
-            )
-        ));
-
-       $this->validate(new Uniqueness(
-            array(
-                "field"  => "codigo",
-                "message" => "El codigo debe ser único"
+                "field"  => "cod_cg",
+                "message" => "El Código de la categoría general debe ser único"
             )
         ));
 

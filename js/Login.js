@@ -28,19 +28,21 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 	$("#RegistrarCatalogo").click(function(){
-		var Codigo=$('#codigo').val();
+		var Catgen=$('#cod_cg').val();
+		var Subcat=$('#cod_sc').val();
+		var Catesp=$('#cod_ce').val();
 		var Descripcion=$("#descripcion").val();
-		var Tipo=$('#tipo').val();
+
 		//Location='registrousuario.html';
-		console.log(Codigo,Descripcion,Tipo);
+		console.log(Catgen,Subcat,Catesp,Descripcion);
 		$.ajax({
 			type:"POST",
 			processData: false,
     		contentType: 'application/json',
 			url:'api/services/token',
-			data:JSON.stringify({codigo:Codigo,descripcion:Descripcion,tipo:Tipo}),
+			data:JSON.stringify({codigo:Catgen,codigo:Subcat,codigo:Catesp,desc_bien:Descripcion}),
 			success:function(response){
-				location.href='inicio.html';
+				location.href='catalogo.html';
 			},error:function(response){
 				console.log(response);
 				$("#mensaje").html(response.responseJSON.data.error);
@@ -51,7 +53,7 @@ $(document).ready(function(){
 
 //Servicio de lis
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 	$("#RegistrarEquipo").click(function(){
 		var Codigo=$('#codigo').val();
 		var Descripcion=$("#descripcion").val();
@@ -72,4 +74,4 @@ $(document).ready(function(){
 			}
 		});
 	});
-});
+});*/

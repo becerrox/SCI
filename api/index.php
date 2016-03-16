@@ -111,35 +111,97 @@ $app->delete("/personal/{id:[0-9]+}",function($id) use($app){
     echo "eliminacion de personal numero $id";
 });
 
-//Endpoints Configuracion de bienes
+//Endpoints Categoría General
 
-$configuracionbienService = new ConfiguracionbienService;
+$catgenService = new CatgenService;
 
-$app->get("/configuracionbien",function() use ($app,$configuracionbienService) {
-    $data = $configuracionbienService->listar();
+$app->get("/catgen",function() use ($app,$catgenService) {
+    $data = $catgenService->listar();
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->post("/configuracionbien",function() use ($app,$configuracionbienService){
-    $configuracionbien = json_decode($app->request->getRawBody());
-    $data = $configuracionbienService->nuevo($configuracionbien);
+$app->post("/catgen",function() use ($app,$catgenService){
+    $catgen = json_decode($app->request->getRawBody());
+    $data = $catgenService->nuevo($catgen);
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->post("/configuracionbien/token",function() use ($app,$configuracionbienService) {
-    $configuracionbien = json_decode($app->request->getRawBody());
-    $data = $configuracionbienService->solicitarToken($configuracionbien);
+$app->post("/catgen/token",function() use ($app,$catgenService) {
+    $catgen = json_decode($app->request->getRawBody());
+    $data = $catgenService->solicitarToken($catgen);
     response($app,$data,$data['status']);
 });
 
-$app->put("/configuracionbien/{id:[0-9]+}",function($id) use ($app,$configuracionbienService) {
-    $configuracionbien = json_decode($app->request->getRawBody());
-    $data = $configuracionbienService->modificar($id,$configuracionbien);
+$app->put("/catgen/{id:[0-9]+}",function($id) use ($app,$catgenService) {
+    $catgen = json_decode($app->request->getRawBody());
+    $data = $catgenService->modificar($id,$catgen);
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->delete("/configuracionbiens/{id:[0-9]+}",function($id) use($app){
-    echo "eliminacion de configuracion de bien numero $id";
+$app->delete("/catgen/{id:[0-9]+}",function($id) use($app){
+    echo "eliminacion de código general numero $id";
+});
+
+//Endpoints subategoría 
+
+$subcatService = new SubcatService;
+
+$app->get("/subcat",function() use ($app,$subcatService) {
+    $data = $subcatService->listar();
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/subcat",function() use ($app,$subcatService){
+    $subcat = json_decode($app->request->getRawBody());
+    $data = $subcatService->nuevo($subcat);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/subcat/token",function() use ($app,$subcatService) {
+    $subcat = json_decode($app->request->getRawBody());
+    $data = $subcatService->solicitarToken($subcat);
+    response($app,$data,$data['status']);
+});
+
+$app->put("/subcat/{id:[0-9]+}",function($id) use ($app,$subcatService) {
+    $subcat = json_decode($app->request->getRawBody());
+    $data = $subcatService->modificar($id,$subcat);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/subcat/{id:[0-9]+}",function($id) use($app){
+    echo "eliminacion de código de subcategoría numero $id";
+});
+
+//Endpoints Categoría Especifica
+
+$catespService = new CatespService;
+
+$app->get("/catesp",function() use ($app,$catespService) {
+    $data = $catespService->listar();
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/catesp",function() use ($app,$catespService){
+    $catesp = json_decode($app->request->getRawBody());
+    $data = $catespService->nuevo($catesp);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/catesp/token",function() use ($app,$catespService) {
+    $catesp = json_decode($app->request->getRawBody());
+    $data = $catespService->solicitarToken($catesp);
+    response($app,$data,$data['status']);
+});
+
+$app->put("/catesp/{id:[0-9]+}",function($id) use ($app,$catespService) {
+    $catesp = json_decode($app->request->getRawBody());
+    $data = $catespService->modificar($id,$catesp);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/catesp/{id:[0-9]+}",function($id) use($app){
+    echo "eliminacion de código general numero $id";
 });
 
 //Endpoint 
