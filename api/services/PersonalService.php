@@ -17,18 +17,21 @@ class PersonalService{
             $personal=new Personal();
 
             $data=array(
-                    "ci_per" => $pe->ci_per,
-                    "nombres" => $pe->nombres,
-                    "apellidos" => $pe->apellidos,
-                    "cargo" => $pe->cargo,
-                    "telf_pers" => $pe->telf_pers,
-                    "telf_casa" => $pe->telf_casa,
-                    "correo" => $pe->correo,
-                    "f_nac" => $pe->f_nac,
-                    "fecha_creacion" => date("Y-m-d h:i:s"),
-                    "usuario_creacion" => 0,
-                    "usuario_modif" => 0,
-                    "status" => $pe->status
+                "ci_per" => $pe->ci_per,
+                "nombres" => $pe->nombres,
+                "apellidos" => $pe->apellidos,
+                "cargo" => $pe->cargo,
+                "telf_pers" => $pe->telf_pers,
+                "telf_casa" => $pe->telf_casa,
+                "correo" => $pe->correo,
+                "f_nac" => $pe->f_nac,
+                "fecha_creacion" => date("Y-m-d h:i:s"),
+                "usuario_creacion" => 0,
+                "usuario_modif" => 0,
+                "status" => $pe->status,
+                "unid_admin" => $pe->unid_admin,
+                "id_usuario" => $pe->id_usuario,
+                "nacionalidad" => $pe->nacionalidad
             );
 
             if($personal->save($data)){
@@ -51,18 +54,19 @@ class PersonalService{
                     $pass = $modificar[0]->pass;
                 }
                 $data=array(
-                  "ci_per" => $pe->ci_per,
-                  "nombres" => $pe->nombres,
-                  "apellidos" => $pe->apellidos,
-                  "cargo" => $pe->cargo,
-                  "telf_pers" => $pe->telf_pers,
-                  "telf_casa" => $pe->telf_casa,
-                  "correo" => $pe->correo,
-                  "f_nac" => $pe->f_nac,
-                  "id_Ubicacion_ubicacion" => $pe->id_Ubicacion_ubicacion,
-                  "usuario_creacion" => 0,
-                  "usuario_modif" => 0,
-                  "status" => $pe->status
+                    "ci_per" => $pe->ci_per,
+                    "nombres" => $pe->nombres,
+                    "apellidos" => $pe->apellidos,
+                    "cargo" => $pe->cargo,
+                    "telf_pers" => $pe->telf_pers,
+                    "telf_casa" => $pe->telf_casa,
+                    "correo" => $pe->correo,
+                    "f_nac" => $pe->f_nac,
+                    "fecha_modif" => $pe->fecha_modif,
+                    "usuario_modif" => 0,
+                    "status" => $pe->status,
+                    "unid_admin" => $pe->unid_admin,
+                    "nacionalidad" => $pe->nacionalidad
                 );
 
                 if($modificar->update($data)){
