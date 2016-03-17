@@ -23,24 +23,69 @@ $(document).ready(function(){
 	});
 });
 
+// Servicio de Registro Personal
+$(document).ready(function(){
+	$("#RegistroUsuario").click(function(){
+		var Usuario=$('#pass1').val();
+		var Contrasena=$("#contrasena").val();
+		//Location='registrousuario.html';
+		console.log(Usuario,Contrasena);
+		$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/usuarios/token',
+			data:JSON.stringify({usuario:Usuario,pass:Contrasena}),
+			success:function(response){
+				sessionStorage.dataUsuario = JSON.stringify(response);
+				location.href='registrousuario.html';
+			},error:function(response){
+				console.log(response);
+				$("#mensaje").html(response.responseJSON.data.error);
+			}
+		});
+	});
+});
 
-//Servicio de Catalogo de bienes
+// Servicio de Registro Usuario
+$(document).ready(function(){
+	$("#Iniciar").click(function(){
+		var Usuario=$('#username').val();
+		var Contrasena=$("#contrasena").val();
+		//Location='registrousuario.html';
+		console.log(Usuario,Contrasena);
+		$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/usuarios/token',
+			data:JSON.stringify({usuario:Usuario,pass:Contrasena}),
+			success:function(response){
+				sessionStorage.dataUsuario = JSON.stringify(response);
+				location.href='registrousuario.html';
+			},error:function(response){
+				console.log(response);
+				$("#mensaje").html(response.responseJSON.data.error);
+			}
+		});
+	});
+});
+
+//Servicio de Categoria general 
 
 $(document).ready(function(){
 	$("#RegistrarCatalogo").click(function(){
 		var Catgen=$('#cod_cg').val();
-		var Subcat=$('#cod_sc').val();
-		var Catesp=$('#cod_ce').val();
 		var Descripcion=$("#descripcion").val();
 
 		//Location='registrousuario.html';
-		console.log(Catgen,Subcat,Catesp,Descripcion);
+		console.log(Catgen,Descripcion);
 		$.ajax({
 			type:"POST",
 			processData: false,
     		contentType: 'application/json',
 			url:'api/services/token',
-			data:JSON.stringify({codigo:Catgen,codigo:Subcat,codigo:Catesp,desc_bien:Descripcion}),
+			data:JSON.stringify({cod_cg:Catgen,descripcion:Descripcion}),
 			success:function(response){
 				location.href='catalogo.html';
 			},error:function(response){
@@ -51,27 +96,52 @@ $(document).ready(function(){
 	});
 });
 
-//Servicio de lis
+//Servicio de codigo de subcategoria
 
-/*$(document).ready(function(){
-	$("#RegistrarEquipo").click(function(){
-		var Codigo=$('#codigo').val();
+$(document).ready(function(){
+	$("#RegistrarCatalogo").click(function(){
+		var Subcat=$('#cod_sc').val();
 		var Descripcion=$("#descripcion").val();
-		var Tipo=$('#tipo').val();
+
 		//Location='registrousuario.html';
-		console.log(Codigo,Descripcion,Tipo);
+		console.log(Subcat,Descripcion);
 		$.ajax({
 			type:"POST",
 			processData: false,
     		contentType: 'application/json',
 			url:'api/services/token',
-			data:JSON.stringify({codigo:Codigo,descripcion:Descripcion,tipo:Tipo}),
+			data:JSON.stringify({codigo:Subcat,descripcion:Descripcion}),
 			success:function(response){
-				location.href='inicio.html';
+				location.href='catalogo.html';
 			},error:function(response){
 				console.log(response);
 				$("#mensaje").html(response.responseJSON.data.error);
 			}
 		});
 	});
-});*/
+});
+
+//Servicio de codigo de categoria especifica 
+
+$(document).ready(function(){
+	$("#RegistrarCatalogo").click(function(){
+		var Catesp=$('#cod_ce').val();
+		var Descripcion=$("#descripcion").val();
+
+		//Location='registrousuario.html';
+		console.log(Catesp,Descripcion);
+		$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/services/token',
+			data:JSON.stringify({codigo:Catesp,descripcion:Descripcion}),
+			success:function(response){
+				location.href='catalogo.html';
+			},error:function(response){
+				console.log(response);
+				$("#mensaje").html(response.responseJSON.data.error);
+			}
+		});
+	});
+});
