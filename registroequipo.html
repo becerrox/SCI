@@ -89,16 +89,17 @@
   <h1>REGISTRO DE EQUIPOS</h1>
   <!--                FORMULARIO DE REGISTRO        -->
     <div id="contenedor">
-    <form id=form action="" method="POST"> 
-      <div class="form-group grid-1 bloque col-md-offset-3 col-sm-1">
+      <div class="form-group bloque col-md-offset-2 col-lg-4">
           <label>Equipo:</label>
           <input type="text" class="form-control-2" placeholder="Computador,Mouse,Teclado" id="equipo" data-toggle="tooltip" data-placement="left" title="Computador,Mouse,Teclado">
           <label>Marca:</label>
           <input type="text" class="form-control-2" placeholder="VIT , HP, Siragon" id="marca">
           <label>Serial:</label>
+
+
           <input maxlength="25" type="text" class="form-control-2" placeholder="00000000000" id="serial">
         </div>
-       <div class="form-group grid-2 bloque">
+       <div class="form-group bloque col-md-offset-2 col-lg-4">
           <label>Color:</label>
           <input type="text" class="form-control-2" placeholder="Blanco, Negro, Gris" id="color">
           <label>Características:</label>
@@ -112,7 +113,7 @@
             <option value="4">Dañado</option>
           </select> 
         </div>
-        <div class="form-group grid-3 bloque">
+        <div class="form-group bloque col-md-offset-2 col-lg-4">
           <label>Ubicación:</label>
           <select name="Ubicacion" class="form-control-2" id="ubica">
             <option value="0"></option>
@@ -126,11 +127,10 @@
           </select> 
        </div>      
     </div>
-     <div class="form-group grid-7 bloque">
+     <div class="form-group bloque col-md-12 col-xs-12 ">
           <button id= "btnguardar" type="submit" class="btn" onclick="Validar_req()">Guardar</button>
           <div id="alert" class="alert-danger" role="alert"></div>
-       </div> 
-  </form>  
+       </div>  
 </section>    
      
 <!--    PIE DE PÁGINA   
