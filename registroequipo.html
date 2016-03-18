@@ -19,70 +19,9 @@
    <script src="js/jquery.min.js"></script> 
     <script src="js/valida.js" type="text/javascript"></script> 
   </head>
-  <header>
-     <section class="main">
-     <div class="barra">
-        <img src="images/barra.jpg">
-     </div> 
 <!--                 BARRA DE NAVEGACIÓN            -->
-    <div class="mainWrap"> 
-     <a id="touch-menu" class="movil-menu" href="#"><i class="icon-reorder"></i>Menu</a>     
-      <nav>
-        <ul class="menu col-lg-offset-2">
-           <li><a href="inicio.html"><i class="icon-home"></i>INICIO</a></li>        
-          <li><a  href="#"><i class="icon-file-alt"></i>INVENTARIO</a>
-            <ul class="sub-menu">
-              <li><a href="#"><i class="icon-folder-open"></i>Bienes</a>
-                <ul class="sub-menu">
-                       <li><a href="registrobienes.html">Registrar</a></li>
-                       <li><a href="#">Modificar</a></li> 
-                       <li><a href="#">Eliminar</a></li> 
-                     </ul>  
-                  <li><a href="#"><i class="icon-desktop"></i>Equipos Tecnologicos</a>
-                <ul class="sub-menu">
-                       <li><a href="registroequipo.html">Registrar</a></li>
-                       <li><a href="modificarequipo.html">Modificar</a></li> 
-                       <li><a href="#">Eliminar</a></li> 
-                     </ul>                        
-            </ul>
-          </li>
-            <ul class="sub-menu">
-               <li><a href="registroequipo.html">Registrar Equipo</a></li>
-               <li><a href="modificarequipo.html">Modificar Equipo</a></li>   
-            </ul>
-          <li><a  href="#"><i class="icon-print"></i>REPORTES</a></li>
-          <li><a  href="#"><i class="icon-cogs"></i>ADMINISTRADOR</a>
-            <ul class="sub-menu">
-               <li><a href="#"><i class="icon-eye-open"></i>Bitácora</a></li>
-               <li><a href="catalogo.html"><i class="icon-book"></i>Catálogo de Bienes</a>
-                <li><a href="#"><i class="icon-group"></i>Responsables</a>
-                  <ul class="sub-menu">
-                     <li><a href="registrousuario.html">Registrar</a></li>
-                     <li><a href="#">Modificar</a></li> 
-                     <li><a href="#">Eliminar</a></li> 
-                   </ul>
-                <li><a href="#"><i class="icon-user"></i>Usuarios</a>
-                  <ul class="sub-menu">
-                   <li><a href="registrousuario.html">Registrar</a></li>
-                   <li><a href="modificarusuario.html">Modificar</a></li> 
-                   <li><a href="#">Eliminar</a></li> 
-                  </ul>
-                 </li>
-               </li>               
-               </ul> 
-            </li>   
-         <li class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4"><a href="#">
-          <span id="nombreUsuario"></span>  
-          <i class="icon-user"></i></a>
-              <ul class="sub-menu">
-                <li><a href="#"><i class="icon-cog"></i>Cambiar Contraseña</a></li>
-                 <li id="cerrarSesionButton"><a href="#"><i class="icon-unlock"></i>Cerrar Sesión</a></li> 
-                </li>                 
-              </ul>
-      </nav>        
-     </div><!--fin mainWrap--> 
-     <section>       
-  </header>
+    <div w3-include-html="header.html"></div>
+<script src="js/w3-include-HTML.js"></script>
   <!--                    CUERPO PRINCIPAL             -->
 <body>
    <section class="inicio">
@@ -98,10 +37,14 @@
           <input maxlength="25" type="text" class="form-control-2" placeholder="00000000000" id="serial">
         </div>
        <div class="form-group bloque col-md-3">
+          <label>Modelo:</label>
+          <input type="text" class="form-control-2" id="modelo">
           <label>Color:</label>
           <input type="text" class="form-control-2" placeholder="Blanco, Negro, Gris" id="color">
           <label>Características:</label>
           <input type="text" class="form-control-2" placeholder="Por tipo de Equipo" id="caract">
+        </div>
+        <div class="form-group bloque">
           <label>Estado:</label>
           <select name="Estado" class="form-control-2" id="estado_eq">
             <option value="0"></option>
@@ -110,8 +53,6 @@
             <option value="3">Defectuoso</option>
             <option value="4">Dañado</option>
           </select> 
-        </div>
-        <div class="form-group bloque">
           <label>Ubicación:</label>
           <select name="Ubicacion" class="form-control-2" id="ubica">
             <option value="0"></option>
@@ -143,6 +84,6 @@
    </footer> -->
     <script src="js/menu.js" type="text/javascript"></script>  
     <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>       
+    <script src="js/bootstrap.min.js"></script>    
  </body>
 </html>
