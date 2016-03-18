@@ -23,7 +23,7 @@ $(document).ready(function(){
 	});
 });
 
-// Servicio de Registro Personal
+/*// Servicio de Registro Personal
 $(document).ready(function(){
 	$("#RegistroUsuario").click(function(){
 		var =$('#').val();
@@ -48,7 +48,7 @@ $(document).ready(function(){
 });
 
 // Servicio de Registro Usuario
-/*$(document).ready(function(){
+$(document).ready(function(){
 	$("#Iniciar").click(function(){
 		var Usuario=$('#username').val();
 		var Contrasena=$("#contrasena").val();
