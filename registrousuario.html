@@ -21,8 +21,8 @@
     <script src="js/valida.js" type="text/javascript"></script>
     <script type="text/javascript">
 $(document).ready(function(){
-    $("#myTooltips select").tooltip({
-        title : 'It works in absence of title attribute.'
+    $("#contenedor input").tooltip({
+        title : ''
     });
 });
 </script>
@@ -96,24 +96,26 @@ $(document).ready(function(){
    <!--               FORMULARIO DE REGISTRO         -->
   <section class="inicio">
         <h1>Registro de Usuarios</h1> 
-   <div id="contenedor" class="centrado" action="" method="post">    
-      <div class="col-md-4 bloque" id="myTooltips">
-          <label>Cédula:</label>
-          <select id="nacio"name="nacionalidad" class="form-control-2" style="" data-toggle="tooltip" title="Edit Document">
+   <div id="contenedor" method="post">
+      <div class="col-md-2 col-md-offset-3 col-sm-3">
+        <div>
+          <label>Cédula:</label><br>
+          <select id="nacio"name="nacionalidad" class="form-control-2">
              <option value="1">V</option>
              <option value="2">E</option>
              <option value="3">P</option>
              <option value="4">T</option>
           </select>
-          <input maxlength="10" type="text" class="form-control-2"  id="cedula" placeholder="00000000" onKeyPress="return soloNumeros(event)"/>      
+          <input maxlength="10" type="text" class="form-control-2"  id="cedula" placeholder="00000000" onKeyPress="return soloNumeros(event)" style=""/>
+        </div>
             <label>Nombres:</label>
             <input maxlength="30" type="text" class="form-control-2" placeholder="Maria Gabriela" id="nombres" onkeypress="return soloLetras(event)"/>
             <label>Apellidos:</label>
             <input maxlength="25" type="text" class="form-control-2" placeholder="Colmenarez Gil" id="apellidos" onkeypress="return soloLetras(event)"/> 
       </div>          
-      <div class="col-md-4 bloque"><!--    SEGUNDO BLOQUE   --> 
+      <div class="bloque"><!--    SEGUNDO BLOQUE   --> 
            <label>Fecha N.:</label>
-            <input maxlength="10" type="text" placeholder="AAAA/MM/DD" class="form-control-2" name="fecha3" id="fecha3"/>       
+            <input maxlength="10" type="text" placeholder="AAAA/MM/DD" class="form-control-2" name="fecha3" id="fecha3"/>     
             <label>Cargo:</label>
             <select name="cargo" class="form-control-2"> 
               <option value="1">Gerente</option>
@@ -125,30 +127,33 @@ $(document).ready(function(){
               <option value="2">CCO</option>
             </select>                         
       </div>
-      <div class="col-md-4 bloque">
+      <div class="bloque">
           <label>Teléfono:</label>
           <input maxlength="12" type="text" class="form-control-2" placeholder="00000000000" id="telefono" onKeyPress="return soloNumeros(event)"/>
           <label>Correo:</label>  
-          <input type="email" class="form-control-2" placeholder="ejemplo@gmail.com" id="email">
+          <input type="email" class="form-control-2" id="email" data-toggle="tooltip" title="transbarca@gmail.com">
+             <opti>
       </div>
-      <div class="form-group col-md-3 col-sm-12 col-xs-12 col-md-offset-3">
+      <div class="form-group col-md-3 col-sm-12 col-xs-12 col-md-offset-4">
          <button type="button" value="ubicacion"class="btn" onclick="Validar_re()">Guardar</button> 
          <div id="alert" class="alert-danger" role="alert"></div>            
       </div>
-  </div>
-  <div id="contenedor"class="centrado" action="" method="post">
-      <div class="col-md-12 col-md-offset-3 bloque">
+  </div> <!-- Fin registro Datos Personales-->
+  
+  <div id="contenedor" method="post">
+      <div class="col-md-12 col-md-offset-2">
           <label>Usuario:</label>
-          <input type="text" class="form-control-2" placeholder="Usuario" id="usuario">
+          <input type="text" class="form-control-2" id="usuario" data-toggle="tooltip" title="Nombre de Usuario">       
           <label>Contraseña:</label>
-          <input type="password" class="form-control-2" placeholder="Contraseña" id="pass1">
-          <input type="password" class="form-control-2" placeholder="Repetir Contraseña" id="pass2">
+          <input type="password" class="form-control-2" id="pass1">
+          <label>Confirmar</label>
+          <input type="password" class="form-control-2" id="pass2" data-toggle="tooltip" title="Repetir contraseña">
       </div>    
-      <div class="form-group col-md-3 col-sm-12 col-xs-12 col-md-offset-3">
+      <div class="form-group col-md-3 col-sm-12 col-xs-12 col-md-offset-4">
          <button type="button" value="pass2" class="btn" onclick="Validar_re_usu()">Guardar</button> 
          <div id="alert2" class="alert-danger" role="alert"></div>            
       </div>      
-  </div>      
+  </div> <!-- Fin registro Usuario-->      
   </section>
     <script src="js/menu.js" type="text/javascript"></script>    
     <script src="js/bootstrap.min.js"></script>   

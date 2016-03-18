@@ -111,7 +111,7 @@ overflow: auto;
   -moz-border-radius:4px;
   -webkit-border-radius:4px;
   margin:0 auto;
-  padding: 20px;
+  padding: 20px 0 0 0;
   display: flex; 
   flex-wrap: wrap; /*   Most Fluid */
             }
@@ -181,6 +181,9 @@ text-align: center;
   -moz-border-radius:4px;
   -webkit-border-radius:4px;  
   width:150px;
+}
+#contenedor #cedula{
+  width:100px;
 }
 .form-group{
   position: relative;
@@ -388,7 +391,7 @@ width:100%;}
 /*width: 62px;*/  
 margin: 0 45px 0 45px;
 display:block;
-margin-left:170px;
+margin-left:100px;
 }
 #contenedor{
   width: 625px;
