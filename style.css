@@ -111,13 +111,17 @@ overflow: auto;
   -moz-border-radius:4px;
   -webkit-border-radius:4px;
   margin:0 auto;
-  padding: 20px 0 0 0;
+ /* padding: 20px 0 0 0;*/
   display: flex; 
   flex-wrap: wrap; /*   Most Fluid */
             }
 #contenedor #alert {
   width: auto;
-  margin-left: 0; }
+  margin-left: 0; 
+  border-radius:4px;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px
+  }
 #contenedor #nacio { 
   width: 40px; padding-left: 0px; margin-right: 0px;
 
@@ -198,7 +202,7 @@ h4{font-size:18px;line-height:1.3em;}
 h5{font-size:16px;}
 h6{font-size:14px;}
 p{padding-bottom:11px;}
-p,div, span{line-height:1.5em;}
+/*p,div, span{line-height:1.5em;}*/
 .column-clear{clear:both;}
 .clear{overflow: hidden;}
 

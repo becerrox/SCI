@@ -268,19 +268,11 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           var color = document.getElementById('color_bien').value;
           var n_bien = document.getElementById('n_bien').value;
           var estado_bien = document.getElementById('estado_bien').value;
-          var unidades = document.getElementById('unidades_adm').value;
-          var dependencia = document.getElementById('dependencia_bien').value;
-          var unidad_trabajo = document.getElementById('unidad_trab_bien').value;
-          var autoridad_inst = document.getElementById('aut_max_inst').value;
+          var unidades = document.getElementById('unidades_adm').value;          
+          var unidad_trabajo = document.getElementById('unidad_trab_bien').value;          
           var responsable_pa = document.getElementById('responsable_pa').value;
           var responsable_ad = document.getElementById('responsable_ad').value;
           var responsable_uso = document.getElementById('responsable_uso').value;
-          var sede = document.getElementById('sede').value;
-          var direccion_sede = document.getElementById('direccion_sede').value;
-          var estado = document.getElementById('estado').value;
-          var municipio = document.getElementById('municipio').value;
-          var ciudad = document.getElementById('ciudad').value;
-          var parroquia = document.getElementById('parroquia').value;
           var fecha1 = document.getElementById('fecha1').value;
           var fecha2 = document.getElementById('fecha2').value;
           var f_elab = document.getElementById('fecha3').value;          
@@ -366,14 +358,7 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           else{
             $('#alert').html('').slideUp(300);
           } 
-          if(dependencia==""){
-            $('#alert').html('Debes ingresar una dependencia').slideDown(500);
-            $('#dependencia_bien').focus();
-            return false;
-          }
-          else{
-            $('#alert').html('').slideUp(300);
-          }
+         
           if(unidad_trabajo==""){
             $('#alert').html('Debes ingresar una unidad de trabajo').slideDown(500);
             $('#unidad_trab_bien').focus();
@@ -381,15 +366,7 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           }
           else{
             $('#alert').html('').slideUp(300);
-          }
-           if(autoridad_inst==""){
-            $('#alert').html('Debes ingresar una autoridad').slideDown(500);
-            $('#aut_max_inst').focus();
-            return false;
-          }
-          else{
-            $('#alert').html('').slideUp(300);
-          }
+          }           
            if(responsable_pa==""){
             $('#alert').html('Debes ingresar un Responsable Patrimonial').slideDown(500);
             $('#responsable_pa').focus();
@@ -413,55 +390,7 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           }
           else{
             $('#alert').html('').slideUp(300);
-          }
-          if(sede==""){
-            $('#alert').html('Debes ingresar una sede').slideDown(500);
-            $('#sede').focus();
-            return false;
-          }
-          else{
-            $('#alert').html('').slideUp(300);
-          }
-           if(direccion_sede==""){
-            $('#alert').html('Debes ingresar una direccion').slideDown(500);
-            $('#direccion_sede').focus();
-            return false;
-          }
-          else{
-            $('#alert').html('').slideUp(300);
-          }
-           if(estado=="0"){
-            $('#alert').html('Debes seleccionar un estado').slideDown(500);
-            $('#estado').focus();
-            return false;
-          }
-          else{
-            $('#alert').html('').slideUp(300);
-          }
-         if(municipio=="0"){
-            $('#alert').html('Debes seleccionar una municipio').slideDown(500);
-            $('#municipio').focus();
-            return false;
-          }
-          else{
-            $('#alert').html('').slideUp(300);
-          }
-         if(ciudad=="0"){
-            $('#alert').html('Debes seleccionar una ciudad').slideDown(500);
-            $('#ciudad').focus();
-            return false;
-          }
-          else{
-            $('#alert').html('').slideUp(300);
-          }
-          if(parroquia=="0"){
-            $('#alert').html('Debes seleccionar una parroquia').slideDown(500);
-            $('#parroquia').focus();
-            return false;
-          }
-          else{
-            $('#alert').html('').slideUp(300);
-          }
+          }          
           if(fecha1==""){
             $('#alert').html('Debes ingresar una fecha de Inicio').slideDown(500);
             $('#fecha1').focus();
