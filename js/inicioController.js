@@ -8,13 +8,16 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-    var datosUsuario = JSON.parse(sessionStorage.dataUsuario);
-    $("#nombreUsuario").html(datosUsuario.data_personal.nombres + " " + datosUsuario.data_personal.apellidos);    
+        $("#header").load("header.html",function()
+        {
+            var datosUsuario = JSON.parse(sessionStorage.dataUsuario);
+            $("#nombreUsuario").html(datosUsuario.data_personal.nombres + " " + datosUsuario.data_personal.apellidos);    
 
-    $("#cerrarSesionButton").click(function(){
-        sessionStorage.removeItem("dataUsuario");
-        location.href="index.html";    
-    });
+            $("#cerrarSesionButton").click(function(){
+                sessionStorage.removeItem("dataUsuario");
+                location.href="index.html";    
+             });
+        });        
 
 });
 

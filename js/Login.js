@@ -13,8 +13,11 @@ $(document).ready(function(){
 			url:'api/usuarios/token',
 			data:JSON.stringify({usuario:Usuario,pass:Contrasena}),
 			success:function(response){
-				sessionStorage.dataUsuario = JSON.stringify(response);
-				location.href='inicio.html';
+				if(response.id!=undefined)
+				{
+					sessionStorage.dataUsuario = JSON.stringify(response);
+					location.href='inicio.html';
+				}
 			},error:function(response){
 				console.log(response);
 				$("#mensaje").html(response.responseJSON.data.error);
