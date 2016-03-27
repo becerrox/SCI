@@ -1,6 +1,5 @@
 // Controloador de la vista de registro de equipo
 
-console.log(sessionStorage.dataUsuario);
 if(sessionStorage.dataUsuario==undefined)
 {
     location.href="index.html";
@@ -8,13 +7,23 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-    var datosUsuario = JSON.parse(sessionStorage.dataUsuario);
-    $("#nombreUsuario").html(datosUsuario.data_personal.nombres + " " + datosUsuario.data_personal.apellidos);    
+        $("#header").load("header.html",function()
+        {
+            var datosUsuario = JSON.parse(sessionStorage.dataUsuario);
+            $("#nombreUsuario").html(datosUsuario.data_personal.nombres + " " + datosUsuario.data_personal.apellidos);    
 
-    $("#cerrarSesionButton").click(function(){
-        sessionStorage.removeItem("dataUsuario");
-        location.href="index.html";    
-    });
+            $("#cerrarSesionButton").click(function(){
+                sessionStorage.removeItem("dataUsuario");
+                location.href="index.html";    
+             });
+        });        
 
+        $("#btnGuardar").click(function()
+        {
+            frm = $("#formEquipo");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            registrarEquipo(dataForm);
+        });
 });
 

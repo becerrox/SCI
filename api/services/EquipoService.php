@@ -41,7 +41,6 @@ class EquipoService{
                     "color" => $eq->color,
                     "estado" => $eq->estado,
                     "cod_bien" => $eq->cod_bien,
-                    "id" => $eq->id,
                     "cantidad" => $eq->cantidad,
                     "id_Ubicacion_ubicacion" => $eq->id_Ubicacion_ubicacion,
                     "fecha_creacion" => date("Y-m-d h:i:s"),

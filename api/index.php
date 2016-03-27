@@ -211,3 +211,4 @@ $app->notFound(function () use ($app) {
 });
 
 $app->handle();
+?>

@@ -26,6 +26,23 @@ $(document).ready(function(){
 	});
 });
 
+
+function registrarEquipo(data)
+{
+	$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/equipos',
+			data:JSON.stringify(data),
+			success:function(response){
+				alert("Registrado");
+			},error:function(response){
+				alert("Error");
+			}
+		});
+}
+
 /*// Servicio de Registro Personal
 $(document).ready(function(){
 	$("#RegistroUsuario").click(function(){
@@ -149,3 +166,17 @@ $(document).ready(function(){
 	});
 });
 */
+
+
+// Función que convierte los datos de un form a un plain json listo para enviar
+
+function getFormData($form){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
+}
