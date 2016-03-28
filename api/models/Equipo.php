@@ -48,13 +48,6 @@ class Equipo extends Model{
         ));
 */
 
-       $this->validate(new Uniqueness(
-            array(
-                "field"  => "cod_bien",
-                "message" => "El codigo debe ser único"
-            )
-        ));
-
         $this->validate(new Uniqueness(
              array(
                  "field"  => "serial",

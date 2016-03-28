@@ -14,7 +14,6 @@ class EquipoService{
                 "serial" => $eq->serial,
                 "color" => $eq->color,
                 "estado" => $eq->estado,
-                "cod_bien" => $eq->cod_bien,
                 "ubicacion" => $eq->ubicacion,
                 "status" => $eq->status,
                 "responsable" => $eq->responsable,
@@ -34,12 +33,11 @@ class EquipoService{
                 "serial" => $eq->serial,
                 "color" => $eq->color,
                 "estado" => $eq->estado,
-                "cod_bien" => $eq->cod_bien,
                 "ubicacion" => $eq->ubicacion,
                 "status" => $eq->status,
                 "responsable" => $eq->responsable,
                 "caracteristicas" => $eq->caracteristicas,
-                "fecha_modif" => $eq->now()
+                "fecha_modif" => date("Y-m-d h:i:s")
             );
             if($equipo->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -66,7 +64,6 @@ class EquipoService{
                 "serial" => $eq->serial,
                 "color" => $eq->color,
                 "estado" => $eq->estado,
-                "cod_bien" => $eq->cod_bien,
                 "ubicacion" => $eq->ubicacion,
                 "status" => $eq->status,
                 "responsable" => $eq->responsable,

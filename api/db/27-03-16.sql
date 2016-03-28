@@ -800,10 +800,10 @@ COMMENT ON TABLE entrada IS 'Equipos que ingresan';
 
 
 --
--- Name: equipo_id_equipo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: equipo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE equipo_id_equipo_seq
+CREATE SEQUENCE equipo_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -811,14 +811,14 @@ CREATE SEQUENCE equipo_id_equipo_seq
     CACHE 1;
 
 
-ALTER TABLE equipo_id_equipo_seq OWNER TO postgres;
+ALTER TABLE equipo_id_seq OWNER TO postgres;
 
 --
 -- Name: equipo; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
 CREATE TABLE equipo (
-    id integer DEFAULT nextval('equipo_id_equipo_seq'::regclass) NOT NULL,
+    id integer DEFAULT nextval('equipo_id_seq'::regclass) NOT NULL,
     descripcion character varying(100),
     marca character varying(30),
     modelo character varying(30),
@@ -1398,10 +1398,10 @@ INSERT INTO equipo VALUES (2, 'dwdwhi', 'VIT', 'dwji', '213213', 'negro', '1', N
 
 
 --
--- Name: equipo_id_equipo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: equipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('equipo_id_equipo_seq', 2, true);
+SELECT pg_catalog.setval('equipo_id_seq', 2, true);
 
 
 --
