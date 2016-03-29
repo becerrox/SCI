@@ -179,18 +179,20 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
     }
 //validación de resgistro de equipos
     function Validar_req(){
-          var equipo = document.getElementById('equipo').value;
+          var descripcion = document.getElementById('descripcion').value;
           var marca= document.getElementById('marca').value;
           var serial = document.getElementById('serial').value;
+          var modelo = document.getElementById('modelo').value;
           var color = document.getElementById('color').value;
           var caract = document.getElementById('caract').value;
-          var obsv = document.getElementById('obsv').value;
-          var ubica = document.getElementById('ubica').value;
-          var encargado = document.getElementById('encargado').value;
+          var estado = document.getElementById('estado').value;
+          var unidades_adm = document.getElementById('unidades_adm').value;
+          var unidad_trabajo = document.getElementById('unidad_trab').value;
+          var responsable_ad = document.getElementById('responsable_ad').value;
 
-          if(equipo==""){
+          if(descripcion==""){
             $('#alert').html('Debes ingresar un tipo de equipo').slideDown(500);
-            $('#equipo').focus();
+            $('#descripcion').focus();
             return false;
           }
           else{
@@ -212,17 +214,22 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           else{
             $('#alert').html('').slideUp(300);
           }
-
-          if(color==""){
-            $('#alert').html('Debes ingresar un color').slideDown(500);
-            $('#color').focus();
+          if(modelo==""){
+            $('#alert').html('Debes ingresar un modelo').slideDown(500);
+            $('#modelo').focus();
             return false;
           }
-
           else{
             $('#alert').html('').slideUp(300);
           }
-
+          if(color=="0"){
+            $('#alert').html('Debes seleccionar un color').slideDown(500);
+            $('#color_bien').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
         if(caract==""){
             $('#alert').html('Debes ingresar las características').slideDown(500);
             $('#caract').focus();
@@ -230,26 +237,26 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           }
           else{
             $('#alert').html('').slideUp(300);
-          }        
-        if(obsv==""){
-            $('#alert').html('Debes ingresar un Usuario').slideDown(500);
-            $('#obsv').focus();
+          }
+        if(estado=="0"){
+            $('#alert').html('Debes seleccionar un estado').slideDown(500);
+            $('#estado').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
-          }          
-        if(ubica=="0"){
-            $('#alert').html('Debes seleccionar una ubicación').slideDown(500);
-            $('#ubica').focus();
+          }      
+        if(unidades_adm=="0"){
+            $('#alert').html('Debes seleccionar una opción').slideDown(500);
+            $('#unidades_adm').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
-          } 
-        if(encargado=="0"){
+          }  
+        if(responsable_ad=="0"){
             $('#alert').html('Debes seleccionar a un encargado').slideDown(500);
-            $('#encargado').focus();
+            $('#responsable_ad').focus();
             return false;
           }
           else{
@@ -420,10 +427,8 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
 
  function Validar_rc(){
           var cod_general = document.getElementById('cod_cg').value;
-          var cod_sub = document.getElementById('cod_sc').value;
-          var cod_especifico = document.getElementById('cod_ce').value;
-          var descripcion = document.getElementById('desc_bien').value;
-
+          
+          var desc_general =document.getElementById('desc_general').value;
 
           if(cod_general==""){
             $('#alert').html('Debes ingresar un Código General').slideDown(500);
@@ -433,7 +438,17 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(cod_sub==""){
+          if(desc_general=="")
+            {
+            $('#alert').html('Debes ingresar una Descripción General').slideDown(500);
+            $('#desc_general').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+        }
+         /* if(cod_sub==""){
             $('#alert').html('Debes ingresar una Sub-Categoría').slideDown(500);
             $('#cod_sc').focus();
             return false;
@@ -456,5 +471,4 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           }
           else{
             $('#alert').html('').slideUp(300);
-          }
-}
+          }} */

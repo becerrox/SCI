@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><!--<![endif]-->
+<html lang="es">
+  <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8"/>
+    <title>SCI Catálogo/Colores</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, 
+    initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0"> 
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" >
+    <link rel="stylesheet" type="text/css" href="css/calendario.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/fv.css" type="text/css" /> 
+   <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+   <script src="js/jquery.min.js"></script>
+   <script src="js/tooltips.js"></script>
+   <script src="js/registroEquipoController.js" type="text/javascript"></script>
+
+  </head>
+  <!--                    CUERPO PRINCIPAL             -->
+<body>
+    <div id="header"></div>
+      <section class="inicio">
+      <h1>CATÁLOGO CONFIGURACIÓN DE BIEN</h1>
+        <div id="contenedor">
+          <div class="form-group col-md-6">       
+              <label>Tipo Configuración</label>
+              <select name="tipo" class="form-control-2">
+                  <option value="0"></option>
+                  <option value="1">Color</option>
+                  <option value="2">Unidad Aministrativa</option>
+                  <option value="3">Unidad de Trabajo</option>
+                </select>           
+              <label>Descripción</label>
+              <input type="text" name="descrip" id="descrip" class="form-control-2" data-toggle="tooltip" title="Nombre del item a agregar"></input>
+              <div class="form-group">
+                 <button type="button" value="descrip"class="btn" onclick="Validar_cat_con()">Guardar</button> 
+                 <div id="alert" class="alert-danger" role="alert"></div>            
+              </div>
+          </div> <!--FIN Registro--> 
+          <div class="form-group col-md-6">       
+              
+              <label>Descripción</label>
+              <input type="text" name="descrip" id="descrip" class="form-control-2" data-toggle="tooltip" title="Nombre del item a modificar"></input>
+              <button class="button"><i class="icon-search"></i></button> <!--Si lo encuentra, enviar a formulario de registro para modificar-->                       
+              
+          </div> <!--FIN Modificación--> 
+
+         </div><!--FIN CONTENEDOR-->        
+      </section>
+
+<!--    PIE DE PÁGINA    -->
+<footer class="pie_de_pagina col-xs-12 col-sm-12 col-md-12"> 
+      <p>
+             Barquisimeto, Municipio Iribarren Edo Lara.<br> 
+             República Bolivariana de Venezuela<br>
+             Basados en Software Libre. <strong>LEY INFOGOBIERNO</strong>.<br>
+             Desarrollado por el Departamento de Telecomunicaciones de TRANSBAR,C.A. 
+            <br>
+      </p>            
+</footer>
+<script src="js/services.js" type="text/javascript"></script> 
+    <script src="js/menu.js" type="text/javascript"></script>  
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>    
+    <script src="js/valida.js"></script>
+</body>
+</html>
