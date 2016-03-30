@@ -40,6 +40,15 @@ function valida_login(){
             return false;
         }
     }
+
+// Solo permite ingresar numeros.
+ function soloNumeros(e){
+
+  var key = window.Event ? e.which : e.keyCode
+return ((key >= 48 && key <= 57) || (key==8) || (key==118))  
+
+} 
+
 function Validador(email){
           var tester = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-]+)\.)+([a-zA-Z0-9]{2,4})+$/;
           return tester.test(email);
@@ -139,13 +148,7 @@ function Validar_re(){
           }
         
  }
-// Solo permite ingresar numeros.
- function soloNumeros(e){
 
-  var key = window.Event ? e.which : e.keyCode
-return ((key >= 48 && key <= 57) || (key==8)) 
-
-} 
 // Solo permite ingresar numeros.
  function soloNumerosCod(e){
 
@@ -427,8 +430,11 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
 
  function Validar_rc(){
           var cod_general = document.getElementById('cod_cg').value;
-          
           var desc_general =document.getElementById('desc_general').value;
+          var cod_sub = document.getElementById('cod_ce').value;
+          var desc_sub = document.getElementById('desc_sub').value;
+          var cod_ce = document.getElementById('cod_ce').value;
+          var desc_ce = document.getElementById('desc_ce').value;
 
           if(cod_general==""){
             $('#alert').html('Debes ingresar un Código General').slideDown(500);
@@ -438,8 +444,7 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(desc_general=="")
-            {
+          if(desc_general==""){
             $('#alert').html('Debes ingresar una Descripción General').slideDown(500);
             $('#desc_general').focus();
             return false;
@@ -447,16 +452,25 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           else{
             $('#alert').html('').slideUp(300);
           }
-        }
-         /* if(cod_sub==""){
-            $('#alert').html('Debes ingresar una Sub-Categoría').slideDown(500);
+        
+         if(cod_sub==""){
+            $('#alert2').html('Debes ingresar una Sub-Categoría').slideDown(500);
             $('#cod_sc').focus();
             return false;
           }
           else{
-            $('#alert').html('').slideUp(300);
+            $('#alert2').html('').slideUp(300);
           }
-          if(cod_especifico==""){
+          if(desc_sub==""){
+            $('#alert2').html('Debes ingresar una descripción').slideDown(500);
+            $('#desc_sub').focus();
+            return false;
+          }
+          else{
+            $('#alert2').html('').slideUp(300);
+          }
+      
+         if(cod_ce==""){
             $('#alert').html('Debes ingresar una Categoría Específica').slideDown(500);
             $('#cod_ce').focus();
             return false;
@@ -464,11 +478,13 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(descripcion==""){
+          if(desc_ce==""){
             $('#alert').html('Debes ingresar una Descripción').slideDown(500);
-            $('#desc_bien').focus();
+            $('#desc_ce').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
-          }} */
+          }
+
+        } 

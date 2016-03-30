@@ -7,7 +7,7 @@
   <head>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8"/>
-    <title>SCI Catálogo/Colores</title>
+    <title>SCI Catálogo</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, 
     initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0"> 
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" >
@@ -27,13 +27,15 @@
       <section class="inicio">
       <h1>CATÁLOGO CONFIGURACIÓN DE BIEN</h1>
         <div id="contenedor">
-          <div class="form-group col-md-6">       
+
+          <form class="form-group col-md-6 bloque">
+          <h3>Registro</h3>    
               <label>Tipo Configuración</label>
               <select name="tipo" class="form-control-2">
                   <option value="0"></option>
                   <option value="1">Color</option>
-                  <option value="2">Unidad Aministrativa</option>
-                  <option value="3">Unidad de Trabajo</option>
+                  <option value="2">Tipos de Componentes</option>
+                  <option value="3">Condiciones Físicas</option>
                 </select>           
               <label>Descripción</label>
               <input type="text" name="descrip" id="descrip" class="form-control-2" data-toggle="tooltip" title="Nombre del item a agregar"></input>
@@ -41,14 +43,14 @@
                  <button type="button" value="descrip"class="btn" onclick="Validar_cat_con()">Guardar</button> 
                  <div id="alert" class="alert-danger" role="alert"></div>            
               </div>
-          </div> <!--FIN Registro--> 
-          <div class="form-group col-md-6">       
+          </form> <!--FIN Registro--> 
+          <form class="form-group col-md-6">       
               
               <label>Descripción</label>
               <input type="text" name="descrip" id="descrip" class="form-control-2" data-toggle="tooltip" title="Nombre del item a modificar"></input>
               <button class="button"><i class="icon-search"></i></button> <!--Si lo encuentra, enviar a formulario de registro para modificar-->                       
               
-          </div> <!--FIN Modificación--> 
+          </form> <!--FIN Modificación--> 
 
          </div><!--FIN CONTENEDOR-->        
       </section>
