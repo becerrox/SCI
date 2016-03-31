@@ -4,24 +4,13 @@ class UsuariosService{
     
     public function listar(){
 
-      $usuario=Usuario::find("status=1");        
+      $personal=Usuario::find("status=1");
 
-      if(count($usuario->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de usuario");        
+      if(count($personal->toArray())==0){
+            return array("status" => 404, "mensaje" => "No hay registros de personal");
       }else{
-          foreach($usuario as $us){
-               $users[]=array(
-                    "usuario" => $us->usuario,
-                    "nivel" => $us->nivel,
-                    "id_usuario" => $us->id_usuario,
-                    "fecha_modif" => $us->fecha_modif,
-                    "usuario_creacion" => $us->usuario_creacion,
-                    "usuario_modif" => $us->usuario_modif,
-                    "status" => $us->status
-                );
-            }
+            return array("status" => 200, "mensaje" =>$personal->toArray());
       }
-        return array("status" => 200, "mensaje" =>$users);
     }
 
         public function nuevo($us){
@@ -31,12 +20,10 @@ class UsuariosService{
                     "usuario" => $us->usuario,
                     "pass" => sha1($us->pass),
                     "nivel" => $us->nivel,
-                    "fecha_creacion" => date("Y-m-d"),
-                    "usuario_creacion" => 0,
-                    "usuario_modif" => 0,
-                    "status" => $us->status
+                    "fecha_modif" => date ("y-m-d h-i-s"),
+                    "status" => 1
             );
-
+var_dump($us);
             if($usuario->save($data)){
                     unset($data['pass']);
                     return array("status" => 201, "mensaje" => $data);
@@ -59,11 +46,9 @@ class UsuariosService{
                 }
                 $data=array(                    
                     "usuario" => $us->usuario,
-                    "pass" => $pass,
+                    "pass" => sha1($us->pass),
                     "nivel" => $us->nivel,
-                    "fecha_creacion" => date("Y-m-d"),
-                    "usuario_creacion" => 0,
-                    "usuario_modif" => 0,
+                    "fecha_modif" => date ("y-m-d h-i-s"),
                     "status" => $us->status
                 );
 
@@ -111,7 +96,7 @@ class UsuariosService{
                         "data_personal" => (Personal::findFirst("id_usuario = ".$user[0]->id)), 
                         "usuario" => $user[0]->usuario,
                         "nivel" => $user[0]->nivel,
-                        "token" => md5($credentials->usuario.$credentials->pass)
+                        "token" => sha1($credentials->usuario.$credentials->pass)
                     );          
                 }
 

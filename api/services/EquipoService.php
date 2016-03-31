@@ -1,28 +1,14 @@
 <?php
 class EquipoService{
     public function listar(){
+
       $equipo=Equipo::find("status=1");
+
       if(count($equipo->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de equipos");
+            return array("status" => 404, "mensaje" => "No hay registros de equipo");
       }else{
-          foreach($equipo as $eq){
-               $equipo[]=array(
-                "id" => $eq->id,
-                "descripcion" => $eq->descripcion,
-                "marca" => $eq->marca,
-                "modelo" => $eq->modelo,
-                "serial" => $eq->serial,
-                "color" => $eq->color,
-                "estado" => $eq->estado,
-                "ubicacion" => $eq->ubicacion,
-                "status" => $eq->status,
-                "responsable" => $eq->responsable,
-                "caracteristicas" => $eq->caracteristicas,
-                "fecha_modif" => $eq->fecha_modif
-                );
-            }
+            return array("status" => 200, "mensaje" =>$equipo->toArray());
       }
-        return array("status" => 200, "mensaje" =>$users);
     }
         public function nuevo($eq){
             $equipo=new Equipo();
@@ -33,11 +19,12 @@ class EquipoService{
                 "serial" => $eq->serial,
                 "color" => $eq->color,
                 "estado" => $eq->estado,
-                "ubicacion" => $eq->ubicacion,
+                "unidad_admin" => $eq->unidad_admin,
                 "status" => $eq->status,
                 "responsable" => $eq->responsable,
                 "caracteristicas" => $eq->caracteristicas,
-                "fecha_modif" => date("Y-m-d h:i:s")
+                "fecha_modif" => date("Y-m-d h:i:s"),
+                "unidad_trabajo" => $eq->unidad_trabajo
             );
             if($equipo->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -64,11 +51,12 @@ class EquipoService{
                 "serial" => $eq->serial,
                 "color" => $eq->color,
                 "estado" => $eq->estado,
-                "ubicacion" => $eq->ubicacion,
+                "unidad_admin" => $eq->unidad_admin,
                 "status" => $eq->status,
                 "responsable" => $eq->responsable,
                 "caracteristicas" => $eq->caracteristicas,
-                "fecha_modif" => $eq->fecha_modif
+                "fecha_modif" => $eq->fecha_modif,
+                "unidad_trabajo" => $eq->unidad_trabajo
                 );
                 if($modificar->update($data)){
                         unset($data['pass']);

@@ -204,6 +204,30 @@ $app->delete("/catesp/{id:[0-9]+}",function($id) use($app){
     echo "eliminacion de código general numero $id";
 });
 
+//Endpoints bienes
+
+$bienesService = new BienesService;
+
+$app->get("/bienes",function() use ($app,$bienesService) {
+    $data = $bienesService->listar();
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/bienes",function() use ($app,$bienesService){
+    $bienes = json_decode($app->request->getRawBody());
+    $data = $bienesService->nuevo($bienes);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/bienes/{id:[0-9]+}",function($id) use($app){
+    echo "edicion de bienes numero $id";
+});
+
+$app->delete("/bienes/{id:[0-9]+}",function($id) use($app){
+    echo "eliminacion de bienes numero $id";
+});
+
+
 //Endpoint 
 
 $app->notFound(function () use ($app) {
