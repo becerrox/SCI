@@ -26,27 +26,75 @@ class Equipo extends Model{
  public function validation()
     {
 
-/*        $this->validate(new PresenceOf(
+        $this->validate(new PresenceOf(
             array(
-                "field" => "usuario",
-                "message" => "El campo usuario es obligatorio"
+                "field" => "serial",
+                "message" => "El serial es obligatorio"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
-                "field" => "pass",
-                "message" => "El campo pass es obligatorio"
+                "field" => "marca",
+                "message" => "La marca es obligatoria"
                 )
             ));
 
-       $this->validate(new Uniqueness(
+        $this->validate(new PresenceOf(
             array(
-                "field"  => "usuario",
-                "message" => "El usuario debe ser único"
-            )
-        ));
-*/
+                "field" => "descripcion",
+                "message" => "El equipo es obligatorio"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "modelo",
+                "message" => "El modelo es obligatoria"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "responsable",
+                "message" => "El responsable es obligatorio"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "estado",
+                "message" => "La estado es obligatoria"
+                )
+            ));
+
+/*        $this->validate(new PresenceOf(
+            array(
+                "field" => "unidad_admin",
+                "message" => "La unidad administrativa es obligatoria"
+                )
+            ));         */
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "color",
+                "message" => "El campo color es obligatorio"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "caracteristicas",
+                "message" => "El campo caracteristicas es obligatorio"
+                )
+            ));
+
+     /*   $this->validate(new PresenceOf(
+            array(
+                "field" => "unidad_trabajo",
+                "message" => "El campo de unidad de trabajo es obligatorio"
+                )
+            ));        */
 
         $this->validate(new Uniqueness(
              array(

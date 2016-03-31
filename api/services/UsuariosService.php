@@ -11,12 +11,10 @@ class UsuariosService{
       }else{
           foreach($usuario as $us){
                $users[]=array(
+                    "id" => $us->id,
                     "usuario" => $us->usuario,
                     "nivel" => $us->nivel,
-                    "id_usuario" => $us->id_usuario,
                     "fecha_modif" => $us->fecha_modif,
-                    "usuario_creacion" => $us->usuario_creacion,
-                    "usuario_modif" => $us->usuario_modif,
                     "status" => $us->status
                 );
             }
@@ -31,10 +29,8 @@ class UsuariosService{
                     "usuario" => $us->usuario,
                     "pass" => sha1($us->pass),
                     "nivel" => $us->nivel,
-                    "fecha_creacion" => date("Y-m-d"),
-                    "usuario_creacion" => 0,
-                    "usuario_modif" => 0,
-                    "status" => $us->status
+                    "fecha_modif" => date ("y-m-d h-i-s"),
+                    "status" => 1
             );
 
             if($usuario->save($data)){
@@ -59,11 +55,9 @@ class UsuariosService{
                 }
                 $data=array(                    
                     "usuario" => $us->usuario,
-                    "pass" => $pass,
+                    "pass" => sha1($us->pass),
                     "nivel" => $us->nivel,
-                    "fecha_creacion" => date("Y-m-d"),
-                    "usuario_creacion" => 0,
-                    "usuario_modif" => 0,
+                    "fecha_modif" => date ("y-m-d h-i-s"),
                     "status" => $us->status
                 );
 
@@ -111,7 +105,7 @@ class UsuariosService{
                         "data_personal" => (Personal::findFirst("id_usuario = ".$user[0]->id)), 
                         "usuario" => $user[0]->usuario,
                         "nivel" => $user[0]->nivel,
-                        "token" => md5($credentials->usuario.$credentials->pass)
+                        "token" => sha1($credentials->usuario.$credentials->pass)
                     );          
                 }
 

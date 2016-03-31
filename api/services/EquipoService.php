@@ -14,11 +14,12 @@ class EquipoService{
                 "serial" => $eq->serial,
                 "color" => $eq->color,
                 "estado" => $eq->estado,
-                "ubicacion" => $eq->ubicacion,
+                "unidad_admin" => $eq->unidad_admin,
                 "status" => $eq->status,
                 "responsable" => $eq->responsable,
                 "caracteristicas" => $eq->caracteristicas,
-                "fecha_modif" => $eq->fecha_modif
+                "fecha_modif" => $eq->fecha_modif,
+                "unidad_trabajo" => $eq->unidad_trabajo
                 );
             }
       }
@@ -33,11 +34,12 @@ class EquipoService{
                 "serial" => $eq->serial,
                 "color" => $eq->color,
                 "estado" => $eq->estado,
-                "ubicacion" => $eq->ubicacion,
+                "unidad_admin" => $eq->unidad_admin,
                 "status" => $eq->status,
                 "responsable" => $eq->responsable,
                 "caracteristicas" => $eq->caracteristicas,
-                "fecha_modif" => date("Y-m-d h:i:s")
+                "fecha_modif" => date("Y-m-d h:i:s"),
+                "unidad_trabajo" => $eq->unidad_trabajo
             );
             if($equipo->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -64,11 +66,12 @@ class EquipoService{
                 "serial" => $eq->serial,
                 "color" => $eq->color,
                 "estado" => $eq->estado,
-                "ubicacion" => $eq->ubicacion,
+                "unidad_admin" => $eq->unidad_admin,
                 "status" => $eq->status,
                 "responsable" => $eq->responsable,
                 "caracteristicas" => $eq->caracteristicas,
-                "fecha_modif" => $eq->fecha_modif
+                "fecha_modif" => $eq->fecha_modif,
+                "unidad_trabajo" => $eq->unidad_trabajo
                 );
                 if($modificar->update($data)){
                         unset($data['pass']);
