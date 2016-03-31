@@ -159,7 +159,11 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
 
 // Calendario
     $(function(){
-      $("#fecha1").datepicker();
+      $("#fecha1").datepicker({
+        changeMonth:true,
+        changeYear:true,
+      });
+      $("#fecha5").datepicker();
       $("#fecha2").datepicker({
         changeMonth:true,
         changeYear:true,
@@ -172,6 +176,10 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
         buttonImageOnly: true,
         showButtonPanel: true,
       })
+      $("#fecha4").datepicker({
+        changeMonth:true,
+        changeYear:true,
+      });
     })
 // Habilita y deshabilita elementos de un formulario
     function habilita(){
@@ -431,7 +439,7 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
  function Validar_rc(){
           var cod_general = document.getElementById('cod_cg').value;
           var desc_general =document.getElementById('desc_general').value;
-          var cod_sub = document.getElementById('cod_ce').value;
+          var cod_sub = document.getElementById('cod_sub').value;
           var desc_sub = document.getElementById('desc_sub').value;
           var cod_ce = document.getElementById('cod_ce').value;
           var desc_ce = document.getElementById('desc_ce').value;
@@ -455,7 +463,7 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
         
          if(cod_sub==""){
             $('#alert2').html('Debes ingresar una Sub-Categoría').slideDown(500);
-            $('#cod_sc').focus();
+            $('#cod_sub').focus();
             return false;
           }
           else{
