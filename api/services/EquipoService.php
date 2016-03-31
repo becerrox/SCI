@@ -1,29 +1,14 @@
 <?php
 class EquipoService{
     public function listar(){
+
       $equipo=Equipo::find("status=1");
+
       if(count($equipo->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de equipos");
+            return array("status" => 404, "mensaje" => "No hay registros de equipo");
       }else{
-          foreach($equipo as $eq){
-               $equipo[]=array(
-                "id" => $eq->id,
-                "descripcion" => $eq->descripcion,
-                "marca" => $eq->marca,
-                "modelo" => $eq->modelo,
-                "serial" => $eq->serial,
-                "color" => $eq->color,
-                "estado" => $eq->estado,
-                "unidad_admin" => $eq->unidad_admin,
-                "status" => $eq->status,
-                "responsable" => $eq->responsable,
-                "caracteristicas" => $eq->caracteristicas,
-                "fecha_modif" => $eq->fecha_modif,
-                "unidad_trabajo" => $eq->unidad_trabajo
-                );
-            }
+            return array("status" => 200, "mensaje" =>$equipo->toArray());
       }
-        return array("status" => 200, "mensaje" =>$users);
     }
         public function nuevo($eq){
             $equipo=new Equipo();

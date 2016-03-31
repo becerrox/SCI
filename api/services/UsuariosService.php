@@ -4,22 +4,13 @@ class UsuariosService{
     
     public function listar(){
 
-      $usuario=Usuario::find("status=1");        
+      $personal=Usuario::find("status=1");
 
-      if(count($usuario->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de usuario");        
+      if(count($personal->toArray())==0){
+            return array("status" => 404, "mensaje" => "No hay registros de personal");
       }else{
-          foreach($usuario as $us){
-               $users[]=array(
-                    "id" => $us->id,
-                    "usuario" => $us->usuario,
-                    "nivel" => $us->nivel,
-                    "fecha_modif" => $us->fecha_modif,
-                    "status" => $us->status
-                );
-            }
+            return array("status" => 200, "mensaje" =>$personal->toArray());
       }
-        return array("status" => 200, "mensaje" =>$users);
     }
 
         public function nuevo($us){
@@ -32,7 +23,7 @@ class UsuariosService{
                     "fecha_modif" => date ("y-m-d h-i-s"),
                     "status" => 1
             );
-
+var_dump($us);
             if($usuario->save($data)){
                     unset($data['pass']);
                     return array("status" => 201, "mensaje" => $data);

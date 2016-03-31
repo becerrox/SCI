@@ -60,6 +60,22 @@ function registrarUsuario(data)
 }
 
 
+function registrarBienes(data)
+{
+	$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/bienes',
+			data:JSON.stringify(data),
+			success:function(response){
+				alert("Registrado");
+			},error:function(response){
+				alert("Error");
+			}
+		});
+}
+
 // Función que convierte los datos de un form a un plain json listo para enviar
 
 function getFormData($form){

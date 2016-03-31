@@ -26,12 +26,12 @@ class Usuario extends Model{
  public function validation()
     {
 
-        $this->validate(new PresenceOf(
+/*        $this->validate(new PresenceOf(
             array(
                 "field" => "usuario",
                 "message" => "El campo usuario es obligatorio"
                 )
-            ));
+            ));         */
             
         $this->validate(new PresenceOf(
             array(
