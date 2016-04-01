@@ -157,6 +157,15 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
 
 }
 
+// Permite enviar submit al presionar enter
+//<![CDATA[
+function Saltar(){
+var clave   = document.getElementById("contrasena").value;
+return false;
+}
+
+//]]>
+
 // Calendario
     $(function(){
       $("#fecha1").datepicker({
@@ -435,14 +444,11 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           }     
         
  }
-
- function Validar_rc(){
+//Validaciones de Catalogo de Bienes
+  function Validar_cb_1(){
           var cod_general = document.getElementById('cod_cg').value;
           var desc_general =document.getElementById('desc_general').value;
-          var cod_sub = document.getElementById('cod_sub').value;
-          var desc_sub = document.getElementById('desc_sub').value;
-          var cod_ce = document.getElementById('cod_ce').value;
-          var desc_ce = document.getElementById('desc_ce').value;
+          
 
           if(cod_general==""){
             $('#alert').html('Debes ingresar un Código General').slideDown(500);
@@ -453,14 +459,19 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
             $('#alert').html('').slideUp(300);
           }
           if(desc_general==""){
-            $('#alert').html('Debes ingresar una Descripción General').slideDown(500);
+            $('#alert').html('Debes ingresar una Descripción').slideDown(500);
             $('#desc_general').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
           }
-        
+        }
+ function Validar_cb_2(){
+          
+          var cod_sub = document.getElementById('cod_sub').value;
+          var desc_sub = document.getElementById('desc_sub').value;
+                 
          if(cod_sub==""){
             $('#alert2').html('Debes ingresar una Sub-Categoría').slideDown(500);
             $('#cod_sub').focus();
@@ -477,22 +488,27 @@ return ((key >= 48 && key <= 57) || (key==45) || (key==8))
           else{
             $('#alert2').html('').slideUp(300);
           }
-      
-         if(cod_ce==""){
-            $('#alert').html('Debes ingresar una Categoría Específica').slideDown(500);
+
+        } 
+function Validar_cb_3(){
+    var cod_ce = document.getElementById('cod_ce').value;
+    var desc_ce = document.getElementById('desc_ce').value;
+
+          
+        if(cod_ce==""){
+            $('#alert3').html('Debes ingresar una Categoría').slideDown(500);
             $('#cod_ce').focus();
             return false;
           }
           else{
-            $('#alert').html('').slideUp(300);
+            $('#alert3').html('').slideUp(300);
           }
           if(desc_ce==""){
-            $('#alert').html('Debes ingresar una Descripción').slideDown(500);
+            $('#alert3').html('Debes ingresar una Descripción').slideDown(500);
             $('#desc_ce').focus();
             return false;
           }
           else{
-            $('#alert').html('').slideUp(300);
+            $('#alert3').html('').slideUp(300);
           }
-
-        } 
+        }

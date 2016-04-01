@@ -31,42 +31,42 @@
     <section class="inicio">
       <h1>CATÁLOGO DE BIENES</h1>
         <div id="contenedor">
-          <div class="form-group bloque col-md-offset-1">
+        <form class="form-group bloque col-md-offset-1">
            <h2>NUEVO</h2>
             <label>Cód.Categoría General</label>
             <input maxlength="10" type="text" class="form-control-2" id="cod_cg" onKeyPress="return soloNumerosCod(event)" data-toggle="tooltip" data-placement="top" title="Debes ingresar un Código General">
             <label>Descripción</label>
             <input type="text" class="form-control-2" id="desc_general" onKeyPress="return soloLetras(event)">
-            <button type="button" value="" class="btn" onclick="Validar_rc()">Añadir</button><br>
+            <button type="button" value="" class="btn" onclick="Validar_cb_1()">Añadir</button><br>
             <div id="alert" role="alert"></div>
           
-          </div>
+          </form>
 
-          <div class="form-group bloque">
+          <form class="form-group bloque">
           <h2>NUEVO</h2>
             <label>Cód.Sub-Categoría</label>
             <input maxlength="10" type="text" class="form-control-2" id="cod_sub" onKeyPress="return soloNumerosCod(event)">
             <label>Descripción</label>
             <input type="text" class="form-control-2" id="desc_sub" onKeyPress="return soloLetras(event)">
-            <button type="button" value="" class="btn" onclick="Validar_rc()">Añadir</button> 
+            <button type="button" value="" class="btn" onclick="Validar_cb_2()">Añadir</button> 
             <div id="alert2" role="alert"></div>
-          </div>
-          <div class="form-group bloque">
+          </form>
+          <form class="form-group bloque">
           <h2>NUEVO</h2>
             <label>Cód.Categoría Específica</label>
             <input maxlength="10" type="text" class="form-control-2" id="cod_ce" onKeyPress="return soloNumerosCod(event)">
             <label>Descripción</label>
             <input type="text" class="form-control-2" id="desc_ce" onKeyPress="return soloLetras(event)">
-            <button type="button" value="" class="btn" onclick="Validar_rc()">Añadir</button> 
+            <button type="button" value="" class="btn" onclick="Validar_cb_3()">Añadir</button> 
             <div id="alert3" role="alert"></div>
-          </div>
-          <div class="form-group grid-1 ">
+          </form>
+          <form class="form-group grid-1 ">
           <h2>MODIFICAR</h2>
             <label>Buscar</label>
             <input type="text" class="form-control-2" id="buscar">
-            <button type="button" value=""class="btn icon-edit"></button>             
-          </div>
-          <div class="form-group grid-3 bloque">
+            <button type="button" class="btn icon-edit"></button>             
+          </form>
+          <form class="form-group grid-3 bloque">
           <h2>ELIMINAR</h2>
             <label>Buscar</label>
             <input type="text" class="form-control-2" id="buscar">
@@ -76,7 +76,7 @@
              <option value="1"></option>           
            </select>
             <button type="button" value=""class="btn icon-eraser"></button>             
-          </div>
+          </form>
 
         </div> <!-- FIN CONTENEDOR-->
     </section>    

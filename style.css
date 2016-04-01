@@ -173,7 +173,7 @@ text-align: center;
   -webkit-border-radius:4px;  
   width:80%;
 }
-article > div > #Iniciar{
+form > div > #Iniciar{
 width: 120px; height:30px;
 
 }
@@ -238,6 +238,7 @@ nav{
   display:block;
 margin-top: 0px;
  background: #A40000;
+ height: 45px;
 }
 
 #contenedor div{line-height:1em;}
