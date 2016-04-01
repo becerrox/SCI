@@ -21,7 +21,8 @@ class UsuariosService{
                     "pass" => sha1($us->pass),
                     "nivel" => $us->nivel,
                     "fecha_modif" => date ("y-m-d h-i-s"),
-                    "status" => 1
+                    "status" => 1,
+                    "primer_inicio" => 0
             );
 var_dump($us);
             if($usuario->save($data)){
@@ -49,7 +50,8 @@ var_dump($us);
                     "pass" => sha1($us->pass),
                     "nivel" => $us->nivel,
                     "fecha_modif" => date ("y-m-d h-i-s"),
-                    "status" => $us->status
+                    "status" => $us->status,
+                    "primer_inicio" => $us->primer_inicio
                 );
 
                 if($modificar->update($data)){
@@ -96,6 +98,7 @@ var_dump($us);
                         "data_personal" => (Personal::findFirst("id_usuario = ".$user[0]->id)), 
                         "usuario" => $user[0]->usuario,
                         "nivel" => $user[0]->nivel,
+                        "primer_inicio" => $user[0]->primer_inicio,
                         "token" => sha1($credentials->usuario.$credentials->pass)
                     );          
                 }
