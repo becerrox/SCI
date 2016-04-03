@@ -16,7 +16,17 @@ $(document).ready(function(){
 				if(response.id!=undefined)
 				{
 					sessionStorage.dataUsuario = JSON.stringify(response);
-					location.href='inicio.html';
+					if(response.primer_inicio==0){
+						/*response.primer_inicio = 1; response.pass = Contrasena;
+						response.status = 1;
+						modificarUsuario(response,response.id).then(function(data){*/
+							location.href='registrousuario.html';							
+						/*});*/
+					}
+					else{
+						location.href='inicio.html';
+					}
+
 				}
 			},error:function(response){
 				console.log(response);
@@ -57,6 +67,25 @@ function registrarUsuario(data)
 				alert("Error");
 			}
 		});
+}
+
+function modificarUsuario(data,id)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"PUT",
+				processData: false,
+	    		contentType: 'application/json',
+				url:'api/usuarios/'+id,
+				data:JSON.stringify(data),
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					alert("Error");
+					rechazar(response);
+				}
+			});
+	 });	
 }
 
 

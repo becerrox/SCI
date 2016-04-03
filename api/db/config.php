@@ -6,8 +6,8 @@ use Phalcon\Mvc\View\Simple as SimpleView;
 $di->set('db', function(){
     return new \Phalcon\Db\Adapter\Pdo\Postgresql(array(
         "host" => "localhost",
-        "username" => "postgres",
-        "password" => "12345",
+        "username" => "az_admin",
+        "password" => "impacto.1309.",
         "dbname" => "sci3",
         'schema' => "public"
     ));

@@ -218,10 +218,10 @@ COMMENT ON COLUMN auditoria_usuario.status IS '0=cerrada;1=abierta';
 
 
 --
--- Name: auditoria_usuario_id_usuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: auditoria_usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE auditoria_usuario_id_usuario_seq
+CREATE SEQUENCE auditoria_usuario_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -229,7 +229,7 @@ CREATE SEQUENCE auditoria_usuario_id_usuario_seq
     CACHE 1;
 
 
-ALTER TABLE auditoria_usuario_id_usuario_seq OWNER TO postgres;
+ALTER TABLE auditoria_usuario_id_seq OWNER TO postgres;
 
 --
 -- Name: bienesgeneral_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -932,10 +932,10 @@ ALTER SEQUENCE unidad_trabajo_nombre_seq OWNED BY unidad_trabajo.nombre;
 
 
 --
--- Name: usuario_id_usuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE usuario_id_usuario_seq
+CREATE SEQUENCE usuario_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -943,14 +943,14 @@ CREATE SEQUENCE usuario_id_usuario_seq
     CACHE 1;
 
 
-ALTER TABLE usuario_id_usuario_seq OWNER TO postgres;
+ALTER TABLE usuario_id_seq OWNER TO postgres;
 
 --
 -- Name: usuario; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
 CREATE TABLE usuario (
-    id integer DEFAULT nextval('usuario_id_usuario_seq'::regclass) NOT NULL,
+    id integer DEFAULT nextval('usuario_id_seq'::regclass) NOT NULL,
     usuario character varying(20) NOT NULL,
     pass character varying(500) NOT NULL,
     nivel integer NOT NULL,
@@ -1046,10 +1046,10 @@ INSERT INTO auditoria_usuario VALUES ('luisrlavado', 'faea5242a00c52da62a0f00df1
 
 
 --
--- Name: auditoria_usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: auditoria_usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('auditoria_usuario_id_usuario_seq', 1, false);
+SELECT pg_catalog.setval('auditoria_usuario_id_seq', 1, false);
 
 
 --
@@ -1379,10 +1379,10 @@ INSERT INTO usuario VALUES (2, 'luisrlavadoo', 'faea5242a00c52da62a0f00df168c199
 
 
 --
--- Name: usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('usuario_id_usuario_seq', 2, true);
+SELECT pg_catalog.setval('usuario_id_seq', 2, true);
 
 
 --

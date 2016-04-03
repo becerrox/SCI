@@ -15,9 +15,8 @@ class BienesService{
 
         public function nuevo($bie){
             $bienes=new Bienes();
-
+    var_dump($bie);
             $data=array(
-                "item" => $bie->item,
                 "cod_general" => $bie->cod_general,
                 "cod_subcat" => $bie->cod_subcat,
                 "cod_catespf" => $bie->cod_catespf,
@@ -31,13 +30,11 @@ class BienesService{
                 "num_bien" => $bie->num_bien,
                 "estado_bien" => $bie->estado_bien,
                 "status" => $bie->status,
-                "fecha_modif" => $bie->fecha_modif,
                 "cat_unid_admin" => $bie->cat_unid_admin,
                 "fecha_elab" => $bie->fecha_elab,
                 "per_ini" => $bie->per_ini,
                 "per_culm" => $bie->per_culm,
                 "uni_trabajo" => $bie->uni_trabajo,
-                "componentes" => $bie->componentes,
                 "responsable_pa" => $bie->responsable_pa,
                 "responsable_ad" => $bie->responsable_ad,
                 "responsable_uso" => $bie->responsable_uso
@@ -63,7 +60,6 @@ class BienesService{
                     $pass = $modificar[0]->pass;
                 }
                 $data=array(
-                    "item" => $bie->item,
                     "cod_general" => $bie->cod_general,
                     "cod_subcat" => $bie->cod_subcat,
                     "cod_catespf" => $bie->cod_catespf,
@@ -78,7 +74,7 @@ class BienesService{
                     "estado_bien" => $bie->estado_bien,
                     "status" => $bie->status,
                     "fecha_modif" => $bie->fecha_modif,
-                    "cat_unid_admin" => $bie->cat_unid_admin,
+                    "cat_unid_admin" => date("Y-m-d h-i-s"),
                     "fecha_elab" => $bie->fecha_elab,
                     "per_ini" => $bie->per_ini,
                     "per_culm" => $bie->per_culm,

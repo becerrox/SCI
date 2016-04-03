@@ -20,11 +20,10 @@ class UsuariosService{
                     "usuario" => $us->usuario,
                     "pass" => sha1($us->pass),
                     "nivel" => $us->nivel,
-                    "fecha_modif" => date ("y-m-d h-i-s"),
+                    "fecha_creacion" => date("y-m-d h-i-s"),
                     "status" => 1,
                     "primer_inicio" => 0
             );
-var_dump($us);
             if($usuario->save($data)){
                     unset($data['pass']);
                     return array("status" => 201, "mensaje" => $data);
