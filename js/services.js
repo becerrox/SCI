@@ -36,7 +36,6 @@ $(document).ready(function(){
 	});
 });
 
-
 function registrarEquipo(data)
 {
 	$.ajax({
@@ -46,9 +45,9 @@ function registrarEquipo(data)
 			url:'api/equipos',
 			data:JSON.stringify(data),
 			success:function(response){
-				alert("Registrado");
+				swal("Registrado", "", "success");
 			},error:function(response){
-				alert("Error");
+				swal("Error", "No se pudo registrar", "error");
 			}
 		});
 }
@@ -117,3 +116,4 @@ function getFormData($form){
 
     return indexed_array;
 }
+
