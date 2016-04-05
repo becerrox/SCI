@@ -1,4 +1,4 @@
-// Controlador de la vista de registro de equipo
+// Controlador de la vista de cambio de clave
 
 if(sessionStorage.dataUsuario==undefined)
 {
@@ -20,7 +20,7 @@ $(document).ready(function()
 
         $("#btnGuardar").click(function()
         {
-            frm = $("#formBienes");
+            frm = $("#formCambioClave");
             dataForm = getFormData(frm);
             dataForm.status=1;
             registrarBienes(dataForm);

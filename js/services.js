@@ -47,7 +47,13 @@ function registrarEquipo(data)
 			success:function(response){
 				swal("Registrado", "", "success");
 			},error:function(response){
-				swal("Error", "No se pudo registrar", "error");
+				swal({
+			  title: 'No se registró el Equipo',
+			  text: 'Verifique los campos ingresados',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
 			}
 		});
 }
@@ -61,9 +67,15 @@ function registrarUsuario(data)
 			url:'api/usuarios',
 			data:JSON.stringify(data),
 			success:function(response){
-				alert("Registrado");
+				swal("Registrado", "", "success");
 			},error:function(response){
-				alert("Error");
+				swal({
+			  title: 'Error',
+			  text: 'No se pudo registrar',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
 			}
 		});
 }
@@ -80,7 +92,13 @@ function modificarUsuario(data,id)
 				success:function(response){
 					resolver(response);
 				},error:function(response){
-					alert("Error");
+					swal({
+			  title: 'Error',
+			  text: 'No se pudo modificar',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
 					rechazar(response);
 				}
 			});
@@ -97,9 +115,15 @@ function registrarBienes(data)
 			url:'api/bienes',
 			data:JSON.stringify(data),
 			success:function(response){
-				alert("Registrado");
+				swal("Registrado", "", "success");
 			},error:function(response){
-				alert("Error");
+				swal({
+			  title: 'Error',
+			  text: 'No se pudo registrar',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
 			}
 		});
 }

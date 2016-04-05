@@ -242,7 +242,7 @@ return false;
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(color=="0"){
+          if(color==""){
             $('#alert').html('Debes seleccionar un color').slideDown(500);
             $('#color_bien').focus();
             return false;
@@ -258,7 +258,7 @@ return false;
           else{
             $('#alert').html('').slideUp(300);
           }
-        if(estado=="0"){
+        if(estado==""){
             $('#alert').html('Debes seleccionar un estado').slideDown(500);
             $('#estado').focus();
             return false;
@@ -266,7 +266,7 @@ return false;
           else{
             $('#alert').html('').slideUp(300);
           }      
-        if(unidades_adm=="0"){
+        if(unidades_adm==""){
             $('#alert').html('Debes seleccionar una opción').slideDown(500);
             $('#unidades_adm').focus();
             return false;
@@ -274,7 +274,7 @@ return false;
           else{
             $('#alert').html('').slideUp(300);
           }  
-        if(responsable_ad=="0"){
+        if(responsable_ad==""){
             $('#alert').html('Debes seleccionar a un encargado').slideDown(500);
             $('#responsable_ad').focus();
             return false;
