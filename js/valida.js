@@ -512,3 +512,25 @@ function Validar_cb_3(){
             $('#alert3').html('').slideUp(300);
           }
         }
+function Validar_m_clave(){
+    var contra_nueva = document.getElementById('contra_nueva').value;
+    var contra_nueva_r = document.getElementById('contra_nueva_r').value;
+
+          
+        if(contra_nueva==""){
+            $('#alert').html('Debes ingresar una Contraseña').slideDown(500);
+            $('#contra_nueva').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(contra_nueva_r==""){
+            $('#alert').html('Debes reingresar la Contraseña').slideDown(500);
+            $('#contra_nueva_r').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+        }

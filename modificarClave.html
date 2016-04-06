@@ -29,16 +29,14 @@
   <!--                FORMULARIO DE CAMBIO        -->   
       <div id="contenedor">
         <form id="formCambioClave" class="col-md-offset-5">
-         <div class="form-group bloque">
-            <label>Contraseña Anterior:</label>
-            <input name="contra_ant" type="text" class="form-control-2" id="contra_ant" data-placement="top" title="">
+         <div class="form-group bloque">         
            <label>Nueva Contraseña:</label>
             <input name="contra_nueva" type="text" class="form-control-2" id="contra_nueva" data-placement="top" title="Min:6 Max:12 / Caracteres alfanúmericos, Sin espacios">
             <label>Repetir Contraseña:</label>
             <input name="contra_nueva_r" type="text" class="form-control-2" id="contra_nueva_r">
           </div>        
           <div class="bloque col-md-12 ">
-      <button id= "btnGuardar" type="button" class="btn" onclick="">Guardar</button>
+      <button id= "btnGuardar" type="button" class="btn" onclick="Validar_m_clave();">Guardar</button>
       <div id="alert" role="alert"></div>            
       </div>         
         </form>

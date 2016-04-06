@@ -351,12 +351,13 @@ text-decoration:none;
   left: 10%;
 }
   .pie_de_pagina {
+  clear: both;
    margin-top: auto;
    background-color: #4b4c4d;   
    color: #FFFFFF;
    font-size: 10px;   
    text-align: center;
-   position: fixed;   
+ 
    bottom: 0%;   
   }
 
@@ -441,7 +442,7 @@ margin: 0 auto;
 max-width:100%;
 height: auto;
 display: block;
-margin: 2% auto 0 auto;
+margin: 0 auto;
 }
 .inicio h1{
 margin: .5em;
