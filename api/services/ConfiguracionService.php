@@ -10,6 +10,8 @@ class configuracionService{
                 return array("status" => 200, "mensaje" =>$configuracion->toArray());
           }
         }
+
+        
         public function nuevo($conf){
             $configuracion=new Configuracion();
             $data=array(

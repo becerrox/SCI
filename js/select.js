@@ -23,13 +23,11 @@ function jsonToSelect(obj)
     }
 }
 
-dataPrueba =  [{id:"1", name:"elemento1"},
-              {id:"2", name:"elemento2"},
-              {id:"3", name:"elemento3"}];
+dataPrueba =  [{id:"1", name:"elemento1"};
         
 jsonToSelect({        
         data : dataPrueba,
         value : "id",
         alias : "name",
-        element : $("#color")
+        element : $("#colores")
         });
