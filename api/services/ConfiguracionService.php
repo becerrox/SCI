@@ -2,7 +2,7 @@
 class configuracionService{
         public function listar(){
 
-          $configuracion=Configuracion::find("Tipo");
+          $configuracion=Configuracion::find();
 
           if(count($configuracion->toArray())==0){
                 return array("status" => 404, "mensaje" => "No hay registros de configuracion");

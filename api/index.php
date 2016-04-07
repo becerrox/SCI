@@ -227,6 +227,36 @@ $app->delete("/bienes/{id:[0-9]+}",function($id) use($app){
     echo "eliminacion de bienes numero $id";
 });
 
+//Endpoints configuracion
+
+$configuracionService = new ConfiguracionService;
+
+$app->get("/configuracion",function() use ($app,$configuracionService) {
+    $data = $configuracionService->listar();
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/configuracion",function() use ($app,$configuracionService){
+    $configuracionService = json_decode($app->request->getRawBody());
+    $data = $configuracionService->nuevo($configuracionService);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/configuracion/token",function() use ($app,$configuracionService) {
+    $configuracionService = json_decode($app->request->getRawBody());
+    $data = $configuracionService->solicitarToken($configuracionService);
+    response($app,$data,$data['status']);
+});
+
+$app->put("/configuracion/{id:[0-9]+}",function($id) use ($app,$configuracionService) {
+    $configuracionService = json_decode($app->request->getRawBody());
+    $data = $configuracionService->modificar($id,$configuracionService);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/configuracion/{id:[0-9]+}",function($id) use($app){
+    echo "eliminacion de configuracion numero $id";
+});
 
 //Endpoint 
 
