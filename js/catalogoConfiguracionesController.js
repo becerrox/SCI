@@ -1,5 +1,4 @@
-// Controlador de la vista de registro de equipo
-
+// Controlador de la vista de catalogo de configuraciones
 if(sessionStorage.dataUsuario==undefined)
 {
     location.href="index.html";
@@ -20,7 +19,7 @@ $(document).ready(function()
 
         $("#btnGuardar").click(function()
         {
-            frm = $("#formBienes");
+            frm = $("#formCatConfig");
             dataForm = getFormData(frm);
             dataForm.status=1;
             registrarBienes(dataForm);

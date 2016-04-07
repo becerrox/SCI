@@ -237,7 +237,7 @@ display: block;
 margin: 0 auto;
 }
 #fondo img{
-margin: 4% 0 0 0;
+margin: 0
 }
 nav{
   display:block;
@@ -351,14 +351,14 @@ text-decoration:none;
   left: 10%;
 }
   .pie_de_pagina {
-  clear: both;
+     clear: both;
    margin-top: auto;
    background-color: #4b4c4d;   
    color: #FFFFFF;
    font-size: 10px;   
    text-align: center;
  
-   bottom: 0%;   
+   bottom: 0%; 
   }
 
 .bloque label{display: block;  } /* Pasar elemento de linea a bloque*/

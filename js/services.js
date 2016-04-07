@@ -115,7 +115,13 @@ function registrarBienes(data)
 			url:'api/bienes',
 			data:JSON.stringify(data),
 			success:function(response){
-				swal("Registrado", "", "success");
+				swal({
+			  title: 'Registrado',
+			  text: 'Se ha registrado el bien',
+			  type: 'success',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+			})
 			},error:function(response){
 				swal({
 			  title: 'Error',
@@ -123,7 +129,7 @@ function registrarBienes(data)
 			  type: 'error',
 			  confirmButtonText: 'Aceptar',
 			  confirmButtonColor: '#D85852'
-})
+			})
 			}
 		});
 }
