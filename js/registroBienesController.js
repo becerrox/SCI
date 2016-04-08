@@ -26,7 +26,7 @@ $(document).ready(function()
             registrarBienes(dataForm);
         });
 
-        /* Cargando datas de la api a un select  */
+        /* Cargando datas de la api a los selects  */
 
         getConfiguracionBy("?tipo=Color").then(function(data){
             //Despuer del retorno del promise, se cargan en el select con jsonToSelect
@@ -37,5 +37,17 @@ $(document).ready(function()
                 element : $("#colores")
                 });
         })
+
+        //Estado del bien (otro ejemplo)
+        getConfiguracionBy("?tipo=Estado del Bien").then(function(data){
+            //Despuer del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#estado_bien")
+                });
+        })
+
 });
 
