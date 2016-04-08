@@ -128,6 +128,32 @@ function registrarBienes(data)
 		});
 }
 
+//Servicio para traer la data de configuracion, con filtro
+
+function getConfiguracionBy(filtros)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"GET",
+	    		contentType: 'application/json',
+				url:'api/configuracion/'+filtros,
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
+			  title: 'Error',
+			  text: 'Ocurrió un error al listar',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+
 // Función que convierte los datos de un form a un plain json listo para enviar
 
 function getFormData($form){

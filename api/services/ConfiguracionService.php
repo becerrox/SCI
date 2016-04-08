@@ -1,8 +1,17 @@
 <?php
 class configuracionService{
-        public function listar(){
+        public function listar($query = []){
 
-          $configuracion=Configuracion::find();
+          if(empty($query))
+             $configuracion=Configuracion::find();
+          else
+          {
+            $configuracion = Configuracion::find(
+                array(
+                    arrayToSQLQuery($query),
+                    "bind" => $query)
+                );
+          }
 
           if(count($configuracion->toArray())==0){
                 return array("status" => 404, "mensaje" => "No hay registros de configuracion");

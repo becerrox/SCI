@@ -6,9 +6,9 @@ use Phalcon\Mvc\View\Simple as SimpleView;
 $di->set('db', function(){
     return new \Phalcon\Db\Adapter\Pdo\Postgresql(array(
         "host" => "localhost",
-        "username" => "postgres",
-        "password" => "12345",
-        "dbname" => "sci2",
+        "username" => "az_admin",
+        "password" => "impacto.1309.",
+        "dbname" => "sci3",
         'schema' => "public"
     ));
 });
@@ -26,4 +26,13 @@ $response->setContent(json_encode($data,JSON_PRETTY_PRINT));
 $response->send();
 
 }
+
+function arrayToSQLQuery($array){
+    $sql = "";
+    foreach ($array as $key => $value) {
+        $sql.=$key."= :".$key.": AND ";
+    }
+    return substr($sql,0,strlen($sql)-4);
+}    
  ?>
+

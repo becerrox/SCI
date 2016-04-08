@@ -232,7 +232,9 @@ $app->delete("/bienes/{id:[0-9]+}",function($id) use($app){
 $configuracionService = new ConfiguracionService;
 
 $app->get("/configuracion",function() use ($app,$configuracionService) {
-    $data = $configuracionService->listar();
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $configuracionService->listar($query);
     response($app,$data['mensaje'],$data['status']);
 });
 
@@ -240,12 +242,6 @@ $app->post("/configuracion",function() use ($app,$configuracionService){
     $configuracionService = json_decode($app->request->getRawBody());
     $data = $configuracionService->nuevo($configuracionService);
     response($app,$data['mensaje'],$data['status']);
-});
-
-$app->post("/configuracion/token",function() use ($app,$configuracionService) {
-    $configuracionService = json_decode($app->request->getRawBody());
-    $data = $configuracionService->solicitarToken($configuracionService);
-    response($app,$data,$data['status']);
 });
 
 $app->put("/configuracion/{id:[0-9]+}",function($id) use ($app,$configuracionService) {
