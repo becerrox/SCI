@@ -28,7 +28,7 @@ $(document).ready(function()
 
         /* Cargando datas de la api a un select  */
 
-        getConfiguracionBy("?tipo=color").then(function(data){
+        getConfiguracionBy("?tipo=Color").then(function(data){
             //Despuer del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
                 data : data,
