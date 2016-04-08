@@ -254,6 +254,33 @@ $app->delete("/configuracion/{id:[0-9]+}",function($id) use($app){
     echo "eliminacion de configuracion numero $id";
 });
 
+//Endpoints responsable
+
+$responsableService = new ResponsableService;
+
+$app->get("/responsable",function() use ($app,$responsableService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $responsableService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/responsable",function() use ($app,$responsableService){
+    $responsableService = json_decode($app->request->getRawBody());
+    $data = $responsableService->nuevo($responsableService);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/responsable/{id:[0-9]+}",function($id) use ($app,$responsableService) {
+    $responsableService = json_decode($app->request->getRawBody());
+    $data = $responsableService->modificar($id,$responsableService);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/responsable/{id:[0-9]+}",function($id) use($app){
+    echo "eliminacion de responsable numero $id";
+});
+
 //Endpoint 
 
 $app->notFound(function () use ($app) {

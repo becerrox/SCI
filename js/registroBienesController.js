@@ -38,7 +38,7 @@ $(document).ready(function()
                 });
         })
 
-        //Estado del bien (otro ejemplo)
+        //Estado del bien 
         getConfiguracionBy("?tipo=Estado del Bien").then(function(data){
             //Despuer del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
@@ -46,6 +46,28 @@ $(document).ready(function()
                 value : "codigo",
                 alias : "descripcion",
                 element : $("#estado_bien")
+                });
+        })
+
+        //Categoría de Unidades Administrativas 
+        getConfiguracionBy("?tipo=Categoría de Unidades Administrativas").then(function(data){
+            //Despuer del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#cat_unid_admin")
+                });
+        })
+
+        //Estatus de Uso del Bien 
+        getConfiguracionBy("?tipo=Estatus de Uso del Bien").then(function(data){
+            //Despuer del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#estatus_uso_bien")
                 });
         })
 
