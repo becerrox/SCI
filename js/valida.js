@@ -473,20 +473,20 @@ return false;
           var desc_sub = document.getElementById('desc_sub').value;
                  
          if(cod_sub==""){
-            $('#alert2').html('Debes ingresar una Sub-Categoría').slideDown(500);
+            $('#alert').html('Debes ingresar una Sub-Categoría').slideDown(500);
             $('#cod_sub').focus();
             return false;
           }
           else{
-            $('#alert2').html('').slideUp(300);
+            $('#alert').html('').slideUp(300);
           }
           if(desc_sub==""){
-            $('#alert2').html('Debes ingresar una descripción').slideDown(500);
+            $('#alert').html('Debes ingresar una descripción').slideDown(500);
             $('#desc_sub').focus();
             return false;
           }
           else{
-            $('#alert2').html('').slideUp(300);
+            $('#alert').html('').slideUp(300);
           }
 
         } 
@@ -496,20 +496,20 @@ function Validar_cb_3(){
 
           
         if(cod_ce==""){
-            $('#alert3').html('Debes ingresar una Categoría').slideDown(500);
+            $('#alert').html('Debes ingresar una Categoría').slideDown(500);
             $('#cod_ce').focus();
             return false;
           }
           else{
-            $('#alert3').html('').slideUp(300);
+            $('#alert').html('').slideUp(300);
           }
           if(desc_ce==""){
-            $('#alert3').html('Debes ingresar una Descripción').slideDown(500);
+            $('#alert').html('Debes ingresar una Descripción').slideDown(500);
             $('#desc_ce').focus();
             return false;
           }
           else{
-            $('#alert3').html('').slideUp(300);
+            $('#alert').html('').slideUp(300);
           }
         }
 function Validar_m_clave(){
