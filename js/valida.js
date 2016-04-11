@@ -1,3 +1,11 @@
+/*var fecha = new Date();
+var año = fecha.getFullYear();
+var mes= fecha.getMonth();
+var dia= fecha.getDate();
+var fechaActual= año+'-'+mes+'-'+dia;
+
+ document.getElementById("reloj").innerHTML = año+'-'+mes+'-'+dia;*/
+
 //Validacion Inicio Sesion, para campos vacios
 function valida_login(){
 
@@ -22,6 +30,7 @@ function valida_login(){
       
         }
  }
+
  // VALIDACIÓN SOLO LETRAS
  function soloLetras(e){
        key = e.keyCode || e.which;
@@ -287,27 +296,27 @@ return false;
  }
 //Validacion Registro de Bienes, para campos vacios
  function Validar_rb(){
-          var desc = document.getElementById('desc_bien').value;
-          var estatus= document.getElementById('estat_bien').value;
-          var marca = document.getElementById('marca_bien').value;
-          var modelo = document.getElementById('modelo_bien').value;
+          var desc = document.getElementById('descripcion').value;
+          var estatus= document.getElementById('estatus_uso_bien').value;
+          var marca = document.getElementById('marca').value;
+          var modelo = document.getElementById('modelo').value;
           var serial = document.getElementById('serial').value;
-          var componentes = document.getElementById('componente_bien').value;
-          var color = document.getElementById('color_bien').value;
-          var n_bien = document.getElementById('n_bien').value;
+          var componentes = document.getElementById('tipo_comp').value;
+          var color = document.getElementById('colores').value;
+          var n_bien = document.getElementById('num_bien').value;
           var estado_bien = document.getElementById('estado_bien').value;
-          var unidades = document.getElementById('unidades_adm').value;          
+          var unidades = document.getElementById('cat_unid_admin').value;          
           var unidad_trabajo = document.getElementById('unidad_trab_bien').value;          
           var responsable_pa = document.getElementById('responsable_pa').value;
           var responsable_ad = document.getElementById('responsable_ad').value;
           var responsable_uso = document.getElementById('responsable_uso').value;
           var fecha1 = document.getElementById('fecha1').value;
           var fecha2 = document.getElementById('fecha2').value;
-          var f_elab = document.getElementById('fecha3').value;          
+
 
           if(desc=="0"){
             $('#alert').html('Debes seleccionar una descripción').slideDown(500);
-            $('#desc_bien').focus();
+            $('#descripcion').focus();
             return false;
           }
           else{
@@ -315,7 +324,7 @@ return false;
           }    
           if(estatus=="0"){
             $('#alert').html('Debes seleccionar un tipo de estatus').slideDown(500);
-            $('#estatus_bien').focus();
+            $('#estatus_uso_bien').focus();
             return false;
           }
           else{
@@ -323,7 +332,7 @@ return false;
           }
           if(marca==""){
             $('#alert').html('Debes ingresar una marca').slideDown(500);
-            $('#marca_bien').focus();
+            $('#marca').focus();
             return false;
           }
           else{
@@ -331,7 +340,7 @@ return false;
           }
            if(modelo==""){
             $('#alert').html('Debes ingresar un modelo').slideDown(500);
-            $('#modelo_bien').focus();
+            $('#modelo').focus();
             return false;
           }
 
@@ -348,7 +357,7 @@ return false;
           }
         if(componentes=="0"){
             $('#alert').html('Debes seleccionar un componente').slideDown(500);
-            $('#componente_bien').focus();
+            $('#tipo_comp').focus();
             return false;
           }
           else{
@@ -356,7 +365,7 @@ return false;
           }        
         if(color=="0"){
             $('#alert').html('Debes seleccionar un color').slideDown(500);
-            $('#color_bien').focus();
+            $('#colores').focus();
             return false;
           }
           else{
@@ -364,7 +373,7 @@ return false;
           }          
         if(n_bien==""){
             $('#alert').html('Debes ingresar un número de bien').slideDown(500);
-            $('#n_bien').focus();
+            $('#num_bien').focus();
             return false;
           }
           else{
@@ -380,7 +389,7 @@ return false;
           }   
         if(unidades=="0"){
             $('#alert').html('Debes seleccionar una Unidad Administrativa').slideDown(500);
-            $('#unidades_adm').focus();
+            $('#cat_unid_admin').focus();
             return false;
           }
           else{
@@ -437,13 +446,21 @@ return false;
           }
           if(f_elab==""){
             $('#alert').html('Debes ingresar una fecha de Elaboración').slideDown(500);
-            $('#fecha3').focus();
+            $('#fecha4').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
           }     
-        
+          if(fecha1>fecha2){
+            $('#alert').html('La fecha de Inicio no debe ser mayor que la de Culminación').slideDown(500);
+            $('#fecha1').focus();
+          }
+          else{
+            $('#alert').html('').slideUp(300);            
+          }
+
+ 
  }
 //Validaciones de Catalogo de Bienes,para campos vacios
   function Validar_cb_1(){

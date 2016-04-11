@@ -28,10 +28,11 @@
     <div id="header"></div>
 
    <section class="inicio">
+
   <h1>REGISTRO DE EQUIPOS</h1>
   <!--                FORMULARIO DE REGISTRO        -->
     <form id="formEquipo">
-    <div id="contenedor"class="row">
+    <div id="contenedor"class="row">       
       <div class="form-group bloque col-md-4 col-sm-5">
           <label>Equipo:</label>
           <input type="text" name="descripcion" class="form-control-2" id="descripcion" data-toggle="tooltip" data-placement="top" title="Computador,Mouse,Teclado">
@@ -72,7 +73,7 @@
      <div class="form-group bloque col-md-6 col-xs-12 col-md-offset-3">
           <button id= "btnGuardar" type="button" class="btn" onclick="Validar_req()">Guardar</button>
           <button id= "btnModificar" type="button" class="btn" onclick="Validar_req()">Modificar</button>
-          <button id= "btnEliminar" type="button" class="btn" onclick="">Eliminar</button>
+          <button id= "btnEliminar" type="button" class="btn" onclick="fecha_elab()">Eliminar</button>
           <div id="alert" role="alert"></div>
     </div>
     </form>
@@ -84,15 +85,6 @@
       </div>     
     </form><!--FIN Modificación-->
 </section>
- <!-- <footer class="pie_de_pagina col-xs-12 col-sm-12 col-md-12">
-      <p>
-             Barquisimeto, Municipio Iribarren Edo Lara.<br>
-             República Bolivariana de Venezuela<br>
-             Basados en Software Libre. <strong>LEY INFOGOBIERNO</strong>.<br>
-             Desarrollado por el Departamento de Telecomunicaciones de TRANSBAR,C.A.
-            <br>
-      </p>
-   </footer>-->
     <script src="js/services.js" type="text/javascript"></script> 
     <script src="js/menu.js" type="text/javascript"></script>  
     <script src="js/jquery.js"></script>
