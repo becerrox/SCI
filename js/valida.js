@@ -1,3 +1,4 @@
+//Validacion Inicio Sesion, para campos vacios
 function valida_login(){
 
     var nombre = document.getElementById("username").value;
@@ -105,7 +106,7 @@ function Validar_re(){
           }
 
  }
-
+//Validacion Registro de Usuario, para campos vacios
  function Validar_re_usu(){
           var pass1 = document.getElementById('pass1').value;
           var pass2 = document.getElementById('pass2').value;
@@ -197,7 +198,7 @@ return false;
     function deshabilita(){
         $(".inputText").attr("disabled","disabled");
     }
-//validación de resgistro de equipos
+//validación de resgistro de equipos,para campos vacios
     function Validar_req(){
           var descripcion = document.getElementById('descripcion').value;
           var marca= document.getElementById('marca').value;
@@ -284,7 +285,7 @@ return false;
           }     
        
  }
-
+//Validacion Registro de Bienes, para campos vacios
  function Validar_rb(){
           var desc = document.getElementById('desc_bien').value;
           var estatus= document.getElementById('estat_bien').value;
@@ -444,7 +445,7 @@ return false;
           }     
         
  }
-//Validaciones de Catalogo de Bienes
+//Validaciones de Catalogo de Bienes,para campos vacios
   function Validar_cb_1(){
           var cod_general = document.getElementById('cod_cg').value;
           var desc_general =document.getElementById('desc_general').value;
@@ -512,6 +513,7 @@ function Validar_cb_3(){
             $('#alert').html('').slideUp(300);
           }
         }
+//Validacion Modificación de clave, para campos vacios
 function Validar_m_clave(){
     var contra_nueva = document.getElementById('contra_nueva').value;
     var contra_nueva_r = document.getElementById('contra_nueva_r').value;
@@ -534,3 +536,16 @@ function Validar_m_clave(){
             $('#alert').html('').slideUp(300);
           }
         }
+//Validacion Catalogo de Configuraciones, para campos vacios
+function Validar_cat_con(){
+  var descrip = document.getElementById('descrip').value;
+  if(descrip==""){
+            $('#alert').html('Debes ingresar una Descripción').slideDown(500);
+            $('#descrip').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+
+}

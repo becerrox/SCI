@@ -1,45 +1,49 @@
 <?php
-class configuracionService{
+class responsableService{
         public function listar($query = []){
 
           if(empty($query))
-             $configuracion=Configuracion::find();
+             $responsable=Responsable::find();
           else
           {
-            $configuracion = Configuracion::find(
+            $responsable = Responsable::find(
                 array(
                     arrayToSQLQuery($query),
                     "bind" => $query)
                 );
           }
 
-          if(count($configuracion->toArray())==0){
-                return array("status" => 404, "mensaje" => "No hay registros de configuracion");
+          if(count($responsable->toArray())==0){
+                return array("status" => 404, "mensaje" => "No hay registros de responsable");
           }else{
-                return array("status" => 200, "mensaje" =>$configuracion->toArray());
+                return array("status" => 200, "mensaje" =>$responsable->toArray());
           }
         }
 
         
-        public function nuevo($conf){
-            $configuracion=new Configuracion();
+        public function nuevo($rsp){
+            $responsable=new Responsable();
             $data=array(
-                  "codigo" => $conf->codigo,
-                  "descripcion" => $conf->descripcion,
-                  "tipo" => $conf->tipo
+              "nombres" => $rsp->nombres,
+              "apellidos" => $rsp->apellidos,
+              "uni_admin" => $rsp->uni_admin,
+              "fecha_creacion" => $rsp->fecha_creacion,
+              "fecha_modif" => $rsp->fecha_modif,
+              "status" => $rsp->status,
+              "ci_responsable" =>$rsp->ci_responsable
             );
-            if($configuracion->save($data)){
+            if($responsable->save($data)){
                     return array("status" => 201, "mensaje" => $data);
             }else{
                 $errors = array();
-                foreach ($configuracion->getMessages() as $message) {
+                foreach ($responsable->getMessages() as $message) {
                     $errors[] = $message->getMessage();
                 }
                 return array("status" => 400, "mensaje" =>$errors);
             }
         }
         public function modificar($id,$e){
-            $modificar=Configuracion::find($id);
+            $modificar=Responsable::find($id);
             if(count($modificar)>0){
                 if(isset($us->pass) && $us->pass !== '' && $us->pass !== null && $us->pass !== 'undefined'){
                     $pass = sha1($us->pass);
@@ -47,9 +51,13 @@ class configuracionService{
                     $pass = $modificar[0]->pass;
                 }
                 $data=array(
-                  "codigo" => $conf->codigo,
-                  "descripcion" => $conf->descripcion,
-                  "tipo" => $conf->tipo
+                  "nombres" => $rsp->nombres,
+                  "apellidos" => $rsp->apellidos,
+                  "uni_admin" => $rsp->uni_admin,
+                  "fecha_creacion" => $rsp->fecha_creacion,
+                  "fecha_modif" => date("Y-m-d h-i-s"),
+                  "status" => $rsp->status,
+                  "ci_responsable" =>$rsp->ci_responsable
                 );
                 if($modificar->update($data)){
                         unset($data['pass']);
@@ -57,7 +65,7 @@ class configuracionService{
                 }
                 else{
                      $errors = array();
-                    foreach ($configuracion->getMessages() as $message) {
+                    foreach ($responsable->getMessages() as $message) {
                         $errors[] = $message->getMessage();
                     }
                     return array("status" => 400, "mensaje" =>$errors);
@@ -67,10 +75,10 @@ class configuracionService{
             }
         }
         public function eliminar($id){
-            $configuracion=Configuracion::find($id);
-            if(count($configuracion)){
-                $configuracion->delete();
-                return array("status" => 200, "mensaje" => 'configuracion Eliminado');
+            $responsable=Responsable::find($id);
+            if(count($responsable)){
+                $responsable->delete();
+                return array("status" => 200, "mensaje" => 'responsable Eliminado');
             }else{
                 return array("status"=>404, "mensaje"=> "El registro intenta modificar no existe");
             }

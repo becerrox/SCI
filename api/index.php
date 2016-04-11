@@ -232,7 +232,9 @@ $app->delete("/bienes/{id:[0-9]+}",function($id) use($app){
 $configuracionService = new ConfiguracionService;
 
 $app->get("/configuracion",function() use ($app,$configuracionService) {
-    $data = $configuracionService->listar();
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $configuracionService->listar($query);
     response($app,$data['mensaje'],$data['status']);
 });
 
@@ -240,12 +242,6 @@ $app->post("/configuracion",function() use ($app,$configuracionService){
     $configuracionService = json_decode($app->request->getRawBody());
     $data = $configuracionService->nuevo($configuracionService);
     response($app,$data['mensaje'],$data['status']);
-});
-
-$app->post("/configuracion/token",function() use ($app,$configuracionService) {
-    $configuracionService = json_decode($app->request->getRawBody());
-    $data = $configuracionService->solicitarToken($configuracionService);
-    response($app,$data,$data['status']);
 });
 
 $app->put("/configuracion/{id:[0-9]+}",function($id) use ($app,$configuracionService) {
@@ -256,6 +252,33 @@ $app->put("/configuracion/{id:[0-9]+}",function($id) use ($app,$configuracionSer
 
 $app->delete("/configuracion/{id:[0-9]+}",function($id) use($app){
     echo "eliminacion de configuracion numero $id";
+});
+
+//Endpoints responsable
+
+$responsableService = new ResponsableService;
+
+$app->get("/responsable",function() use ($app,$responsableService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $responsableService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/responsable",function() use ($app,$responsableService){
+    $responsableService = json_decode($app->request->getRawBody());
+    $data = $responsableService->nuevo($responsableService);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/responsable/{id:[0-9]+}",function($id) use ($app,$responsableService) {
+    $responsableService = json_decode($app->request->getRawBody());
+    $data = $responsableService->modificar($id,$responsableService);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/responsable/{id:[0-9]+}",function($id) use($app){
+    echo "eliminacion de responsable numero $id";
 });
 
 //Endpoint 

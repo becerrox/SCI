@@ -26,6 +26,14 @@ $(document).ready(function()
             registrarUsuario(dataForm);
         });
 
+        $("#modificarUser").click(function()
+        {
+            frm = $("#formUsuario");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            modificarUsuario(dataForm);
+        });
+
         $("#guardarPersonal").click(function()
         {
             frm = $("#formPersonal");

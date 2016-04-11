@@ -26,4 +26,13 @@ $response->setContent(json_encode($data,JSON_PRETTY_PRINT));
 $response->send();
 
 }
+
+function arrayToSQLQuery($array){
+    $sql = "";
+    foreach ($array as $key => $value) {
+        $sql.=$key."= :".$key.": AND ";
+    }
+    return substr($sql,0,strlen($sql)-4);
+}    
  ?>
+

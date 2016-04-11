@@ -21,15 +21,16 @@ function jsonToSelect(obj)
     for(var i=0; i<obj.data.length;i++){
         selectString += '<option value="'+obj.data[i][obj.value]+'">'+obj.data[i][obj.alias]+'</option>';
     }
+    // Esta linea es la que coloca el string generado dentro del html
+    obj.element.html(selectString);
 }
 
-dataPrueba =  [{id:"1", name:"elemento1"},
-              {id:"2", name:"elemento2"},
-              {id:"3", name:"elemento3"}];
+/*dataPrueba =  [{id:"1", name:"elemento1"};
         
 jsonToSelect({        
         data : dataPrueba,
         value : "id",
         alias : "name",
-        element : $("#color")
+        element : $("#colores")
         });
+*/
