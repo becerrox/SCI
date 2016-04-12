@@ -72,12 +72,16 @@ $(document).ready(function()
         })
 
 
-         getPersonalBy('').then(function(data){
-        console.log(data)
-            data.nombreApellido = data.nombres + " " + data.apellidos;
+        getPersonalBy('').then(function(data){
+            
+            for(personal in data){
+                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
+            }
+            console.log(data)
             jsonToSelect({        
                  data : data,
-                 value : "nombreApellido",
+                 value : "id",
+                 alias : "nombreApellido",
                  element : $("#responsable_pa")
                  });
          })              
