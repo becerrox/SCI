@@ -20,7 +20,7 @@ $(document).ready(function(){
 						/*response.primer_inicio = 1; response.pass = Contrasena;
 						response.status = 1;
 						modificarUsuario(response,response.id).then(function(data){*/
-							location.href='registrousuario.html';							
+							location.href='modificarClave.html';							
 						/*});*/
 					}
 					else{
@@ -143,6 +143,29 @@ function getConfiguracionBy(filtros)
 				type:"GET",
 	    		contentType: 'application/json',
 				url:'api/configuracion/'+filtros,
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
+			  title: 'Error',
+			  text: 'Ocurrió un error al listar',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function getPersonalBy(filtros)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"GET",
+	    		contentType: 'application/json',
+				url:'api/personal/'+filtros,
 				success:function(response){
 					resolver(response);
 				},error:function(response){

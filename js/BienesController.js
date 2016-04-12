@@ -71,5 +71,16 @@ $(document).ready(function()
                 });
         })
 
+
+         getPersonalBy('').then(function(data){
+        console.log(data)
+            data.nombreApellido = data.nombres + " " + data.apellidos;
+            jsonToSelect({        
+                 data : data,
+                 value : "nombreApellido",
+                 element : $("#responsable_pa")
+                 });
+         })              
+
 });
 
