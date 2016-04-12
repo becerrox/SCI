@@ -134,6 +134,28 @@ function registrarBienes(data)
 		});
 }
 
+function modificarBien(data,id)
+{
+	$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/bienes/'+id,
+			data:JSON.stringify(data),
+			success:function(response){
+				swal("Registrado", "", "success");
+			},error:function(response){
+				swal({
+			  title: 'Error',
+			  text: 'No se pudo registrar',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
+			}
+		});
+}
+
 //Servicio para traer la data de configuracion, con filtro
 
 function getConfiguracionBy(filtros)

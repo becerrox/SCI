@@ -26,6 +26,14 @@ $(document).ready(function()
             registrarBienes(dataForm);
         });
 
+        $("#btnModificar").click(function()
+        {
+            frm = $("#formBienes");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            modificarBien(dataForm);
+        });
+
         /* Cargando datas de la api a los selects  */
 
         getConfiguracionBy("?tipo=Color").then(function(data){
