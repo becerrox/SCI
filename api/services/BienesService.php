@@ -42,7 +42,7 @@ class BienesService{
                 "fecha_elab" => $bie->fecha_elab,
                 "per_ini" => $bie->per_ini,
                 "per_culm" => $bie->per_culm,
-                "uni_trabajo" => $bie->uni_trabajo,
+                "unidad_trabajo" => $bie->unidad_trabajo,
                 "responsable_pa" => $bie->responsable_pa,
                 "responsable_ad" => $bie->responsable_ad,
                 "responsable_uso" => $bie->responsable_uso
@@ -86,7 +86,7 @@ class BienesService{
                     "fecha_elab" => $bie->fecha_elab,
                     "per_ini" => $bie->per_ini,
                     "per_culm" => $bie->per_culm,
-                    "uni_trabajo" => $bie->uni_trabajo,
+                    "unidad_trabajo" => $bie->unidad_trabajo,
                     "componentes" => $bie->componentes,
                     "responsable_pa" => $bie->responsable_pa,
                     "responsable_ad" => $bie->responsable_ad,

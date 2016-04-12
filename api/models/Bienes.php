@@ -79,7 +79,7 @@ class Bienes extends Model{
 
         $this->validate(new PresenceOf(
             array(
-                "field" => "uni_trabajo",
+                "field" => "unidad_trabajo",
                 "message" => "El campo unidad de trabajo es obligatorio"
                 )
             ));

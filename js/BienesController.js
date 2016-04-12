@@ -48,7 +48,6 @@ $(document).ready(function()
 
         //Estado del bien 
         getConfiguracionBy("?tipo=Estado del Bien").then(function(data){
-            //Despues del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -59,7 +58,6 @@ $(document).ready(function()
 
         //Categoría de Unidades Administrativas 
         getConfiguracionBy("?tipo=Categoría de Unidades Administrativas").then(function(data){
-            //Despues del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -70,7 +68,6 @@ $(document).ready(function()
 
         //Estatus de Uso del Bien 
         getConfiguracionBy("?tipo=Estatus de Uso del Bien").then(function(data){
-            //Despues del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -78,6 +75,16 @@ $(document).ready(function()
                 element : $("#estatus_uso_bien")
                 });
         })
+
+        //Unidad de Trabajo
+        getConfiguracionBy("?tipo=Unidad de Trabajo").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#unidad_trabajo")
+                });
+        })        
 
 
         getPersonalBy('').then(function(data){
@@ -91,6 +98,30 @@ $(document).ready(function()
                  element : $("#responsable_pa")
                  });
          })              
+
+        getPersonalBy('').then(function(data){
+            for(personal in data){
+                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
+            }
+            jsonToSelect({        
+                 data : data,
+                 value : "id",
+                 alias : "nombreApellido",
+                 element : $("#responsable_ad")
+                 });
+         })  
+
+        getPersonalBy('').then(function(data){
+            for(personal in data){
+                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
+            }
+            jsonToSelect({        
+                 data : data,
+                 value : "id",
+                 alias : "nombreApellido",
+                 element : $("#responsable_uso")
+                 });
+         })          
 
         $("#buscarBien").click(function(){
             numero = $("#buscar").val();

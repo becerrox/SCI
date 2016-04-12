@@ -8,7 +8,7 @@ $di->set('db', function(){
         "host" => "localhost",
         "username" => "postgres",
         "password" => "12345",
-        "dbname" => "sci3",
+        "dbname" => "sci2",
         'schema' => "public"
     ));
 });

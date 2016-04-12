@@ -25,5 +25,30 @@ $(document).ready(function()
             dataForm.status=1;
             registrarEquipo(dataForm);
         });
+
+        //Unidad de Trabajo
+        getConfiguracionBy("?tipo=Color").then(function(data){
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#colores")
+                });
+        })     
+
+
+        getPersonalBy('').then(function(data){
+            for(personal in data){
+                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
+            }
+            jsonToSelect({        
+                 data : data,
+                 value : "id",
+                 alias : "nombreApellido",
+                 element : $("#responsable_pa")
+                 });
+         })   
+
 });
 
