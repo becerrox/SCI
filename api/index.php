@@ -209,7 +209,9 @@ $app->delete("/catesp/{id:[0-9]+}",function($id) use($app){
 $bienesService = new BienesService;
 
 $app->get("/bienes",function() use ($app,$bienesService) {
-    $data = $bienesService->listar();
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $bienesService->listar($query);
     response($app,$data['mensaje'],$data['status']);
 });
 

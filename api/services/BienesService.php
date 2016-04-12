@@ -2,9 +2,18 @@
 
 class BienesService{
 
-    public function listar(){
+    public function listar($query){
 
-      $bienes=Bienes::find("status=1");
+          if(empty($query))
+             $bienes=Bienes::find();
+          else
+          {
+            $bienes = Bienes::find(
+                array(
+                    arrayToSQLQuery($query),
+                    "bind" => $query)
+                );
+          }
 
       if(count($bienes->toArray())==0){
             return array("status" => 404, "mensaje" => "No hay registros de bienes");
@@ -15,7 +24,6 @@ class BienesService{
 
         public function nuevo($bie){
             $bienes=new Bienes();
-    var_dump($bie);
             $data=array(
                 "cod_general" => $bie->cod_general,
                 "cod_subcat" => $bie->cod_subcat,

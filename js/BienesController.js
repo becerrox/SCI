@@ -29,7 +29,7 @@ $(document).ready(function()
         /* Cargando datas de la api a los selects  */
 
         getConfiguracionBy("?tipo=Color").then(function(data){
-            //Despuer del retorno del promise, se cargan en el select con jsonToSelect
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -40,7 +40,7 @@ $(document).ready(function()
 
         //Estado del bien 
         getConfiguracionBy("?tipo=Estado del Bien").then(function(data){
-            //Despuer del retorno del promise, se cargan en el select con jsonToSelect
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -51,7 +51,7 @@ $(document).ready(function()
 
         //Categoría de Unidades Administrativas 
         getConfiguracionBy("?tipo=Categoría de Unidades Administrativas").then(function(data){
-            //Despuer del retorno del promise, se cargan en el select con jsonToSelect
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -62,7 +62,7 @@ $(document).ready(function()
 
         //Estatus de Uso del Bien 
         getConfiguracionBy("?tipo=Estatus de Uso del Bien").then(function(data){
-            //Despuer del retorno del promise, se cargan en el select con jsonToSelect
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -73,11 +73,9 @@ $(document).ready(function()
 
 
         getPersonalBy('').then(function(data){
-            
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }
-            console.log(data)
             jsonToSelect({        
                  data : data,
                  value : "id",
@@ -85,6 +83,16 @@ $(document).ready(function()
                  element : $("#responsable_pa")
                  });
          })              
+
+        $("#buscarBien").click(function(){
+            numero = $("#buscar").val();
+            getBienesBy("?num_bien="+numero).then(function(data){
+                jsonToForm({
+                    data : data[0],
+                    form : "#formBienes"
+                });
+            });
+        });
 
 });
 
