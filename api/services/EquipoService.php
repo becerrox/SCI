@@ -1,8 +1,17 @@
 <?php
 class EquipoService{
-    public function listar(){
+    public function listar($query){
 
-      $equipo=Equipo::find("status=1");
+          if(empty($query))
+             $equipo=Equipo::find();
+          else
+          {
+            $equipo = Equipo::find(
+                array(
+                    arrayToSQLQuery($query),
+                    "bind" => $query)
+                );
+          }
 
       if(count($equipo->toArray())==0){
             return array("status" => 404, "mensaje" => "No hay registros de equipo");

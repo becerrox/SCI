@@ -58,6 +58,31 @@ function registrarEquipo(data)
 		});
 }
 
+function modificarEquipos(data,id)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"PUT",
+				processData: false,
+	    		contentType: 'application/json',
+				url:'api/equipos/'+id,
+				data:JSON.stringify(data),
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
+			  title: 'Error',
+			  text: 'No se pudo modificar',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
 function registrarUsuario(data)
 {
 	$.ajax({
@@ -136,24 +161,27 @@ function registrarBienes(data)
 
 function modificarBien(data,id)
 {
-	$.ajax({
-			type:"POST",
-			processData: false,
-    		contentType: 'application/json',
-			url:'api/bienes/'+id,
-			data:JSON.stringify(data),
-			success:function(response){
-				swal("Registrado", "", "success");
-			},error:function(response){
-				swal({
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"PUT",
+				processData: false,
+	    		contentType: 'application/json',
+				url:'api/bienes/'+id,
+				data:JSON.stringify(data),
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
 			  title: 'Error',
-			  text: 'No se pudo registrar',
+			  text: 'No se pudo modificar',
 			  type: 'error',
 			  confirmButtonText: 'Aceptar',
 			  confirmButtonColor: '#D85852'
 })
-			}
-		});
+					rechazar(response);
+				}
+			});
+	 });	
 }
 
 //Servicio para traer la data de configuracion, con filtro

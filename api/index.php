@@ -62,7 +62,9 @@ $app->delete("/usuarios/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
 $equipoService = new EquipoService;
 
 $app->get("/equipos",function() use ($app,$equipoService) {
-    $data = $equipoService->listar();
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $equipoService->listar($query);
     response($app,$data['mensaje'],$data['status']);
 });
 

@@ -26,6 +26,14 @@ $(document).ready(function()
             registrarEquipo(dataForm);
         });
 
+        $("#btnModificar").click(function()
+        {
+            frm = $("#formEquipo");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            modificarEquipo(dataForm);
+        });        
+
         //Unidad de Trabajo
         getConfiguracionBy("?tipo=Color").then(function(data){
             //Despues del retorno del promise, se cargan en el select con jsonToSelect
@@ -79,5 +87,14 @@ $(document).ready(function()
                  });
          })   
 
+        $("#buscarEquipo").click(function(){
+            numero = $("#buscar").val();
+            getEquiposBy("?serial="+numero).then(function(data){
+                jsonToForm({
+                    data : data[0],
+                    form : "#formEquipo"
+                });
+            });
+        }); 
 });
 
