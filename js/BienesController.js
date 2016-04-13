@@ -32,6 +32,7 @@ $(document).ready(function()
             dataForm = getFormData(frm);
             dataForm.status=1;
             modificarBien(dataForm);
+            console.log(dataForm)
         });
 
         /* Cargando datas de la api a los selects  */
@@ -124,6 +125,7 @@ $(document).ready(function()
          })          
 
         $("#buscarBien").click(function(){
+            idBien = $
             numero = $("#buscar").val();
             getBienesBy("?num_bien="+numero).then(function(data){
                 jsonToForm({

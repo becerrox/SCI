@@ -223,8 +223,10 @@ $app->post("/bienes",function() use ($app,$bienesService){
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->put("/bienes/{id:[0-9]+}",function($id) use($app){
-    echo "edicion de bienes numero $id";
+$app->put("/bienes/{id:[0-9]+}",function($id) use ($app,$bienesService) {
+    $bienes = json_decode($app->request->getRawBody());
+    $data = $bienesService->modificar($id,$bienes);
+    response($app,$data['mensaje'],$data['status']);
 });
 
 $app->delete("/bienes/{id:[0-9]+}",function($id) use($app){
