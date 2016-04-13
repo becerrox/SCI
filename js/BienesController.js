@@ -131,7 +131,6 @@ $(document).ready(function()
                     form : "#formBienes"
                 });
             });
-        });
-
+        }); 
 });
 

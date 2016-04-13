@@ -170,7 +170,7 @@ function getConfiguracionBy(filtros)
 				},error:function(response){
 					swal({
 			  title: 'Error',
-			  text: 'Ocurrió un error al listar',
+			  text: 'El registro no existe o hay un error',
 			  type: 'error',
 			  confirmButtonText: 'Aceptar',
 			  confirmButtonColor: '#D85852'
@@ -193,7 +193,7 @@ function getPersonalBy(filtros)
 				},error:function(response){
 					swal({
 			  title: 'Error',
-			  text: 'Ocurrió un error al listar',
+			  text: 'El registro no existe o hay un error',
 			  type: 'error',
 			  confirmButtonText: 'Aceptar',
 			  confirmButtonColor: '#D85852'
@@ -216,7 +216,30 @@ function getBienesBy(filtros)
 				},error:function(response){
 					swal({
 			  title: 'Error',
-			  text: 'Ocurrió un error al listar',
+			  text: 'El registro no existe o hay un error',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function getEquiposBy(filtros)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"GET",
+	    		contentType: 'application/json',
+				url:'api/equipos/'+filtros,
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
+			  title: 'Error',
+			  text: 'El registro no existe o hay un error',
 			  type: 'error',
 			  confirmButtonText: 'Aceptar',
 			  confirmButtonColor: '#D85852'

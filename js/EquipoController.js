@@ -31,12 +31,41 @@ $(document).ready(function()
             //Despues del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
                 data : data,
-                value : "codigo",
+                value : "descripcion",
                 alias : "descripcion",
-                element : $("#colores")
+                element : $("#color")
                 });
         })     
 
+        //Estado del bien 
+        getConfiguracionBy("?tipo=Estado del Bien").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#estado")
+                });
+        })
+
+        //Categoría de Unidades Administrativas 
+        getConfiguracionBy("?tipo=Categoría de Unidades Administrativas").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#unidad_admin")
+                });
+        })
+
+        //Unidad de Trabajo
+        getConfiguracionBy("?tipo=Unidad de Trabajo").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#unidad_trabajo")
+                });
+        })              
 
         getPersonalBy('').then(function(data){
             for(personal in data){
@@ -44,9 +73,9 @@ $(document).ready(function()
             }
             jsonToSelect({        
                  data : data,
-                 value : "id",
+                 value : "nombreApellido",
                  alias : "nombreApellido",
-                 element : $("#responsable_pa")
+                 element : $("#responsable")
                  });
          })   
 
