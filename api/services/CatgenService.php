@@ -2,23 +2,24 @@
 
 class CatgenService{
 
-    public function listar(){
+    public function listar($query){
 
-      $catgen=Catgen::find();
+          if(empty($query))
+             $catgen=Catgen::find();
+          else
+          {
+            $catgen = Catgen::find(
+                array(
+                    arrayToSQLQuery($query),
+                    "bind" => $query)
+                );
+          }
 
       if(count($catgen->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de configuración de bienes");
+            return array("status" => 404, "mensaje" => "No hay registros de catgen");
       }else{
-          foreach($catgen as $cgb){
-               $catgen[]=array(
-                "id" => $cgb->id,
-                "codigo" => $cgb->codigo,
-                "descripcion" => $cgb->descripcion,
-                "tipo" => $cgb->tipo
-                );
-            }
+            return array("status" => 200, "mensaje" =>$catgen->toArray());
       }
-        return array("status" => 200, "mensaje" =>$users);
     }
 
         public function nuevo($cgb){

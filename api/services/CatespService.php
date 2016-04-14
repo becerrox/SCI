@@ -2,24 +2,24 @@
 
 class CatespService{
 
-    public function listar(){
+    public function listar($query){
 
-      $catesp=Catesp::find();
+          if(empty($query))
+             $catesp=Catesp::find();
+          else
+          {
+            $catesp = Catesp::find(
+                array(
+                    arrayToSQLQuery($query),
+                    "bind" => $query)
+                );
+          }
 
       if(count($catesp->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de configuración de bienes");
+            return array("status" => 404, "mensaje" => "No hay registros de catesp");
       }else{
-          foreach($catesp as $ceb){
-               $catesp[]=array(
-                "id" => $ceb->id,
-                "codigo" => $ceb->codigo,
-                "descripcion" => $ceb->descripcion,
-                "tipo" => $ceb->tipo,
-                "id_sub_categorias_bienes" => $ceb->id_sub_categorias_bienes
-                );
-            }
+            return array("status" => 200, "mensaje" =>$catesp->toArray());
       }
-        return array("status" => 200, "mensaje" =>$users);
     }
 
         public function nuevo($ceb){

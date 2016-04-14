@@ -11,7 +11,9 @@ use Phalcon\Mvc\Model,
 
 
 class Catgen extends Model{
+    
     public function initialize(){
+      $this->setSource("catgen");
       $this->addBehavior(
             new SoftDelete(
                 array(
