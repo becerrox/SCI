@@ -7,6 +7,8 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
+        var id_bien_editar = "";
+
         $("#header").load("header.html",function()
         {
             var datosUsuario = JSON.parse(sessionStorage.dataUsuario);
@@ -31,8 +33,7 @@ $(document).ready(function()
             frm = $("#formBienes");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            modificarBien(dataForm);
-            console.log(dataForm)
+            modificarBien(dataForm,id_bien_editar);
         });
 
         /* Cargando datas de la api a los selects  */
@@ -128,6 +129,7 @@ $(document).ready(function()
             idBien = $
             numero = $("#buscar").val();
             getBienesBy("?num_bien="+numero).then(function(data){
+                id_bien_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
                     form : "#formBienes"

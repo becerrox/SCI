@@ -25,6 +25,7 @@ class BienesService{
         public function nuevo($bie){
             $bienes=new Bienes();
             $data=array(
+                "id" => $bie->id,
                 "cod_general" => $bie->cod_general,
                 "cod_subcat" => $bie->cod_subcat,
                 "cod_catespf" => $bie->cod_catespf,
@@ -59,14 +60,9 @@ class BienesService{
             }
         }
 
-        public function modificar($id,$us){
+        public function modificar($id,$bie){
             $modificar=Bienes::find($id);
             if(count($modificar)>0){
-                if(isset($us->pass) && $us->pass !== '' && $us->pass !== null && $us->pass !== 'undefined'){
-                    $pass = sha1($us->pass);
-                }else{
-                    $pass = $modificar[0]->pass;
-                }
                 $data=array(
                     "cod_general" => $bie->cod_general,
                     "cod_subcat" => $bie->cod_subcat,
@@ -94,7 +90,6 @@ class BienesService{
                 );
 
                 if($modificar->update($data)){
-                        unset($data['pass']);
                         return array("status" => 200, "mensaje" => $data);
                 }
                 else{
