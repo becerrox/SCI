@@ -105,6 +105,14 @@ overflow: auto;
   width:100%; 
   
 }
+.busca{ 
+  height: 10px;
+  width: 500px;
+}
+.busca button{
+  width: 20px;
+  display: inline;
+}
 #contenedor {  
   border-radius:4px;
   height: auto;

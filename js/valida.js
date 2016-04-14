@@ -30,6 +30,11 @@ function valida_login(){
       
         }
  }
+ function calcularEdad()
+
+{
+
+}
 
  // VALIDACIÓN SOLO LETRAS
  function soloLetras(e){
@@ -68,8 +73,52 @@ function Validar_re(){
           var cedula = document.getElementById('cedula').value;
           var nombres = document.getElementById('nombres').value;
           var email = document.getElementById('email').value;
-          var telefono = document.getElementById('telefono').value;
-          
+          var telefono = document.getElementById('telefono').value; 
+          var fecha=document.getElementById("fecha1").value;
+    
+    if(fecha1)
+    {  // calculamos la edad
+
+        var values=fecha.split("-");
+        var dia = values[2];
+        var mes = values[1];
+        var ano = values[0]; 
+
+        // tomamos los valores actuales
+        var fecha_hoy = new Date();
+        var ahora_ano = fecha_hoy.getYear();
+        var ahora_mes = fecha_hoy.getMonth()+1;
+        var ahora_dia = fecha_hoy.getDate(); 
+
+        // realizamos el calculo
+        var edad = (ahora_ano + 1900) - ano;
+        if ( ahora_mes < mes )
+        { edad--; }
+        if ((mes == ahora_mes) && (ahora_dia < dia))
+        {  edad--;   }
+        if (edad > 1900)
+        {   edad -= 1900;     }
+
+        // calculamos los meses
+        var meses=0;
+        if(ahora_mes>mes)
+            meses=ahora_mes-mes;
+        if(ahora_mes<mes)
+            meses=12-(mes-ahora_mes);
+        if(ahora_mes==mes && dia>ahora_dia)
+            meses=11; 
+
+        // calculamos los dias
+        var dias=0;
+        if(ahora_dia>dia)
+            dias=ahora_dia-dia;
+        if(ahora_dia<dia)
+        {
+            ultimoDiaMes=new Date(ahora_ano, ahora_mes, 0);
+            dias=ultimoDiaMes.getDate()-(dia-ahora_dia);
+        }
+    }
+    else{}
 
           if(cedula==""){
             $('#alert').html('Debes ingresar una Cédula').slideDown(500);
@@ -113,8 +162,14 @@ function Validar_re(){
           else{
             $('#alert').html('').slideUp(300);
           }
+          if(edad < 18){
+            $('#alert').html('Debe ser mayor de edad').slideDown(500);
+            $('#fecha1').focus();
+            return false;
 
+          }
  }
+ 
 //Validacion Registro de Usuario, para campos vacios
  function Validar_re_usu(){
           var pass1 = document.getElementById('pass1').value;
