@@ -32,7 +32,7 @@
             <input name="codigo" id="codigo" maxlength="10" type="text" class="form-control-2" id="codigo" onKeyPress="return soloNumerosCod(event)" data-toggle="tooltip" data-placement="top" title="Debes ingresar un Código General">
             <label>Descripción</label>
             <input name="descripcion" id="descripción" type="text" class="form-control-2" id="descripcion" onKeyPress="return soloLetras(event)">
-            <button id= "btnGuardar" type="button" class="btn" onclick="Validar_cb_3()">Guardar</button>
+            <button id= "btnGuardar" type="button" class="btn icon-save" onclick="Validar_cb_3()"></button>
           </form>
           <form id="formSubcat" class="form-group bloque">
             <h3>Registrar</h3>
@@ -43,9 +43,9 @@
               <input name="codigo" id="codigo" maxlength="10" type="text" class="form-control-2" onKeyPress="return soloNumerosCod(event)">
               <label>Descripción</label>
               <input name="descripcion" id="descripción" type="text" class="form-control-2"  onKeyPress="return soloLetras(event)">
-              <button id= "btnGuardar" type="button" class="btn" onclick="Validar_cb_3()">Guardar</button>
+              <button id= "btnGuardar" type="button" class="btn icon-save" onclick="Validar_cb_3()"></button>
           </form>
-          <form id="formCatesp" class="form-group bloque">
+          <form id="formCatesp" class="bloque form-group">
             <h3>Registrar</h3>
               <label>Sub-Categoría</label> 
               <select name="subcat" class="form-control-2" id="subcat">
@@ -54,15 +54,15 @@
               <input name="codigo" maxlength="10" type="text" class="form-control-2" id="codigo" onKeyPress="return soloNumerosCod(event)">
               <label>Descripción</label>
               <input name="descripcion" type="text" class="form-control-2" id="descripcion" onKeyPress="return soloLetras(event)">
-              <button id= "btnGuardar" type="button" class="btn" >Guardar</button>
+              <button id= "btnGuardar" type="button" class="btn icon-save"></button>
           </form>
-          <form class="form-group bloque col-md-offset-5 col-sm-offset-4 grid-1">
+          <form class="form-group bloque col-md-offset-5 col-sm-offset-4 ">
             <h3>Modificar/Eliminar</h3>
             <label>Buscar</label>
             <input type="text" class="form-control-2" id="buscar" data-toggle="tooltip" title="Buscar item a Modificar o Eliminar">
             <button type="button" class="btn icon-search"></button> 
           </form>
-           <div class="form-group bloque col-md-6 col-xs-12 col-md-offset-3 col-sm-6 col-sm-offset-3">
+           <div class="form-group col-md-6 col-xs-6 col-md-offset-3 col-sm-6 col-sm-offset-3 ">
           <button id= "btnGuardar" type="button" class="btn" onclick="Validar_cat_con()">Guardar</button>
           <button id= "btnModificar" type="button" class="btn" onclick="">Modificar</button>
           <button id= "btnEliminar" type="button" class="btn" onclick="">Eliminar</button>          
