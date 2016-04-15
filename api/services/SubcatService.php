@@ -26,11 +26,10 @@ class SubcatService{
             $subcat=new Subcat();
 
             $data=array(
-                "id" => $scb->id,
                 "codigo" => $scb->codigo,
                 "descripcion" => $scb->descripcion,
-                "tipo" => $scb->tipo,
-                "id_categoria_general_bienes" => $scb->id_categoria_general_bienes                
+                "status" => $scb->status,
+                "catgen" => $scb->catgen                
                 );
 
             if($subcat->save($data)){
@@ -55,7 +54,7 @@ class SubcatService{
                 $data=array(     
                 "codigo" => $scb->codigo,
                 "descripcion" => $scb->descripcion,
-                "tipo" => $scb->tipo
+                "status" => $scb->status
                 );
 
                 if($modificar->update($data)){

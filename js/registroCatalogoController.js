@@ -20,10 +20,28 @@ $(document).ready(function()
 
         $("#btnGuardar").click(function()
         {
-            frm = $("#formBienes");
+            frm = $("#formSubcat");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarBienes(dataForm);
+            registrarSubcat(dataForm);
         });
+
+        $("#btnGuardar").click(function()
+        {
+            frm = $("#formCatgen");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            registrarCatgen(dataForm);
+        });
+
+        getCatgenBy("?status=1").then(function(data){
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#catgen")
+                });
+        })        
 });
 

@@ -30,14 +30,14 @@ class Catgen extends Model{
 
         $this->validate(new PresenceOf(
             array(
-                "field" => "cod_cg",
+                "field" => "codigo",
                 "message" => "El campo Categoría General es obligatorio"
                 )
             ));
             
        $this->validate(new Uniqueness(
             array(
-                "field"  => "cod_cg",
+                "field"  => "codigo",
                 "message" => "El Código de la categoría general debe ser único"
             )
         ));

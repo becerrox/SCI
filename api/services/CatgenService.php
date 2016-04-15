@@ -26,10 +26,9 @@ class CatgenService{
             $catgen=new Catgen();
 
             $data=array(
-                "id" => $cgb->id,
                 "codigo" => $cgb->codigo,
                 "descripcion" => $cgb->descripcion,
-                "tipo" => $cgb->tipo
+                "status" => $cgb->status
                 );
 
             if($catgen->save($data)){
@@ -54,7 +53,7 @@ class CatgenService{
                 $data=array(     
                 "codigo" => $cgb->codigo,
                 "descripcion" => $cgb->descripcion,
-                "tipo" => $cgb->tipo
+                "status" => $cgb->status
                 );
 
                 if($modificar->update($data)){

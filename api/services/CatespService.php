@@ -22,15 +22,15 @@ class CatespService{
       }
     }
 
-        public function nuevo($ceb){
-            $catesp=new Catesp();
+        public function nuevo($cce){
+            $catesp=new catesp();
 
             $data=array(
-                "id" => $ceb->id,
-                "codigo" => $ceb->codigo,
-                "descripcion" => $ceb->descripcion,
-                "tipo" => $ceb->tipo,
-                "id_sub_categorias_bienes" => $ceb->id_sub_categorias_bienes                
+                "id" => $cce->id,
+                "codigo" => $cce->codigo,
+                "descripcion" => $cce->descripcion,
+                "status" => $cce->status,
+                "catgen" => $cce->catgen                
                 );
 
             if($catesp->save($data)){
@@ -53,9 +53,9 @@ class CatespService{
                     $pass = $modificar[0]->pass;
                 }
                 $data=array(     
-                "codigo" => $ceb->codigo,
-                "descripcion" => $ceb->descripcion,
-                "tipo" => $ceb->tipo
+                "codigo" => $cce->codigo,
+                "descripcion" => $cce->descripcion,
+                "status" => $cce->status
                 );
 
                 if($modificar->update($data)){
