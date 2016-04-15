@@ -45,13 +45,16 @@
               <input name="descripcion" id="descripción" type="text" class="form-control-2"  onKeyPress="return soloLetras(event)">
               <button id= "btnGuardar" type="button" class="btn" onclick="Validar_cb_3()">Guardar</button>
           </form>
-          <form class="form-group bloque">
+          <form id="formCatesp" class="form-group bloque">
             <h3>Registrar</h3>
+              <label>Sub-Categoría</label> 
+              <select name="subcat" class="form-control-2" id="subcat">
+              </select>            
               <label>Cód.Categoría Específica</label>
-              <input maxlength="10" type="text" class="form-control-2" id="cod_ce" onKeyPress="return soloNumerosCod(event)">
+              <input name="codigo" maxlength="10" type="text" class="form-control-2" id="codigo" onKeyPress="return soloNumerosCod(event)">
               <label>Descripción</label>
-              <input type="text" class="form-control-2" id="desc_ce" onKeyPress="return soloLetras(event)">
-              <button type="button" value="" class="btn" onclick="Validar_cb_3()">Añadir</button>       
+              <input name="descripcion" type="text" class="form-control-2" id="descripcion" onKeyPress="return soloLetras(event)">
+              <button id= "btnGuardar" type="button" class="btn" >Guardar</button>
           </form>
           <form class="form-group bloque col-md-offset-5 col-sm-offset-4 grid-1">
             <h3>Modificar/Eliminar</h3>

@@ -34,6 +34,14 @@ $(document).ready(function()
             registrarCatgen(dataForm);
         });
 
+        $("#btnGuardar").click(function()
+        {
+            frm = $("#formCatesp");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            registrarCatesp(dataForm);
+        });
+
         getCatgenBy("?status=1").then(function(data){
             //Despues del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
@@ -43,5 +51,16 @@ $(document).ready(function()
                 element : $("#catgen")
                 });
         })        
+
+        getSubcatBy("?status=1").then(function(data){
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#subcat")
+                });
+        }) 
+        
 });
 

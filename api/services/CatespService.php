@@ -26,7 +26,6 @@ class CatespService{
             $catesp=new catesp();
 
             $data=array(
-                "id" => $cce->id,
                 "codigo" => $cce->codigo,
                 "descripcion" => $cce->descripcion,
                 "status" => $cce->status,
