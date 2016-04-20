@@ -1,0 +1,25 @@
+body img{
+ width: 100%;
+
+}
+body .bloque{
+	margin:0 50px;
+}
+#bloque2{ margin-top: 20%; }
+#tabla {
+	margin: 10px 0;
+}
+
+#fecha-elab{
+	padding-left:50%;
+}
+.bloque label{ display: inline; }
+.linea p{display: inline;
+margin-left: 10%;}
+
+#pie p{
+	margin-top: 3%;
+	text-align: center;
+	font-size: 9px;
+	color: gray;
+}
