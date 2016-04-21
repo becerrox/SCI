@@ -18,7 +18,7 @@ $(document).ready(function()
              });
         });        
 
-        $("#btnGuardar").click(function()
+        $("#btnGuardarSubcat").click(function()
         {
             frm = $("#formSubcat");
             dataForm = getFormData(frm);
@@ -26,7 +26,7 @@ $(document).ready(function()
             registrarSubcat(dataForm);
         });
 
-        $("#btnGuardar").click(function()
+        $("#btnGuardarCatgen").click(function()
         {
             frm = $("#formCatgen");
             dataForm = getFormData(frm);
@@ -34,7 +34,7 @@ $(document).ready(function()
             registrarCatgen(dataForm);
         });
 
-        $("#btnGuardar").click(function()
+        $("#btnGuardarCatesp").click(function()
         {
             frm = $("#formCatesp");
             dataForm = getFormData(frm);

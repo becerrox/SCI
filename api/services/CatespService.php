@@ -23,13 +23,13 @@ class CatespService{
     }
 
         public function nuevo($cce){
-            $catesp=new catesp();
+            $catesp=new Catesp();
 
             $data=array(
                 "codigo" => $cce->codigo,
                 "descripcion" => $cce->descripcion,
                 "status" => $cce->status,
-                "catgen" => $cce->catgen                
+                "subcat" => $cce->subcat                
                 );
 
             if($catesp->save($data)){

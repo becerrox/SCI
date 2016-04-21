@@ -25,14 +25,14 @@
     <div id="header"></div>
       <section class="inicio">
       <h1>CATÁLOGO DE BIENES</h1>
-        <div id="contenedor">        
+        <div class="target" id="contenedor">        
         <form id=formCatgen class="form-group bloque col-md-offset-3 col-sm-offset-2">
            <h3>Registrar</h3>
             <label>Cód.Categoría General</label>
-            <input name="codigo" id="codigo" maxlength="10" type="text" class="form-control-2" id="codigo" onKeyPress="return soloNumerosCod(event)" data-toggle="tooltip" data-placement="top" title="Debes ingresar un Código General">
+            <input name="codigo" id="codigo" maxlength="10" type="text" class="form-control-2" onKeyPress="return soloNumerosCod(event)" data-toggle="tooltip" data-placement="top" title="Debes ingresar un Código General">
             <label>Descripción</label>
-            <input name="descripcion" id="descripción" type="text" class="form-control-2" id="descripcion" onKeyPress="return soloLetras(event)">
-            <button id= "btnGuardar" type="button" class="btn icon-save" onclick="Validar_cb_3()"></button>
+            <input name="descripcion" id="descripción" type="text" class="form-control-2" onKeyPress="return soloLetras(event)">
+            <button id= "btnGuardarCatgen" type="button" class="btn icon-save" onclick="Validar_cb_3()"></button>
           </form>
           <form id="formSubcat" class="form-group bloque">
             <h3>Registrar</h3>
@@ -43,7 +43,7 @@
               <input name="codigo" id="codigo" maxlength="10" type="text" class="form-control-2" onKeyPress="return soloNumerosCod(event)">
               <label>Descripción</label>
               <input name="descripcion" id="descripción" type="text" class="form-control-2"  onKeyPress="return soloLetras(event)">
-              <button id= "btnGuardar" type="button" class="btn icon-save" onclick="Validar_cb_3()"></button>
+              <button id= "btnGuardarSubcat" type="button" class="btn icon-save" onclick="Validar_cb_3()"></button>
           </form>
           <form id="formCatesp" class="bloque form-group">
             <h3>Registrar</h3>
@@ -54,7 +54,7 @@
               <input name="codigo" maxlength="10" type="text" class="form-control-2" id="codigo" onKeyPress="return soloNumerosCod(event)">
               <label>Descripción</label>
               <input name="descripcion" type="text" class="form-control-2" id="descripcion" onKeyPress="return soloLetras(event)">
-              <button id= "btnGuardar" type="button" class="btn icon-save"></button>
+              <button id= "btnGuardarCatesp" type="button" class="btn icon-save"></button>
           </form>
           <form class="form-group bloque col-md-offset-5 col-sm-offset-4 ">
             <h3>Modificar/Eliminar</h3>
