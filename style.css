@@ -170,6 +170,7 @@ margin: .5em;
 text-align: center;
 }
 #alert{
+
  margin-top: 10px;
  /*width: 350px;
  margin-left: 37%;*/
@@ -204,6 +205,7 @@ width: 120px; height:30px;
   -webkit-border-radius:4px;  
   width:150px;
 }
+#test .sub-menu > li {background: rgba(255,255,225,.5);}
 #contenedor #cedula{
   width:100px;
 }
@@ -322,7 +324,7 @@ padding:0;
   display:block;
   color:#797979;
   border-left:3px solid #ffffff;
-  background:#ffffff;}
+  background:rgba(255, 255, 255, 0.75);}
 
 .menu ul li a:hover, .menu ul li:hover > a{
 background:#FFFFFF;
@@ -381,6 +383,7 @@ width: 100%;
 .grid-50 {
   width: 33.3%;
 }
+
 @media (min-width: 785px) and (max-width: 979px) {
 .grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9{
 width: 33.3%;
@@ -390,9 +393,10 @@ width: 33.3%;
 .menu ul {top:37px;}
 .menu li a{font-size:12px;
 padding:8px;}
+#test span{ font-size: 11px; }
 }
 
-@media (max-width: 725px) {
+@media (max-width: 768px) {
 
 .mainWrap{width:auto;padding:0px 20px;}
 

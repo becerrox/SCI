@@ -1,20 +1,3 @@
-function mostrarConfiguracion(data)
-{
-    $.ajax({
-            type:"GET",
-            processData: false,
-            contentType: 'application/json',
-            url:'api/configuracion',
-            data:JSON.stringify(data),
-            success:function(response){
-                alert("Registrado");
-            },error:function(response){
-                alert("Error");
-            }
-        });
-}
-
-
 function jsonToSelect(obj)
 {
     var selectString="";
