@@ -24,6 +24,15 @@ $(document).ready(function()
             dataForm = getFormData(frm);
             dataForm.status=1;
             registrarUsuario(dataForm);
+/*            registrarUsuario(dataForm).then(function(data){
+
+            jsonToSelect({        
+                data : data,
+                value : "id",
+                alias : "nombre",
+                element : $("#colores")
+                });
+            })*/            
         });
 
         $("#modificarUser").click(function()

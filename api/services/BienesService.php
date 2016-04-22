@@ -25,7 +25,6 @@ class BienesService{
         public function nuevo($bie){
             $bienes=new Bienes();
             $data=array(
-                "id" => $bie->id,
                 "cod_general" => $bie->cod_general,
                 "cod_subcat" => $bie->cod_subcat,
                 "cod_catespf" => $bie->cod_catespf,

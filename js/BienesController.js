@@ -14,6 +14,15 @@ $(document).ready(function()
             var datosUsuario = JSON.parse(sessionStorage.dataUsuario);
             $("#nombreUsuario").html(datosUsuario.data_personal.nombres + " " + datosUsuario.data_personal.apellidos);    
 
+            dataUsuario = JSON.parse(sessionStorage.dataUsuario);
+
+
+                    if (dataUsuario.nivel==1) 
+                    {
+                                $("#superuser").hide(); 
+                                $(".superuser").hide();                     
+                    }
+
             $("#cerrarSesionButton").click(function(){
                 sessionStorage.removeItem("dataUsuario");
                 location.href="index.html";    
@@ -136,5 +145,35 @@ $(document).ready(function()
                 });
             });
         }); 
+
+        getCatgenBy("?status=1").then(function(data){
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#catgen")
+                });
+        })        
+
+        getSubcatBy("?status=1").then(function(data){
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#subcat")
+                });
+        })
+
+        getCatespBy("?status=1").then(function(data){
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#catesp")
+                });
+        })                        
 });
 
