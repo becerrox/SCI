@@ -7,7 +7,7 @@ $di->set('db', function(){
     return new \Phalcon\Db\Adapter\Pdo\Postgresql(array(
         "host" => "localhost",
         "username" => "postgres",
-        "password" => "12345",
+        "password" => "123456",
         "dbname" => "sci2",
         'schema' => "public"
     ));
