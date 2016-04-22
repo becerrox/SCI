@@ -1,6 +1,6 @@
 <?php
 
-/* Entidad Subcategoría de bienes */
+/* Entidad Cateoría Específica */
 
 use Phalcon\Mvc\Model,
     Phalcon\Mvc\Model\Message,
@@ -10,8 +10,9 @@ use Phalcon\Mvc\Model,
     Phalcon\Mvc\Model\Behavior\SoftDelete;
 
 
-class Subcat extends Model{
+class catesp extends Model{
     public function initialize(){
+      $this->setSource("catesp");
       $this->addBehavior(
             new SoftDelete(
                 array(
@@ -28,14 +29,14 @@ class Subcat extends Model{
 
         $this->validate(new PresenceOf(
             array(
-                "field" => "cod_ce",
+                "field" => "codigo",
                 "message" => "El campo categoría específica es obligatorio"
                 )
             ));
             
        $this->validate(new Uniqueness(
             array(
-                "field"  => "cod_ce",
+                "field"  => "codigo",
                 "message" => "El Código de la categoría específica debe ser único"
             )
         ));

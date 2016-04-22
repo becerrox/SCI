@@ -184,6 +184,90 @@ function modificarBien(data,id)
 	 });	
 }
 
+function registrarCatgen(data)
+{
+	$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/catgen',
+			data:JSON.stringify(data),
+			success:function(response){
+				swal({
+			  title: 'Registrado',
+			  text: 'Se ha registrado el código',
+			  type: 'success',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+			})
+			},error:function(response){
+				swal({
+			  title: 'Error',
+			  text: 'No se pudo registrar',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+			})
+			}
+		});
+}
+
+function registrarSubcat(data)
+{
+	$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/subcat',
+			data:JSON.stringify(data),
+			success:function(response){
+				swal({
+			  title: 'Registrado',
+			  text: 'Se ha registrado el código',
+			  type: 'success',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+			})
+			},error:function(response){
+				swal({
+			  title: 'Error',
+			  text: 'No se pudo registrar',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+			})
+			}
+		});
+}
+
+function registrarCatesp(data)
+{
+	$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/catesp',
+			data:JSON.stringify(data),
+			success:function(response){
+				swal({
+			  title: 'Registrado',
+			  text: 'Se ha registrado el código',
+			  type: 'success',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+			})
+			},error:function(response){
+				swal({
+			  title: 'Error',
+			  text: 'No se pudo registrar',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+			})
+			}
+		});
+}
+
 //Servicio para traer la data de configuracion, con filtro
 
 function getConfiguracionBy(filtros)
@@ -193,6 +277,52 @@ function getConfiguracionBy(filtros)
 				type:"GET",
 	    		contentType: 'application/json',
 				url:'api/configuracion/'+filtros,
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
+			  title: 'Error',
+			  text: 'El registro no existe o hay un error',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function getCatgenBy(filtros)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"GET",
+	    		contentType: 'application/json',
+				url:'api/catgen/'+filtros,
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
+			  title: 'Error',
+			  text: 'El registro no existe o hay un error',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function getSubcatBy(filtros)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"GET",
+	    		contentType: 'application/json',
+				url:'api/subcat/'+filtros,
 				success:function(response){
 					resolver(response);
 				},error:function(response){

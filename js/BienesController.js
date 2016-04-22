@@ -95,7 +95,7 @@ $(document).ready(function()
             }
             jsonToSelect({        
                  data : data,
-                 value : "id",
+                 value : "nombreApellido",
                  alias : "nombreApellido",
                  element : $("#responsable_pa")
                  });
@@ -107,7 +107,7 @@ $(document).ready(function()
             }
             jsonToSelect({        
                  data : data,
-                 value : "id",
+                 value : "nombreApellido",
                  alias : "nombreApellido",
                  element : $("#responsable_ad")
                  });
@@ -119,7 +119,7 @@ $(document).ready(function()
             }
             jsonToSelect({        
                  data : data,
-                 value : "id",
+                 value : "nombreApellido",
                  alias : "nombreApellido",
                  element : $("#responsable_uso")
                  });

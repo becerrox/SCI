@@ -18,12 +18,49 @@ $(document).ready(function()
              });
         });        
 
-        $("#btnGuardar").click(function()
+        $("#btnGuardarSubcat").click(function()
         {
-            frm = $("#formBienes");
+            frm = $("#formSubcat");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarBienes(dataForm);
+            registrarSubcat(dataForm);
         });
+
+        $("#btnGuardarCatgen").click(function()
+        {
+            frm = $("#formCatgen");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            registrarCatgen(dataForm);
+        });
+
+        $("#btnGuardarCatesp").click(function()
+        {
+            frm = $("#formCatesp");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            registrarCatesp(dataForm);
+        });
+
+        getCatgenBy("?status=1").then(function(data){
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#catgen")
+                });
+        })        
+
+        getSubcatBy("?status=1").then(function(data){
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#subcat")
+                });
+        }) 
+        
 });
 

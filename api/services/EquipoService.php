@@ -64,7 +64,7 @@ class EquipoService{
                 "status" => $eq->status,
                 "responsable" => $eq->responsable,
                 "caracteristicas" => $eq->caracteristicas,
-                "fecha_modif" => $eq->fecha_modif,
+                "fecha_modif" => date("Y-m-d h:i:s"),
                 "unidad_trabajo" => $eq->unidad_trabajo
                 );
                 if($modificar->update($data)){

@@ -62,7 +62,7 @@ class PersonalService{
                     "telf_casa" => $pe->telf_casa,
                     "correo" => $pe->correo,
                     "f_nac" => $pe->f_nac,
-                    "fecha_modif" => $pe->fecha_modif,
+                    "fecha_modif" => date("Y-m-d h:i:s"),
                     "usuario_modif" => 0,
                     "status" => $pe->status,
                     "unid_admin" => $pe->unid_admin,

@@ -118,7 +118,9 @@ $app->delete("/personal/{id:[0-9]+}",function($id) use($app){
 $catgenService = new CatgenService;
 
 $app->get("/catgen",function() use ($app,$catgenService) {
-    $data = $catgenService->listar();
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $catgenService->listar($query);
     response($app,$data['mensaje'],$data['status']);
 });
 
@@ -126,12 +128,6 @@ $app->post("/catgen",function() use ($app,$catgenService){
     $catgen = json_decode($app->request->getRawBody());
     $data = $catgenService->nuevo($catgen);
     response($app,$data['mensaje'],$data['status']);
-});
-
-$app->post("/catgen/token",function() use ($app,$catgenService) {
-    $catgen = json_decode($app->request->getRawBody());
-    $data = $catgenService->solicitarToken($catgen);
-    response($app,$data,$data['status']);
 });
 
 $app->put("/catgen/{id:[0-9]+}",function($id) use ($app,$catgenService) {
@@ -149,7 +145,9 @@ $app->delete("/catgen/{id:[0-9]+}",function($id) use($app){
 $subcatService = new SubcatService;
 
 $app->get("/subcat",function() use ($app,$subcatService) {
-    $data = $subcatService->listar();
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $subcatService->listar($query);
     response($app,$data['mensaje'],$data['status']);
 });
 
@@ -157,12 +155,6 @@ $app->post("/subcat",function() use ($app,$subcatService){
     $subcat = json_decode($app->request->getRawBody());
     $data = $subcatService->nuevo($subcat);
     response($app,$data['mensaje'],$data['status']);
-});
-
-$app->post("/subcat/token",function() use ($app,$subcatService) {
-    $subcat = json_decode($app->request->getRawBody());
-    $data = $subcatService->solicitarToken($subcat);
-    response($app,$data,$data['status']);
 });
 
 $app->put("/subcat/{id:[0-9]+}",function($id) use ($app,$subcatService) {
@@ -180,7 +172,9 @@ $app->delete("/subcat/{id:[0-9]+}",function($id) use($app){
 $catespService = new CatespService;
 
 $app->get("/catesp",function() use ($app,$catespService) {
-    $data = $catespService->listar();
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $catespService->listar($query);
     response($app,$data['mensaje'],$data['status']);
 });
 
@@ -188,12 +182,6 @@ $app->post("/catesp",function() use ($app,$catespService){
     $catesp = json_decode($app->request->getRawBody());
     $data = $catespService->nuevo($catesp);
     response($app,$data['mensaje'],$data['status']);
-});
-
-$app->post("/catesp/token",function() use ($app,$catespService) {
-    $catesp = json_decode($app->request->getRawBody());
-    $data = $catespService->solicitarToken($catesp);
-    response($app,$data,$data['status']);
 });
 
 $app->put("/catesp/{id:[0-9]+}",function($id) use ($app,$catespService) {

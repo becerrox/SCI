@@ -2,35 +2,34 @@
 
 class SubcatService{
 
-    public function listar(){
+    public function listar($query){
 
-      $subcat=Subcat::find();
+          if(empty($query))
+             $subcat=Subcat::find();
+          else
+          {
+            $subcat = Subcat::find(
+                array(
+                    arrayToSQLQuery($query),
+                    "bind" => $query)
+                );
+          }
 
       if(count($subcat->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de configuración de bienes");
+            return array("status" => 404, "mensaje" => "No hay registros de subcat");
       }else{
-          foreach($subcat as $scb){
-               $subcat[]=array(
-                "id" => $scb->id,
-                "codigo" => $scb->codigo,
-                "descripcion" => $scb->descripcion,
-                "tipo" => $scb->tipo,
-                "id_categoria_general_bienes" => $scb->id_categoria_general_bienes
-                );
-            }
+            return array("status" => 200, "mensaje" =>$subcat->toArray());
       }
-        return array("status" => 200, "mensaje" =>$users);
     }
 
         public function nuevo($scb){
             $subcat=new Subcat();
 
             $data=array(
-                "id" => $scb->id,
                 "codigo" => $scb->codigo,
                 "descripcion" => $scb->descripcion,
-                "tipo" => $scb->tipo,
-                "id_categoria_general_bienes" => $scb->id_categoria_general_bienes                
+                "status" => $scb->status,
+                "catgen" => $scb->catgen                
                 );
 
             if($subcat->save($data)){
@@ -55,7 +54,7 @@ class SubcatService{
                 $data=array(     
                 "codigo" => $scb->codigo,
                 "descripcion" => $scb->descripcion,
-                "tipo" => $scb->tipo
+                "status" => $scb->status
                 );
 
                 if($modificar->update($data)){
