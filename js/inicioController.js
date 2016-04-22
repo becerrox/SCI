@@ -15,16 +15,13 @@ $(document).ready(function()
 
                     if (dataUsuario.nivel==1) 
                     {
-                                $("#superuser").hide();         
+                                $("#superuser").hide(); 
+                                $(".superuser").hide();                     
                     }
-                    
             $("#cerrarSesionButton").click(function(){
                 sessionStorage.removeItem("dataUsuario");
                 location.href="index.html";    
              });
         });        
                     dataUsuario = JSON.parse(sessionStorage.dataUsuario);
-
-
 });
-

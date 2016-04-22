@@ -38,6 +38,7 @@ $(document).ready(function(){
 
 function registrarEquipo(data)
 {
+return new Promise(function(resolver, rechazar) {	
 	$.ajax({
 			type:"POST",
 			processData: false,
@@ -45,17 +46,25 @@ function registrarEquipo(data)
 			url:'api/equipos',
 			data:JSON.stringify(data),
 			success:function(response){
-				swal("Registrado", "", "success");
+				swal({
+			  title: 'Registrado',
+			  text: 'Se ha registrado el equipo',
+			  type: 'success',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+			})
 			},error:function(response){
 				swal({
-			  title: 'No se registró el Equipo',
-			  text: 'Verifique los campos ingresados',
+			  title: 'Error',
+			  text: 'No se pudo registrar',
 			  type: 'error',
 			  confirmButtonText: 'Aceptar',
 			  confirmButtonColor: '#D85852'
 })
-			}
-		});
+					rechazar(response);
+				}
+			});
+	 });	
 }
 
 function modificarEquipos(data,id)
@@ -85,6 +94,7 @@ function modificarEquipos(data,id)
 
 function registrarUsuario(data)
 {
+return new Promise(function(resolver, rechazar) {	
 	$.ajax({
 			type:"POST",
 			processData: false,
@@ -92,7 +102,13 @@ function registrarUsuario(data)
 			url:'api/usuarios',
 			data:JSON.stringify(data),
 			success:function(response){
-				swal("Registrado", "", "success");
+				swal({
+			  title: 'Registrado',
+			  text: 'Se ha registrado el usuario',
+			  type: 'success',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+			})
 			},error:function(response){
 				swal({
 			  title: 'Error',
@@ -101,8 +117,10 @@ function registrarUsuario(data)
 			  confirmButtonText: 'Aceptar',
 			  confirmButtonColor: '#D85852'
 })
-			}
-		});
+					rechazar(response);
+				}
+			});
+	 });	
 }
 
 function modificarUsuario(data,id)
@@ -133,6 +151,7 @@ function modificarUsuario(data,id)
 
 function registrarBienes(data)
 {
+return new Promise(function(resolver, rechazar) {	
 	$.ajax({
 			type:"POST",
 			processData: false,
@@ -154,9 +173,11 @@ function registrarBienes(data)
 			  type: 'error',
 			  confirmButtonText: 'Aceptar',
 			  confirmButtonColor: '#D85852'
-			})
-			}
-		});
+})
+					rechazar(response);
+				}
+			});
+	 });	
 }
 
 function modificarBien(data,id)
@@ -186,6 +207,7 @@ function modificarBien(data,id)
 
 function registrarCatgen(data)
 {
+return new Promise(function(resolver, rechazar) {	
 	$.ajax({
 			type:"POST",
 			processData: false,
@@ -207,13 +229,16 @@ function registrarCatgen(data)
 			  type: 'error',
 			  confirmButtonText: 'Aceptar',
 			  confirmButtonColor: '#D85852'
-			})
-			}
-		});
+})
+					rechazar(response);
+				}
+			});
+	 });	
 }
 
 function registrarSubcat(data)
 {
+return new Promise(function(resolver, rechazar) {	
 	$.ajax({
 			type:"POST",
 			processData: false,
@@ -235,13 +260,16 @@ function registrarSubcat(data)
 			  type: 'error',
 			  confirmButtonText: 'Aceptar',
 			  confirmButtonColor: '#D85852'
-			})
-			}
-		});
+})
+					rechazar(response);
+				}
+			});
+	 });	
 }
 
 function registrarCatesp(data)
 {
+return new Promise(function(resolver, rechazar) {	
 	$.ajax({
 			type:"POST",
 			processData: false,
@@ -263,9 +291,11 @@ function registrarCatesp(data)
 			  type: 'error',
 			  confirmButtonText: 'Aceptar',
 			  confirmButtonColor: '#D85852'
-			})
-			}
-		});
+})
+					rechazar(response);
+				}
+			});
+	 });	
 }
 
 //Servicio para traer la data de configuracion, con filtro
@@ -323,6 +353,29 @@ function getSubcatBy(filtros)
 				type:"GET",
 	    		contentType: 'application/json',
 				url:'api/subcat/'+filtros,
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
+			  title: 'Error',
+			  text: 'El registro no existe o hay un error',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function getCatespBy(filtros)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"GET",
+	    		contentType: 'application/json',
+				url:'api/catesp/'+filtros,
 				success:function(response){
 					resolver(response);
 				},error:function(response){
