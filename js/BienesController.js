@@ -45,6 +45,18 @@ $(document).ready(function()
             modificarBien(dataForm,id_bien_editar);
         });
 
+        $("#buscarBien").click(function(){
+            idBien = $
+            numero = $("#buscar").val();
+            getBienesBy("?num_bien="+numero).then(function(data){
+                id_bien_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formBienes"
+                });
+            });
+        }); 
+
         /* Cargando datas de la api a los selects  */
 
         getConfiguracionBy("?tipo=Color").then(function(data){
@@ -133,18 +145,6 @@ $(document).ready(function()
                  element : $("#responsable_uso")
                  });
          })          
-
-        $("#buscarBien").click(function(){
-            idBien = $
-            numero = $("#buscar").val();
-            getBienesBy("?num_bien="+numero).then(function(data){
-                id_bien_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formBienes"
-                });
-            });
-        }); 
 
         getCatgenBy("?status=1").then(function(data){
             //Despues del retorno del promise, se cargan en el select con jsonToSelect

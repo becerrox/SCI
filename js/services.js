@@ -46,6 +46,7 @@ return new Promise(function(resolver, rechazar) {
 			url:'api/equipos',
 			data:JSON.stringify(data),
 			success:function(response){
+				resolver(response);
 				swal({
 			  title: 'Registrado',
 			  text: 'Se ha registrado el equipo',
@@ -102,6 +103,7 @@ return new Promise(function(resolver, rechazar) {
 			url:'api/usuarios',
 			data:JSON.stringify(data),
 			success:function(response){
+				resolver(response);
 				swal({
 			  title: 'Registrado',
 			  text: 'Se ha registrado el usuario',
@@ -159,6 +161,7 @@ return new Promise(function(resolver, rechazar) {
 			url:'api/bienes',
 			data:JSON.stringify(data),
 			success:function(response){
+				resolver(response);
 				swal({
 			  title: 'Registrado',
 			  text: 'Se ha registrado el bien',
@@ -215,6 +218,7 @@ return new Promise(function(resolver, rechazar) {
 			url:'api/catgen',
 			data:JSON.stringify(data),
 			success:function(response){
+				resolver(response);
 				swal({
 			  title: 'Registrado',
 			  text: 'Se ha registrado el código',
@@ -246,6 +250,7 @@ return new Promise(function(resolver, rechazar) {
 			url:'api/subcat',
 			data:JSON.stringify(data),
 			success:function(response){
+				resolver(response);
 				swal({
 			  title: 'Registrado',
 			  text: 'Se ha registrado el código',
