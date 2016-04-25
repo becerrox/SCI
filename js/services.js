@@ -277,6 +277,7 @@ return new Promise(function(resolver, rechazar) {
 			url:'api/catesp',
 			data:JSON.stringify(data),
 			success:function(response){
+				resolver(response);
 				swal({
 			  title: 'Registrado',
 			  text: 'Se ha registrado el código',
@@ -284,6 +285,7 @@ return new Promise(function(resolver, rechazar) {
 			  confirmButtonText: 'Aceptar',
 			  confirmButtonColor: '#D85852'
 			})
+
 			},error:function(response){
 				swal({
 			  title: 'Error',
