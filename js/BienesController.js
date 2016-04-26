@@ -48,7 +48,7 @@ $(document).ready(function()
         $("#buscarBien").click(function(){
             idBien = $
             numero = $("#buscar").val();
-            getBienesBy("?num_bien="+numero).then(function(data){
+            getBienesBy("?serial="+numero).then(function(data){
                 id_bien_editar = data[0].id;
                 jsonToForm({
                     data : data[0],

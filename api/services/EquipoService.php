@@ -33,7 +33,8 @@ class EquipoService{
                 "responsable" => $eq->responsable,
                 "caracteristicas" => $eq->caracteristicas,
                 "fecha_modif" => date("Y-m-d h:i:s"),
-                "unidad_trabajo" => $eq->unidad_trabajo
+                "unidad_trabajo" => $eq->unidad_trabajo,
+                "observaciones" => $eq->observaciones
             );
             if($equipo->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -65,7 +66,8 @@ class EquipoService{
                 "responsable" => $eq->responsable,
                 "caracteristicas" => $eq->caracteristicas,
                 "fecha_modif" => date("Y-m-d h:i:s"),
-                "unidad_trabajo" => $eq->unidad_trabajo
+                "unidad_trabajo" => $eq->unidad_trabajo,
+                "observaciones" => $eq->observaciones
                 );
                 if($modificar->update($data)){
                         unset($data['pass']);
