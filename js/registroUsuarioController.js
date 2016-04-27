@@ -23,7 +23,7 @@ $(document).ready(function()
             frm = $("#formUsuario");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarUsuario(dataForm).then(function(data){usuario.id_usuario = data.id
+            registrarUsuario(dataForm).then(function(data){usuario.id_usuario = data.id;
             });          
         });
 
