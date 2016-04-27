@@ -305,6 +305,39 @@ return new Promise(function(resolver, rechazar) {
 	 });	
 }
 
+function registrarConfiguracion(data)
+{
+return new Promise(function(resolver, rechazar) {	
+	$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/configuracion',
+			data:JSON.stringify(data),
+			success:function(response){
+				resolver(response);
+				swal({
+			  title: 'Registrado',
+			  text: 'Se ha registrado la configuracion',
+			  type: 'success',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+			})
+
+			},error:function(response){
+				swal({
+			  title: 'Error',
+			  text: 'No se pudo registrar',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
 //Servicio para traer la data de configuracion, con filtro
 
 function getConfiguracionBy(filtros)
@@ -383,6 +416,29 @@ function getCatespBy(filtros)
 				type:"GET",
 	    		contentType: 'application/json',
 				url:'api/catesp/'+filtros,
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
+			  title: 'Error',
+			  text: 'El registro no existe o hay un error',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function getUsuariosBy(filtros)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"GET",
+	    		contentType: 'application/json',
+				url:'api/usuarios/'+filtros,
 				success:function(response){
 					resolver(response);
 				},error:function(response){

@@ -16,8 +16,9 @@
     <link rel="stylesheet" href="style.css" type="text/css" media="screen">
    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
    <script src="js/jquery.min.js"></script>
+   <script src="js/sweetalert.min.js" type="text/javascript"></script>
    <script src="js/tooltips.js"></script>
-   <script src="js/registroCatalogoController.js" type="text/javascript"></script>
+   <script src="js/catalogoConfiguracionesController.js" type="text/javascript"></script>
 
   </head>
   <!--                    CUERPO PRINCIPAL             -->
@@ -39,20 +40,22 @@
                   <option value="7">Tipos de Componentes</option>
                 </select>           
               <label>Descripción</label>
-              <input type="text" name="descrip" id="descrip" class="form-control-2" data-toggle="tooltip" title="Nombre del item a agregar"></input>              
+              <input type="text" name="descripcion" id="descripcion" class="form-control-2" data-toggle="tooltip" title="Nombre del item a agregar"></input>  
+              <label>Código</label>
+              <input type="text" name="codigo" id="codigo" class="form-control-2" data-toggle="tooltip" title="Código del Item"></input>                            
           </form> <!--FIN Registro--> 
           <form class="form-group bloque grid-1">
             <h3>Modificar / Eliminar</h3>
             <label>Buscar</label>
             <input type="text" class="form-control-2" id="buscar" data-toggle="tooltip" title="Buscar item a Modificar o Eliminar ">
             <button type="button" class="btn icon-search"></button>
-          </form><!--FIN Modificación-->
         <div class="form-group bloque col-md-6 col-xs-12 col-md-offset-3">
           <button id= "btnGuardar" type="button" class="btn" onclick="Validar_cat_con()">Guardar</button>
           <button id= "btnModificar" type="button" class="btn" onclick="">Modificar</button>
           <button id= "btnEliminar" type="button" class="btn" onclick="">Eliminar</button>
           <div id="alert" role="alert"></div>
-    </div>    
+    </div>            
+          </form><!--FIN Modificación-->    
           
          </div><!--FIN CONTENEDOR-->        
       </section>

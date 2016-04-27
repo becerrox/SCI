@@ -22,7 +22,7 @@ $(document).ready(function()
             frm = $("#formCatConfig");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarBienes(dataForm);
+            registrarConfiguracion(dataForm);
         });
 });
 

@@ -30,7 +30,9 @@ $app->get('/', function () {
 $usuarioService = new UsuariosService();
 
 $app->get("/usuarios",function() use ($app,$usuarioService) {
-    $data = $usuarioService->listar();
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $usuarioService->listar($query);
     response($app,$data['mensaje'],$data['status']);
 });
 
@@ -233,14 +235,14 @@ $app->get("/configuracion",function() use ($app,$configuracionService) {
 });
 
 $app->post("/configuracion",function() use ($app,$configuracionService){
-    $configuracionService = json_decode($app->request->getRawBody());
-    $data = $configuracionService->nuevo($configuracionService);
+    $configuracion = json_decode($app->request->getRawBody());
+    $data = $configuracionService->nuevo($configuracion);
     response($app,$data['mensaje'],$data['status']);
 });
 
 $app->put("/configuracion/{id:[0-9]+}",function($id) use ($app,$configuracionService) {
-    $configuracionService = json_decode($app->request->getRawBody());
-    $data = $configuracionService->modificar($id,$configuracionService);
+    $configuracion = json_decode($app->request->getRawBody());
+    $data = $configuracionService->modificar($id,$configuracion);
     response($app,$data['mensaje'],$data['status']);
 });
 
