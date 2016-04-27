@@ -1,5 +1,11 @@
 $(document).ready(function(){
-    $("#contenedor input").tooltip({
+    $(".inicio input").tooltip({
+        title : ''
+    });
+});
+
+$(document).ready(function(){
+    $(".inicio textarea").tooltip({
         title : ''
     });
 });

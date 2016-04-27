@@ -7,6 +7,7 @@ var fechaActual= año+'-'+mes+'-'+dia;
  document.getElementById("reloj").innerHTML = año+'-'+mes+'-'+dia;*/
 
 //Validacion Inicio Sesion, para campos vacios
+document.getElementById("celular").style.visibility = "hidden";
 function valida_login(){
 
     var nombre = document.getElementById("username").value;
@@ -30,10 +31,17 @@ function valida_login(){
       
         }
  }
- function calcularEdad()
-
+ function menuOculto()
 {
+   var equipo = document.getElementById("descripcion").value;
+   if((equipo=="Celular") || (equipo=="celular")) {
 
+     document.getElementById("celular").style.visibility = "visible";
+   }
+   else{
+    document.getElementById("celular").style.visibility = "hidden";
+
+   }
 }
 
  // VALIDACIÓN SOLO LETRAS

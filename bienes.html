@@ -34,11 +34,11 @@
   <section class="inicio">
         <h1>Registro de Bienes</h1> 
    <form id="formBienes">
-   <div id="contenedor">
+    <div id="contenedor">
 
       <div class="form-group grid-1 bloque col-sm-5">
           <label>Descripción:</label>
-          <input name="descripcion" class="form-control-2" id="descripcion">              
+          <input name="descripcion" class="form-control-2" id="descripcion" data-placement="top" title="Nombre del Bien">              
           <label>Cód.Categoría General</label>
           <select name="cod_general" class="form-control-2" id="catgen">
           </select>
@@ -97,9 +97,9 @@
       </div>     
       <div class="form-group grid-7" id="fechas">
           <label>Periodo del:</label>
-          <input maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="per_ini" id="fecha2">  
+          <input maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="per_ini" id="fecha2" data-placement="top" title="Indique fecha de inicio">  
           <label>Al:</label>
-          <input maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="per_culm" id="fecha4">                  
+          <input maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="per_culm" id="fecha4" data-placement="top" title="Indique fecha de culminación">                  
       </div>     
     <div class="form-group bloque col-md-6 col-xs-12 col-md-offset-3">
           <button id= "btnGuardar" type="button" class="btn" onclick="Validar_rb()">Guardar</button>
