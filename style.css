@@ -1,6 +1,5 @@
 /* ---------- Fuente de Google---------- */
 
-
 /* Reinicio de Estilos*/
 *, html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, label, fieldset, input, p, blockquote, th, td { margin:0; padding:0 }
 table { border-collapse:collapse; border-spacing:0 }
@@ -125,6 +124,9 @@ overflow: auto;
   display: flex; 
   flex-wrap: wrap; /*   Most Fluid */
             }
+section > div > div{
+  margin-top: 65px; 
+}
 #contenedor #alert {
   width: auto;
   margin-left: 0; 
@@ -435,7 +437,6 @@ width:100%;}
 /*width: 62px;*/  
 margin: 0 45px 0 45px;
 display:block;
-margin-left:100px;
 }
 #contenedor{
   width: 625px;
