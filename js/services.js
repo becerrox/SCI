@@ -150,6 +150,37 @@ function modificarUsuario(data,id)
 	 });	
 }
 
+function registrarpersonal(data)
+{
+return new Promise(function(resolver, rechazar) {	
+	$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/personal',
+			data:JSON.stringify(data),
+			success:function(response){
+				resolver(response);
+				swal({
+			  title: 'Registrado',
+			  text: 'Se ha registrado el personal',
+			  type: 'success',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+			})
+			},error:function(response){
+				swal({
+			  title: 'Error',
+			  text: 'No se pudo registrar',
+			  type: 'error',
+			  confirmButtonText: 'Aceptar',
+			  confirmButtonColor: '#D85852'
+})
+					rechazar(response);
+				}
+			});
+	 });	
+}
 
 function registrarBienes(data)
 {

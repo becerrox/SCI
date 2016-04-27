@@ -23,7 +23,8 @@ $(document).ready(function()
             frm = $("#formUsuario");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarUsuario(dataForm);          
+            registrarUsuario(dataForm).then(function(data){usuario.id_usuario = data.id
+            });          
         });
 
         $("#modificarUser").click(function()
@@ -39,22 +40,8 @@ $(document).ready(function()
             frm = $("#formPersonal");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarUsuario(dataForm);
+            registrarPersonal(dataForm);
         });       
-
-        getUsuariosBy('').then(function(data){
-            for(usuarios in data){
-                data[usuarios].nombreApellido = data[usuarios].nombres + " "+data[personal].apellidos;
-            }
-/*            jsonToSelect({        
-                 data : data,
-                 value : "nombreApellido",
-                 alias : "nombreApellido",
-                 element : $("#responsable_pa")
-                 });*/
-         })    
-
-        // ($("#inputID").val()==jsonTraido.valorComparar)
 
 });
 
