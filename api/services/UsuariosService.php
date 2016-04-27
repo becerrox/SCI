@@ -25,8 +25,9 @@ class UsuariosService{
                     "primer_inicio" => 0
             );
             if($usuario->save($data)){
-                    unset($data['pass']);
-                    return array("status" => 201, "mensaje" => $data);
+                    $return = ($usuario->toArray());
+                    unset($return['pass']);
+                    return array("status" => 201, "mensaje" => $return);
             }else{
                 $errors = array();
                 foreach ($usuario->getMessages() as $message) {
