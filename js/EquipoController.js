@@ -7,6 +7,8 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
+        var id_equipo_editar = "";
+
         $("#header").load("header.html",function()
         {
             var datosUsuario = JSON.parse(sessionStorage.dataUsuario);
@@ -31,8 +33,20 @@ $(document).ready(function()
             frm = $("#formEquipo");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            modificarEquipo(dataForm);
-        });        
+            modificarEquipos(dataForm,id_equipo_editar);
+        });     
+
+        $("#buscarEquipo").click(function(){
+            idEquipo = $
+            numero = $("#buscar").val();
+            getEquiposBy("?serial="+numero).then(function(data){
+                id_equipo_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formEquipo"
+                });
+            });
+        });            
 
         //Unidad de Trabajo
         getConfiguracionBy("?tipo=Color").then(function(data){
@@ -87,7 +101,7 @@ $(document).ready(function()
                  });
          })   
 
-        $("#buscarEquipo").click(function(){
+/*        $("#buscarEquipo").click(function(){
             numero = $("#buscar").val();
             getEquiposBy("?serial="+numero).then(function(data){
                 jsonToForm({
@@ -95,6 +109,6 @@ $(document).ready(function()
                     form : "#formEquipo"
                 });
             });
-        }); 
+        }); */
 });
 

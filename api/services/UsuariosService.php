@@ -2,14 +2,23 @@
 
 class UsuariosService{
     
-    public function listar(){
+    public function listar($query){
 
-      $personal=Usuario::find("status=1");
+          if(empty($query))
+             $usuario=Usuario::find();
+          else
+          {
+            $usuario=Usuario::find(
+                array(
+                    arrayToSQLQuery($query),
+                    "bind" => $query)
+                );
+          }
 
-      if(count($personal->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de personal");
+      if(count($usuario->toArray())==0){
+            return array("status" => 404, "mensaje" => "No hay registros de usuario");
       }else{
-            return array("status" => 200, "mensaje" =>$personal->toArray());
+            return array("status" => 200, "mensaje" =>$usuario->toArray());
       }
     }
 
@@ -22,7 +31,8 @@ class UsuariosService{
                     "nivel" => $us->nivel,
                     "fecha_creacion" => date("Y-m-d h:i:s"),
                     "status" => 1,
-                    "primer_inicio" => 0
+                    "primer_inicio" => 0,
+                    "fecha_modif" => date("Y-m-d h:i:s")
             );
             if($usuario->save($data)){
                     $return = ($usuario->toArray());
@@ -49,13 +59,12 @@ class UsuariosService{
                     "usuario" => $us->usuario,
                     "pass" => sha1($us->pass),
                     "nivel" => $us->nivel,
-                    "fecha_modif" => date("Y-m-d h:i:s"),
                     "status" => $us->status,
-                    "primer_inicio" => $us->primer_inicio
+                    "primer_inicio" => $us->primer_inicio,
+                    "fecha_modif" => date("Y-m-d h:i:s")
                 );
-
                 if($modificar->update($data)){
-                        unset($data['pass']);                    
+                                            
                         return array("status" => 200, "mensaje" => $data);                    
                 }
                 else{

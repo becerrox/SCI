@@ -16,7 +16,7 @@ class SubcatService{
           }
 
       if(count($subcat->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de subcat");
+            return array("status" => 404, "mensaje" => "No hay registros de Sub-Categorías");
       }else{
             return array("status" => 200, "mensaje" =>$subcat->toArray());
       }

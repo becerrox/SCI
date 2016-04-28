@@ -16,7 +16,7 @@ class CatgenService{
           }
 
       if(count($catgen->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de catgen");
+            return array("status" => 404, "mensaje" => "No hay registros de Categoría General");
       }else{
             return array("status" => 200, "mensaje" =>$catgen->toArray());
       }

@@ -66,13 +66,15 @@
           <select name="responsable" class="form-control-2" id="responsable">
           </select>           
           <label>Características:</label>
-          <textarea type="text" class="form-control-2" name="caract" id="caract" data-placement="top" title="Por tipo de Equipo"></textarea>
+          <textarea type="text" class="form-control-2" name="caracteristicas" id="caracteristicas" data-placement="top" title="Por tipo de Equipo"></textarea>
           <label>Observaciones:</label>
           <textarea  type="text" class="form-control-2" name="observaciones" id="observaciones" data-placement="top" title="Información extra que desee agregar"></textarea>
        </div>
         <div id="celular" class="form-group col-md-12 col-xs-6">
           <label>SIMCARD</label>
           <input name="serialSim" class="form-control-2" id="serialSim">
+          <label>Línea</label> 
+          <input  name="numeroCelular" title="Número de celular asignado" class="form-control-2" id="numeroCelular">          
           <label>Accesorios</label>
           <input  name="accesorios" class="form-control-2" id="accesorios">              
           <label>Plan</label> 
@@ -86,8 +88,8 @@
           <div id="alert" role="alert"></div>
     </div>
     </form>
-    <div class="row">
-     <form class=" form-group col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+    <div class="row aux">
+     <form class="aux form-group col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
       <div class="">
           <label>Buscar</label>
           <input type="text" class="form-control-2" id="buscar" data-placement="top" title="Ingrese serial del equipo">

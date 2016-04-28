@@ -34,7 +34,11 @@ class EquipoService{
                 "caracteristicas" => $eq->caracteristicas,
                 "fecha_modif" => date("Y-m-d h:i:s"),
                 "unidad_trabajo" => $eq->unidad_trabajo,
-                "observaciones" => $eq->observaciones
+                "observaciones" => $eq->observaciones,
+                "serialSim" => $eq->serialSim,
+                "accesorios" => $eq->accesorios,
+                "planCelular" => $eq->planCelular,
+                "numeroCelular" => $eq->numeroCelular
             );
             if($equipo->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -67,7 +71,11 @@ class EquipoService{
                 "caracteristicas" => $eq->caracteristicas,
                 "fecha_modif" => date("Y-m-d h:i:s"),
                 "unidad_trabajo" => $eq->unidad_trabajo,
-                "observaciones" => $eq->observaciones
+                "observaciones" => $eq->observaciones,
+                "serialSim" => $eq->serialSim,
+                "accesorios" => $eq->accesorios,
+                "planCelular" => $eq->planCelular,
+                "numeroCelular" => $eq->numeroCelular
                 );
                 if($modificar->update($data)){
                         unset($data['pass']);

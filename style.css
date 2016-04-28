@@ -106,6 +106,10 @@ overflow: auto;
   width:100%; 
   
 }
+.aux{
+  height: 10px;
+
+}
 #buscarEquipo {
   width: 25px;
 }

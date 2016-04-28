@@ -14,15 +14,6 @@ $(document).ready(function()
             var datosUsuario = JSON.parse(sessionStorage.dataUsuario);
             $("#nombreUsuario").html(datosUsuario.data_personal.nombres + " " + datosUsuario.data_personal.apellidos);    
 
-            dataUsuario = JSON.parse(sessionStorage.dataUsuario);
-
-
-                    if (dataUsuario.nivel==1) 
-                    {
-                                $("#superuser").hide(); 
-                                $(".superuser").hide();                     
-                    }
-
             $("#cerrarSesionButton").click(function(){
                 sessionStorage.removeItem("dataUsuario");
                 location.href="index.html";    

@@ -48,19 +48,19 @@ return new Promise(function(resolver, rechazar) {
 			success:function(response){
 				resolver(response);
 				swal({
-			  title: 'Registrado',
-			  text: 'Se ha registrado el equipo',
-			  type: 'success',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Registrado',
+				text: 'Se ha registrado el equipo',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 			})
 			},error:function(response){
 				swal({
-			  title: 'Error',
-			  text: 'No se pudo registrar',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'No se pudo registrar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -81,11 +81,11 @@ function modificarEquipos(data,id)
 					resolver(response);
 				},error:function(response){
 					swal({
-			  title: 'Error',
-			  text: 'No se pudo modificar',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'No se pudo modificar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -105,19 +105,19 @@ return new Promise(function(resolver, rechazar) {
 			success:function(response){
 				resolver(response);
 				swal({
-			  title: 'Registrado',
-			  text: 'Se ha registrado el usuario',
-			  type: 'success',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Registrado',
+				text: 'Se ha registrado el usuario',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 			})
 			},error:function(response){
 				swal({
-			  title: 'Error',
-			  text: 'No se pudo registrar',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'No se pudo registrar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -138,11 +138,11 @@ function modificarUsuario(data,id)
 					resolver(response);
 				},error:function(response){
 					swal({
-			  title: 'Error',
-			  text: 'No se pudo modificar',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'No se pudo modificar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -162,19 +162,19 @@ return new Promise(function(resolver, rechazar) {
 			success:function(response){
 				resolver(response);
 				swal({
-			  title: 'Registrado',
-			  text: 'Se ha registrado el personal',
-			  type: 'success',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Registrado',
+				text: 'Se ha registrado el personal',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 			})
 			},error:function(response){
 				swal({
-			  title: 'Error',
-			  text: 'No se pudo registrar',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'No se pudo registrar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -194,19 +194,19 @@ return new Promise(function(resolver, rechazar) {
 			success:function(response){
 				resolver(response);
 				swal({
-			  title: 'Registrado',
-			  text: 'Se ha registrado el bien',
-			  type: 'success',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Registrado',
+				text: 'Se ha registrado el bien',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 			})
 			},error:function(response){
 				swal({
-			  title: 'Error',
-			  text: 'No se pudo registrar',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'No se pudo registrar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -227,11 +227,11 @@ function modificarBien(data,id)
 					resolver(response);
 				},error:function(response){
 					swal({
-			  title: 'Error',
-			  text: 'No se pudo modificar',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'No se pudo modificar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -251,19 +251,19 @@ return new Promise(function(resolver, rechazar) {
 			success:function(response){
 				resolver(response);
 				swal({
-			  title: 'Registrado',
-			  text: 'Se ha registrado el código',
-			  type: 'success',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Registrado',
+				text: 'Se ha registrado el código',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 			})
 			},error:function(response){
 				swal({
-			  title: 'Error',
-			  text: 'No se pudo registrar',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'No se pudo registrar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -283,19 +283,19 @@ return new Promise(function(resolver, rechazar) {
 			success:function(response){
 				resolver(response);
 				swal({
-			  title: 'Registrado',
-			  text: 'Se ha registrado el código',
-			  type: 'success',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Registrado',
+				text: 'Se ha registrado el código',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 			})
 			},error:function(response){
 				swal({
-			  title: 'Error',
-			  text: 'No se pudo registrar',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'No se pudo registrar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -315,20 +315,20 @@ return new Promise(function(resolver, rechazar) {
 			success:function(response){
 				resolver(response);
 				swal({
-			  title: 'Registrado',
-			  text: 'Se ha registrado el código',
-			  type: 'success',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Registrado',
+				text: 'Se ha registrado el código',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 			})
 
 			},error:function(response){
 				swal({
-			  title: 'Error',
-			  text: 'No se pudo registrar',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'No se pudo registrar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -348,20 +348,20 @@ return new Promise(function(resolver, rechazar) {
 			success:function(response){
 				resolver(response);
 				swal({
-			  title: 'Registrado',
-			  text: 'Se ha registrado la configuracion',
-			  type: 'success',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Registrado',
+				text: 'Se ha registrado la configuracion',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 			})
 
 			},error:function(response){
 				swal({
-			  title: 'Error',
-			  text: 'No se pudo registrar',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'No se pudo registrar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -382,11 +382,11 @@ function getConfiguracionBy(filtros)
 					resolver(response);
 				},error:function(response){
 					swal({
-			  title: 'Error',
-			  text: 'El registro no existe o hay un error',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'El registro no existe o hay un error',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -405,11 +405,11 @@ function getCatgenBy(filtros)
 					resolver(response);
 				},error:function(response){
 					swal({
-			  title: 'Error',
-			  text: 'El registro no existe o hay un error',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'El registro no existe o hay un error',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -428,11 +428,11 @@ function getSubcatBy(filtros)
 					resolver(response);
 				},error:function(response){
 					swal({
-			  title: 'Error',
-			  text: 'El registro no existe o hay un error',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'El registro no existe o hay un error',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -451,11 +451,11 @@ function getCatespBy(filtros)
 					resolver(response);
 				},error:function(response){
 					swal({
-			  title: 'Error',
-			  text: 'El registro no existe o hay un error',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'El registro no existe o hay un error',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -474,11 +474,11 @@ function getUsuariosBy(filtros)
 					resolver(response);
 				},error:function(response){
 					swal({
-			  title: 'Error',
-			  text: 'El registro no existe o hay un error',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'El registro no existe o hay un error',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -497,11 +497,11 @@ function getPersonalBy(filtros)
 					resolver(response);
 				},error:function(response){
 					swal({
-			  title: 'Error',
-			  text: 'El registro no existe o hay un error',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'El registro no existe o hay un error',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -520,11 +520,11 @@ function getBienesBy(filtros)
 					resolver(response);
 				},error:function(response){
 					swal({
-			  title: 'Error',
-			  text: 'El registro no existe o hay un error',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'El registro no existe o hay un error',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}
@@ -543,11 +543,11 @@ function getEquiposBy(filtros)
 					resolver(response);
 				},error:function(response){
 					swal({
-			  title: 'Error',
-			  text: 'El registro no existe o hay un error',
-			  type: 'error',
-			  confirmButtonText: 'Aceptar',
-			  confirmButtonColor: '#D85852'
+				title: 'Error',
+				text: 'El registro no existe o hay un error',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
 })
 					rechazar(response);
 				}

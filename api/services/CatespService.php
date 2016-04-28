@@ -16,7 +16,7 @@ class CatespService{
           }
 
       if(count($catesp->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de catesp");
+            return array("status" => 404, "mensaje" => "No hay registros de Categoría Específica");
       }else{
             return array("status" => 200, "mensaje" =>$catesp->toArray());
       }

@@ -595,21 +595,21 @@ function Validar_cb_3(){
         }
 //Validacion Modificación de clave, para campos vacios
 function Validar_m_clave(){
-    var contra_nueva = document.getElementById('contra_nueva').value;
-    var contra_nueva_r = document.getElementById('contra_nueva_r').value;
+    var pass = document.getElementById('#pass').value;
+    var pass2 = document.getElementById('#pass2').value;
 
           
-        if(contra_nueva==""){
+        if(pass==""){
             $('#alert').html('Debes ingresar una Contraseña').slideDown(500);
-            $('#contra_nueva').focus();
+            $('#pass').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(contra_nueva_r==""){
+          if(pass2==""){
             $('#alert').html('Debes reingresar la Contraseña').slideDown(500);
-            $('#contra_nueva_r').focus();
+            $('#pass2').focus();
             return false;
           }
           else{

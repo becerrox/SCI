@@ -1,4 +1,4 @@
-// Controloador de la vista de registro de equipo
+// Controloador de la vista de registro de usuario
 
 if(sessionStorage.dataUsuario==undefined)
 {

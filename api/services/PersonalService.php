@@ -1,10 +1,19 @@
 <?php
 
-class PersonalService{
+class personalService{
+    
+    public function listar($query){
 
-    public function listar(){
-
-      $personal=Personal::find("status=1");
+          if(empty($query))
+             $personal=Personal::find();
+          else
+          {
+            $personal=Personal::find(
+                array(
+                    arrayToSQLQuery($query),
+                    "bind" => $query)
+                );
+          }
 
       if(count($personal->toArray())==0){
             return array("status" => 404, "mensaje" => "No hay registros de personal");
