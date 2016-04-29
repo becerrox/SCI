@@ -17,11 +17,11 @@ $(document).ready(function(){
 				{
 					sessionStorage.dataUsuario = JSON.stringify(response);
 					if(response.primer_inicio==0){
-						response.primer_inicio = 1; response.pass = Contrasena;
+/*						response.primer_inicio = 1; response.pass = Contrasena;
 						response.status = 1;
-						modificarUsuario(response,response.id).then(function(data){
+						modificarUsuario(response,response.id).then(function(data){*/
 							location.href='modificarClave.html';							
-						});
+						/*});*/
 					}
 					else{
 						location.href='inicio.html';
@@ -73,6 +73,31 @@ function modificarEquipos(data,id)
 	return new Promise(function(resolver, rechazar) { 
 		$.ajax({
 				type:"PUT",
+				processData: false,
+	    		contentType: 'application/json',
+				url:'api/equipos/'+id,
+				data:JSON.stringify(data),
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
+				title: 'Error',
+				text: 'No se pudo modificar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function eliminarEquipos(data,id)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"DELETE",
 				processData: false,
 	    		contentType: 'application/json',
 				url:'api/equipos/'+id,
@@ -150,7 +175,42 @@ function modificarUsuario(data,id)
 	 });	
 }
 
-function registrarpersonal(data)
+function modificarUsuarioPass(data,id)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"PUT",
+				processData: false,
+	    		contentType: 'application/json',
+				url:'api/usuarios/'+id,
+				data:JSON.stringify(data),
+			success:function(response){
+				resolver(response);
+				swal({
+				title: 'Registrado',
+				text: 'Contraseña cambiada satisfactoriamente',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+			},
+			function(){
+			location.href='inicio.html';
+				})
+			},error:function(response){
+				swal({
+				title: 'Error',
+				text: 'Error al registrar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function registrarPersonal(data)
 {
 return new Promise(function(resolver, rechazar) {	
 	$.ajax({

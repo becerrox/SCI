@@ -36,6 +36,14 @@ $(document).ready(function()
             modificarEquipos(dataForm,id_equipo_editar);
         });     
 
+        $("#btnEliminar").click(function()
+        {
+            frm = $("#formEquipo");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            eliminarEquipos(dataForm,id_equipo_editar);
+        });     
+
         $("#buscarEquipo").click(function(){
             idEquipo = $
             numero = $("#buscar").val();

@@ -59,7 +59,7 @@
       <div class="col-md-2 col-md-offset-3 col-sm-3">
         <div>
           <label>Cédula:</label><br>      
-          <input maxlength="8" type="text" class="form-control-2"  id="cedula" placeholder="00000000" onKeyPress="return soloNumeros(event)" style=""/>
+          <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" placeholder="00000000" onKeyPress="return soloNumeros(event)" style=""/>
         </div>
             <label>Nombres:</label>
             <input name="nombres" maxlength="30" type="text" class="form-control-2"  id="nombres" title="Ej: María Andrea" onkeypress="return soloLetras(event)"/>
@@ -68,15 +68,15 @@
       </div>          
       <div class="bloque col-md-2">
            <label>Fecha N.:</label>
-            <input name="f_nac" maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="fecha1" id="fecha1"/>     
+            <input name="f_nac" maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="fecha1" id="fecha2"/>     
             <label>Cargo:</label>
-            <select name="cargo" class="form-control-2">
+            <select name="cargo" id="cargo" class="form-control-2">
               <option value="0"></option>
               <option value="1">Gerente</option>
               <option value="2">Coordinador</option>
             </select> 
             <label>Unidad de Trabajo:</label>
-            <select name="unidad_trabajo" class="form-control-2" id="unidades_adm">
+            <select name="unidad_trabajo" id="unidad_trabajo" class="form-control-2">
               <option value="0"></option>
               <option value="1">Telecomunicaciones</option>
               <option value="2">CCO</option>
@@ -84,19 +84,19 @@
       </div>
       <div class="bloque col-md-3">
           <label>Unidad Administrativa</label>
-          <select name="unidad_admin" class="form-control-2" id="unidades_adm">
+          <select name="unidad_admin" id="unidad_admin" class="form-control-2" id="unidades_adm">
             <option value="0"></option>
             <option value="1">Despacho del Presidente</option>
             <option value="2">Despacho del Vicepresidente</option>
             <option value="7">Coordinación</option>
           </select>                
           <label>Teléfono:</label>
-          <input name="telf_pers" maxlength="12" type="text" class="form-control-2" placeholder="00000000000" id="telefono" onKeyPress="return soloNumerosCod(event)"/>
+          <input name="telf_pers" maxlength="12" type="text" class="form-control-2" placeholder="00000000000" id="telf_pers" onKeyPress="return soloNumerosCod(event)"/>
           <label>Correo:</label>  
-          <input name="correo" type="email" class="form-control-2" id="email" data-toggle="tooltip" title="transbarca@gmail.com">
+          <input name="correo" type="email" class="form-control-2" id="correo" data-toggle="tooltip" title="transbarca@gmail.com">
       </div>
       <div class="form-group col-md-3 col-sm-12 col-xs-12 col-md-offset-5">
-         <button id="guardarPersonal" type="button" value="ubicacion"class="btn" onclick="Validar_re()">Guardar</button> 
+         <button id="guardarPersonal" type="button" class="btn" >Guardar</button> 
          <div id="alert" role="alert"></div>            
       </div>
    </div> 

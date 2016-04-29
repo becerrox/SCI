@@ -18,5 +18,4 @@ $(document).ready(function()
                 location.href="index.html";    
              });
         });        
-                    dataUsuario = JSON.parse(sessionStorage.dataUsuario);
 });

@@ -31,14 +31,14 @@ class personalService{
                 "apellidos" => $pe->apellidos,
                 "cargo" => $pe->cargo,
                 "telf_pers" => $pe->telf_pers,
-                "telf_casa" => $pe->telf_casa,
+                // "telf_casa" => $pe->telf_casa,
                 "correo" => $pe->correo,
                 "f_nac" => $pe->f_nac,
                 "fecha_creacion" => date("Y-m-d h:i:s"),
-                "usuario_creacion" => 0,
-                "usuario_modif" => 0,
-                "status" => $pe->status,
-                "unid_admin" => $pe->unid_admin,
+                "fecha_modif" => date("Y-m-d h:i:s"),
+                "status" => 1,
+                "unidad_trabajo " => $pe->unidad_trabajo ,
+                "unidad_admin" => $pe->unidad_admin,
                 "id_usuario" => $pe->id_usuario
             );
 
@@ -73,7 +73,7 @@ class personalService{
                     "fecha_modif" => date("Y-m-d h:i:s"),
                     "usuario_modif" => 0,
                     "status" => $pe->status,
-                    "unid_admin" => $pe->unid_admin
+                    "unidad_trabajo " => $pe->unidad_trabajo 
                 );
 
                 if($modificar->update($data)){

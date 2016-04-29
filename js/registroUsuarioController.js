@@ -7,6 +7,8 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
+        var id_usuario_registro = "";
+
         $("#header").load("header.html",function()
         {
             var datosUsuario = JSON.parse(sessionStorage.dataUsuario);
@@ -23,7 +25,7 @@ $(document).ready(function()
             frm = $("#formUsuario");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarUsuario(dataForm).then(function(data){usuario.id_usuario = data.id;
+            registrarUsuario(dataForm).then(function(data){ numero = data.id;
             });          
         });
 
@@ -37,10 +39,15 @@ $(document).ready(function()
 
         $("#guardarPersonal").click(function()
         {
+            idUsuario = $
+            getUsuariosBy("?id="+numero).then(function(data){
+                id_usuario_registro = data[0].id;
+            });
             frm = $("#formPersonal");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarPersonal(dataForm);
+            registrarPersonal(dataForm,id_usuario_registro).then(function(data){
+            });  
         });       
 
 });

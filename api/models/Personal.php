@@ -36,7 +36,7 @@ class Personal extends Model{
 
         $this->validate(new PresenceOf(
             array(
-                "field" => "nombre",
+                "field" => "nombres",
                 "message" => "El campo nombre es obligatorio"
                 )
             ));
@@ -64,13 +64,6 @@ class Personal extends Model{
 
         $this->validate(new PresenceOf(
             array(
-                "field" => "telf_casa",
-                "message" => "El campo teléfono es obligatorio"
-                )
-            ));
-
-        $this->validate(new PresenceOf(
-            array(
                 "field" => "correo",
                 "message" => "El campo correo es obligatorio"
                 )
@@ -85,7 +78,7 @@ class Personal extends Model{
 
        $this->validate(new Uniqueness(
             array(
-                "field"  => "CI_per",
+                "field"  => "ci_per",
                 "message" => "La cédula debe ser única"
             )
         ));

@@ -23,7 +23,8 @@ $(document).ready(function()
             frm = $("#formSubcat");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarSubcat(dataForm);
+            registrarSubcat(dataForm).then(function(data){
+            });          
         });
 
         $("#btnGuardarCatgen").click(function()
@@ -31,7 +32,8 @@ $(document).ready(function()
             frm = $("#formCatgen");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarCatgen(dataForm);
+            registrarCatgen(dataForm).then(function(data){
+            });
         });
 
         $("#btnGuardarCatesp").click(function()
@@ -39,7 +41,8 @@ $(document).ready(function()
             frm = $("#formCatesp");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarCatesp(dataForm);
+            registrarCatesp(dataForm).then(function(data){
+            });
         });
 
         getCatgenBy("?status=1").then(function(data){

@@ -49,13 +49,40 @@ class UsuariosService{
 
         public function modificar($id,$us){
             $modificar=Usuario::find($id);
+          if(count((array) $us)){
+              if(count($modificar)>0){
+                  $data=array(                    
+                      "usuario" => $us->usuario,
+                      "pass" => sha1($us->pass),
+                      "nivel" => $us->nivel,
+                      "status" => $us->status,
+                      "primer_inicio" => $us->primer_inicio,
+                      "fecha_modif" => date("Y-m-d h:i:s")
+                  );
+                  if($modificar->update($data)){                                            
+                          return array("status" => 200, "mensaje" => $data);                    
+                  }
+                  else{
+                       $errors = array();
+                      foreach ($usuario->getMessages() as $message) {
+                          $errors[] = $message->getMessage();
+                      }
+                      return array("status" => 400, "mensaje" =>$errors);               
+                  }
+              }else{
+                  return array("status" => 404, "mensaje" =>"El registro que intenta modificar no existe");               
+              }
+          }else{
+            $this->modificarPass($id,$us);
+          }
+        }
+
+        public function modificarPass($id,$us){
+            $modificar=Usuario::find($id);
             if(count($modificar)>0){
-                $data=array(                    
-                    "usuario" => $us->usuario,
+                $data=array(                  
                     "pass" => sha1($us->pass),
-                    "nivel" => $us->nivel,
-                    "status" => $us->status,
-                    "primer_inicio" => $us->primer_inicio,
+                    "primer_inicio" => 1,
                     "fecha_modif" => date("Y-m-d h:i:s")
                 );
                 if($modificar->update($data)){

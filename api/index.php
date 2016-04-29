@@ -54,6 +54,12 @@ $app->put("/usuarios/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
+$app->put("/usuarios/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
+    $usuario = json_decode($app->request->getRawBody());
+    $data = $usuarioService->modificarPass($id,$usuario);
+    response($app,$data['mensaje'],$data['status']);
+});
+
 $app->delete("/usuarios/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
     $data = $usuarioService->eliminar($id);
     response($app,$data['mensaje'],$data['status']);
