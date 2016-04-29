@@ -17,11 +17,11 @@ $(document).ready(function(){
 				{
 					sessionStorage.dataUsuario = JSON.stringify(response);
 					if(response.primer_inicio==0){
-						/*response.primer_inicio = 1; response.pass = Contrasena;
+						response.primer_inicio = 1; response.pass = Contrasena;
 						response.status = 1;
-						modificarUsuario(response,response.id).then(function(data){*/
+						modificarUsuario(response,response.id).then(function(data){
 							location.href='modificarClave.html';							
-						/*});*/
+						});
 					}
 					else{
 						location.href='inicio.html';

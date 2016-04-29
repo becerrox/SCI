@@ -101,14 +101,5 @@ $(document).ready(function()
                  });
          })   
 
-/*        $("#buscarEquipo").click(function(){
-            numero = $("#buscar").val();
-            getEquiposBy("?serial="+numero).then(function(data){
-                jsonToForm({
-                    data : data[0],
-                    form : "#formEquipo"
-                });
-            });
-        }); */
 });
 

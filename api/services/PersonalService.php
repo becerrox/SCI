@@ -39,8 +39,7 @@ class personalService{
                 "usuario_modif" => 0,
                 "status" => $pe->status,
                 "unid_admin" => $pe->unid_admin,
-                "id_usuario" => $pe->id_usuario,
-                "nacionalidad" => $pe->nacionalidad
+                "id_usuario" => $pe->id_usuario
             );
 
             if($personal->save($data)){
@@ -74,8 +73,7 @@ class personalService{
                     "fecha_modif" => date("Y-m-d h:i:s"),
                     "usuario_modif" => 0,
                     "status" => $pe->status,
-                    "unid_admin" => $pe->unid_admin,
-                    "nacionalidad" => $pe->nacionalidad
+                    "unid_admin" => $pe->unid_admin
                 );
 
                 if($modificar->update($data)){

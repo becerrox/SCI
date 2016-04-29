@@ -6,7 +6,7 @@ class EquipoService{
              $equipo=Equipo::find();
           else
           {
-            $equipo = Equipo::find(
+            $equipo=Equipo::find(
                 array(
                     arrayToSQLQuery($query),
                     "bind" => $query)
@@ -50,14 +50,10 @@ class EquipoService{
                 return array("status" => 400, "mensaje" =>$errors);
             }
         }
-        public function modificar($id,$us){
+
+        public function modificar($id,$eq){
             $modificar=Equipo::find($id);
             if(count($modificar)>0){
-                if(isset($us->pass) && $us->pass !== '' && $us->pass !== null && $us->pass !== 'undefined'){
-                    $pass = sha1($us->pass);
-                }else{
-                    $pass = $modificar[0]->pass;
-                }
                 $data=array(
                 "descripcion" => $eq->descripcion,
                 "marca" => $eq->marca,
@@ -78,7 +74,6 @@ class EquipoService{
                 "numeroCelular" => $eq->numeroCelular
                 );
                 if($modificar->update($data)){
-                        unset($data['pass']);
                         return array("status" => 200, "mensaje" => $data);
                 }
                 else{

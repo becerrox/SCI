@@ -50,11 +50,6 @@ class UsuariosService{
         public function modificar($id,$us){
             $modificar=Usuario::find($id);
             if(count($modificar)>0){
-                if(isset($us->pass) && $us->pass !== '' && $us->pass !== null && $us->pass !== 'undefined'){
-                    $pass = sha1($us->pass);
-                }else{
-                    $pass = $modificar[0]->pass;
-                }
                 $data=array(                    
                     "usuario" => $us->usuario,
                     "pass" => sha1($us->pass),
