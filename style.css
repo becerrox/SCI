@@ -23,7 +23,7 @@ div { position:relative }
 a{text-decoration:none;}
 a:hover{text-decoration:underline;}
 a:active,a:focus{outline: none;}
-
+h1{text-transform: uppercase;}
 img.alignleft, img.alignright, img.aligncenter {
     margin-bottom: 11px;
 }

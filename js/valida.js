@@ -5,9 +5,9 @@ var dia= fecha.getDate();
 var fechaActual= año+'-'+mes+'-'+dia;
 
  document.getElementById("reloj").innerHTML = año+'-'+mes+'-'+dia;*/
+document.getElementById("celular").style.visibility = "hidden";
 
 //Validacion Inicio Sesion, para campos vacios
-document.getElementById("celular").style.visibility = "hidden";
 function valida_login(){
 
     var nombre = document.getElementById("username").value;
@@ -37,6 +37,7 @@ function valida_login(){
    if((equipo=="Celular") || (equipo=="celular")) {
 
      document.getElementById("celular").style.visibility = "visible";
+     
    }
    else{
     document.getElementById("celular").style.visibility = "hidden";
@@ -277,11 +278,17 @@ return false;
           var serial = document.getElementById('serial').value;
           var modelo = document.getElementById('modelo').value;
           var color = document.getElementById('color').value;
-          var caract = document.getElementById('caract').value;
           var estado = document.getElementById('estado').value;
-          var unidades_adm = document.getElementById('unidades_adm').value;
-          var unidad_trabajo = document.getElementById('unidad_trab').value;
-          var responsable_ad = document.getElementById('responsable_ad').value;
+          var unidad_admin = document.getElementById('unidad_admin').value;
+          var unidad_trabajo = document.getElementById('unidad_trabajo').value;
+          var responsable = document.getElementById('responsable').value;
+          var caracteristicas = document.getElementById('caracteristicas').value;
+          var observaciones = document.getElementById('observaciones').value;
+          var serialSim = document.getElementById('serialSim').value;
+          var numeroCelular = document.getElementById('numeroCelular').value;
+          var accesorios = document.getElementById('accesorios').value;
+          var planCelular = document.getElementById('planCelular').value;
+
 
           if(descripcion==""){
             $('#alert').html('Debes ingresar un tipo de equipo').slideDown(500);
@@ -315,7 +322,7 @@ return false;
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(color==""){
+          if(color=="0"){
             $('#alert').html('Debes seleccionar un color').slideDown(500);
             $('#color_bien').focus();
             return false;
@@ -323,15 +330,7 @@ return false;
           else{
             $('#alert').html('').slideUp(300);
           }
-        if(caract==""){
-            $('#alert').html('Debes ingresar las características').slideDown(500);
-            $('#caract').focus();
-            return false;
-          }
-          else{
-            $('#alert').html('').slideUp(300);
-          }
-        if(estado==""){
+        if(estado=="0"){
             $('#alert').html('Debes seleccionar un estado').slideDown(500);
             $('#estado').focus();
             return false;
@@ -339,23 +338,84 @@ return false;
           else{
             $('#alert').html('').slideUp(300);
           }      
-        if(unidades_adm==""){
+        if(unidad_admin=="0"){
             $('#alert').html('Debes seleccionar una opción').slideDown(500);
-            $('#unidades_adm').focus();
+            $('#unidad_admin').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
-          }  
-        if(responsable_ad==""){
+          } 
+        if(unidad_trabajo=="0"){
+            $('#alert').html('Debes seleccionar una opción').slideDown(500);
+            $('#unidad_trabajo').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          } 
+        if(responsable=="0"){
             $('#alert').html('Debes seleccionar a un encargado').slideDown(500);
-            $('#responsable_ad').focus();
+            $('#responsable').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
           }     
-       
+        if(caracteristicas==""){
+            $('#alert').html('Debes ingresar las características').slideDown(500);
+            $('#caracteristicas').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+        if(observaciones==""){
+            $('#alert').html('Debes ingresar las características').slideDown(500);
+            $('#observaciones').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+if((equipo=="Celular") || (equipo=="celular")){
+
+        if(serialSim==""){
+            $('#alert').html('Debes ingresar un serial').slideDown(500);
+            $('#serialSim').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+        if(numeroCelular==""){
+            $('#alert').html('Debes ingresar un número').slideDown(500);
+            $('#numeroCelular').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(accesorios==""){
+            $('#alert').html('Debes ingresar los Accesorios').slideDown(500);
+            $('#accesorios').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+        if(planCelular==""){
+            $('#alert').html('Debes ingresar un Plan').slideDown(500);
+            $('#planCelular').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          } 
+      }
+else{
+        $('#alert').html('').slideUp(300);
+      }      
  }
 //Validacion Registro de Bienes, para campos vacios
  function Validar_rb(){
