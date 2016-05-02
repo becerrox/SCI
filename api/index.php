@@ -94,8 +94,9 @@ $app->put("/equipos/{id:[0-9]+}",function($id) use ($app,$equipoService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->delete("/equipos/{id:[0-9]+}",function($id) use($app){
-    echo "eliminacion de equipo numero $id";
+$app->delete("/equipos/{id:[0-9]+}",function($id) use ($app,$equipoService) {
+    $data = $equipoService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
 });
 
 //Endpoints personal
@@ -230,8 +231,9 @@ $app->put("/bienes/{id:[0-9]+}",function($id) use ($app,$bienesService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->delete("/bienes/{id:[0-9]+}",function($id) use($app){
-    echo "eliminacion de bienes numero $id";
+$app->delete("/bienes/{id:[0-9]+}",function($id) use ($app,$bienesService) {
+    $data = $bienesService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
 });
 
 //Endpoints configuracion

@@ -28,7 +28,7 @@ class Bienes extends Model{
  public function validation()
     {
 
-/*        $this->validate(new PresenceOf(
+        $this->validate(new PresenceOf(
             array(
                 "field" => "cod_general",
                 "message" => "El código general es obligatorio"
@@ -48,7 +48,7 @@ class Bienes extends Model{
                 "message" => "El código de categoría específica es obligatorio"
                 )
             ));
-*/
+
         $this->validate(new PresenceOf(
             array(
                 "field" => "estatus_uso_bien",
@@ -56,7 +56,7 @@ class Bienes extends Model{
                 )
             ));
 
-/*        $this->validate(new PresenceOf(
+       $this->validate(new PresenceOf(
             array(
                 "field" => "marca",
                 "message" => "El campo marca es obligatorio"
@@ -69,7 +69,7 @@ class Bienes extends Model{
                 "message" => "El campo num_bien es obligatorio"
                 )
             ));
-*/
+
         $this->validate(new PresenceOf(
             array(
                 "field" => "cat_unid_admin",

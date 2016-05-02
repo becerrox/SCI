@@ -36,6 +36,14 @@ $(document).ready(function()
             modificarBien(dataForm,id_bien_editar);
         });
 
+        $("#btnEliminar").click(function()
+        {
+            frm = $("#formBienes");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            eliminarBien(dataForm,id_bien_editar);
+        });
+
         $("#buscarBien").click(function(){
             idBien = $
             numero = $("#buscar").val();

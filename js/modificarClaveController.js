@@ -46,7 +46,8 @@ $(document).ready(function()
             frm = $("#formCambioClave");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            modificarUsuarioPass(dataForm,id_usuario_editar);    
+            modificarUsuarioPass(dataForm,id_usuario_editar).then(function(data){ 
+             });
         });
 
 });

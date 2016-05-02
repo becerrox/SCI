@@ -38,21 +38,17 @@ class configuracionService{
                 return array("status" => 400, "mensaje" =>$errors);
             }
         }
-        public function modificar($id,$e){
+
+        public function modificar($id,$conf){
             $modificar=Configuracion::find($id);
             if(count($modificar)>0){
-                if(isset($us->pass) && $us->pass !== '' && $us->pass !== null && $us->pass !== 'undefined'){
-                    $pass = sha1($us->pass);
-                }else{
-                    $pass = $modificar[0]->pass;
-                }
                 $data=array(
                   "codigo" => $conf->codigo,
                   "descripcion" => $conf->descripcion,
                   "tipo" => $conf->tipo
                 );
+
                 if($modificar->update($data)){
-                        unset($data['pass']);
                         return array("status" => 200, "mensaje" => $data);
                 }
                 else{

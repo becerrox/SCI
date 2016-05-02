@@ -5,7 +5,7 @@ class BienesService{
     public function listar($query){
 
           if(empty($query))
-             $bienes=Bienes::find();
+             $bienes=Bienes::find("status = 1");
           else
           {
             $bienes = Bienes::find(

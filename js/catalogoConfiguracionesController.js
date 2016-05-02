@@ -6,6 +6,8 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
+        var id_configuracion_editar = "";
+
         $("#header").load("header.html",function()
         {
             var datosUsuario = JSON.parse(sessionStorage.dataUsuario);
@@ -22,7 +24,30 @@ $(document).ready(function()
             frm = $("#formCatConfig");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarConfiguracion(dataForm);
+            registrarConfiguracion(dataForm).then(function(data){
+             });
         });
+
+        $("#btnModificar").click(function()
+        {
+            frm = $("#formCatConfig");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            modificarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
+            });
+        });   
+
+        $("#buscarConfiguracion").click(function(){
+            idConfiguracion = $
+            descripcion = $("#buscar").val();
+            getConfiguracionBy("?descripcion="+descripcion).then(function(data){
+                id_configuracion_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formCatConfig"
+                });
+            });
+        });  
+
 });
 

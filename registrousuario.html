@@ -16,64 +16,61 @@
    <link rel="stylesheet" href="css/calendario.css" type="text/css" media="screen">    
    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
    <link rel="stylesheet" href="css/bootstrap-theme.css">  
+   <link rel="stylesheet" href="css/pace.css">  
+   <script src="js/pace.min.js" type="text/javascript"></script>
    <script src="js/jquery.min.js"></script>
    <script src="js/jquery.js"></script>
     <script src="js/valida.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/services.js"></script>
     <script src="js/tooltips.js" type="text/javascript"></script>
-    <script src="js/registroUsuarioController.js" type="text/javascript"></script>
+    <script src="js/registroUsuarioController.js" type="text/javascript"></script> 
     <script src="js/services.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
    <script src="js/sweetalert.min.js"></script>
+   <script src="js/select.js" type="text/javascript"></script>
   </head>
 <body>
 <div id="header"></div>
    <!--               FORMULARIO DE REGISTRO         -->
-  <section class="inicio container">
+  <section class="inicio">
         <h1>Registro de Usuarios</h1>
-        <form id="formUsuario" class="row text-center">
+        <form id=formUsuario>
           <div id="contenedor">
-              <div class="col-md-3 col-xs-12 ">
+              <div class="col-md-12 col-md-offset-2">
                   <label>Usuario:</label>
                   <input name="usuario" type="text" class="form-control-2" id="usuario" data-toggle="tooltip" title="Nombre de Usuario">
-              </div>
-              <div class="col-md-3 col-xs-12 ">
                   <label>Privilegio:</label>
                   <select name="nivel" id="nivel" class="form-control-2"> 
                     <option value="0"></option>
                     <option value="1">Administrador</option>
                     <option value="2">Regular</option>
-                  </select>  
-              </div>
-              <div class="col-md-3 col-xs-12 ">           
+                  </select>             
                   <label>Contraseña:</label>
                   <input type="password" class="form-control-2" name="pass1" id="pass1">
-              </div>
-              <div class="col-md-3 col-xs-12 ">
                   <label>Confirmar</label>
                   <input name="pass" type="password" class="form-control-2" id="pass" data-toggle="tooltip" title="Repetir contraseña">
-             </div> 
-         </div>  <!-- FIN CONTENEDOR -->
+              </div>    
+              <div class="form-group col-md-3 col-sm-12 col-xs-12 col-md-offset-5">
+                 <div id="alert2" role="alert"></div>            
+              </div>      
+          </div>   
     </form> <!-- Fin registro Usuario-->
-    <div class="row">
-    <div class="form-group col-md-4 col-sm-12 col-xs-12 col-md-offset-4">
-              <button id="guardarUser" type="button" value="pass2" class="btn" onclick="Validar_re_usu()">Guardar</button> 
-              <div id="alert2" role="alert"></div>
-      </div> 
-</div>
+
   <form id="formPersonal">
-   <div id="contenedor" class="row text-center">
-      <div class="bloque col-md-4 col-xs-12">        
-          <label>Cédula:</label>    
-          <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" placeholder="00000000" onKeyPress="return soloNumeros(event)"/>        
+   <div id="contenedor">
+      <div class="col-md-2 col-md-offset-3 col-sm-3">
+        <div>
+          <label>Cédula:</label><br>      
+          <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" placeholder="00000000" onKeyPress="return soloNumeros(event)"/>
+        </div>
             <label>Nombres:</label>
             <input name="nombres" maxlength="30" type="text" class="form-control-2"  id="nombres" title="Ej: María Andrea" onkeypress="return soloLetras(event)"/>
             <label>Apellidos:</label>
             <input name="apellidos" maxlength="25" type="text" class="form-control-2" title="Ej: Colmenarez Gil" id="apellidos" onkeypress="return soloLetras(event)"/> 
       </div>          
-      <div class="bloque col-md-4 col-xs-12">
+      <div class="bloque col-md-2">
            <label>Fecha N.:</label>
-            <input name="f_nac" maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="fecha1" id="fecha1">     
+            <input name="f_nac" maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="fecha1" id="fecha2"/>     
             <label>Cargo:</label>
             <select name="cargo" id="cargo" class="form-control-2">
               <option value="0"></option>
@@ -87,7 +84,7 @@
               <option value="2">CCO</option>
             </select>                         
       </div>
-      <div class="bloque col-md-4 col-xs-12">
+      <div class="bloque col-md-3">
           <label>Unidad Administrativa</label>
           <select name="unidad_admin" id="unidad_admin" class="form-control-2" id="unidades_adm">
             <option value="0"></option>
@@ -100,19 +97,16 @@
           <label>Correo:</label>  
           <input name="correo" type="email" class="form-control-2" id="correo" data-toggle="tooltip" title="transbarca@gmail.com">
       </div>
-    </div>
-       <div class="row">
-      <div class="form-group col-md-4 col-sm-12 col-xs-12 col-md-offset-4">
-         <button id="guardarPersonal" type="button" class="btn" onclick="Validar_re()" >Guardar</button> 
+      <div class="form-group col-md-3 col-sm-12 col-xs-12 col-md-offset-5">
+         <button id="guardarUserPersonal" type="button" class="btn" >Guardar</button> 
          <div id="alert" role="alert"></div>            
       </div>
-  </div>     
-   </div> <!-- Fin Contenedor-->  
+   </div> 
   </form><!-- Fin registro Datos Personales-->  
  
   </section>
-    <script type="text/javascript" src="js/calendario.js"></script>
     <script src="js/menu.js" type="text/javascript"></script>    
     <script src="js/bootstrap.min.js"></script>   
+    <script type="text/javascript" src="js/calendario.js"></script>
  </body>
 </html>

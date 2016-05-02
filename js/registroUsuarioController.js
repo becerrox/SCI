@@ -20,35 +20,21 @@ $(document).ready(function()
              });
         });        
 
-        $("#guardarUser").click(function()
+      $("#guardarUserPersonal").click(function()
         {
-            frm = $("#formUsuario");
-            dataForm = getFormData(frm);
+            frmUsuario = $("#formUsuario");
+            dataForm = getFormData(frmUsuario);
             dataForm.status=1;
-            registrarUsuario(dataForm).then(function(data){ numero = data.id;
-            });          
-        });
+            registrarUsuario(dataForm).then(function(data){
+              numero = data.id;              
+              frm = $("#formPersonal");
+              dataForm = getFormData(frm);
+              dataForm.status=1;
+              dataForm.id_usuario = numero;
+                registrarPersonal(dataForm).then(function(data){
+                  console.log("funciona");   
+                });  
 
-        $("#modificarUser").click(function()
-        {
-            frm = $("#formUsuario");
-            dataForm = getFormData(frm);
-            dataForm.status=1;
-            modificarUsuario(dataForm);
-        });
-
-        $("#guardarPersonal").click(function()
-        {
-            idUsuario = $
-            getUsuariosBy("?id="+numero).then(function(data){
-                id_usuario_registro = data[0].id;
             });
-            frm = $("#formPersonal");
-            dataForm = getFormData(frm);
-            dataForm.status=1;
-            registrarPersonal(dataForm,id_usuario_registro).then(function(data){
-            });  
-        });       
-
+        });
 });
-

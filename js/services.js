@@ -17,11 +17,7 @@ $(document).ready(function(){
 				{
 					sessionStorage.dataUsuario = JSON.stringify(response);
 					if(response.primer_inicio==0){
-/*						response.primer_inicio = 1; response.pass = Contrasena;
-						response.status = 1;
-						modificarUsuario(response,response.id).then(function(data){*/
 							location.href='modificarClave.html';							
-						/*});*/
 					}
 					else{
 						location.href='inicio.html';
@@ -61,7 +57,7 @@ return new Promise(function(resolver, rechazar) {
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -78,7 +74,14 @@ function modificarEquipos(data,id)
 				url:'api/equipos/'+id,
 				data:JSON.stringify(data),
 				success:function(response){
-					resolver(response);
+				resolver(response);
+				swal({
+				title: 'Modificado',
+				text: 'Se ha modificado el equipo',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+			})
 				},error:function(response){
 					swal({
 				title: 'Error',
@@ -86,7 +89,7 @@ function modificarEquipos(data,id)
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -103,15 +106,22 @@ function eliminarEquipos(data,id)
 				url:'api/equipos/'+id,
 				data:JSON.stringify(data),
 				success:function(response){
-					resolver(response);
+				resolver(response);
+				swal({
+				title: 'Eliminado',
+				text: 'Se ha eliminado el equipo',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+			})				
 				},error:function(response){
-					swal({
+				swal({
 				title: 'Error',
 				text: 'No se pudo modificar',
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -143,7 +153,7 @@ return new Promise(function(resolver, rechazar) {
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -168,7 +178,7 @@ function modificarUsuario(data,id)
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -187,7 +197,7 @@ function modificarUsuarioPass(data,id)
 			success:function(response){
 				resolver(response);
 				swal({
-				title: 'Registrado',
+				title: 'Cambiado',
 				text: 'Contraseña cambiada satisfactoriamente',
 				type: 'success',
 				confirmButtonText: 'Aceptar',
@@ -203,7 +213,7 @@ function modificarUsuarioPass(data,id)
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -235,7 +245,7 @@ return new Promise(function(resolver, rechazar) {
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -267,7 +277,7 @@ return new Promise(function(resolver, rechazar) {
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -284,7 +294,14 @@ function modificarBien(data,id)
 				url:'api/bienes/'+id,
 				data:JSON.stringify(data),
 				success:function(response){
-					resolver(response);
+				resolver(response);
+				swal({
+				title: 'Modificado',
+				text: 'Se ha modificado el bien',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+			})				
 				},error:function(response){
 					swal({
 				title: 'Error',
@@ -292,7 +309,39 @@ function modificarBien(data,id)
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function eliminarBien(data,id)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"DELETE",
+				processData: false,
+	    		contentType: 'application/json',
+				url:'api/bienes/'+id,
+				data:JSON.stringify(data),
+				success:function(response){
+				resolver(response);
+				swal({
+				title: 'Eliminado',
+				text: 'Se ha eliminado el bien',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+			})				
+				},error:function(response){
+				swal({
+				title: 'Error',
+				text: 'No se pudo modificar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+				})
 					rechazar(response);
 				}
 			});
@@ -324,7 +373,7 @@ return new Promise(function(resolver, rechazar) {
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -356,7 +405,7 @@ return new Promise(function(resolver, rechazar) {
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -389,7 +438,7 @@ return new Promise(function(resolver, rechazar) {
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -422,7 +471,39 @@ return new Promise(function(resolver, rechazar) {
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function modificarConfiguracion(data,id)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"PUT",
+				processData: false,
+	    		contentType: 'application/json',
+				url:'api/configuracion/'+id,
+				data:JSON.stringify(data),
+				success:function(response){
+				resolver(response);
+				swal({
+				title: 'Modificado',
+				text: 'Se ha modificado la configuracion',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+			})				
+				},error:function(response){
+					swal({
+				title: 'Error',
+				text: 'No se pudo modificar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+				})
 					rechazar(response);
 				}
 			});
@@ -447,7 +528,7 @@ function getConfiguracionBy(filtros)
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -470,7 +551,7 @@ function getCatgenBy(filtros)
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -493,7 +574,7 @@ function getSubcatBy(filtros)
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -516,7 +597,7 @@ function getCatespBy(filtros)
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -539,7 +620,7 @@ function getUsuariosBy(filtros)
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -562,7 +643,7 @@ function getPersonalBy(filtros)
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -577,7 +658,8 @@ function getBienesBy(filtros)
 	    		contentType: 'application/json',
 				url:'api/bienes/'+filtros,
 				success:function(response){
-					resolver(response);
+					if(response.status!=0){
+					resolver(response);}
 				},error:function(response){
 					swal({
 				title: 'Error',
@@ -585,7 +667,7 @@ function getBienesBy(filtros)
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});
@@ -608,7 +690,7 @@ function getEquiposBy(filtros)
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-})
+				})
 					rechazar(response);
 				}
 			});

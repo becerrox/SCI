@@ -33,7 +33,8 @@ $(document).ready(function()
             frm = $("#formEquipo");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            modificarEquipos(dataForm,id_equipo_editar);
+            modificarEquipos(dataForm,id_equipo_editar).then(function(data){   
+            });
         });     
 
         $("#btnEliminar").click(function()
