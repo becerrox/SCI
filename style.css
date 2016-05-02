@@ -108,8 +108,11 @@ overflow: auto;
 }
 .aux{
   height: 10px;
-
 }
+.no-margin{
+  margin: 0px;
+}
+
 #buscarEquipo {
   width: 25px;
 }
@@ -126,7 +129,7 @@ overflow: auto;
   flex-wrap: wrap; /*   Most Fluid */
             }
 section > div > div{
-  margin-top: 65px; 
+  margin-top: 40px; 
 }
 #contenedor #alert {
   width: auto;
@@ -435,12 +438,11 @@ width:100%;}
 .menu ul ul {left:0;}
 
 #contenedor .form-group{
-/*width: 62px;*/  
 margin: 0 45px 0 45px;
 display:block;
 }
 #contenedor{
-  width: 625px;
+  /*width: 625px;*/
 }
 #contenedor #fechas label{display: block;}
 .grid-1, .grid-2, .grid-3, .grid-4,.grid-5{width: 100%;}

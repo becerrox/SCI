@@ -1,12 +1,3 @@
-/*var fecha = new Date();
-var año = fecha.getFullYear();
-var mes= fecha.getMonth();
-var dia= fecha.getDate();
-var fechaActual= año+'-'+mes+'-'+dia;
-
- document.getElementById("reloj").innerHTML = año+'-'+mes+'-'+dia;*/
-document.getElementById("celular").style.visibility = "hidden";
-
 //Validacion Inicio Sesion, para campos vacios
 function valida_login(){
 
@@ -79,14 +70,17 @@ function Validador(email){
         }
 //validación de resgistro de usuarios
 function Validar_re(){
-          var cedula = document.getElementById('cedula').value;
+          var ci_per = document.getElementById('ci_per').value;
           var nombres = document.getElementById('nombres').value;
-          var email = document.getElementById('email').value;
-          var telefono = document.getElementById('telefono').value; 
-          var fecha=document.getElementById("fecha1").value;
-    
-    if(fecha1)
-    {  // calculamos la edad
+          var apellidos = document.getElementById('apellidos').value;
+          var fecha1=document.getElementById("fecha1").value;
+          var cargo = document.getElementById('cargo').value; 
+          var unidad_trabajo=document.getElementById("unidad_trabajo").value;
+          var unidad_admin = document.getElementById('unidad_admin').value; 
+          var telf_pers=document.getElementById("telf_pers").value;
+          var correo=document.getElementById("correo").value;
+
+if(fecha1){ // calculamos la edad
 
         var values=fecha.split("-");
         var dia = values[2];
@@ -126,66 +120,120 @@ function Validar_re(){
             ultimoDiaMes=new Date(ahora_ano, ahora_mes, 0);
             dias=ultimoDiaMes.getDate()-(dia-ahora_dia);
         }
-    }
-    else{}
-
-          if(cedula==""){
+      }
+          if(ci_per==""){
             $('#alert').html('Debes ingresar una Cédula').slideDown(500);
-            $('#cedula').focus();
+            $('#ci_per').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
           }
           if(nombres==""){
-            $('#alert').html('Debes ingresar un nombre').slideDown(500);
+            $('#alert').html('Debes ingresar nombres').slideDown(500);
             $('#nombre').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(email==""){
-            $('#alert').html('Debes ingresar un email').slideDown(500);
-            $('#email').focus();
+          if(apellidos==""){
+            $('#alert').html('Debes ingresar apellidos').slideDown(500);
+            $('#apellidos').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
           }
-
-          if(Validador(email)==false){
-            $('#alert').html('Ingresa un email válido').slideDown(500);
-            $('#email').focus();
+          
+    if(fecha1==""){  
+      $('#alert').html('Debe ingresar Fecha de Nacimiento').slideDown(500);
+      $('#fecha1').focus();
+      return false;}
+    else{ 
+    }         
+      if(cargo=="0"){
+            $('#alert').html('Debes seleccionar un cargo').slideDown(500);
+            $('#cargo').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }   
+     if(unidad_trabajo=="0"){
+            $('#alert').html('Debes seleccionar una opción').slideDown(500);
+            $('#unidad_trabajo').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
           }
-
-          if(telefono==""){
+      if(unidad_admin=="0"){
+            $('#alert').html('Debes seleccionar una opción').slideDown(500);
+            $('#unidad_admin').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }  
+     if(telf_pers==""){
             $('#alert').html('Debes ingresar un Teléfono').slideDown(500);
-            $('#telefono').focus();
+            $('#telf_pers').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          } 
+     if(correo==""){
+            $('#alert').html('Debes ingresar un correo').slideDown(500);
+            $('#correo').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(edad < 18){
+          if(Validador(correo)==false){
+            $('#alert').html('Ingresa un correo válido').slideDown(500);
+            $('#correo').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+    if(edad < 18){
             $('#alert').html('Debe ser mayor de edad').slideDown(500);
             $('#fecha1').focus();
             return false;
-
           }
+        else{
+           
+          } 
+  
  }
  
 //Validacion Registro de Usuario, para campos vacios
  function Validar_re_usu(){
           var pass1 = document.getElementById('pass1').value;
-          var pass2 = document.getElementById('pass2').value;
+          var pass = document.getElementById('pass').value;
           var usuario = document.getElementById('usuario').value;
+          var nivel = document.getElementById('nivel').value;
 
-
+          if(usuario==""){
+            $('#alert2').html('Debes ingresar un Usuario').slideDown(500);
+            $('#usuario').focus();
+            return false;
+          }
+          else{
+            $('#alert2').html('').slideUp(300);
+          }
+         if(nivel=="0"){
+            $('#alert2').html('Debes seleccionar privilegio').slideDown(500);
+            $('#nivel').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
           if(pass1==""){
             $('#alert2').html('Debes ingresar una contraseña').slideDown(500);
             $('#pass1').focus();
@@ -194,27 +242,19 @@ function Validar_re(){
           else{
             $('#alert2').html('').slideUp(300);
           }
-          if(pass2==""){
+          if(pass==""){
             $('#alert2').html('Debes comprobar tu contraseña').slideDown(500);
-            $('#pass2').focus();
+            $('#pass').focus();
             return false;
           }
           else{
             $('#alert2').html('').slideUp(300);
           }
-          if(pass2!=pass1){
+          if(pass!=pass1){
             $('#alert2').html('Las contraseñas no coinciden').slideDown(500);
             $('#pass1').val('');
-            $('#pass2').val('');
+            $('#pass').val('');
             $('#pass1').focus();
-            return false;
-          }
-          else{
-            $('#alert2').html('').slideUp(300);
-          }
-          if(usuario==""){
-            $('#alert2').html('Debes ingresar un Usuario').slideDown(500);
-            $('#usuario').focus();
             return false;
           }
           else{
@@ -417,9 +457,26 @@ else{
         $('#alert').html('').slideUp(300);
       }      
  }
+ //Validacion Registro de Bienes, para busqueda por serial
+
+ function Validar_busq(){
+  var serial = document.getElementById('serial').value;
+    if(serial==""){
+            $('#alert').html('Debes ingresar un serial').slideDown(500);
+            $('#serial').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+
+ }
 //Validacion Registro de Bienes, para campos vacios
  function Validar_rb(){
           var desc = document.getElementById('descripcion').value;
+          var catgen= document.getElementById('catgen').value;
+          var subcat = document.getElementById('subcat').value;
+          var catesp = document.getElementById('catesp').value;
           var estatus= document.getElementById('estatus_uso_bien').value;
           var marca = document.getElementById('marca').value;
           var modelo = document.getElementById('modelo').value;
@@ -429,22 +486,46 @@ else{
           var n_bien = document.getElementById('num_bien').value;
           var estado_bien = document.getElementById('estado_bien').value;
           var unidades = document.getElementById('cat_unid_admin').value;          
-          var unidad_trabajo = document.getElementById('unidad_trab_bien').value;          
+          var unidad_trabajo = document.getElementById('unidad_trabajo').value;          
           var responsable_pa = document.getElementById('responsable_pa').value;
           var responsable_ad = document.getElementById('responsable_ad').value;
           var responsable_uso = document.getElementById('responsable_uso').value;
-          var fecha1 = document.getElementById('fecha1').value;
-          var fecha2 = document.getElementById('fecha2').value;
+          var fecha1 = document.getElementById('fecha2').value;
+          var fecha2 = document.getElementById('fecha4').value;
 
 
-          if(desc=="0"){
-            $('#alert').html('Debes seleccionar una descripción').slideDown(500);
+          if(desc==""){
+            $('#alert').html('Debes introducir una descripción').slideDown(500);
             $('#descripcion').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
-          }    
+          }
+          if(catgen=="0"){
+            $('#alert').html('Debes seleccionar una Categoría General').slideDown(500);
+            $('#catgen').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(subcat=="0"){
+            $('#alert').html('Debes seleccionar una Sub-Categoría').slideDown(500);
+            $('#subcat').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          } 
+          if(catesp=="0"){
+            $('#alert').html('Debes seleccionar una Categoría Específica').slideDown(500);
+            $('#catesp').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
           if(estatus=="0"){
             $('#alert').html('Debes seleccionar un tipo de estatus').slideDown(500);
             $('#estatus_uso_bien').focus();
@@ -521,7 +602,7 @@ else{
          
           if(unidad_trabajo==""){
             $('#alert').html('Debes ingresar una unidad de trabajo').slideDown(500);
-            $('#unidad_trab_bien').focus();
+            $('#unidad_trabajo').focus();
             return false;
           }
           else{
@@ -578,6 +659,7 @@ else{
           if(fecha1>fecha2){
             $('#alert').html('La fecha de Inicio no debe ser mayor que la de Culminación').slideDown(500);
             $('#fecha1').focus();
+            $('#fecha1').val('');
           }
           else{
             $('#alert').html('').slideUp(300);            
@@ -654,9 +736,9 @@ function Validar_cb_3(){
           }
         }
 //Validacion Modificación de clave, para campos vacios
-function Validar_m_clave(){
-    var pass = document.getElementById('#pass').value;
-    var pass2 = document.getElementById('#pass2').value;
+function Validar_clave(){
+    var pass = document.getElementById('pass').value;
+    var pass2 = document.getElementById('pass2').value;
 
           
         if(pass==""){
@@ -675,6 +757,16 @@ function Validar_m_clave(){
           else{
             $('#alert').html('').slideUp(300);
           }
+         if(pass!=pass2){
+            $('#alert').html('Las contraseñas no coinciden').slideDown(500);
+            $('#pass2').val('');
+            $('#pass').val('');
+            $('#pass2').focus();
+            return false;
+          }
+          else{
+            $('#alert2').html('').slideUp(300);
+          }
         }
 //Validacion Catalogo de Configuraciones, para campos vacios
 function Validar_cat_con(){
@@ -689,3 +781,5 @@ function Validar_cat_con(){
           }
 
 }
+document.getElementById("celular").style.visibility = "hidden";
+
