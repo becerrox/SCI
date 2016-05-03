@@ -7,6 +7,8 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
+        var id_bien_buscar = "";
+        var filtro_bien = "";
 
         $("#header").load("header.html",function()
         {
@@ -20,17 +22,23 @@ $(document).ready(function()
         });        
 
         $("#btnBuscar").click(function(){
-           numero = $("#buscar").val();
-            getBienesBy("?num_bien="+numero).then(function(data){
-                id_bien_editar = data[0].id;
-                jsonToTable(
-                  {
-                   data : data,
-                   headers : headers,
-                   table : $("#tableTest")
+            idBien = $
+            numero = $("#responsable_ad").val();
+            getBienesBy("?responsable_ad="+numero).then(function(data){
+                id_bien_buscar = data[0].id;
+                jsonToTable({
+                    data : data,
+                    headers : headers,
+                    table : $("#tableReporteBienes"),
+                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm"]
                   });
+                jsonToForm({
+                    data : data[0],
+                    form : "#reporte"
+                });                
             });
-        }); 
+/*            location.href='reporte1.html';
+*/        }); 
 
         /* Cargando datas de la api a los selects  */     
 
@@ -78,6 +86,8 @@ $(document).ready(function()
                 element : $("#unidad_trabajo")
                 });
         })          
+
+headers = [ "Código General", "Código de Sub-categoría", "Código de Categoría Específica", "Descripción", "Estatus Uso Bien", "Marca", "Modelo", "Serial", "Tipo Componentes", "Colores", "Número de bien", "Estado bien", "cat_unid_admin", "unidad trabajo"];
 
 /*        getBienesBy('').then(function(data){
             for(bienesgeneral in data){

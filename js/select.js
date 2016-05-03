@@ -14,14 +14,14 @@ function jsonToForm(config){
   }
 }
 
-
 function jsonToTable(config){
     tableHeaders = "<thead><tr>";
-        tableContent = "<tbody>";
-    for(key in config.headers){     
+    tableContent = "<tbody>";
+  for(key in config.headers){     
       tableHeaders += "<th>"+config.headers[key]+"</th>";
       tableContent += "<tr>";
       for (var i in config.data[key]){
+          if(config.invisibleFields.indexOf(i)==-1)
             tableContent += "<td>"+config.data[key][i]+"</td>";      
       }
     }
