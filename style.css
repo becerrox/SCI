@@ -47,7 +47,7 @@ display: inline;
     margin-left: auto;
     margin-right: auto;
 }
-
+.habilita{  }
 article, aside, figure, footer, header, hgroup, nav, section {display: block;}
 
 
@@ -145,9 +145,9 @@ section > div > div{
  section .inicio{
   background: url(images/fondoinicio.png);
  }
-.fondo-form{
-  background: lightblue;
-  border-radius:6px;
+#fondo {
+  margin-left: 0;
+  margin-right: 0  
 }
 
 .form-group .btn{
@@ -495,5 +495,4 @@ label{display: block;  }
 width: 100%;
 }
   }
-
 

@@ -73,14 +73,62 @@ function Validar_re(){
           var ci_per = document.getElementById('ci_per').value;
           var nombres = document.getElementById('nombres').value;
           var apellidos = document.getElementById('apellidos').value;
-          var fecha1=document.getElementById("fecha1").value;
+          var fecha=document.getElementById('fecha1').value;
           var cargo = document.getElementById('cargo').value; 
-          var unidad_trabajo=document.getElementById("unidad_trabajo").value;
+          var unidad_trabajo=document.getElementById('unidad_trabajo').value;
           var unidad_admin = document.getElementById('unidad_admin').value; 
-          var telf_pers=document.getElementById("telf_pers").value;
-          var correo=document.getElementById("correo").value;
+          var telf_pers=document.getElementById('telf_pers').value;
+          var correo=document.getElementById('correo').value;
+          var pass1 = document.getElementById('pass1').value;
+          var pass = document.getElementById('pass').value;
+          var usuario = document.getElementById('usuario').value;
+          var nivel = document.getElementById('nivel').value;
 
-if(fecha1){ // calculamos la edad
+          if(usuario==""){
+            $('#alert').html('Debes ingresar un Usuario').slideDown(500);
+            $('#usuario').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+         if(nivel=="0"){
+            $('#alert').html('Debes seleccionar privilegio').slideDown(500);
+            $('#nivel').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(pass1==""){
+            $('#alert').html('Debes ingresar una contraseña').slideDown(500);
+            $('#pass1').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(pass==""){
+            $('#alert').html('Debes comprobar tu contraseña').slideDown(500);
+            $('#pass').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+          if(pass!=pass1){
+            $('#alert').html('Las contraseñas no coinciden').slideDown(500);
+            $('#pass1').val('');
+            $('#pass').val('');
+            $('#pass1').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+        
+
+if(fecha){ // calculamos la edad
 
         var values=fecha.split("-");
         var dia = values[2];
@@ -146,11 +194,18 @@ if(fecha1){ // calculamos la edad
             $('#alert').html('').slideUp(300);
           }
           
-    if(fecha1==""){  
+    if(fecha==""){  
       $('#alert').html('Debe ingresar Fecha de Nacimiento').slideDown(500);
       $('#fecha1').focus();
       return false;}
     else{ 
+       if(edad < 18){
+            $('#alert').html('Debe ser mayor de edad').slideDown(500);
+            $('#fecha1').focus();
+            return false;
+          }
+        else{           
+          }
     }         
       if(cargo=="0"){
             $('#alert').html('Debes seleccionar un cargo').slideDown(500);
@@ -199,14 +254,6 @@ if(fecha1){ // calculamos la edad
           }
           else{
             $('#alert').html('').slideUp(300);
-          }
-    if(edad < 18){
-            $('#alert').html('Debe ser mayor de edad').slideDown(500);
-            $('#fecha1').focus();
-            return false;
-          }
-        else{
-           
           } 
   
  }
@@ -669,21 +716,21 @@ else{
  }
 //Validaciones de Catalogo de Bienes,para campos vacios
   function Validar_cb_1(){
-          var cod_general = document.getElementById('cod_cg').value;
-          var desc_general =document.getElementById('desc_general').value;
+          var codigo = document.getElementById('codigo').value;
+          var descripción =document.getElementById('descripción').value;
           
 
-          if(cod_general==""){
+          if(codigo==""){
             $('#alert').html('Debes ingresar un Código General').slideDown(500);
-            $('#cod_cg').focus();
+            $('#codigo').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(desc_general==""){
+          if(descripcion==""){
             $('#alert').html('Debes ingresar una Descripción').slideDown(500);
-            $('#desc_general').focus();
+            $('#descripción').focus();
             return false;
           }
           else{
@@ -692,20 +739,20 @@ else{
         }
  function Validar_cb_2(){
           
-          var cod_sub = document.getElementById('cod_sub').value;
-          var desc_sub = document.getElementById('desc_sub').value;
+          var codigo = document.getElementById('codigo').value;
+          var descripcion = document.getElementById('descripcion').value;
                  
-         if(cod_sub==""){
+         if(codigo==""){
             $('#alert').html('Debes ingresar una Sub-Categoría').slideDown(500);
-            $('#cod_sub').focus();
+            $('#codigo').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(desc_sub==""){
+          if(descripcion==""){
             $('#alert').html('Debes ingresar una descripción').slideDown(500);
-            $('#desc_sub').focus();
+            $('#descripcin').focus();
             return false;
           }
           else{
@@ -714,21 +761,21 @@ else{
 
         } 
 function Validar_cb_3(){
-    var cod_ce = document.getElementById('cod_ce').value;
-    var desc_ce = document.getElementById('desc_ce').value;
+    var codigo = document.getElementById('codigo').value;
+    var descripcion = document.getElementById('descripcion').value;
 
           
-        if(cod_ce==""){
+        if(codigo==""){
             $('#alert').html('Debes ingresar una Categoría').slideDown(500);
-            $('#cod_ce').focus();
+            $('#codigo').focus();
             return false;
           }
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(desc_ce==""){
+          if(descripcion==""){
             $('#alert').html('Debes ingresar una Descripción').slideDown(500);
-            $('#desc_ce').focus();
+            $('#descripcion').focus();
             return false;
           }
           else{

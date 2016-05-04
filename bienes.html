@@ -38,13 +38,13 @@
       <div class="form-group bloque col-md-2 col-xs-12">
           <label>Descripción:</label>
           <input name="descripcion" class="form-control-2" id="descripcion" data-placement="top" title="Nombre del Bien">              
-          <label>Cód.Categoría General</label>
+          <label>Categoría General</label>
           <select name="cod_general" class="form-control-2" id="catgen">
           </select>
-          <label>Cód.Sub-Categoría</label>
+          <label>Sub-Categoría</label>
           <select name="cod_subcat" class="form-control-2" id="subcat">
           </select>
-          <label>Cód.Categoría Específica</label>
+          <label>Categoría Específica</label>
           <select name="cod_catespf" class="form-control-2" id="catesp">
           </select>  
       </div>
@@ -93,15 +93,16 @@
       <div class="form-group bloque col-md-2 col-xs-12">
           <label>Responsable de Uso</label>
           <select name="responsable_uso" class="form-control-2" id="responsable_uso">
-          </select>                   
+          </select>
+          <label>Sede:</label>       
+          <input type="text" class="form-control-2" name="sede" id="sede" data-placement="top" title="Ubicación donde se realizó el inventario">   
       </div>     
       <div class="form-group bloque col-md-2 col-xs-12" id="fechas">
           <label>Periodo del:</label>
           <input maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="per_ini" id="fecha2" data-placement="top" title="Indique fecha de inicio">  
           <label>Al:</label>
-          <input maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="per_culm" id="fecha4" data-placement="top" title="Indique fecha de culminación">                  
-      </div>     
-      
+          <input maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="per_culm" id="fecha4" data-placement="top" title="Indique fecha de culminación">                 
+      </div>      
   </div>  <!-- contenedor-->
     <div class="form-group bloque col-md-6 col-xs-12 col-md-offset-3">
           <button id= "btnGuardar" type="button" class="btn" onclick="Validar_rb()">Guardar</button>
