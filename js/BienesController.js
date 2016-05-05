@@ -102,7 +102,7 @@ $(document).ready(function()
         getConfiguracionBy("?tipo=Unidad de Trabajo").then(function(data){
             jsonToSelect({        
                 data : data,
-                value : "codigo",
+                value : "descripcion",
                 alias : "descripcion",
                 element : $("#unidad_trabajo")
                 });

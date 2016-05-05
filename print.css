@@ -38,6 +38,10 @@ margin-left: 10%;}
 
 @media print{
  .btn {
-    display: none;
-  }
+#tableReporteBienes table{
+  	max-width: 0;
+  	min-width: 0;
+  	overflow: none;
+  		}
+	}
 }

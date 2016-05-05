@@ -20,10 +20,10 @@ $(document).ready(function()
                         getUsuariosBy("?id="+numero).then(function(data){
                             id_usuario_editar = data[0].id;
                         });                                  
-                        $("#inicio").hide(); 
-                        $("#inventario").hide(); 
-                        $("#reportes").hide(); 
-                        $("#administrador").hide();
+                        document.getElementById("inicio").style.visibility = "hidden";
+                        document.getElementById("inventario").style.visibility = "hidden";
+                        document.getElementById("reportes").style.visibility = "hidden";
+                        document.getElementById("administrador").style.visibility = "hidden";
                     }
                     if (dataUsuarios.primer_inicio==1)
                     {

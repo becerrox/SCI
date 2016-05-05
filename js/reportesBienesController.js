@@ -30,7 +30,7 @@ $(document).ready(function()
                     data : data,
                     headers : headers,
                     table : $("#tableReporteBienes"),
-                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm"]
+                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm", "unidad_trabajo"]
                   });
                 jsonToForm({
                     data : data[0],
@@ -42,29 +42,29 @@ $(document).ready(function()
 
         /* Cargando datas de la api a los selects  */     
 
-        getBienesBy('').then(function(data){
-            for(bienesgeneral in data){
-                data[bienesgeneral].responsable_ad = data[bienesgeneral].responsable_ad;
+        getPersonalBy('').then(function(data){
+            for(personal in data){
+                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }
             jsonToSelect({        
                  data : data,
-                 value : "responsable_ad",
-                 alias : "responsable_ad",
+                 value : "nombreApellido",
+                 alias : "nombreApellido",
                  element : $("#responsable_ad")
                  });
          })  
 
-        getBienesBy('').then(function(data){
-            for(bienesgeneral in data){
-                data[bienesgeneral].responsable_uso = data[bienesgeneral].responsable_uso;
+        getPersonalBy('').then(function(data){
+            for(personal in data){
+                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }
             jsonToSelect({        
                  data : data,
-                 value : "responsable_uso",
-                 alias : "responsable_uso",
+                 value : "nombreApellido",
+                 alias : "nombreApellido",
                  element : $("#responsable_uso")
                  });
-         })          
+         })       
 
         getBienesBy('').then(function(data){
             for(bienesgeneral in data){
@@ -87,7 +87,7 @@ $(document).ready(function()
                 });
         })          
 
-headers = [ "Código General", "Código de Sub-categoría", "Código de Categoría Específica", "Descripción", "Estatus Uso Bien", "Marca", "Modelo", "Serial", "Tipo Componentes", "Colores", "Número de bien", "Estado bien", "cat_unid_admin", "unidad trabajo"];
+headers = [ "Código General", "Código de Sub-categoría", "Código de Categoría Específica", "Descripción", "Estatus Uso Bien", "Marca", "Modelo", "Serial", "Tipo Componentes", "Colores", "Número de bien", "Estado bien", "Categoria de unidad administrativa"];
 
 /*        getBienesBy('').then(function(data){
             for(bienesgeneral in data){

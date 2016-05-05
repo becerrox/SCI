@@ -1,6 +1,7 @@
 function jsonToSelect(obj)
 {
     var selectString="";
+    selectString = '<option selected disabled>Seleccione</option>';
     for(var i=0; i<obj.data.length;i++){
         selectString += '<option value="'+obj.data[i][obj.value]+'">'+obj.data[i][obj.alias]+'</option>';
     }
@@ -30,21 +31,3 @@ function jsonToTable(config){
     content = tableHeaders + tableContent;
     $(config.table).html(content)
 }
-
-/*headers = ["ID","NOMBRE","CAMPO"];
-                        
-data = [
-{id: 1,nombre : "prueba", campo : "campo"},
-{id: 1,nombre : "prueba", campo : "campo"},
-{id: 1,nombre : "prueba", campo : "campo"}
-];
-
-jsonToTable(
-  {
-     data : data,
-   headers : headers,
-   table : $("#tableTest")
-  }
-);
-
-*/

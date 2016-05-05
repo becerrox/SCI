@@ -656,10 +656,9 @@ function getBienesBy(filtros)
 		$.ajax({
 				type:"GET",
 	    		contentType: 'application/json',
-				url:'api/bienes/'+filtros,
+				url:'api/bienes'+filtros,
 				success:function(response){
-					if(response.status!=0){
-					resolver(response);}
+					resolver(response);
 				},error:function(response){
 					swal({
 				title: 'Error',
