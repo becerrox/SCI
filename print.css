@@ -1,11 +1,21 @@
+#header , #buscar , #btnImprimir , #contenedor{
+	display: none;
+}
+input{
+background: none;
+border:none;}
 
 body img{
  width: 100%;
-
+ visibility:visible;
 }
 body .bloque{
 	margin:0 50px;
 }
+h3{
+	text-align: center;
+}
+
 #bloque2{ margin-top: 20%; }
 #tabla {
 	margin: 10px 0;

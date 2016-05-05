@@ -28,7 +28,6 @@ img.alignleft, img.alignright, img.aligncenter {
     margin-bottom: 11px;
 }
 
-
 .alignleft, img.alignleft{
 display: inline;
     float: left;
@@ -47,7 +46,6 @@ display: inline;
     margin-left: auto;
     margin-right: auto;
 }
-.habilita{  }
 article, aside, figure, footer, header, hgroup, nav, section {display: block;}
 
 
@@ -72,6 +70,9 @@ line-height:1;
 width:100%;
 height:auto;
 overflow: auto;
+}
+body img{
+ visibility:hidden;
 }
 /* latin */
 @font-face {
@@ -495,4 +496,10 @@ label{display: block;  }
 width: 100%;
 }
   }
+
+.decoration input{
+  border:none;
+  background:none;
+}
+
 
