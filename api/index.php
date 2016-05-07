@@ -219,7 +219,7 @@ $app->get("/bienes",function() use ($app,$bienesService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->post("/bienes",function() use ($app,$bienesService){
+$app->post("/bienes/",function() use ($app,$bienesService){
     $bienes = json_decode($app->request->getRawBody());
     $data = $bienesService->nuevo($bienes);
     response($app,$data['mensaje'],$data['status']);

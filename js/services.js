@@ -656,7 +656,30 @@ function getBienesBy(filtros)
 		$.ajax({
 				type:"GET",
 	    		contentType: 'application/json',
-				url:'api/bienes'+filtros,
+				url:'api/bienes/'+filtros,
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
+				title: 'Error',
+				text: 'El registro no existe o hay un error',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+				})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function getBienesGeneralBy(filtros)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"GET",
+	    		contentType: 'application/json',
+				url:'api/bienes/',
 				success:function(response){
 					resolver(response);
 				},error:function(response){

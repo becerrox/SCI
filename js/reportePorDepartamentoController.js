@@ -8,7 +8,6 @@ if(sessionStorage.dataUsuario==undefined)
 $(document).ready(function()
 {
         var id_bien_buscar = "";
-        var filtro_bien = "";
 
         $("#header").load("header.html",function()
         {
@@ -21,39 +20,36 @@ $(document).ready(function()
              });
         });        
 
+        $("#btnBuscar").click(function(){
             idBien = $
-            numero = $("#responsable_ad").val();
-            getBienesGeneralBy().then(function(data){
+            numero = $("#unidad_trabajo").val();
+            getBienesBy("?unidad_trabajo="+numero).then(function(data){
                 id_bien_buscar = data[0].id;
                 jsonToTable({
                     data : data,
                     headers : headers,
                     table : $("#tableReporteBienes"),
-                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm", "unidad_trabajo", "sede"]
+                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm", "unidad_trabajo"]
                   });
                 jsonToForm({
                     data : data[0],
                     form : "#reporte"
                 });                
             });
+        }); 
 
         /* Cargando datas de la api a los selects  */     
 
+        getConfiguracionBy("?tipo=Unidad de Trabajo").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#unidad_trabajo")
+                });
+        })              
 
 headers = [ "Código General", "Código de Sub-categoría", "Código de Categoría Específica", "Descripción", "Estatus Uso Bien", "Marca", "Modelo", "Serial", "Tipo Componentes", "Colores", "Número de bien", "Estado bien", "Categoria de unidad administrativa"];
 
-/*        getBienesBy('').then(function(data){
-            for(bienesgeneral in data){
-                data[bienesgeneral].unidad_trabajo = data[bienesgeneral].unidad_trabajo;
-            }
-            jsonToSelect({        
-                 data : data,
-                 value : "unidad_trabajo",
-                 alias : "unidad_trabajo",
-                 element : $("#unidad_trabajo")
-                 });
-         })*/          
-
-                 
 });
 
