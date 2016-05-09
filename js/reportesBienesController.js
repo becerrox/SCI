@@ -8,7 +8,6 @@ if(sessionStorage.dataUsuario==undefined)
 $(document).ready(function()
 {
         var id_bien_buscar = "";
-        var filtro_bien = "";
 
         $("#header").load("header.html",function()
         {
@@ -36,9 +35,7 @@ $(document).ready(function()
         });        
 
             idBien = $
-            numero = $("#responsable_ad").val();
             getBienesGeneralBy().then(function(data){
-                id_bien_buscar = data[0].id;
                 jsonToTable({
                     data : data,
                     headers : headers,

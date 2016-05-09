@@ -23,11 +23,13 @@ function jsonToTable(config){
       tableContent += "<tr>";
       for (var i in config.data[key]){
           if(config.invisibleFields.indexOf(i)==-1)
-            tableContent += "<td>"+config.data[key][i]+"</td>";      
+            tableContent += "<td>"+config.data[key][i]+"</td>"; 
+            config.data.length;     
       }
     }
     tableHeaders += "</tr></thead>";
     tableContent += "</tr>";
     content = tableHeaders + tableContent;
     $(config.table).html(content)
+    console.log(config.data.length);
 }

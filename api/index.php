@@ -20,13 +20,6 @@ $app->get('/', function () {
     echo "SCI API REST";
 });
 
-//Auth
-    //Auth::middlewareAuth($app);
-
-    //Publicaciones
-
-//$publicaciones = new PublicacionesService;
-
 $usuarioService = new UsuariosService();
 
 $app->get("/usuarios",function() use ($app,$usuarioService) {
@@ -219,7 +212,7 @@ $app->get("/bienes",function() use ($app,$bienesService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->post("/bienes/",function() use ($app,$bienesService){
+$app->post("/bienes",function() use ($app,$bienesService){
     $bienes = json_decode($app->request->getRawBody());
     $data = $bienesService->nuevo($bienes);
     response($app,$data['mensaje'],$data['status']);

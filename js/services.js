@@ -673,13 +673,13 @@ function getBienesBy(filtros)
 	 });	
 }
 
-function getBienesGeneralBy(filtros)
+function getBienesGeneralBy(data)
 {
 	return new Promise(function(resolver, rechazar) { 
 		$.ajax({
 				type:"GET",
 	    		contentType: 'application/json',
-				url:'api/bienes/',
+				url:'api/bienes',
 				success:function(response){
 					resolver(response);
 				},error:function(response){

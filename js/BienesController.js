@@ -39,7 +39,8 @@ $(document).ready(function()
             frm = $("#formBienes");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarBienes(dataForm);
+            registrarBienes(dataForm).then(function(data){ 
+            });  
         });
 
         $("#btnModificar").click(function()
