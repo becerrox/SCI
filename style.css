@@ -27,7 +27,9 @@ h1{text-transform: uppercase;}
 img.alignleft, img.alignright, img.aligncenter {
     margin-bottom: 11px;
 }
-
+.capitalize{
+  text-transform: capitalize;
+}
 .alignleft, img.alignleft{
 display: inline;
     float: left;
@@ -72,7 +74,7 @@ height:auto;
 overflow: auto;
 }
 body #cabecera img{
- visibility:hidden;
+display: none;
 }
 /* latin */
 @font-face {
@@ -118,7 +120,7 @@ body #cabecera img{
   width: 25px;
 }
 .inicio > form + form{
-  margin-bottom: 7%;
+  margin-bottom: 3%;
 }
 #contenedor {  
   border-radius:4px;
@@ -145,6 +147,10 @@ section > div > div{
  }
  section .inicio{
   background: url(images/fondoinicio.png);
+ }
+ body{
+    margin-bottom: 3%;
+
  }
 #fondo {
   margin-left: 0;
@@ -175,6 +181,17 @@ text-shadow: 2px,5px,7px,rgb(255,255,225);
 #sesion h2{
 margin: .5em;
 text-align: center;
+}
+#bloque2{
+  display: none; 
+  z-index: 99;
+}
+#bloque2 + #pie{
+  display: none;
+  z-index: 99;
+}
+#tabla{
+  padding: 0 15px;
 }
 #alert{
 
@@ -474,7 +491,7 @@ font-size: 35px;
 
 .login-form{ 
   width: 50%;  
-  margin:auto;  
+  margin:auto;    
 }
   
 .login-form  input{font-size:12px;

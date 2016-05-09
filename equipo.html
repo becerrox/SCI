@@ -31,7 +31,7 @@
 <body>
     <div id="header"></div>
 
-   <section class="inicio container-fluid">
+   <section id="equipo" class="inicio container-fluid">
 
     <h1>REGISTRO DE EQUIPOS</h1>
   <!--                FORMULARIO DE REGISTRO        -->
@@ -39,9 +39,9 @@
     <div id="contenedor" class="row">       
       <div class="form-group bloque col-md-4 col-xs-6">
           <label>Equipo:</label>
-          <input type="text" name="descripcion" class="form-control-2" id="descripcion" data-toggle="tooltip" data-placement="top" title="Computador,Mouse,Teclado" onblur="menuOculto()">
+          <input type="text" name="descripcion" class="form-control-2 capitalize" id="descripcion" data-toggle="tooltip" data-placement="top" title="Computador,Mouse,Teclado" onblur="menuOculto()">
           <label>Marca:</label>
-          <input type="text" name="marca" class="form-control-2" id="marca" data-placement="top" title="VIT,HP,Siragon">
+          <input type="text" name="marca" class="form-control-2 capitalize" id="marca" data-placement="top" title="VIT,HP,Siragon">
           <label>Serial:</label>
           <input maxlength="25" name="serial" type="text" class="form-control-2" placeholder="00000000000" id="serial">
           <label>Modelo:</label>

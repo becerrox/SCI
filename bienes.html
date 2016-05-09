@@ -35,9 +35,9 @@
         <h1>Registro de Bienes</h1> 
    <form id="formBienes" class="container" >
     <div id="contenedor" class="row">
-      <div class="form-group bloque col-md-2 col-xs-12">
-          <label>Descripción:</label>
-          <input name="descripcion" class="form-control-2" id="descripcion" data-placement="top" title="Nombre del Bien">              
+      <div class="form-group bloque col-md-2 col-md-offset-1 col-xs-12">
+          <label>Descripción</label>
+          <input name="descripcion" class="form-control-2 capitalize" id="descripcion" data-placement="top" title="Nombre del tipo de Bien. Ej: Escritorio,Laptop">              
           <label>Categoría General</label>
           <select name="cod_general" class="form-control-2" id="catgen">
           </select>
@@ -49,11 +49,11 @@
           </select>  
       </div>
        <div class="form-group bloque col-md-2 col-xs-12">
-          <label>Estatus del Bien</label> 
+          <label>Estatus de uso del Bien</label> 
           <select name="estatus_uso_bien" class="form-control-2" id="estatus_uso_bien">
           </select>
           <label>Marca</label> 
-          <input name="marca" type="text" class="form-control-2" id="marca" data-toggle="tooltip" data-placement="top" title="Ej: VIT, HP, Siragon">
+          <input name="marca" type="text" class="form-control-2 capitalize" id="marca" data-toggle="tooltip" data-placement="top" title="Ej: VIT, HP, Siragon">
           <label>Modelo</label>
           <input name="modelo" type="text" class="form-control-2" id="modelo" >
           <label>Serial</label>
@@ -73,7 +73,7 @@
           <label>Nº Bien</label>
           <input name="num_bien" maxlength="25" type="text" class="form-control-2" placeholder="00000000000" id="num_bien" onKeyPress="return soloNumeros(event)">
           <label>Estado del Bien</label>
-          <select name="estado_bien" class="form-control-2" id="estado_bien">
+          <select name="estado_bien" class="form-control-2" id="estado_bien" data-placement="top" title="Condiciones físicas en las que se encuentra el bien">
           </select>          
       </div>
      <div class="form-group bloque col-md-2 col-xs-12">
@@ -95,15 +95,17 @@
           <select name="responsable_uso" class="form-control-2" id="responsable_uso">
           </select>
           <label>Sede:</label>       
-          <input type="text" class="form-control-2" name="sede" id="sede" data-placement="top" title="Ubicación donde se realizó el inventario">   
+          <input type="text" class="form-control-2 capitalize" name="sede" id="sede" data-placement="top" title="Ubicación donde se realizó el inventario">   
       </div>     
-      <div class="form-group bloque col-md-2 col-xs-12" id="fechas">
+   </div>  <!-- contenedor-->
+   <div class="row">
+        <div class="form-group col-md-12 col-xs-12" id="fechas">
           <label>Periodo del:</label>
           <input maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="per_ini" id="fecha2" data-placement="top" title="Indique fecha de inicio">  
           <label>Al:</label>
           <input maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="per_culm" id="fecha4" data-placement="top" title="Indique fecha de culminación">                 
-      </div>      
-  </div>  <!-- contenedor-->
+      </div>     
+      </div> 
     <div class="form-group bloque col-md-6 col-xs-12 col-md-offset-3">
           <button id= "btnGuardar" type="button" class="btn" onclick="Validar_rb()">Guardar</button>
           <button id= "btnModificar" type="button" class="btn" onclick="Validar_rb()">Modificar</button>

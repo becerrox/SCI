@@ -32,19 +32,18 @@
 <body>
 <div id="header"></div>
    <!--               FORMULARIO DE REGISTRO         -->
-  <section class="inicio">
+  <section class="inicio container">
         <h1>Registro de Usuarios</h1>
-        <form id=formUsuario>
+        <form id=formUsuario class="row">
           <div id="contenedor">
-              <div class="col-md-12 col-md-offset-2">
+              <div class="col-md-12 col-md-offset-1">
                   <label>Usuario:</label>
                   <input name="usuario" type="text" class="form-control-2" id="usuario" data-toggle="tooltip" title="Nombre de Usuario">
                   <label>Privilegio:</label>
                   <select name="nivel" id="nivel" class="form-control-2"> 
-                    <option selected disabled>Seleccione</option>
-                    <option value="0">Administrador</option>
-                    <option value="1">Administrador de bienes</option>
-                    <option value="2">Regular de bienes</option>
+                    <option value="0"></option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Regular</option>
                   </select>             
                   <label>Contraseña:</label>
                   <input type="password" class="form-control-2" name="pass1" id="pass1">
@@ -55,20 +54,18 @@
                  <div id="alert2" role="alert"></div>            
               </div>      
           </div>   
-    </form> <!-- Fin registro Usuario-->
-  <form id="formPersonal">
-   <div id="contenedor">
-      <div class="col-md-2 col-md-offset-3 col-sm-3">
-        <div>
+    </form> <!-- Fin registro Usuario--> 
+  <form id="formPersonal">  
+    <div id="contenedor" class="row text-center">
+      <div class="bloque col-md-4">        
           <label>Cédula:</label><br>      
-          <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" placeholder="00000000" onKeyPress="return soloNumeros(event)"/>
-        </div>
+          <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" placeholder="00000000" onKeyPress="return soloNumeros(event)"/>      
             <label>Nombres:</label>
             <input name="nombres" maxlength="30" type="text" class="form-control-2"  id="nombres" title="Ej: María Andrea" onkeypress="return soloLetras(event)"/>
             <label>Apellidos:</label>
             <input name="apellidos" maxlength="25" type="text" class="form-control-2" title="Ej: Colmenarez Gil" id="apellidos" onkeypress="return soloLetras(event)"/> 
       </div>          
-      <div class="bloque col-md-2">
+      <div class="bloque col-md-4">
            <label>Fecha N.:</label>
             <input name="f_nac" maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="fecha1" id="fecha1"/>     
             <label>Cargo:</label>
@@ -79,34 +76,44 @@
             </select> 
             <label>Unidad de Trabajo:</label>
             <select name="unidad_trabajo" id="unidad_trabajo" class="form-control-2">
+              <option value="0"></option>
+              <option value="1">Telecomunicaciones</option>
+              <option value="2">CCO</option>
             </select>                         
       </div>
-      <div class="bloque col-md-3">
+      <div class="bloque col-md-4">
           <label>Unidad Administrativa</label>
           <select name="unidad_admin" id="unidad_admin" class="form-control-2">
+            <option value="0"></option>
+            <option value="1">Despacho del Presidente</option>
+            <option value="2">Despacho del Vicepresidente</option>
+            <option value="7">Coordinación</option>
           </select>                
           <label>Teléfono:</label>
           <input name="telf_pers" maxlength="11" type="text" class="form-control-2" placeholder="00000000000" id="telf_pers" onKeyPress="return soloNumerosCod(event)"/>
           <label>Correo:</label>  
           <input name="correo" type="email" class="form-control-2" id="correo" data-toggle="tooltip" title="Ej: transbarca@gmail.com">
       </div>
-      <div class="form-group col-md-3 col-sm-12 col-xs-12 col-md-offset-5">
+    </div>
+  <div id="contenedor">
+   <div class="row">
+      <div class="form-group col-md-12 col-md-offset-7 col-sm-12 col-xs-12 ">
          <button id="guardarUserPersonal" type="button" class="btn" onclick="Validar_re()" >Guardar</button>
          <button id="modificarUserPersonal" type="button" class="btn">Modificar</button> 
          <button id="eliminarUserPersonal" type="button" class="btn">Eliminar</button> 
          <div id="alert" role="alert"></div>     
       </div>
-   </div> 
+    </div>
+   </div> <!-- Fin contenedor-->
   </form><!-- Fin registro Datos Personales-->  
  <div class="row ">
-     <form class=" form-group col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-      <div class="">
-          <label>Buscar</label>
-          <input type="text" class="form-control-2" id="buscar" data-placement="top" title="Ingrese serial del equipo">
-     <button type="button" id="buscarEquipo" class="btn icon-search"></button>
-      </div>     
+     <form class=" form-group col-md-12">      
+        <label>Buscar</label>
+        <input type="text" class="form-control-2" id="buscar" data-placement="top" title="Ingrese serial del equipo">
+       <button type="button" id="buscarEquipo" class="btn icon-search"></button>
+           
     </form>
-    </div>
+  </div>
   </section>
     <script src="js/menu.js" type="text/javascript"></script>    
     <script src="js/bootstrap.min.js"></script>  
