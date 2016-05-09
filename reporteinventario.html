@@ -28,63 +28,10 @@
   </div>
 <!--                 BARRA DE NAVEGACIÓN            -->
   <section class="inicio container">
-    <h3>Inventario Interno</h3>
-      <form>
-        <article id="contenedor" class="row">
-          <div class="form-group bloque col-md-3 col-sm-12">
-              <label>Por Departamento</label>
-              <select name="unidad_trabajo" id="unidad_trabajo" class="form-control-2 inputText"> 
-                <option value="0">Seleccione</option>
-              </select>  
-          </div>
-          <div class="form-group bloque col-md-3 col-sm-12">
-              <label>Por Responsable de Uso</label>
-              <select name="responsable_uso" id="responsable_uso" class="form-control-2 inputText"> 
-              </select>  
-          </div>
-          <div class="form-group bloque col-md-3 col-sm-12">
-              <label>Por Responsable Admin.</label>
-              <select name="responsable_ad" id="responsable_ad" class="form-control-2 inputText"> 
-                <option value="0">Seleccione</option>
-              </select>  
-          </div>
-          <div class="form-group bloque col-md-3 col-sm-12">
-              <label>Por Tipo de Bien</label>
-              <select name="descripcion" id="descripcion" class="form-control-2 inputText"> 
-                <option value="0">Seleccione</option>
-              </select>  
-          </div>                           
-        </article>
-        <article id="buscar" class="row">
-          <div class="form-group col-xs-4 col-xs-offset-4">
-           <button id="btnBuscar" type="button" class="btn icon-search" onclick=""></button>
-          </div>   
-        </article>  
-        
-      </form>
+    <h1>Inventario Interno</h1>
 
 <div class="bloque" style="">   
 <form id="reporte">
-<div id="cabecera" class="row">
-    <div class="form-group col-md-3">
-          <label id="unidad_trabajo" name="unidad_trabajo">Unidad de Trabajo</label>
-          <input name="unidad_trabajo" class="form-control-2" id="unidad_trabajo" />
-    </div>
-    <div class="form-group col-md-3">
-          <label id="responsable_usos" name="responsable_usos">Responsable de Uso</label>
-          <input name="responsable_uso" class="form-control-2" id="responsable_uso" disabled/>
-    </div>
-    <div class="form-group col-md-3">
-        <label id="responsable_adms" name="responsable_adms">Responsable Administrativo</label>
-          <input name="responsable_ad" class="form-control-2" id="responsable_ad" disabled/>
-    </div>    
-    <div class="form-group col-md-3">    
-        <label>Fecha de Elaboración</label> 
-            <input maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="per_ini" id="fecha2" data-placement="top" title="Indique fecha de inicio" disabled/>    
-        <label>al</label>          
-            <input maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="per_culm" id="fecha4" data-placement="top" title="Indique fecha de culminación" disabled/>
-      </div>  
-</div>
   <div id="tabla" class="table-responsive">
 <table id="tableReporteBienes" class="table table-bordered">
 </table>
