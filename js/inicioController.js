@@ -17,5 +17,24 @@ $(document).ready(function()
                 sessionStorage.removeItem("dataUsuario");
                 location.href="index.html";    
              });
+
+        if (dataUsuario.nivel==1) //Nivel Administrador de Bienes
+            {
+                document.getElementById("equipos").style.display = "none";
+                document.getElementById("reporte_equipos").style.display = "none";     
+            }
+        if (dataUsuario.nivel==2) //Nivel Regular Usuario de Bienes
+            {
+                document.getElementById("equipos").style.display = "none";
+                document.getElementById("reporte_equipos").style.display = "none";
+                document.getElementById("registro_usuarios").style.display = "none";
+                document.getElementById("reporte_equipos").style.display = "none";
+                 document.getElementById("btnEliminar").style.display = "none";
+
+            }        
+
+
+
+
         });        
 });
