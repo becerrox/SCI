@@ -26,7 +26,6 @@
      <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
      <script src="js/sweetalert.min.js"></script>
      <script src="js/select.js" type="text/javascript"></script>
-     <script src="js/trasladosController.js" type="text/javascript"></script>
   </head>
   <!--                    CUERPO PRINCIPAL             -->
 <div id="header"></div>
@@ -38,40 +37,56 @@
   <section class="inicio container">
     <h3 class="text-center">Traslado de Bienes</h3>
     <article id="contenedor" class="row">
-      <div class="col-md-5 col-md-offset-1">
-        <label>NOMBRES Y APELLIDOS:</label>
+      <div class="col-md-6" style="padding-right: 0px; ">
+        <div class="bordes">
+          <label>NOMBRES Y APELLIDOS:</label>
+          <select name="responsable_uso" class="form-control-2" id="responsable_uso">
+              <option value="0">Seleccione</option>
+              <option value="1"></option>
+          </select><br>
+        </div>
+        <div class="bordes">
+          <label>INSTITUCIÓN:</label>
+          <input name="institucion" type="text" class="form-control-2" id="institucion" /><br>
+        </div>
+        <div class="bordes">
+          <label>UNIDAD:</label>
+          <select name="unidad_adm" class="form-control-2" id="unidad_adm">
+              <option value="0">Seleccione</option>
+              <option value="1"></option>
+          </select><br>
+        </div>
+        <div class="bordes">
+          <label>FECHA DE SOLICITUD:</label>
+          <input name="fecha5" maxlength="10" type="text" class="form-control-2" id="fecha5"/>
+      </div>
+    </div>
+      <div class="col-md-6" style="padding-left: 0px;">
+       <div class="bordes">
+        <label>C.I.:</label>
+         <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" disabled/><br>
+        </div>
+        <div class="bordes">
+          <label>CARGO:</label>
+              <select name="cargo" id="cargo" class="form-control-2">
+                <option value="0">Seleccione</option>
+                <option value="1"></option>
+              </select> <br>
+        </div>
+        <div class="bordes">
+        <label>FECHA DE SALIDA:</label>
+        <input name="fecha1" maxlength="10" type="text" class="form-control-2" id="fecha1"/><br>
+        </div>
+        <div class="bordes">
+        <label>ENTREGADO A:</label>
         <select name="responsable_uso" class="form-control-2" id="responsable_uso">
             <option value="0">Seleccione</option>
             <option value="1"></option>
         </select><br>
-        <label>INSTITUCIÓN:</label>
-        <input name="institucion" type="text" class="form-control-2" id="institucion" /><br>
-        <label>UNIDAD:</label>
-        <select name="unidad_adm" class="form-control-2" id="unidad_adm">
-            <option value="0">Seleccione</option>
-            <option value="1"></option>
-        </select><br>
-        <label>FECHA DE SOLICITUD:</label>
-        <input name="fecha5" maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" id="fecha5"/>
-      </div>
-      <div class="col-md-5">
-        <label>C.I.:</label>
-         <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" disabled/>    <br>
-        <label>CARGO:</label>
-            <select name="cargo" id="cargo" class="form-control-2">
-              <option value="0">Seleccione</option>
-              <option value="1"></option>
-            </select> <br>
-        <label>FECHA DE SALIDA:</label>
-        <input name="fecha1" maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" id="fecha1"/><br>
-        <label>ENTREGADO A:</label>
-        <select name="responsable_usos" class="form-control-2" id="responsable_usos">
-            <option value="0">Seleccione</option>
-            <option value="1"></option>
-        </select><br>
+        </div>
       </div>
     </article> 
-    <article id="contenedor" class="row text-center">
+    <article id="contenedor" class="row text-center bordes">
       <div class="col-md-6">
         <label>TIPO DE TRASLADO:</label>
         <label>Interno:</label>
@@ -93,18 +108,18 @@
         </div> <!--Fin Tabla -->
       </form>
     </div><!--Fin bloque -->
-    <article id="contenedor" class="row">
+    <article id="contenedor" class="row bordes">
       <div class="col-md-12">
-        <p>Motivo del traslado de <input class="form-control-2" name="unidad_adm" id="unidad_adm" disabled/> hacia <input class="form-control-2" name="unidad_adm" id="unidad_adm" disabled/> </p>        
+        <p>Motivo del traslado de <input class="form-control-2" name="unidad_adm" id="unidad_adm" disabled/> hacia <input class="form-control-2" name="unidad_adm" id="unidad_adm" disabled/> </p>   
       </div>
     </article>
-    <article id="contenedor" class="row">
+    <article id="contenedor" class="row bordes">
       <div class="col-md-12">
         <label>Observaciones:</label>
         <input class="form-control-2" name="observacion" id="observacion" />        
       </div>
     </article>
-    <article id="contenedor" class="row text-center">
+    <article id="contenedor" class="row text-center bordes">
       <div class="col-md-6">
         <label>RESPONSABLE DE CONTROL DE BIENES:</label>        
       </div>
@@ -112,18 +127,31 @@
         <label>RECIBIDO POR:</label>        
       </div>
     </article>
+    <article id="contenedor" class="row text-center bordes" >
+      <div class="col-md-4 "> 
+        <label>GERENCIA DE ADMINISTRACIÓN Y FINANZAS (FIRMA Y SELLO)</label>  
+      </div>
+      <div class="col-md-4"> 
+        <P>RESPONSABLE DE BIENES (FIRMA Y SELLO)</P>
+        <input class="form-control-2" name="responsable_bienes" id="responsable_bienes" disabled/>     
+      </div>
+      <div class="col-md-4">
+        <p>(FIRMA Y SELLO)</p>   
+      </div>
+    </article>    
     <div class="row">
       <div class="col-md-2 col-md-offset-5">
-      <button id="btnImprimir" type="button" class="btn" onclick="window.print()">Imprimir</button>
+      <button id="btnImprimir" type="button" class="btn hidden-print" onclick="window.print()">Imprimir</button>
       </div>
     </div>
-    <div id="bloque2" class="linea text-center">      
+    <div id="bloque2" class="linea text-center" style="position: absolute;">      
     </div>
-    <div id="pie" class="text-center">
-      <p>Av. Florencio Jiménez, KM 3, Edif. Estación Central Simón Bolívar<br>
-    Piso PB,  Barquisimeto, Municipio Iribarren, Edo. Lara.<br>
-    RIF: G-20005347-0<br>
-    www.transbarca.gob.ve<br></p>
+    <div class="row">
+      <div id="pie2" class="text-center col-md-12">
+        <p>Av. Florencio Jiménez, KM 3, Edif. Estación Central Simón Bolívar<br>
+      Piso PB,  Barquisimeto, Municipio Iribarren, Edo. Lara.<br>
+      RIF: G-20005347-0<br></p>
+      </div>
     </div>
   </section>
   <script src="js/menu.js" type="text/javascript"></script> 
