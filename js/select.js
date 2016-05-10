@@ -12,7 +12,12 @@ function jsonToForm(config){
     for(key in config.data){    
         element = $(config.form+" [name="+key+"]");
         element.val(config.data[key]);    
-  }
+    }
+      for (var i in config.data[key]){
+          if(config.invisibleFields.indexOf(i)==-1)
+            element.val(config.data[key]);    
+            config.data.length;     
+      }  
 }
 
 function jsonToTable(config){
