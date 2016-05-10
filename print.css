@@ -1,4 +1,4 @@
-#header , #buscar , #btnImprimir , #contenedor{
+#header , #buscar , #btnImprimir {
 	display: none;
 }
 input{
@@ -16,7 +16,7 @@ h3{
 	text-align: center;
 }
 
-#bloque2{ margin-top: 20%; padding-top: 170px;}
+#bloque2{z-index: 12; padding-top: 225px;}
 #tabla {
 	margin: 10px 0;
 }
@@ -28,6 +28,7 @@ h3{
 .linea p{display: inline;
 margin-left: 10%;}
 
+#pie{z-index: 12;  }
 #pie p{
 	margin-top: 3%;
 	text-align: center;
