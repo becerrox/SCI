@@ -8,10 +8,18 @@
   margin: 0;
 }
 
-input, select{
+input{
 background: none;
 border:none;
 -webkit-appearance: field;
+}
+
+select {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+border: none; /* If you want to remove the border as well */
+background: none;
 }
 
 article{ border: 2px;
