@@ -14,7 +14,6 @@ function jsonToForm(config){
         element.val(config.data[key]);    
     }
       for (var i in config.data[key]){
-          if(config.invisibleFields.indexOf(i)==-1)
             element.val(config.data[key]);    
             config.data.length;     
       }  

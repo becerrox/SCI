@@ -517,9 +517,9 @@ width: 100%;
 }
   }
 
-.decoration input{
+.decoration input {
   border:none;
   background:none;
+  text-decoration: none;
+-webkit-appearance: field;
 }
-
-

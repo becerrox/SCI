@@ -1,4 +1,4 @@
-// Controlador
+// Controlador 
 
 if(sessionStorage.dataUsuario==undefined)
 {
@@ -43,18 +43,6 @@ $(document).ready(function()
             });  
         });
 
-
-        $("#buscarBien").click(function(){
-            idBien = $
-            numero = $("#buscar").val();
-            getBienesBy("?serial="+numero).then(function(data){
-                id_bien_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formBienes"
-                });
-            });
-        }); 
 
         /* Cargando datas de la api a los selects  */
 

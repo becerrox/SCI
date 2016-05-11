@@ -10,7 +10,9 @@
 
 input, select{
 background: none;
-border:none;}
+border:none;
+-webkit-appearance: field;
+}
 
 article{ border: 2px;
 border-color: 5px; }
