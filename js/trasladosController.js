@@ -76,7 +76,7 @@ $(document).ready(function()
                 });
                     idBien = $
                         numero = $("#").val();
-                        getBienesBy("?serial="+numero).then(function(data){
+                        getBienesBy("?num_bien="+numero).then(function(data){
                             id_bien_editar = data[0].id;
                             jsonToForm({
                                 data : data[0],

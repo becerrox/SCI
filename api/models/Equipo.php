@@ -89,12 +89,12 @@ class Equipo extends Model{
                 )
             ));
 
-     /*   $this->validate(new PresenceOf(
+        $this->validate(new PresenceOf(
             array(
                 "field" => "unidad_trabajo",
                 "message" => "El campo de unidad de trabajo es obligatorio"
                 )
-            ));        */
+            ));        
 
         $this->validate(new Uniqueness(
              array(

@@ -11,9 +11,8 @@ use Phalcon\Mvc\Model,
 
 
 class Bienes extends Model{
-
     public function initialize(){
-      $this->setSource("bienesgeneral");
+      $this->setSource("bienes");
       $this->addBehavior(
             new SoftDelete(
                 array(
@@ -30,73 +29,68 @@ class Bienes extends Model{
 
         $this->validate(new PresenceOf(
             array(
-                "field" => "cod_general",
-                "message" => "El código general es obligatorio"
+                "field" => "serial",
+                "message" => "El serial es obligatorio"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
-                "field" => "cod_subcat",
-                "message" => "El código de subcategoría es obligatorio"
+                "field" => "marca",
+                "message" => "La marca es obligatoria"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
-                "field" => "cod_catespf",
-                "message" => "El código de categoría específica es obligatorio"
+                "field" => "descripcion",
+                "message" => "El equipo es obligatorio"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "modelo",
+                "message" => "El modelo es obligatoria"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "estatus_uso_bien",
-                "message" => "El campo estatus del uso del bien es obligatorio"
+                "message" => "El estatus del uso de bien es obligatorio"
                 )
-            ));
-
-       $this->validate(new PresenceOf(
-            array(
-                "field" => "marca",
-                "message" => "El campo marca es obligatorio"
-                )
-            ));
-
-        $this->validate(new PresenceOf(
-            array(
-                "field" => "num_bien",
-                "message" => "El campo num_bien es obligatorio"
-                )
-            ));
+            ));        
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "cat_unid_admin",
-                "message" => "El campo de categoría de la unidad administrativa es obligatorio"
+                "message" => "La unidad administrativa es obligatoria"
+                )
+            ));         
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "num_bien",
+                "message" => "El número de bien es obligatoria"
+                )
+            ));                 
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "color",
+                "message" => "El campo color es obligatorio"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "unidad_trabajo",
-                "message" => "El campo unidad de trabajo es obligatorio"
+                "message" => "El campo de unidad de trabajo es obligatorio"
                 )
-            ));
+            ));        
 
-       $this->validate(new Uniqueness(
-            array(
-                "field"  => "serial",
-                "message" => "El serial debe ser único"
-            )
-        ));
 
-       $this->validate(new Uniqueness(
-            array(
-                "field"  => "num_bien",
-                "message" => "El número de bien debe ser único"
-            )
-        ));
 
         if ($this->validationHasFailed() == true) {
             return false;
