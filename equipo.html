@@ -33,7 +33,7 @@
 
    <section id="equipo" class="inicio container-fluid">
 
-    <h1>REGISTRO DE EQUIPOS</h1>
+    <h1>EQUIPOS</h1>
   <!--                FORMULARIO DE REGISTRO        -->
     <form id="formEquipo">
     <div id="contenedor" class="row">       
@@ -70,11 +70,13 @@
            </select>      
         </div>
         <div class="form-group bloque col-md-4 col-xs-6">
-          <label>Responsable Administrativo</label>  
+          <label>Responsable</label>  
           <select name="responsable" class="form-control-2" id="responsable">
             <option value="0"></option>
               <option value="1">Administrador</option>
-          </select>         
+          </select>
+          <label>Estatus de uso</label> 
+            <select name="estatus_uso_bien" class="form-control-2" id="estatus_uso_bien"></select>
           <label>Características:</label>
           <textarea type="text" class="form-control-2" name="caracteristicas" id="caracteristicas" data-placement="top" title="Por tipo de Equipo"></textarea>
           <label>Observaciones:</label>

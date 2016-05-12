@@ -28,7 +28,7 @@
   </div>
 <!--                 BARRA DE NAVEGACIÓN            -->
   <section class="inicio">
-    <h1 class="text-center">Inventario Interno</h1>
+    <h2 class="text-center">Inventario General</h2>
     <div class="bloque">   
       <form id="reporte">
         <div id="tabla" class="table-condensed">
@@ -37,25 +37,31 @@
         </div> <!--Fin Tabla -->
       </form>
     </div><!--Fin bloque -->
-    <div class="row">
-      <div class="col-md-2 col-md-offset-5">
-      <button id="btnImprimir" type="button" class="btn" onclick="window.print()">Imprimir</button>
-      </div>
+     <article class="row">
+        <div class="col-md-2 col-md-offset-5">
+          <button id="btnImprimir" type="button" class="btn hidden-print" onclick="window.print()">Imprimir</button>
+        </div>
+    </article>
+    <article id="contenedor" class="row ">
+      <div id="bloque2" class="text-center col-md-12 visible-print">
+        <label class="padding">RESPONSABLE DEL BIEN</label>
+        <label class="padding">JEFE DE LA UNIDAD</label>
+        <label>RESPONSABLE DEL USO</label>
     </div>
-    <div id="bloque2" class="linea text-center">
-      <p>RESPONSABLE DEL BIEN</p>
-      <label></label>
-      <p>JEFE DE LA UNIDAD</p>
-      <label></label>
-      <p>RESPONSABLE DEL USO</p>
-      <label></label>
+    </article>
+  <article id="firma" class="row visible-print">
+    <div class="col-md-12 text-center">
+      <label class="padding">_______________________</label><label class="padding">_______________________</label><label>_______________________</label>
     </div>
-    <div id="pie" class="text-center">
-      <p>Av. Florencio Jiménez, KM 3, Edif. Estación Central Simón Bolívar<br>
-    Piso PB,  Barquisimeto, Municipio Iribarren, Edo. Lara.<br>
-    RIF: G-20005347-0<br>
-    www.transbarca.gob.ve<br></p>
+  </article>
+  <article class="row visible-print">
+    <div id="pie2" class="text-center col-md-12">
+        <p>Av. Florencio Jiménez, KM 3, Edif. Estación Central Simón Bolívar<br>
+      Piso PB,  Barquisimeto, Municipio Iribarren, Edo. Lara.<br>
+      RIF: G-20005347-0<br>
+      www.transbarca.gob.ve<br></p>
     </div>
+  </article>
   </section>
   <script src="js/menu.js" type="text/javascript"></script> 
   <script src="js/jquery.js"></script>
