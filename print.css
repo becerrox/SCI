@@ -1,29 +1,7 @@
-#header , #buscar {
-	display: none;
-}
-.bordes{
-  border-width: 1px; 
-  border-style: solid;
-  padding: 0;
-  margin: 0;
-}
-
-input{
-background: none;
-border:none;
--webkit-appearance: field;
-}
-
-select {
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
-border: none; /* If you want to remove the border as well */
-background: none;
-}
-
-article{ border: 2px;
-border-color: 5px; }
+article{ 
+	border: 2px;
+	border-color: 5px; 
+	   }
 body img{
  width: 100%;
  visibility:visible;
@@ -33,40 +11,58 @@ body .bloque{
 }
 h3{
 	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	padding-bottom:20px;
 }
-
-#bloque2{z-index: 12; padding-top: 225px;}
+input , textarea{
+background: none;
+border:none;
+-webkit-appearance: field;
+	}
+select {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+border: none; 
+background: none;
+	}
+#bloque2{
+	z-index: 99;
+	padding-top: 225px;	
+}
+#fecha-elab{
+	padding-left:50%;
+}
+#firma{padding-top: 20px;}
+#header , #buscar {
+	display: none;
+}
+#pie2{ display: inline;
+  z-index: 99;
+   position: relative;
+text-align: center;
+color: #968186;
+	}
+#pie2 p{	
+	text-align: center;
+	font-size: 9px;
+	}
 #tabla {
 	margin: 10px 0;
 }
 
-#fecha-elab{
-	padding-left:50%;
-}
-.bloque label{ display: inline; }
-.linea p{display: inline;
-margin-left: 10%;}
 
-#pie2{ display: inline;
-  z-index: 99;
-   position: fixed;
-text-align: center;}
-#pie2 p{
-	/*margin-top: 3%;*/
-	text-align: center;
-	font-size: 9px;
-	color: gray;	
-}
-
-.hide{  display: block !important;}
-
-@media print{
-
- .btn {
-#tableReporteBienes table{
-  	max-width: 0;
-  	min-width: 0;
-  	overflow: none;
-  		}
+.bordes{
+  border-width: 1px; 
+  border-style: solid;
+  padding: 0;
+  margin: 0;
 	}
-}
+.bloque label{display: inline;}
+.linea p{
+	display: inline;
+	padding-right: 10%;
+		}
+.padding {padding-right: 80px;}
+.hide{display: block !important;}

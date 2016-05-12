@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
     <script src="js/jquery.min.js"></script>
-    <script src="js/constanciaRetiroController.js" type="text/javascript"></script>
+     <script src="js/tooltips.js" type="text/javascript"></script>
     <script src="js/select.js" type="text/javascript"></script>
     <script src="js/services.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
@@ -27,32 +27,94 @@
     <img src="images/cabecera.png">
   </div>
 <section class="inicio container">
-  <article id="contenedor" class="row ">
-    <h5 class="text-center">CONSTANCIA DE RECEPCIÓN DE EQUIPO TECNOLÓGICO</h5>
-    <div class="bloque center decoration">
+    <h3 class="text-center">CONSTANCIA DE RECEPCIÓN DE EQUIPO TECNOLÓGICO</h3>
+    <article id="contenedor" class="row hidden-print">
+      <div class="col-md-12 text-center">
+        <label>Equipo a Asignar</label>
+        <input maxlength="25" name="serial" type="text" class="form-control-2" id="serial" data-placement="top" title="Introduzca SERIAL" >     
+        <button type="button" id="buscarEquipo" class="btn icon-search">    </button>
+      </div>
+    </article>
+  <article id="contenedor" class="row">
+    <div class="bloque center decoration col-md-12">
         <p class="text-justify">Yo, <select name="responsable_uso" class="form-control-2" id="responsable_uso">
               </select>, de nacionalidad venezolana, mayor de edad, titular de la Cédula de Identidad N°: <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" disabled/> ,de la unidad: <select name="unidad_adm" class="form-control-2" id="unidad_adm">
           </select>,por medio de la presente hago constar que he recibido de la Entidad de Trabajo TRANSBAR, C. A. el equipo que se describe a continuación:</p>
-        <div id="tabla" class="table-condensed">
-        <table id="tableActaEntrega" class="table table-bordered">
-          </table>
-        </div> <!--Fin Tabla -->
-        <p class="text-justify">Deigual forma declaro que en virtud de la asignación del equipo que se hace a través de la presente acta tendré respecto a éste, las siguientes obligaciones: <strong>A)</strong> Destinar el equipo exclusivamente para actividades relacionadas con mi puesto de trabajo, <strong>B)</strong> Reportar oportunamente cualquier novedad que presente el equipo, quedando bajo mi responsabilidad cualquier daño que no fuera oportunamente reportado; <strong>C)</strong> Devolverlo al momento de finalizar mi relación de trabajo con <strong>TRANSBAR, C. A. D)</strong> Asumir los costos de reparación o reposición en caso de daño o extravío, cuando el mismo ocurra por negligencia, imprudencia o impericia atribuible a mi persona, para lo cual queda establecido un plazo no mayor de Diez (10) días para su reparación o reposición, contados a partir de la ocurrencia del mismo. En Barquisimeto, a los <label></label> días del mes de <label></label> de <label></label>.</p>
+
+       <div id="tabla" class="row">
+          <div class="col-md-12 bordes"> 
+            <label class="">TIPO</label>
+            <input type="text" name="descripcion" class="" id="descripcion" onblur="menuOculto()">
+          </div>
+          <div class="col-md-12 bordes">
+            <label>MARCA</label>       
+            <input type="text" name="marca" class="capitalize" id="marca">
+          </div>
+          <div class="col-md-12 bordes">
+            <label>MODELO</label>       
+            <input type="text" name="modelo" id="modelo">
+          </div>
+          <div class="col-md-12 bordes">
+            <label>SERIAL</label>       
+            <input maxlength="25" name="serial" type="text" id="serial">
+          </div>
+          <div class="col-md-12 bordes">
+            <label>COLOR</label>       
+            <input name="color" type="text" id="color">
+          </div>
+          <div class="col-md-12 bordes">
+            <label>CARACTERÍSTICAS</label>
+            <textarea name="caracteristicas" type="text" id="caracteristicas" rows="2" cols="40"></textarea>
+          </div>
+          <div class="col-md-12 bordes">
+            <label>OBSERVACIONES</label> 
+            <textarea name="observaciones" type="text" id="observaciones" rows="2" cols="40"></textarea>
+          </div>
+          <div id="celular" class="">
+          <div class="col-md-12 bordes">
+            <label>SIMCARD</label>
+            <input name="serialSim" class="" id="serialSim" maxlength="16" onKeyPress="return soloNumeros(event)">
+          </div>
+          <div class="col-md-12 bordes">
+            <label>Línea</label> 
+            <input  name="numeroCelular" id="numeroCelular" maxlength="11" onKeyPress="return soloNumeros(event)"/>
+          </div>
+          <div class="col-md-12 bordes">     
+            <label>Accesorios</label>
+            <input  name="accesorios" class="" id="accesorios"> 
+          </div>
+          <div class="col-md-12 bordes">     
+            <label>Plan</label> 
+            <input  name="planCelular" class="" id="planCelular">
+          </div>
+        </div>
+
+
       </div>
-      <div id="bloque2" class="linea text-center">
-        <p>EL TRABAJADOR</p>
-        <label></label>
-        <p>COORDINACIÓN DE TELECOMUNICACIONES</p>
-        <label></label>
+
+        <p class="text-justify visible-print">De igual forma declaro que en virtud de la asignación del equipo que se hace a través de la presente acta tendré respecto a éste, las siguientes obligaciones: <strong>A)</strong> Destinar el equipo exclusivamente para actividades relacionadas con mi puesto de trabajo, <strong>B)</strong> Reportar oportunamente cualquier novedad que presente el equipo, quedando bajo mi responsabilidad cualquier daño que no fuera oportunamente reportado; <strong>C)</strong> Devolverlo al momento de finalizar mi relación de trabajo con <strong>TRANSBAR, C. A. D)</strong> Asumir los costos de reparación o reposición en caso de daño o extravío, cuando el mismo ocurra por negligencia, imprudencia o impericia atribuible a mi persona, para lo cual queda establecido un plazo no mayor de Diez (10) días para su reparación o reposición, contados a partir de la ocurrencia del mismo. En Barquisimeto, a los <label></label> días del mes de <label></label> de <label></label>.</p>
+      </div>    
+  </article>
+  <article id="contenedor" class="row ">
+      <div id="bloque2" class="text-center col-md-12 visible-print">
+        <label class="padding">EL TRABAJADOR</label>
+        <label>COORDINACIÓN DE <br>TELECOMUNICACIONES</label>   
     </div>
-    <div id="pie" class="text-center">
+  </article>
+  <article id="firma" class="row visible-print">
+    <div class="col-md-12 text-center">
+      <label class="padding">_______________________</label><label>_______________________</label>
+    </div>
+  </article>
+  <article class="row visible-print">
+    <div id="pie2" class="text-center col-md-12">
         <p>Av. Florencio Jiménez, KM 3, Edif. Estación Central Simón Bolívar<br>
       Piso PB,  Barquisimeto, Municipio Iribarren, Edo. Lara.<br>
       RIF: G-20005347-0<br>
       www.transbarca.gob.ve<br></p>
     </div>
-    </div>
   </article>
+  
 </section>
 
    <script src="js/services.js" type="text/javascript"></script> 

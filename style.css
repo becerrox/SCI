@@ -76,6 +76,11 @@ overflow: auto;
 body #cabecera img{
 display: none;
 }
+#tabla input , #tabla textarea{
+background: none;
+border:none;
+-webkit-appearance: field;
+  }
 /* latin */
 @font-face {
   font-family: 'CaviarDreams';
