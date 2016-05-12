@@ -719,6 +719,28 @@ function getEquiposBy(filtros)
 	 });	
 }
 
+function getNivelesBy(data)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"GET",
+	    		contentType: 'application/json',
+				url:'api/niveles',
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
+				title: 'Error',
+				text: 'El registro no existe o hay un error',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+				})
+					rechazar(response);
+				}
+			});
+	 });	
+}
 
 // Función que convierte los datos de un form a un plain json listo para enviar
 

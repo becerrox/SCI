@@ -43,8 +43,12 @@ $(document).ready(function()
                     data : data,
                     headers : headers,
                     table : $("#tableEquipos"),
-                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo"]
+                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","serialSim","accesorios","planCelular","numeroCelular"]
                   });
+                jsonToForm({
+                    data : data[0],
+                    form : "#formBienes"
+                });                
             });
         });  
 

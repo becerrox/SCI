@@ -1,38 +1,37 @@
 <?php
-class ConfiguracionService{
+class NivelesService{
         public function listar($query = []){
 
           if(empty($query))
-             $configuracion=Configuracion::find();
+             $niveles=Niveles::find();
           else
           {
-            $configuracion = Configuracion::find(
+            $niveles=Niveles::find(
                 array(
                     arrayToSQLQuery($query),
                     "bind" => $query)
                 );
           }
 
-          if(count($configuracion->toArray())==0){
-                return array("status" => 404, "mensaje" => "No hay registros de configuracion");
+          if(count($niveles->toArray())==0){
+                return array("status" => 404, "mensaje" => "No hay registros de niveles");
           }else{
-                return array("status" => 200, "mensaje" =>$configuracion->toArray());
+                return array("status" => 200, "mensaje" =>$niveles->toArray());
           }
         }
 
         
         public function nuevo($conf){
-            $configuracion=new Configuracion();
+            $niveles=new niveles();
             $data=array(
                   "codigo" => $conf->codigo,
-                  "descripcion" => $conf->descripcion,
-                  "tipo" => $conf->tipo
+                  "nivel" => $conf->nivel
             );
-            if($configuracion->save($data)){
+            if($niveles->save($data)){
                     return array("status" => 201, "mensaje" => $data);
             }else{
                 $errors = array();
-                foreach ($configuracion->getMessages() as $message) {
+                foreach ($niveles->getMessages() as $message) {
                     $errors[] = $message->getMessage();
                 }
                 return array("status" => 400, "mensaje" =>$errors);
@@ -40,12 +39,11 @@ class ConfiguracionService{
         }
 
         public function modificar($id,$conf){
-            $modificar=Configuracion::find($id);
+            $modificar=Niveles::find($id);
             if(count($modificar)>0){
                 $data=array(
                   "codigo" => $conf->codigo,
-                  "descripcion" => $conf->descripcion,
-                  "tipo" => $conf->tipo
+                  "nivel" => $conf->nivel
                 );
 
                 if($modificar->update($data)){
@@ -53,7 +51,7 @@ class ConfiguracionService{
                 }
                 else{
                      $errors = array();
-                    foreach ($configuracion->getMessages() as $message) {
+                    foreach ($niveles->getMessages() as $message) {
                         $errors[] = $message->getMessage();
                     }
                     return array("status" => 400, "mensaje" =>$errors);
@@ -63,10 +61,10 @@ class ConfiguracionService{
             }
         }
         public function eliminar($id){
-            $configuracion=Configuracion::find($id);
-            if(count($configuracion)){
-                $configuracion->delete();
-                return array("status" => 200, "mensaje" => 'configuracion Eliminado');
+            $niveles=Niveles::find($id);
+            if(count($niveles)){
+                $niveles->delete();
+                return array("status" => 200, "mensaje" => 'niveles Eliminado');
             }else{
                 return array("status"=>404, "mensaje"=> "El registro intenta modificar no existe");
             }

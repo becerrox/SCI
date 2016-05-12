@@ -78,7 +78,7 @@ class Bienes extends Model{
 
         $this->validate(new PresenceOf(
             array(
-                "field" => "color",
+                "field" => "colores",
                 "message" => "El campo color es obligatorio"
                 )
             ));
@@ -90,7 +90,12 @@ class Bienes extends Model{
                 )
             ));        
 
-
+        $this->validate(new Uniqueness(
+             array(
+                 "field"  => "serial",
+                 "message" => "El serial debe ser único"
+             )
+         ));
 
         if ($this->validationHasFailed() == true) {
             return false;

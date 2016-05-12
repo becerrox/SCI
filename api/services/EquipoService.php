@@ -3,7 +3,7 @@ class EquipoService{
     public function listar($query){
 
           if(empty($query))
-             $equipo=Equipo::find();
+             $equipo=Equipo::find("status = 1");
           else
           {
             $equipo=Equipo::find(
@@ -38,7 +38,8 @@ class EquipoService{
                 "serialSim" => $eq->serialSim,
                 "accesorios" => $eq->accesorios,
                 "planCelular" => $eq->planCelular,
-                "numeroCelular" => $eq->numeroCelular
+                "numeroCelular" => $eq->numeroCelular,
+                "estadoUsoEquipo" => $eq->estadoUsoEquipo
             );
             if($equipo->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -62,7 +63,7 @@ class EquipoService{
                 "color" => $eq->color,
                 "estado" => $eq->estado,
                 "unidad_admin" => $eq->unidad_admin,
-                "status" => $eq->status,
+                "status" => 1,
                 "responsable" => $eq->responsable,
                 "caracteristicas" => $eq->caracteristicas,
                 "fecha_modif" => date("Y-m-d h:i:s"),
@@ -71,8 +72,9 @@ class EquipoService{
                 "serialSim" => $eq->serialSim,
                 "accesorios" => $eq->accesorios,
                 "planCelular" => $eq->planCelular,
-                "numeroCelular" => $eq->numeroCelular
-                );
+                "numeroCelular" => $eq->numeroCelular,
+/*                "estadoUsoEquipo" => $eq->estadoUsoEquipo
+*/                );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
                 }

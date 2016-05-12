@@ -38,13 +38,15 @@ class BienesService{
                 "num_bien" => $bie->num_bien,
                 "estado_bien" => $bie->estado_bien,
                 "status" => $bie->status,
+                "fecha_modif" => date("Y-m-d h:i:s"),
                 "cat_unid_admin" => $bie->cat_unid_admin,
                 "per_ini" => $bie->per_ini,
                 "per_culm" => $bie->per_culm,
                 "unidad_trabajo" => $bie->unidad_trabajo,
                 "responsable_pa" => $bie->responsable_pa,
                 "responsable_ad" => $bie->responsable_ad,
-                "responsable_uso" => $bie->responsable_uso
+                "responsable_uso" => $bie->responsable_uso,
+                "sede" => $bie->sede,  
             );
 
             if($bienes->save($data)){
@@ -82,7 +84,8 @@ class BienesService{
                     "unidad_trabajo" => $bie->unidad_trabajo,
                     "responsable_pa" => $bie->responsable_pa,
                     "responsable_ad" => $bie->responsable_ad,
-                    "responsable_uso" => $bie->responsable_uso
+                    "responsable_uso" => $bie->responsable_uso,
+                    "sede" => $bie->sede,  
                 );
 
                 if($modificar->update($data)){

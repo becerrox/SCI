@@ -71,4 +71,14 @@ $(document).ready(function()
                 element : $("#unidad_trabajo")
                 });
         })             
+
+        //Unidad de Trabajo
+        getNivelesBy().then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#unidad_trabajo")
+                });
+        })                  
 });
