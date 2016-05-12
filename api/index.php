@@ -229,6 +229,34 @@ $app->delete("/bienes/{id:[0-9]+}",function($id) use ($app,$bienesService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
+//Endpoints traslados
+
+$trasladosService = new TrasladosService;
+
+$app->get("/traslados",function() use ($app,$trasladosService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $trasladosService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/traslados",function() use ($app,$trasladosService){
+    $traslados = json_decode($app->request->getRawBody());
+    $data = $trasladosService->nuevo($traslados);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/traslados/{id:[0-9]+}",function($id) use ($app,$trasladosService) {
+    $traslados = json_decode($app->request->getRawBody());
+    $data = $trasladosService->modificar($id,$traslados);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/traslados/{id:[0-9]+}",function($id) use ($app,$trasladosService) {
+    $data = $bienesService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
+});
+
 //Endpoints configuracion
 
 $configuracionService = new ConfiguracionService;

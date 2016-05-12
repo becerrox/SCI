@@ -37,3 +37,25 @@ function jsonToTable(config){
     $(config.table).html(content)
     console.log(config.data.length);
 }
+
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function jsonToTableTraspuesto(config){
+    tableHeaders = "<thead><tr>";
+  for(key in config.headers){     
+      tableHeaders += "<th>"+config.headers[key]+"</th>";
+    }
+    tableHeaders += "</tr>";
+    tableContent = "<tbody>";
+    for(key in config.data){
+      for(attr in config.data[key])
+      if(config.invisibleFields.indexOf(attr)==-1)
+        tableContent+='<tr> <th>'+capitalize(attr)+'</th><td>'+config.data[key][attr]+'</td></tr>'
+    }
+     tableContent+="</tbody>";
+    content = tableHeaders+tableContent;
+    $(config.table).html(content)
+    console.log(content);
+}

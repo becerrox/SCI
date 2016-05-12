@@ -44,15 +44,17 @@ $(document).ready(function()
         });
 
 
-        $("#buscarBien").click(function(){
+        $("#btnBuscar").click(function(){
             idBien = $
-            numero = $("#buscar").val();
-            getBienesBy("?serial="+numero).then(function(data){
-                id_bien_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formBienes"
-                });
+            numero = $("num_bien").val();
+            getBienesBy("?num_bien="+numero).then(function(data){
+                id_bien_buscar = data[0].id;
+                jsonToTable({
+                    data : data,
+                    headers : headers,
+                    table : $("#tableReporteBienes"),
+                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm", "unidad_trabajo"]
+                  }) ;            
             });
         }); 
 

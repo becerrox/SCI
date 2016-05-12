@@ -34,6 +34,23 @@ $(document).ready(function()
                     }                
         });        
 
+        $("#buscarEquipo").click(function(){
+            idEquipo = $
+            numero = $("#serial").val();
+            getEquiposBy("?serial="+numero).then(function(data){
+                id_equipo_editar = data[0].id;
+                jsonToTableTraspuesto({
+                    data : data,
+                    headers : headers,
+                    table : $("#tableEquipos"),
+                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo"]
+                  });
+            });
+        });  
+
+headers = [];
+
+
         $("#btnGuardar").click(function()
         {
             frm = $("#formBienes");
@@ -54,24 +71,7 @@ $(document).ready(function()
                 element : $("#unidad_adm")
                 });
         })                
-
-        getBienesGeneralBy().then(function(data){
-            jsonToSelect({        
-                data : data,
-                value : "num_bien",
-                alias : "num_bien",
-                element : $("#")
-                });
-                    idBien = $
-                        numero = $("#").val();
-                        getBienesBy("?num_bien="+numero).then(function(data){
-                            id_bien_editar = data[0].id;
-                            jsonToForm({
-                                data : data[0],
-                                form : "#formBienes"
-                            });
-                        });            
-        })            
+  
 
         getPersonalBy('').then(function(data){
             for(personal in data){
@@ -81,8 +81,12 @@ $(document).ready(function()
                  data : data,
                  value : "nombreApellido",
                  alias : "nombreApellido",
-                 element : $("#responsable_usos")
-                 });
+                 element : $("#responsable_usos")                          
+                 });             
+                jsonToForm({
+                    data : data,
+                    form : "#constancia"
+                });                 
          })  
 
         getPersonalBy('').then(function(data){
