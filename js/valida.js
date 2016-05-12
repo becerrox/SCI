@@ -380,6 +380,7 @@ previo=rbutton;
           var unidad_admin = document.getElementById('unidad_admin').value;
           var unidad_trabajo = document.getElementById('unidad_trabajo').value;
           var responsable = document.getElementById('responsable').value;
+          var estatus_uso_bien = document.getElementById('estatus_uso_bien').value;
           var caracteristicas = document.getElementById('caracteristicas').value;
           var observaciones = document.getElementById('observaciones').value;
           var serialSim = document.getElementById('serialSim').value;
@@ -453,8 +454,16 @@ previo=rbutton;
             $('#alert').html('').slideUp(300);
           } 
         if(responsable=="0"){
-            $('#alert').html('Debes seleccionar a un encargado').slideDown(500);
+            $('#alert').html('Debes seleccionar un responsable').slideDown(500);
             $('#responsable').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+         if(estatus_uso_bien=="0"){
+            $('#alert').html('Debes seleccionar un estatus').slideDown(500);
+            $('#estatus_uso_bien').focus();
             return false;
           }
           else{

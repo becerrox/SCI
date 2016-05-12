@@ -56,7 +56,7 @@ article, aside, figure, header, hgroup, nav, section {display: block;}
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
-
+h3{ text-align: center; margin: .5em;}
 html{-webkit-font-smoothing:antialiased;}
 
 a{color:#BA0707;}
@@ -491,7 +491,7 @@ height: auto;
 display: block;
 margin: 0 auto;
 }
-.inicio h1{
+.inicio h1  {
 margin: .5em;
 text-align: center;
 font-size: 35px;
