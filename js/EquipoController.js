@@ -110,7 +110,17 @@ $(document).ready(function()
                 alias : "descripcion",
                 element : $("#unidad_trabajo")
                 });
-        })              
+        })           
+
+        //Estatus de Uso del Bien 
+        getConfiguracionBy("?tipo=Estatus de Uso del Bien").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#estatus_uso_bien")
+                });
+        })           
 
         getPersonalBy('').then(function(data){
             for(personal in data){

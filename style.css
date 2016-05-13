@@ -103,6 +103,7 @@ border:none;
 text-align: center;
 bottom: ;
 top: 600px;}
+
 #pie3{ display: inline;
   z-index: 4;
    position: relative;
@@ -116,7 +117,7 @@ top: ;}
   font-size: 12px;  
 }
 #pie_de_pagina p:hover{ 
-  color: rgb(164,0,0); 
+  color: rgba(164,0,0,.8); 
   -webkit-transition: all 0.9s ease-in-out 0s;
    -moz-transition: all 0.9s ease-in-out 0s;
    -o-transition: all 0.9s ease-in-out 0s;
@@ -152,7 +153,9 @@ top: ;}
 .no-margin{
   margin: 0px;
 }
-
+.inicio {
+  margin-bottom: 3%;
+}
 #buscarEquipo {
   width: 25px;
 }
@@ -191,7 +194,8 @@ section > div > div{
  }
 #fondo {
   margin-left: 0;
-  margin-right: 0  
+  margin-right: 0;
+  margin-bottom: 2%;
 }
 
 

@@ -4,8 +4,6 @@ $(document).ready(function(){
 	$("#Iniciar").click(function(){
 		var Usuario=$('#username').val();
 		var Contrasena=$("#contrasena").val();
-		//Location='registrousuario.html';
-		console.log(Usuario,Contrasena);
 		$.ajax({
 			type:"POST",
 			processData: false,
@@ -25,7 +23,6 @@ $(document).ready(function(){
 
 				}
 			},error:function(response){
-				console.log(response);
 				$("#mensaje").html(response.responseJSON.data.error);
 			}
 		});
@@ -86,6 +83,38 @@ function modificarEquipos(data,id)
 					swal({
 				title: 'Error',
 				text: 'No se pudo modificar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+				})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function solventarEquipos(data,id)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"PUT",
+				processData: false,
+	    		contentType: 'application/json',
+				url:'api/equipos/'+id,
+				data:JSON.stringify(data),
+				success:function(response){
+				resolver(response);
+				swal({
+				title: 'Modificado',
+				text: 'Se ha solventado el equipo',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+			})
+				},error:function(response){
+					swal({
+				title: 'Error',
+				text: 'No se pudo solventar',
 				type: 'error',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'

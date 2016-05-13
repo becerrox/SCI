@@ -43,7 +43,9 @@ $(document).ready(function()
                     data : data,
                     headers : headers,
                     table : $("#tableReporteBienes"),
-                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm", "unidad_trabajo","sede"]
+                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm", "unidad_trabajo","sede"],
+                    limit : data.length,
+                    showCount : true                
                   });
                 jsonToForm({
                     data : data[0],
@@ -54,7 +56,7 @@ $(document).ready(function()
 
         /* Cargando datas de la api a los selects  */     
 
-        getBienesGeneralBy().then(function(data){
+        getBienesBy('').then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",

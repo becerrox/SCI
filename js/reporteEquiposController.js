@@ -43,7 +43,9 @@ $(document).ready(function()
                     data : data,
                     headers : headers,
                     table : $("#tableTipoEquipo"),
-                    invisibleFields : ["id","status","fecha_modif"]
+                    invisibleFields : ["id","status","fecha_modif"],
+                    limit : data.length,
+                    showCount : true            
                   });
                 jsonToForm({
                     data : data[0],

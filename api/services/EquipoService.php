@@ -39,7 +39,8 @@ class EquipoService{
                 "accesorios" => $eq->accesorios,
                 "planCelular" => $eq->planCelular,
                 "numeroCelular" => $eq->numeroCelular,
-                "estadoUsoEquipo" => $eq->estadoUsoEquipo
+                "estadoUsoEquipo" => $eq->estadoUsoEquipo,
+                "motivo" => $eq->motivo
             );
             if($equipo->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -73,8 +74,9 @@ class EquipoService{
                 "accesorios" => $eq->accesorios,
                 "planCelular" => $eq->planCelular,
                 "numeroCelular" => $eq->numeroCelular,
-/*                "estadoUsoEquipo" => $eq->estadoUsoEquipo
-*/                );
+                "estadoUsoEquipo" => $eq->estadoUsoEquipo,
+                "motivo" => $eq->motivo
+                );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
                 }
@@ -89,6 +91,33 @@ class EquipoService{
                 return array("status" => 404, "mensaje" =>"El registro que intenta modificar no existe");
             }
         }
+
+        public function solvencia($id,$eq){
+            $solvencia=Equipo::find($id);
+            if(count($solvencia)>0){
+                $data=array(
+                "serial" => $eq->serial,
+                "status" => 1,
+                "fecha_modif" => date("Y-m-d h:i:s"),
+                "observaciones" => $eq->observaciones,
+                "estadoUsoEquipo" => 6,
+                "motivo" => $eq->motivo
+                );
+                if($solvencia->update($data)){
+                        return array("status" => 200, "mensaje" => $data);
+                }
+                else{
+                     $errors = array();
+                    foreach ($equipo->getMessages() as $message) {
+                        $errors[] = $message->getMessage();
+                    }
+                    return array("status" => 400, "mensaje" =>$errors);
+                }
+            }else{
+                return array("status" => 404, "mensaje" =>"El registro que intenta solventar no existe");
+            }
+        }
+
         public function eliminar($id){
             $equipo=Equipo::find($id);
             if(count($equipo)){

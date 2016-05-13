@@ -1,4 +1,4 @@
-// Controlador
+// Controlador 
 
 if(sessionStorage.dataUsuario==undefined)
 {
@@ -7,7 +7,7 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_bien_buscar = "";
+        var id_equipo_editar = "";
 
         $("#header").load("header.html",function()
         {
@@ -34,6 +34,45 @@ $(document).ready(function()
                     }                
         });        
 
+        $("#buscarEquipso").click(function(){
+            idEquipo = $
+            numero = $("#serial").val();
+            getEquiposBy("?serial="+numero).then(function(data){
+                id_equipo_editar = data[0].id;
+                jsonToTableTraspuesto({
+                    data : data,
+                    headers : headers,
+                    table : $("#tableEquipos"),
+                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","serialSim","accesorios","planCelular","numeroCelular"]
+                  });
+                jsonToForm({
+                    data : data[0],
+                    form : "#formBienes"
+                });                
+            });
+        });  
+
+        $("#buscarEquipo").click(function(){
+            idEquipo = $
+            numero = $("#serial").val();
+            getEquiposBy("?serial="+numero).then(function(data){
+                id_equipo_editar = data[0].id;
+                jsonToTableTraspuesto({
+                    data : data,
+                    headers : headers,
+                    table : $("#tableEquipos"),
+                    invisibleFields : ["id","estado","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","estadoUsoEquipo"]
+                  });
+                jsonToForm({
+                    data : data[0],
+                    form : "#formBienes"
+                });                
+            });
+        });          
+
+headers = [];
+
+
         $("#btnGuardar").click(function()
         {
             frm = $("#formBienes");
@@ -43,20 +82,6 @@ $(document).ready(function()
             });  
         });
 
-
-        $("#btnBuscar").click(function(){
-            idBien = $
-            numero = $("num_bien").val();
-            getBienesBy("?num_bien="+numero).then(function(data){
-                id_bien_buscar = data[0].id;
-                jsonToTable({
-                    data : data,
-                    headers : headers,
-                    table : $("#tableReporteBienes"),
-                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm", "unidad_trabajo"]
-                  }) ;            
-            });
-        }); 
 
         /* Cargando datas de la api a los selects  */
 
@@ -68,24 +93,7 @@ $(document).ready(function()
                 element : $("#unidad_adm")
                 });
         })                
-
-/*        getBienesGeneralBy().then(function(data){
-            jsonToSelect({        
-                data : data,
-                value : "num_bien",
-                alias : "num_bien",
-                element : $("#")
-                });
-                    idBien = $
-                        numero = $("#").val();
-                        getBienesBy("?num_bien="+numero).then(function(data){
-                            id_bien_editar = data[0].id;
-                            jsonToForm({
-                                data : data[0],
-                                form : "#formBienes"
-                            });
-                        });            
-        })           */ 
+  
 
         getPersonalBy('').then(function(data){
             for(personal in data){
@@ -95,8 +103,12 @@ $(document).ready(function()
                  data : data,
                  value : "nombreApellido",
                  alias : "nombreApellido",
-                 element : $("#responsable_usos")
-                 });
+                 element : $("#responsable_usos")                          
+                 });             
+                jsonToForm({
+                    data : data,
+                    form : "#constancia"
+                });                 
          })  
 
         getPersonalBy('').then(function(data){
@@ -110,6 +122,21 @@ $(document).ready(function()
                  element : $("#responsable_uso")
                  });
          })          
-               
+
+        $("#btnBuscar").click(function()
+        {
+            idEquipo = $
+            numero = $("#serial").val();
+            getEquiposBy("?serial="+numero).then(function(data){
+                id_equipo_editar = data[0].id;
+                frm = $("#formEquipo");
+                dataForm = getFormData(frm);
+                dataForm.status=1;
+                solventarEquipos(dataForm,id_equipo_editar).then(function(data){   
+                });                            
+            });              
+        });                      
+
+
 });
 

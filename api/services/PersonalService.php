@@ -20,7 +20,7 @@ class personalService{
                 "f_nac" => $pe->f_nac,
                 "fecha_creacion" => date("Y-m-d h:i:s"),
                 "status" => 1,
-                "unidad_trabajo " => $pe->unidad_trabajo ,
+                "unidad_trabajo" => $pe->unidad_trabajo,
                 "unidad_admin" => $pe->unidad_admin,
                 "id_usuario" => $pe->id_usuario    
                 );        
@@ -55,7 +55,7 @@ class personalService{
                 "fecha_creacion" => date("Y-m-d h:i:s"),
                 "fecha_modif" => date("Y-m-d h:i:s"),
                 "status" => 1,
-                "unidad_trabajo " => $pe->unidad_trabajo ,
+                "unidad_trabajo" => $pe->unidad_trabajo,
                 "unidad_admin" => $pe->unidad_admin,
                 "id_usuario" => $pe->id_usuario
             );
