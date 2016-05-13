@@ -36,17 +36,22 @@
   </div>
 <section class="inicio container">
   <h3>SOLVENCIA DE ENTREGA DE EQUIPOS TECNOLÓGICOS</h3>
-    <article id="contenedor" class="row text-center hidden-print">
-        <div class="col-md-2 col-md-offset-4">
-          <label>Resposable:</label>
-          <select name="responsable" type="text" class="form-control-2" id="responsable" data-placement="top" title="Ingresa el nombre de un responsable"/></select>     
-          <button type="button" id="buscarResp" class="btn" onclick="busqueda_res()">Buscar</button>
-        </div>
-        <div class="col-md-2">
-          <label>Equipo:</label>
-          <input name="descripcion" maxlength="10" type="text" class="form-control-2" id="descripcion" data-placement="top" title="Ingresa el nombre de un Equipo"/>      
-          <button type="button" id="buscaEquipo" class="btn" onclick="busqueda_eq()">Buscar</button>
-        </div>     
+    <article id="contenedor" class="row hidden-print">
+      <div class="col-md-4 text-center">
+        <label>Equipo</label>
+        <input maxlength="25" name="serial" type="text" class="form-control-2" id="serial" data-placement="top" title="Introduzca SERIAL" >     
+        <button type="button" id="buscarEquipo" class="btn icon-search"></button>
+      </div>
+      <div class="col-md-4 text-center">
+        <label>Celular</label>
+        <input maxlength="25" name="serial" type="text" class="form-control-2" id="serial" data-placement="top" title="Introduzca SERIAL" >     
+        <button type="button" id="buscarEquipo" class="btn icon-search" onclick="menuOculto()"></button>
+      </div>
+      <div class="col-md-4 text-center">
+        <label>Responsable</label>
+        <select name="responsable" type="text" class="form-control-2" id="responsable" ></select>  
+        <button type="button" id="buscarResp" class="btn icon-search" onclick="menuOculto()"></button>
+      </div>
     </article>
     <form>
       <article id="contenedor" class="row">
