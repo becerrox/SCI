@@ -22,6 +22,34 @@ function valida_login(){
       
         }
  }
+function busqueda_eq(){
+    var equipo = document.getElementById("descripcion").value;
+
+    if (equipo=="") {
+    $('#alert').html('Debes Ingresar una Equipo').slideDown(500);
+    $('#descripcion').focus();
+    return false;
+              }
+      else{
+      $('#alert').html('').slideUp(300);
+      
+        }        
+}
+function busqueda_res(){
+    var responsable = document.getElementById('responsable').value;
+
+    if (responsable=="") {
+    $('#alert').html('Debes ingresar un responsable').slideDown(500);
+    $('#responsable').focus();
+    return false;
+              }
+    else{
+      $('#alert').html('').slideUp(300);
+      
+        }
+}
+
+
  function menuOculto()
 {
    var equipo = document.getElementById("descripcion").value;

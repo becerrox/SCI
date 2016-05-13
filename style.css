@@ -96,10 +96,37 @@ border:none;
   padding: 0;
   margin: 0;
 }
+#inicio{
+  position:absolute;
+  z-index: 0;
+  bottom:  300px;
+}
 #pie2{ display: inline;
-  z-index: 99;
+  z-index: 3;
+   position: absolute;
+text-align: center;
+bottom: ;
+top: 600px;}
+#pie3{ display: inline;
+  z-index: 4;
    position: relative;
-text-align: center;}
+text-align: center;
+bottom:;
+top: ;}
+
+#pie_de_pagina{  
+  color: #A8A297;
+  height: auto;
+  font-size: 12px;  
+}
+#pie_de_pagina p:hover{ 
+  color: rgb(164,0,0); 
+  -webkit-transition: all 0.9s ease-in-out 0s;
+   -moz-transition: all 0.9s ease-in-out 0s;
+   -o-transition: all 0.9s ease-in-out 0s;
+   -ms-transition: all 0.9s ease-in-out 0s;
+   transition: all 0.9s ease-in-out 0s; 
+}
 .bs-example{
       margin: 100px 50px;
     }

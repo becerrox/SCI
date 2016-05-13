@@ -38,12 +38,21 @@ background: none;
 #header , #buscar {
 	display: none;
 }
-#pie2{ display: inline;
-  z-index: 99;
-   position: relative;
-text-align: center;
-color: #968186;
-	}
+
+#inicio{
+  position: absolute;
+  z-index: 0;
+}
+#footer{
+   z-index: 3;
+   position: absolute;
+   bottom: ;
+   top: 400px;
+}
+#pie2{ 
+	display: inline; 
+	text-align: center;
+}
 #pie2 p{	
 	text-align: center;
 	font-size: 9px;
