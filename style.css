@@ -96,11 +96,7 @@ border:none;
   padding: 0;
   margin: 0;
 }
-#inicio{
-  position:absolute;
-  z-index: 0;
-  bottom:  300px;
-}
+
 #pie2{ display: inline;
   z-index: 3;
    position: absolute;
