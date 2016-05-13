@@ -8,6 +8,7 @@ if(sessionStorage.dataUsuario==undefined)
 $(document).ready(function()
 {
         var id_equipo_editar = "";
+        var id_personal_buscar = "";
 
         $("#header").load("header.html",function()
         {
@@ -34,7 +35,7 @@ $(document).ready(function()
                     }                
         });        
 
-        $("#buscarEquipso").click(function(){
+        $("#buscaEquipo").click(function(){
             idEquipo = $
             numero = $("#serial").val();
             getEquiposBy("?serial="+numero).then(function(data){
@@ -42,46 +43,26 @@ $(document).ready(function()
                 jsonToTableTraspuesto({
                     data : data,
                     headers : headers,
-                    table : $("#tableEquipos"),
+                    table : $("#tableTipoEquipo"),
                     invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","serialSim","accesorios","planCelular","numeroCelular"]
-                  });
-                jsonToForm({
-                    data : data[0],
-                    form : "#formBienes"
-                });                
+                  });          
             });
         });  
 
-        $("#buscarEquipo").click(function(){
-            idEquipo = $
-            numero = $("#serial").val();
-            getEquiposBy("?serial="+numero).then(function(data){
-                id_equipo_editar = data[0].id;
-                jsonToTableTraspuesto({
-                    data : data,
-                    headers : headers,
-                    table : $("#tableEquipos"),
-                    invisibleFields : ["id","estado","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","estadoUsoEquipo"]
-                  });
+        $("#buscarResp").click(function(){
+            idBien = $
+            numero = $("#responsable").val();
+            getPersonalBy("?ci_per="+numero).then(function(data){
+                id_personal_buscar = data[0].id;
                 jsonToForm({
                     data : data[0],
-                    form : "#formBienes"
-                });                
+                    form : "#solvencia"
+                });
             });
-        });          
+        }); 
+
 
 headers = [];
-
-
-        $("#btnGuardar").click(function()
-        {
-            frm = $("#formBienes");
-            dataForm = getFormData(frm);
-            dataForm.status=1;
-            registrarBienes(dataForm).then(function(data){ 
-            });  
-        });
-
 
         /* Cargando datas de la api a los selects  */
 
@@ -98,45 +79,15 @@ headers = [];
         getPersonalBy('').then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
+                data[personal].ci = data[personal].ci_per;
             }
             jsonToSelect({        
                  data : data,
-                 value : "nombreApellido",
+                 value : "ci",
                  alias : "nombreApellido",
-                 element : $("#responsable_usos")                          
-                 });             
-                jsonToForm({
-                    data : data,
-                    form : "#constancia"
-                });                 
+                 element : $("#responsable")
+                 });                
          })  
-
-        getPersonalBy('').then(function(data){
-            for(personal in data){
-                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
-            }
-            jsonToSelect({        
-                 data : data,
-                 value : "nombreApellido",
-                 alias : "nombreApellido",
-                 element : $("#responsable_uso")
-                 });
-         })          
-
-        $("#btnBuscar").click(function()
-        {
-            idEquipo = $
-            numero = $("#serial").val();
-            getEquiposBy("?serial="+numero).then(function(data){
-                id_equipo_editar = data[0].id;
-                frm = $("#formEquipo");
-                dataForm = getFormData(frm);
-                dataForm.status=1;
-                solventarEquipos(dataForm,id_equipo_editar).then(function(data){   
-                });                            
-            });              
-        });                      
-
 
 });
 

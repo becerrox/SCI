@@ -2,31 +2,12 @@
 
 class personalService{
     
-    public function listar($query){
+public function listar($query){
 
           if(empty($query))
-             $personal=Personal::find("status=1");
+             $personal=Personal::find();
           else
           {
-          foreach($personal as $pe){     
-
-               $personal[]=array(     
-                "ci_per" => $pe->ci_per,
-                "nombres" => $pe->nombres,
-                "apellidos" => $pe->apellidos,
-                "cargo" => $pe->cargo,
-                "telf_pers" => $pe->telf_pers,
-                "correo" => $pe->correo,
-                "f_nac" => $pe->f_nac,
-                "fecha_creacion" => date("Y-m-d h:i:s"),
-                "status" => 1,
-                "unidad_trabajo" => $pe->unidad_trabajo,
-                "unidad_admin" => $pe->unidad_admin,
-                "id_usuario" => $pe->id_usuario    
-                );        
-               
-            }     
-            return array("status" => 200, "mensaje" =>$personal->toArray());             
             $personal=Personal::find(
                 array(
                     arrayToSQLQuery($query),

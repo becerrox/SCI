@@ -19,7 +19,7 @@
    <script src="js/sweetalert.min.js"></script>
    <script src="js/jquery.min.js"></script>
    <script src="js/tooltips.js"></script>
-   <script src="js/registroCatalogoController.js" type="text/javascript"></script> 
+   <script src="js/solvenciaController.js" type="text/javascript"></script> 
    <script src="js/select.js" type="text/javascript"></script>
   </head>
   <!--                    CUERPO PRINCIPAL             -->
@@ -38,11 +38,11 @@
         </div>
         <div class="col-md-2">
           <label>Equipo:</label>
-          <input name="descripcion" maxlength="10" type="text" class="form-control-2" id="descripcion" data-placement="top" title="Ingresa el nombre de un Equipo"/>      
+          <input name="serial" maxlength="10" type="text" class="form-control-2" id="serial" data-placement="top" title="Ingresa el nombre de un Equipo"/>      
           <button type="button" id="buscaEquipo" class="btn" onclick="busqueda_eq()">Buscar</button>
         </div>     
     </article>
-    <form>
+    <form id="solvencia">
       <article id="contenedor" class="row">
         <div class="col-md-12">
           <label>Nº STMB-TELECOM-SOLV-</label>

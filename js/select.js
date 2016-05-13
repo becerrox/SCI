@@ -64,5 +64,4 @@ function jsonToTableTraspuesto(config){
      tableContent+="</tbody>";
     content = tableHeaders+tableContent;
     $(config.table).html(content)
-    console.log(content);
 }
