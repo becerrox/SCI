@@ -425,7 +425,7 @@ text-decoration:none;
   left: 50%;
 }
 
-  .pie_de_pagina {
+  /*.pie_de_pagina {
      clear: both;
    margin-top: auto;
    background-color: #4b4c4d;   
@@ -434,7 +434,7 @@ text-decoration:none;
    text-align: center;
  
    bottom: 0%; 
-  }
+  }*/
 
 .bloque label{display: block;  } /* Pasar elemento de linea a bloque*/
 .grid-1, .grid-2, .grid-3, .grid-4, .grid-5 {width: 20%; 

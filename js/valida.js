@@ -372,6 +372,10 @@ previo=rbutton;
         changeMonth:true,
         changeYear:true,
       });
+      $("#fecha6").datepicker({
+        changeMonth:false,
+        changeYear:false,
+      });
       $("#fecha5").datepicker();
       $("#fecha2").datepicker({
         changeMonth:true,

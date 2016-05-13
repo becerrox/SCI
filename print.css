@@ -35,7 +35,7 @@ background: none;
 	padding-left:50%;
 }
 #firma{padding-top: 20px;}
-#header , #buscar {
+#header, #buscar {
 	display: none;
 }
 
@@ -48,10 +48,6 @@ background: none;
    position: absolute;
    bottom: ;
    top: 400px;
-}
-#pie2{ 
-	display: inline; 
-	text-align: center;
 }
 #pie2 p{	
 	text-align: center;
@@ -70,8 +66,7 @@ background: none;
 	}
 .bloque label{display: inline;}
 .linea p{
-	display: inline;
-	padding-right: 10%;
+	display: inline;	
 		}
 .padding {padding-right: 80px;}
 .hide{display: block !important;}

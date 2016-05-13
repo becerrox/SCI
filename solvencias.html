@@ -4,22 +4,28 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><!--<![endif]-->
 <html lang="es">
-  <head>
-     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8"/>
-    <title>SCI Catálogo</title>
+    <title>SCI Registro de Usuario</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, 
     initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0"> 
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" >
-    <link rel="stylesheet" type="text/css" href="css/calendario.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" >   
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+   <link rel="stylesheet" href="css/calendario.css" type="text/css" media="screen">    
    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+   <link rel="stylesheet" href="css/bootstrap-theme.css">
+   <link media="print" rel="stylesheet" type="text/css" href="print.css">
+   <script src="js/jquery.min.js"></script>
+   <script src="js/jquery.js"></script>
+    <script src="js/valida.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/services.js"></script>
+    <script src="js/tooltips.js" type="text/javascript"></script>
+    <script src="js/registroUsuarioController.js" type="text/javascript"></script> 
+    <script src="js/services.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
    <script src="js/sweetalert.min.js"></script>
-   <script src="js/jquery.min.js"></script>
-   <script src="js/tooltips.js"></script>
-   <script src="js/solvenciaController.js" type="text/javascript"></script> 
    <script src="js/select.js" type="text/javascript"></script>
   </head>
   <!--                    CUERPO PRINCIPAL             -->
@@ -30,7 +36,7 @@
   </div>
 <section class="inicio container">
   <h3>SOLVENCIA DE ENTREGA DE EQUIPOS TECNOLÓGICOS</h3>
-    <article id="contenedor" class="row text-center">
+    <article id="contenedor" class="row text-center hidden-print">
         <div class="col-md-2 col-md-offset-4">
           <label>Resposable:</label>
           <select name="responsable" type="text" class="form-control-2" id="responsable" data-placement="top" title="Ingresa el nombre de un responsable"/></select>     
@@ -38,11 +44,11 @@
         </div>
         <div class="col-md-2">
           <label>Equipo:</label>
-          <input name="serial" maxlength="10" type="text" class="form-control-2" id="serial" data-placement="top" title="Ingresa el nombre de un Equipo"/>      
+          <input name="descripcion" maxlength="10" type="text" class="form-control-2" id="descripcion" data-placement="top" title="Ingresa el nombre de un Equipo"/>      
           <button type="button" id="buscaEquipo" class="btn" onclick="busqueda_eq()">Buscar</button>
         </div>     
     </article>
-    <form id="solvencia">
+    <form>
       <article id="contenedor" class="row">
         <div class="col-md-12">
           <label>Nº STMB-TELECOM-SOLV-</label>
@@ -52,26 +58,22 @@
       <article id="contenedor" class="row">
         <div class="col-md-6 col-md-offset-8">
           <label>Fecha de Entrega:</label>
-          <input name="fecha4" maxlength="10" type="text" class="form-control-2" id="fecha4"/>
+          <input name="fecha1" maxlength="10" type="text" class="form-control-2" id="fecha1"/>
         </div>    
       </article>
       <article id="contenedor" class="row">
       <div class="col-md-10 col-md-offset-1">
         <div class="bordes">
           <label>Nombres y Apellidos:</label>
-          <select name="responsable_uso" class="form-control-2" id="responsable_uso">
-          </select><br>
+          <input name="nombres" type="text" class="form-control-2"  id="nombres" disabled/><br>
         </div>
         <div class="bordes">
          <label>Nº Cédula:</label>
-         <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" disabled/><br>
+         <input name="ci_per" maxlength="8" type="text" class="form-control-2" id="ci_per" disabled/><br>
         </div>
         <div class="bordes">
           <label>Gerencia,Coordinación y/o Unidad:</label>
-          <select name="unidad_adm" class="form-control-2" id="unidad_adm">
-              <option value="0">Seleccione</option>
-              <option value="1"></option>
-          </select><br>
+          <input name="unidad_adm" class="form-control-2" id="unidad_adm" disabled/><br>
         </div>
         <div class="bordes">
           <label>Motivo de la Entrega:</label>
@@ -79,26 +81,26 @@
       </div>
     </div>
     </article>
-      <article class="row" id="contenedor">
+    <article class="row" id="contenedor">
         <div class="col-md-12 table-condensed">
           <table id="tableTipoEquipo" class="table table-bordered">
           </table>
         </div>
-      </article>
-      <article class="row">
+    </article>
+    <article id="contenedor" class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="bordes">
             <label>Observaciones</label>
             <input type="text" class="form-control-2" name="observacion" id="observacion"/> 
           </div>
         </div>
-      </article>
-      <article class="row">
-        <div class="col-md-2 col-md-offset-5">
-          <button id="btnImprimir" type="button" class="btn hidden-print" onclick="window.print()">Imprimir</button>
-        </div>
     </article>
-    <article id="contenedor" class="row ">
+    <article class="row">
+      <div class="col-md-2 col-md-offset-5">
+        <button id="btnImprimir" type="button" class="btn hidden-print" onclick="window.print()">Imprimir</button>
+      </div>
+    </article>
+    <article id="contenedor" class="row">
       <div id="bloque2" class="text-center col-md-12 visible-print">
         <label class="padding"> Recibido por: </label>
         <label>Entregado por:</label>   
@@ -124,10 +126,8 @@
   </article>  
     </form>
 </section>
-    <script src="js/valida.js"></script>
-    <script src="js/services.js" type="text/javascript"></script> 
-    <script src="js/menu.js" type="text/javascript"></script>  
-    <script src="js/jquery.js"></script>
+    <script src="js/menu.js" type="text/javascript"></script>    
     <script src="js/bootstrap.min.js"></script>  
+    <script type="text/javascript" src="js/calendario.js"></script>
 </body>
 </html>

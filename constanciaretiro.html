@@ -4,22 +4,29 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><!--<![endif]-->
 <html lang="es">
-  <head>
+   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8"/>
-    <title>SCI Reporte de Inventario</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
-    <script src="js/jquery.min.js"></script>
-     <script src="js/tooltips.js" type="text/javascript"></script>
-    <script src="js/select.js" type="text/javascript"></script>
+    <title>SCI Registro de Usuario</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, 
+    initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0"> 
+   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" >   
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+   <link rel="stylesheet" href="css/calendario.css" type="text/css" media="screen">    
+   <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
+   <link rel="stylesheet" href="css/bootstrap-theme.css">
+   <link media="print" rel="stylesheet" type="text/css" href="print.css">
+   <script src="js/jquery.min.js"></script>
+   <script src="js/jquery.js"></script>
+    <script src="js/valida.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/services.js"></script>
+    <script src="js/tooltips.js" type="text/javascript"></script>
+    <script src="js/registroUsuarioController.js" type="text/javascript"></script> 
     <script src="js/services.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
-    <script src="js/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="print.css" type="text/css" media="print">
-    <script src="js/constanciaRetiroController.js" type="text/javascript"></script>
+   <script src="js/sweetalert.min.js"></script>
+   <script src="js/select.js" type="text/javascript"></script>
   </head>
     <!--                    CUERPO PRINCIPAL             -->
   <div id="header"></div>
@@ -31,10 +38,15 @@
   <form id="constancia">
     <h3 class="text-center">CONSTANCIA DE RECEPCIÓN DE EQUIPO TECNOLÓGICO</h3>
     <article id="contenedor" class="row hidden-print">
-      <div class="col-md-12 text-center">
-        <label>Equipo a Asignar</label>
+      <div class="col-md-6 text-center">
+        <label>Equipo</label>
         <input maxlength="25" name="serial" type="text" class="form-control-2" id="serial" data-placement="top" title="Introduzca SERIAL" >     
-        <button type="button" id="buscarEquipo" class="btn icon-search">    </button>
+        <button type="button" id="buscarEquipo" class="btn icon-search"></button>
+      </div>
+      <div class="col-md-6 text-center">
+        <label>Celular</label>
+        <input maxlength="25" name="serial" type="text" class="form-control-2" id="serial" data-placement="top" title="Introduzca SERIAL" >     
+        <button type="button" id="buscarEquipo" class="btn icon-search" onclick="menuOculto()"></button>
       </div>
     </article>
   <article id="contenedor" class="row">
@@ -45,10 +57,12 @@
 </form>
 <table id="tableEquipos" class="table table-bordered">
 </table>
-
-        <p class="text-justify visible-print">De igual forma declaro que en virtud de la asignación del equipo que se hace a través de la presente acta tendré respecto a éste, las siguientes obligaciones: <strong>A)</strong> Destinar el equipo exclusivamente para actividades relacionadas con mi puesto de trabajo, <strong>B)</strong> Reportar oportunamente cualquier novedad que presente el equipo, quedando bajo mi responsabilidad cualquier daño que no fuera oportunamente reportado; <strong>C)</strong> Devolverlo al momento de finalizar mi relación de trabajo con <strong>TRANSBAR, C. A. D)</strong> Asumir los costos de reparación o reposición en caso de daño o extravío, cuando el mismo ocurra por negligencia, imprudencia o impericia atribuible a mi persona, para lo cual queda establecido un plazo no mayor de Diez (10) días para su reparación o reposición, contados a partir de la ocurrencia del mismo. En Barquisimeto, a los <label></label> días del mes de <label></label> de <label></label>.</p>
-      </div>    
-  </article>
+<article id="contenedor" class="row linea">
+  <p class="text-justify visible-print">De igual forma declaro que en virtud de la asignación del equipo que se hace a través de la presente acta tendré respecto a éste, las siguientes obligaciones: <strong>A)</strong> Destinar el equipo exclusivamente para actividades relacionadas con mi puesto de trabajo, <strong>B)</strong> Reportar oportunamente cualquier novedad que presente el equipo, quedando bajo mi responsabilidad cualquier daño que no fuera oportunamente reportado; <strong>C)</strong> Devolverlo al momento de finalizar mi relación de trabajo con <strong>TRANSBAR, C. A. D)</strong> Asumir los costos de reparación o reposición en caso de daño o extravío, cuando el mismo ocurra por negligencia, imprudencia o impericia atribuible a mi persona, para lo cual queda establecido un plazo no mayor de Diez (10) días para su reparación o reposición, contados a partir de la ocurrencia del mismo.</p><p>En Barquisimeto, a los <input></input> días del mes de <input></input> de <input></input>.</p>
+</article>
+      </div>
+      <input class="hidden-print"></input>
+  </article> 
   <article id="contenedor" class="row ">
       <div id="bloque2" class="text-center col-md-12 visible-print">
         <label class="padding">EL TRABAJADOR</label>
@@ -70,11 +84,8 @@
   </article>
   
 </section>
-
-   <script src="js/services.js" type="text/javascript"></script> 
-    <script src="js/menu.js" type="text/javascript"></script>  
-    <script src="js/jquery.js"></script>
+   <script src="js/menu.js" type="text/javascript"></script>    
     <script src="js/bootstrap.min.js"></script>  
-    <script src="js/valida.js"></script>
+    <script type="text/javascript" src="js/calendario.js"></script>
 </body>
 </html>
