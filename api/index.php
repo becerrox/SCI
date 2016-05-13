@@ -284,6 +284,32 @@ $app->delete("/configuracion/{id:[0-9]+}",function($id) use($app){
     echo "eliminacion de configuracion numero $id";
 });
 
+//Endpoints niveles
+
+$nivelesService = new NivelesService;
+
+$app->get("/niveles",function() use ($app,$nivelesService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $nivelesService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/niveles",function() use ($app,$nivelesService){
+    $niveles = json_decode($app->request->getRawBody());
+    $data = $nivelesService->nuevo($niveles);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/niveles/{id:[0-9]+}",function($id) use ($app,$nivelesService) {
+    $niveles = json_decode($app->request->getRawBody());
+    $data = $nivelesService->modificar($id,$niveles);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/niveles/{id:[0-9]+}",function($id) use($app){
+    echo "eliminacion de nivel numero $id";
+});
 
 //Endpoint 
 

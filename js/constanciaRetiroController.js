@@ -34,7 +34,7 @@ $(document).ready(function()
                     }                
         });        
 
-        $("#buscarEquipo").click(function(){
+        $("#buscarEquipso").click(function(){
             idEquipo = $
             numero = $("#serial").val();
             getEquiposBy("?serial="+numero).then(function(data){
@@ -51,6 +51,24 @@ $(document).ready(function()
                 });                
             });
         });  
+
+        $("#buscarEquipo").click(function(){
+            idEquipo = $
+            numero = $("#serial").val();
+            getEquiposBy("?serial="+numero).then(function(data){
+                id_equipo_editar = data[0].id;
+                jsonToTableTraspuesto({
+                    data : data,
+                    headers : headers,
+                    table : $("#tableEquipos"),
+                    invisibleFields : ["id","estado","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","estadoUsoEquipo"]
+                  });
+                jsonToForm({
+                    data : data[0],
+                    form : "#formBienes"
+                });                
+            });
+        });          
 
 headers = [];
 

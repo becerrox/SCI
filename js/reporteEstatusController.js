@@ -1,4 +1,4 @@
-// Controloador de la vista de registro de usuario
+// Controlador de la vista de registro de equipo
 
 if(sessionStorage.dataUsuario==undefined)
 {
@@ -7,7 +7,8 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_usuario_registro = "";
+        var id_bien_buscar = "";
+        var cantidad = "";
 
         $("#header").load("header.html",function()
         {
@@ -34,51 +35,38 @@ $(document).ready(function()
                     }                
         });        
 
-      $("#guardarUserPersonal").click(function()
-        {
-            frmUsuario = $("#formUsuario");
-            dataForm = getFormData(frmUsuario);
-            dataForm.status=1;
-            registrarUsuario(dataForm).then(function(data){
-              numero = data.id;              
-              frm = $("#formPersonal");
-              dataForm = getFormData(frm);
-              dataForm.status=1;
-              dataForm.id_usuario = numero;
-                registrarPersonal(dataForm).then(function(data){
-                  console.log("funciona");   
-                });  
-
+        $("#btnBuscar").click(function(){
+            idBien = $
+            numero = $("#estatus_uso_bien").val();
+            getBienesBy("?estatus_uso_bien="+numero).then(function(data){
+                id_bien_buscar = data[0].id;
+                cantidad = data[0].id;
+                jsonToTable({
+                    data : data,
+                    headers : headers,
+                    table : $("#tableEstatus"),
+                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm", "unidad_trabajo","sede"]
+                  });
+                jsonToForm({
+                    data : data[0],
+                    form : "#reporte"
+                });                
             });
-        });
+        }); 
 
-        //Categoría de Unidades Administrativas 
-        getConfiguracionBy("?tipo=Categoría de Unidades Administrativas").then(function(data){
-            jsonToSelect({        
-                data : data,
-                value : "descripcion",
-                alias : "descripcion",
-                element : $("#unidad_admin")
-                });
-        })
-        
-        //Unidad de Trabajo
-        getConfiguracionBy("?tipo=Unidad de Trabajo").then(function(data){
-            jsonToSelect({        
-                data : data,
-                value : "descripcion",
-                alias : "descripcion",
-                element : $("#unidad_trabajo")
-                });
-        })             
 
-        //Nivel de usuario
-        getNivelesBy().then(function(data){
+        /* Cargando datas de la api a los selects  */     
+
+        getConfiguracionBy("?tipo=Estatus de Uso del Bien").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "codigo",
-                alias : "nivel",
-                element : $("#nivel")
+                alias : "descripcion",
+                element : $("#estatus_uso_bien")
                 });
-        })                  
+        })              
+
+headers = [ "Código General", "Código de Sub-categoría", "Código de Categoría Específica", "Descripción", "Estatus Uso Bien", "Marca", "Modelo", "Serial", "Tipo Componentes", "Colores", "Número de bien", "Estado bien", "Categoria de unidad administrativa"];
+
 });
+

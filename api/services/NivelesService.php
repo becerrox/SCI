@@ -21,11 +21,11 @@ class NivelesService{
         }
 
         
-        public function nuevo($conf){
+        public function nuevo($niv){
             $niveles=new niveles();
             $data=array(
-                  "codigo" => $conf->codigo,
-                  "nivel" => $conf->nivel
+                  "codigo" => $niv->codigo,
+                  "nivel" => $niv->nivel
             );
             if($niveles->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -38,12 +38,12 @@ class NivelesService{
             }
         }
 
-        public function modificar($id,$conf){
+        public function modificar($id,$niv){
             $modificar=Niveles::find($id);
             if(count($modificar)>0){
                 $data=array(
-                  "codigo" => $conf->codigo,
-                  "nivel" => $conf->nivel
+                  "codigo" => $niv->codigo,
+                  "nivel" => $niv->nivel
                 );
 
                 if($modificar->update($data)){

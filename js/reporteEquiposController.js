@@ -1,4 +1,4 @@
-// Controloador de la vista de registro de usuario
+// Controlador de la vista de registro de equipo
 
 if(sessionStorage.dataUsuario==undefined)
 {
@@ -7,7 +7,7 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_usuario_registro = "";
+        var id_bien_buscar = "";
 
         $("#header").load("header.html",function()
         {
@@ -34,51 +34,36 @@ $(document).ready(function()
                     }                
         });        
 
-      $("#guardarUserPersonal").click(function()
-        {
-            frmUsuario = $("#formUsuario");
-            dataForm = getFormData(frmUsuario);
-            dataForm.status=1;
-            registrarUsuario(dataForm).then(function(data){
-              numero = data.id;              
-              frm = $("#formPersonal");
-              dataForm = getFormData(frm);
-              dataForm.status=1;
-              dataForm.id_usuario = numero;
-                registrarPersonal(dataForm).then(function(data){
-                  console.log("funciona");   
-                });  
-
+        $("#btnBuscar").click(function(){
+            idBien = $
+            numero = $("#descripcion").val();
+            getEquiposBy("?descripcion="+numero).then(function(data){
+                id_bien_buscar = data[0].id;
+                jsonToTable({
+                    data : data,
+                    headers : headers,
+                    table : $("#tableTipoEquipo"),
+                    invisibleFields : ["id","status","fecha_modif"]
+                  });
+                jsonToForm({
+                    data : data[0],
+                    form : "#reporte"
+                });                
             });
-        });
+        }); 
 
-        //Categoría de Unidades Administrativas 
-        getConfiguracionBy("?tipo=Categoría de Unidades Administrativas").then(function(data){
+        /* Cargando datas de la api a los selects  */     
+
+        getEquiposBy('').then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
                 alias : "descripcion",
-                element : $("#unidad_admin")
+                element : $("#descripcion")
                 });
-        })
-        
-        //Unidad de Trabajo
-        getConfiguracionBy("?tipo=Unidad de Trabajo").then(function(data){
-            jsonToSelect({        
-                data : data,
-                value : "descripcion",
-                alias : "descripcion",
-                element : $("#unidad_trabajo")
-                });
-        })             
+        })              
 
-        //Nivel de usuario
-        getNivelesBy().then(function(data){
-            jsonToSelect({        
-                data : data,
-                value : "codigo",
-                alias : "nivel",
-                element : $("#nivel")
-                });
-        })                  
+headers = [ "descripcion","marca","modelo","serial","color","estado","unidad_admin","responsable","caracteristicas","unidad_trabajo","observaciones","serialSim","accesorios","planCelular","numeroCelular","estadoUsoEquipo"];
+
 });
+
