@@ -22,7 +22,7 @@
     <script src="js/valida.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/services.js"></script>
     <script src="js/tooltips.js" type="text/javascript"></script>
-    <script src="js/registroUsuarioController.js" type="text/javascript"></script> 
+    <script src="js/constanciaRetiroController.js" type="text/javascript"></script> 
     <script src="js/services.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
    <script src="js/sweetalert.min.js"></script>
@@ -38,33 +38,41 @@
   <form id="constancia">
     <h3 class="text-center">CONSTANCIA DE RECEPCIÓN DE EQUIPO TECNOLÓGICO</h3>
     <article id="contenedor" class="row hidden-print">
-      <div class="col-md-6 text-center">
+      <div class="col-md-4 text-center">
         <label>Equipo</label>
         <input maxlength="25" name="serial" type="text" class="form-control-2" id="serial" data-placement="top" title="Introduzca SERIAL" >     
         <button type="button" id="buscarEquipo" class="btn icon-search"></button>
       </div>
-      <div class="col-md-6 text-center">
+      <div class="col-md-4 text-center">
         <label>Celular</label>
-        <input maxlength="25" name="serial" type="text" class="form-control-2" id="serial" data-placement="top" title="Introduzca SERIAL" >     
-        <button type="button" id="buscarEquipo" class="btn icon-search" onclick="menuOculto()"></button>
+        <input maxlength="25" name="serialCelular" type="text" class="form-control-2" id="serialCelular" data-placement="top" title="Introduzca SERIAL" >     
+        <button type="button" id="buscarCelular" class="btn icon-search" onclick="menuOculto()"></button>
+      </div>
+      <div class="col-md-4 text-center">
+        <label>Responsable</label>
+        <select name="responsable" type="text" class="form-control-2" id="responsable" ></select>  
+        <button type="button" id="buscarResp" class="btn icon-search" onclick="menuOculto()"></button>
       </div>
     </article>
-  <article id="contenedor" class="row">
-    <div class="bloque center decoration col-md-12">
-        <p class="text-justify">Yo, <select name="responsable_uso" class="form-control-2" id="responsable_uso">
-              </select>, de nacionalidad venezolana, mayor de edad, titular de la Cédula de Identidad N°: <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" disabled/> ,de la unidad: <select name="unidad_adm" class="form-control-2" id="unidad_adm">
-          </select>,por medio de la presente hago constar que he recibido de la Entidad de Trabajo TRANSBAR, C. A. el equipo que se describe a continuación:</p>
-</form>
-<table id="tableEquipos" class="table table-bordered">
-</table>
-<article id="contenedor" class="row linea">
-  <p class="text-justify visible-print">De igual forma declaro que en virtud de la asignación del equipo que se hace a través de la presente acta tendré respecto a éste, las siguientes obligaciones: <strong>A)</strong> Destinar el equipo exclusivamente para actividades relacionadas con mi puesto de trabajo, <strong>B)</strong> Reportar oportunamente cualquier novedad que presente el equipo, quedando bajo mi responsabilidad cualquier daño que no fuera oportunamente reportado; <strong>C)</strong> Devolverlo al momento de finalizar mi relación de trabajo con <strong>TRANSBAR, C. A. D)</strong> Asumir los costos de reparación o reposición en caso de daño o extravío, cuando el mismo ocurra por negligencia, imprudencia o impericia atribuible a mi persona, para lo cual queda establecido un plazo no mayor de Diez (10) días para su reparación o reposición, contados a partir de la ocurrencia del mismo.</p><p>En Barquisimeto, a los <input></input> días del mes de <input></input> de <input></input>.</p>
+  </form>
+<article id="contenedor" class="row">
+    <div class="bloque center decoration col-md-12 visible-print ">
+    <form id="formResponsable">
+        <p class="text-justify">Yo, <input name="nombres" class="form-control-2" id="nombres"/> <input name="apelidos" class="form-control-2" id="apelidos"/>, de nacionalidad venezolana, mayor de edad, titular de la Cédula de Identidad N°: <input name="ci_per" type="text" class="form-control-2"  id="ci_per" disabled/> ,de la unidad: <input name="unidad_trabajo" class="form-control-2" id="unidad_trabajo">,por medio de la presente hago constar que he recibido de la Entidad de Trabajo TRANSBAR, C. A. el equipo que se describe a continuación:</p>
+  </form>
+  </div>
 </article>
-      </div>
-      <input class="hidden-print"></input>
-  </article> 
+<article class="row" id="contenedor">
+    <div class="col-md-12 table-condensed">
+      <table id="tableEquipos" class="table table-bordered"></table>
+    </div>
+</article>
+
+<article id="contenedor" class="row linea">
+  <p class="text-justify visible-print">De igual forma declaro que en virtud de la asignación del equipo que se hace a través de la presente acta tendré respecto a éste, las siguientes obligaciones: <strong>A)</strong> Destinar el equipo exclusivamente para actividades relacionadas con mi puesto de trabajo, <strong>B)</strong> Reportar oportunamente cualquier novedad que presente el equipo, quedando bajo mi responsabilidad cualquier daño que no fuera oportunamente reportado; <strong>C)</strong> Devolverlo al momento de finalizar mi relación de trabajo con <strong>TRANSBAR, C. A. D)</strong> Asumir los costos de reparación o reposición en caso de daño o extravío, cuando el mismo ocurra por negligencia, imprudencia o impericia atribuible a mi persona, para lo cual queda establecido un plazo no mayor de Diez (10) días para su reparación o reposición, contados a partir de la ocurrencia del mismo.</p><p class="col-md-offset-3">En Barquisimeto, a los <strong><input id="dia"class="fecha1"></input></strong> días del mes de <strong><input id="mes"class="fecha3"></input></strong> de <strong><input id="año" class="fecha2"></input></strong>.</p>
+</article>  
   <article id="contenedor" class="row ">
-      <div id="bloque2" class="text-center col-md-12 visible-print">
+    <div id="bloque2" class="text-center col-md-12 visible-print">
         <label class="padding">EL TRABAJADOR</label>
         <label>COORDINACIÓN DE <br>TELECOMUNICACIONES</label>   
     </div>
@@ -81,8 +89,7 @@
       RIF: G-20005347-0<br>
       www.transbarca.gob.ve<br></p>
     </div>
-  </article>
-  
+  </article>  
 </section>
    <script src="js/menu.js" type="text/javascript"></script>    
     <script src="js/bootstrap.min.js"></script>  

@@ -281,6 +281,31 @@ return new Promise(function(resolver, rechazar) {
 	 });	
 }
 
+function modificarPersonal(data,id)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"PUT",
+				processData: false,
+	    		contentType: 'application/json',
+				url:'api/personal/'+id,
+				data:JSON.stringify(data),
+				success:function(response){
+					resolver(response);
+				},error:function(response){
+					swal({
+				title: 'Error',
+				text: 'No se pudo modificar',
+				type: 'error',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+				})
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
 function registrarBienes(data)
 {
 return new Promise(function(resolver, rechazar) {	

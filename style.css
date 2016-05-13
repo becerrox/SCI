@@ -156,7 +156,16 @@ top: ;}
 .inicio {
   margin-bottom: 3%;
 }
-#buscarEquipo {
+.fecha1{
+width: 30px;
+            }
+.fecha2{
+width: 60px;
+        }
+.fecha3{
+  width: 100px;
+}
+#buscarEquipo , #buscarResp{
   width: 25px;
 }
 .inicio > form + form{

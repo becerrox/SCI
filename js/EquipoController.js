@@ -116,9 +116,9 @@ $(document).ready(function()
         getConfiguracionBy("?tipo=Estatus de Uso del Bien").then(function(data){
             jsonToSelect({        
                 data : data,
-                value : "codigo",
+                value : "descripcion",
                 alias : "descripcion",
-                element : $("#estatus_uso_bien")
+                element : $("#estadoUsoEquipo")
                 });
         })           
 

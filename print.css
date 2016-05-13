@@ -57,7 +57,15 @@ background: none;
 	margin: 10px 0;
 }
 
-
+.fecha1{
+width: 20px;
+        }
+.fecha2{
+width: 50px;
+        }
+.fecha3{
+  width: 70px;
+}
 .bordes{
   border-width: 1px; 
   border-style: solid;

@@ -96,11 +96,10 @@ class EquipoService{
             $solvencia=Equipo::find($id);
             if(count($solvencia)>0){
                 $data=array(
-                "serial" => $eq->serial,
                 "status" => 1,
                 "fecha_modif" => date("Y-m-d h:i:s"),
                 "observaciones" => $eq->observaciones,
-                "estadoUsoEquipo" => 6,
+                "estadoUsoEquipo" => "En proceso de disposición",
                 "motivo" => $eq->motivo
                 );
                 if($solvencia->update($data)){

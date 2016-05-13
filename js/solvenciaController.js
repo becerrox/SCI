@@ -37,17 +37,26 @@ $(document).ready(function()
 
         $("#buscaEquipo").click(function(){
             idEquipo = $
-            numero = $("#serial").val();
+            numero = $("#descripcion").val();
             getEquiposBy("?serial="+numero).then(function(data){
                 id_equipo_editar = data[0].id;
                 jsonToTableTraspuesto({
                     data : data,
                     headers : headers,
                     table : $("#tableTipoEquipo"),
-                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","serialSim","accesorios","planCelular","numeroCelular"]
+                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","serialSim","accesorios","planCelular","numeroCelular","estadoUsoEquipo"]
                   });          
             });
         });  
+
+        $("#btnImprimir").click(function()
+        {
+            frm = $("#solvencia");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            modificarEquipos(dataForm,id_equipo_editar).then(function(data){   
+            });
+        });   
 
         $("#buscarResp").click(function(){
             idBien = $

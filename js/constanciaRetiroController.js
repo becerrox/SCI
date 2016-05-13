@@ -7,7 +7,6 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_bien_buscar = "";
 
         $("#header").load("header.html",function()
         {
@@ -34,16 +33,15 @@ $(document).ready(function()
                     }                
         });        
 
-        $("#buscarEquipso").click(function(){
+        $("#buscarEquipo").click(function(){
             idEquipo = $
             numero = $("#serial").val();
             getEquiposBy("?serial="+numero).then(function(data){
-                id_equipo_editar = data[0].id;
                 jsonToTableTraspuesto({
                     data : data,
                     headers : headers,
                     table : $("#tableEquipos"),
-                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","serialSim","accesorios","planCelular","numeroCelular"]
+                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","serialSim","accesorios","planCelular","numeroCelular","motivo"]
                   });
                 jsonToForm({
                     data : data[0],
@@ -52,35 +50,38 @@ $(document).ready(function()
             });
         });  
 
-        $("#buscarEquipo").click(function(){
+        $("#buscarCelular").click(function(){
             idEquipo = $
-            numero = $("#serial").val();
+            numero = $("#serialCelular").val();
             getEquiposBy("?serial="+numero).then(function(data){
-                id_equipo_editar = data[0].id;
                 jsonToTableTraspuesto({
                     data : data,
                     headers : headers,
                     table : $("#tableEquipos"),
-                    invisibleFields : ["id","estado","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","estadoUsoEquipo"]
+                    invisibleFields : ["id","estado","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","estadoUsoEquipo","motivo"]
                   });
                 jsonToForm({
                     data : data[0],
                     form : "#formBienes"
                 });                
             });
-        });          
+        });  
+
+        $("#buscarResp").click(function(){
+            idEquipo = $
+            numero = $("#responsable").val();
+            getPersonalBy("?ci_per="+numero).then(function(data){
+                jsonToForm({
+                    data : data[0],
+                    form : "#formResponsable"
+                });                
+            });
+        });  
 
 headers = [];
 
 
-        $("#btnGuardar").click(function()
-        {
-            frm = $("#formBienes");
-            dataForm = getFormData(frm);
-            dataForm.status=1;
-            registrarBienes(dataForm).then(function(data){ 
-            });  
-        });
+
 
 
         /* Cargando datas de la api a los selects  */
@@ -98,12 +99,13 @@ headers = [];
         getPersonalBy('').then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
+                data[personal].ci = data[personal].ci_per;
             }
             jsonToSelect({        
                  data : data,
-                 value : "nombreApellido",
+                 value : "ci",
                  alias : "nombreApellido",
-                 element : $("#responsable_usos")                          
+                 element : $("#responsable")                          
                  });             
                 jsonToForm({
                     data : data,
@@ -111,17 +113,6 @@ headers = [];
                 });                 
          })  
 
-        getPersonalBy('').then(function(data){
-            for(personal in data){
-                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
-            }
-            jsonToSelect({        
-                 data : data,
-                 value : "nombreApellido",
-                 alias : "nombreApellido",
-                 element : $("#responsable_uso")
-                 });
-         })          
                
 });
 
