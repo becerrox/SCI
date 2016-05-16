@@ -13,7 +13,11 @@
     <link rel="stylesheet" type="text/css" href="css/calendario.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="print.css" type="text/css" media="print">
+    
+    <link rel="stylesheet" media="print and (orientation:portrait)" href="print.css">
+    <link rel="stylesheet" media="print and (orientation:landscape)" href="landscape.css">
+
+    
    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
    <script src="js/sweetalert.min.js"></script>   <script src="js/jquery.min.js"></script>
@@ -40,7 +44,7 @@
         </div>
       </article>
       <article class="row">
-        <div class="col-md-12 table-condensed">
+        <div class="col-md-12 table-condensed">        
           <table id="tableReporteResUso" class="table table-bordered">
           </table>
         </div>
@@ -50,8 +54,11 @@
           <button id="btnImprimir" type="button" class="btn hidden-print" onclick="window.print()">Imprimir</button>
         </div>
     </article>
-    <article id="contenedor" class="row ">
-      <div id="bloque2" class="text-center col-md-12 visible-print">       
+  </form>
+</section>
+  <section id="footer" class="text-center container">
+    <article class="row">
+      <div id="bloque2" class=" col-md-12 visible-print">       
         <label class="padding">JEFE DE LA UNIDAD</label>
         <label>RESPONSABLE DEL USO</label>
     </div>
@@ -69,9 +76,8 @@
       www.transbarca.gob.ve<br></p>
     </div>
   </article>
-
-</form>
 </section>
+
    <script src="js/services.js" type="text/javascript"></script> 
     <script src="js/menu.js" type="text/javascript"></script>  
     <script src="js/jquery.js"></script>

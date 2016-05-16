@@ -29,7 +29,8 @@ background: none;
 	}
 #bloque2{
 	z-index: 99;
-	padding-top: 225px;	
+	padding-top: 225px;
+	font-size: 10px
 }
 #fecha-elab{
 	padding-left:50%;
@@ -39,16 +40,15 @@ background: none;
 	display: none;
 }
 
-#inicio{
-  position: absolute;
-  z-index: 0;
-}
 #footer{
    z-index: 3;
    position: absolute;
-   bottom: ;
-   top: 400px;
+   text-align: center;
+   bottom: 0;
+   top: 700px;
+   clear: both; 
 }
+
 #pie2 p{	
 	text-align: center;
 	font-size: 9px;

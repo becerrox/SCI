@@ -22,6 +22,7 @@ function valida_login(){
       
         }
  }
+
 function busqueda_eq(){
     var equipo = document.getElementById("descripcion").value;
 

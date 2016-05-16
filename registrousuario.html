@@ -56,10 +56,10 @@
           <label>Cédula:</label><br>      
           <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" placeholder="00000000" onKeyPress="return soloNumeros(event)"/>      
             <label>Nombres:</label>
-            <input name="nombres" maxlength="30" type="text" class="form-control-2"  id="nombres" title="Ej: María Andrea" onkeypress="return soloLetras(event)"/>
+            <input name="nombres" maxlength="30" type="text" class="form-control-2 capitalize"  id="nombres" title="Ej: María Andrea" onkeypress="return soloLetras(event)"/>
             <label>Apellidos:</label>
-            <input name="apellidos" maxlength="25" type="text" class="form-control-2" title="Ej: Colmenarez Gil" id="apellidos" onkeypress="return soloLetras(event)"/> 
-      </div>          
+            <input name="apellidos" maxlength="25" type="text" class="form-control-2 capitalize" title="Ej: Colmenarez Gil" id="apellidos" onkeypress="return soloLetras(event)"/> 
+      </div>            
       <div class="bloque col-md-4">
            <label>Fecha N.:</label>
             <input name="f_nac" maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="fecha1" id="fecha1"/>     
@@ -85,7 +85,7 @@
     </div>
   <div id="contenedor">
    <div class="row">
-      <div class="form-group col-md-12 col-md-offset-7 col-sm-12 col-xs-12 ">
+      <div class="form-group col-md-12 col-md-offset-7 col-sm-12 col-sm-offset-2 col-xs-12 ">
          <button id="guardarUserPersonal" type="button" class="btn" onclick="Validar_re()" >Guardar</button>
          <button id="modificarUserPersonal" type="button" class="btn">Modificar</button> 
          <button id="eliminarUserPersonal" type="button" class="btn">Eliminar</button> 
@@ -103,9 +103,9 @@
     </form>
   </div>
   </section>
-  <footer id="pie_de_pagina" class="hidden-print">
+<footer id="pie_de_pagina" class="hidden-print">
     <div id="pie3" class="text-center col-md-12">
-          <p>Sistema realizado bajo normas y procedimientos de la <br> Superintendencia de Bienes Públicos (SUDEBIP)publicado en  Gaceta  Oficial<br>N° 40.120 de fecha 28/02/2013
+          <p>Sistema realizado bajo normas y procedimientos de la <br> Superintendencia de Bienes Públicos (SUDEBIP).Publicado en  Gaceta  Oficial<br>N° 40.120 de fecha 28/02/2013
         </p>
       </div>  
 </footer>
