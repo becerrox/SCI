@@ -199,7 +199,14 @@ function modificarUsuario(data,id)
 				url:'api/usuarios/'+id,
 				data:JSON.stringify(data),
 				success:function(response){
-					resolver(response);
+				resolver(response);
+				swal({
+				title: 'Modificado',
+				text: 'Se ha modificado el usuario',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+				})
 				},error:function(response){
 					swal({
 				title: 'Error',
@@ -291,7 +298,14 @@ function modificarPersonal(data,id)
 				url:'api/personal/'+id,
 				data:JSON.stringify(data),
 				success:function(response){
-					resolver(response);
+				resolver(response);
+				swal({
+				title: 'Modificado',
+				text: 'Se ha modificado el personal',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+				})
 				},error:function(response){
 					swal({
 				title: 'Error',

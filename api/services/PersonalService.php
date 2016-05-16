@@ -40,7 +40,6 @@ public function listar($query){
                 "unidad_admin" => $pe->unidad_admin,
                 "id_usuario" => $pe->id_usuario
             );
-
             if($personal->save($data)){
                     return array("status" => 201, "mensaje" => $data);
             }else{
@@ -52,31 +51,23 @@ public function listar($query){
             }
         }
 
-        public function modificar($id,$us){
+        public function modificar($id,$pe){
             $modificar=Personal::find($id);
             if(count($modificar)>0){
-                if(isset($us->pass) && $us->pass !== '' && $us->pass !== null && $us->pass !== 'undefined'){
-                    $pass = sha1($us->pass);
-                }else{
-                    $pass = $modificar[0]->pass;
-                }
                 $data=array(
                     "ci_per" => $pe->ci_per,
                     "nombres" => $pe->nombres,
                     "apellidos" => $pe->apellidos,
                     "cargo" => $pe->cargo,
                     "telf_pers" => $pe->telf_pers,
-                    "telf_casa" => $pe->telf_casa,
                     "correo" => $pe->correo,
                     "f_nac" => $pe->f_nac,
                     "fecha_modif" => date("Y-m-d h:i:s"),
-                    "usuario_modif" => 0,
-                    "status" => $pe->status,
-                    "unidad_trabajo " => $pe->unidad_trabajo 
-                );
-
+                    "status" => 1,
+                    "unidad_trabajo" => $pe->unidad_trabajo,
+                    "unidad_admin" => $pe->unidad_admin,
+                    );
                 if($modificar->update($data)){
-                        unset($data['pass']);
                         return array("status" => 200, "mensaje" => $data);
                 }
                 else{

@@ -22,7 +22,7 @@
     <script src="js/valida.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/services.js"></script>
     <script src="js/tooltips.js" type="text/javascript"></script>
-    <script src="js/registroUsuarioController.js" type="text/javascript"></script> 
+    <script src="js/constanciaRetiroController.js" type="text/javascript"></script> 
     <script src="js/services.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
    <script src="js/sweetalert.min.js"></script>
@@ -57,7 +57,9 @@
   </form>
 <article id="contenedor" class="row">
     <div class="col-md-12 visible-print">
-      <p class="text-">Yo, <input name="responsable_uso" class="form-control-2" id="responsable_uso" style="width: 200px;" />, de nacionalidad venezolana, mayor de edad, titular de la Cédula de Identidad N°: <input name="ci_per" type="text" class="form-control-2"  id="ci_per" style="width: 70px;"/> ,de la unidad: <input name="unidad_adm" class="form-control-2" id="unidad_adm" style="width: 140px;">,por medio de la presente hago constar que he recibido de la Entidad de Trabajo TRANSBAR, C. A. el equipo que se describe a continuación:</p>
+      <form id="formResponsable">
+      <p class="text-">Yo, <input name="nombres" class="form-control-2" id="nombres" style="width: 200px;" /> <input name="apellidos" class="form-control-2" id="apellidos" style="width: 200px;" />, de nacionalidad venezolana, mayor de edad, titular de la Cédula de Identidad N°: <input name="ci_per" type="text" class="form-control-2"  id="ci_per" style="width: 70px;"/> ,de la unidad: <input name="unidad_adm" class="form-control-2" id="unidad_adm" style="width: 140px;">,por medio de la presente hago constar que he recibido de la Entidad de Trabajo TRANSBAR, C. A. el equipo que se describe a continuación:</p>
+    </form>
   </div>
 </article>
 <article class="row" id="contenedor">
@@ -90,7 +92,12 @@
       www.transbarca.gob.ve<br></p>
     </div>
   </article> 
-
+      <article class="row">
+        <div class="col-md-2 col-md-offset-5">
+          <button id="btnImprimir" type="button" class="btn hidden-print" onclick="window.print()">Imprimir</button>
+        </div>
+      </article>
+</section>
 </section>
    <script src="js/menu.js" type="text/javascript"></script>    
     <script src="js/bootstrap.min.js"></script>  

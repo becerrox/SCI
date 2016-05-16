@@ -7,7 +7,7 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_usuario_registro = "";
+        var id_usuario_editar = "";
 
         $("#header").load("header.html",function()
         {
@@ -48,9 +48,30 @@ $(document).ready(function()
                 registrarPersonal(dataForm).then(function(data){
                   console.log("funciona");   
                 });  
-
             });
         });
+
+      $("#modificarUserPersonal").click(function()
+        {              
+            frm = $("#formPersonal");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            modificarPersonal(dataForm,id_usuario_editar).then(function(data){   
+                  console.log("funciona");
+                });  
+        });     
+
+        $("#buscarUser").click(function(){
+            idUsuario = $
+            numero = $("#buscar").val();
+            getPersonalBy("?ci_per="+numero).then(function(data){
+                id_usuario_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formPersonal"
+                });
+            });
+        });           
 
         //Categoría de Unidades Administrativas 
         getConfiguracionBy("?tipo=Categoría de Unidades Administrativas").then(function(data){
@@ -81,4 +102,17 @@ $(document).ready(function()
                 element : $("#nivel")
                 });
         })                  
+
+        getPersonalBy('').then(function(data){
+            for(personal in data){
+                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
+                data[personal].ci = data[personal].ci_per;
+            }
+            jsonToSelect({        
+                 data : data,
+                 value : "ci",
+                 alias : "nombreApellido",
+                 element : $("#buscar")              
+                 });                         
+         })                
 });

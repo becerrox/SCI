@@ -7,8 +7,8 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
+
         var id_equipo_editar = "";
-        var id_personal_buscar = "";
 
         $("#header").load("header.html",function()
         {
@@ -35,16 +35,28 @@ $(document).ready(function()
                     }                
         });        
 
-        $("#buscaEquipo").click(function(){
+        $("#buscarEquipo").click(function(){
             idEquipo = $
-            numero = $("#descripcion").val();
+            numero = $("#serial").val();
             getEquiposBy("?serial="+numero).then(function(data){
-                id_equipo_editar = data[0].id;
                 jsonToTableTraspuesto({
                     data : data,
                     headers : headers,
                     table : $("#tableTipoEquipo"),
                     invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","serialSim","accesorios","planCelular","numeroCelular","estadoUsoEquipo"]
+                  });          
+            });
+        });  
+
+        $("#buscarCelular").click(function(){
+            idEquipo = $
+            numero = $("#serialCelular").val();
+            getEquiposBy("?serial="+numero).then(function(data){
+                jsonToTableTraspuesto({
+                    data : data,
+                    headers : headers,
+                    table : $("#tableTipoEquipo"),
+                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo"]
                   });          
             });
         });  
