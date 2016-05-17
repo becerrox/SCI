@@ -71,8 +71,9 @@ font-size: 15px;
 line-height:1;
 width:100%;
 height:auto;
-overflow: auto;
+overflow: none;
 }
+
 body #cabecera img{
 display: none;
 }
@@ -96,6 +97,12 @@ border:none;
   padding: 0;
   margin: 0;
 }
+#actaentrega{
+  top:10%;
+  position: absolute;
+  z-index: 5;
+  text-align: center;
+        }
 #footer{
    z-index: 3;
    position: absolute;
@@ -130,9 +137,7 @@ top: ;}
    -ms-transition: all 0.9s ease-in-out 0s;
    transition: all 0.9s ease-in-out 0s; 
 }
-#buscarCelular{
-  width: 25px;
-}
+
 .bs-example{
       margin: 100px 50px;
     }
@@ -174,7 +179,7 @@ width: 60px;
 .fecha3{
   width: 100px;
 }
-#buscarEquipo , #buscarResp{
+#buscarEquipo , #buscarResp , #buscarCelular{
   width: 25px;
 }
 .inicio > form + form{

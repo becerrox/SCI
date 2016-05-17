@@ -2,9 +2,14 @@ article{
 	border: 2px;
 	border-color: 5px; 
 	   }
+body{
+
+}
 body img{
  width: 100%;
+ height: 100%;
  visibility:visible;
+
 }
 body .bloque{
 	margin:0 50px;
@@ -27,11 +32,23 @@ appearance: none;
 border: none; 
 background: none;
 	}
+#actaentrega , #estatus {
+  top:10%;
+  position: absolute;
+  z-index:6;
+  text-align: center;
+}
 #bloque2{
 	z-index: 99;
 	padding-top: 225px;
 	font-size: 10px
 }
+#cabecera img{
+	width:100%; 
+	height: 100%;
+	 position: fixed;
+}
+
 #fecha-elab{
 	padding-left:50%;
 }
@@ -39,14 +56,18 @@ background: none;
 #header, #buscar {
 	display: none;
 }
-
+/*#estatus{
+	top:5%;
+	position: relative;
+	z-index: 5;
+	text-align: center;
+}*/
 #footer{
    z-index: 3;
    position: absolute;
    text-align: center;
    bottom: 0;
-   top: 700px;
-   clear: both; 
+   top: 530px;
 }
 
 #pie2 p{	
@@ -78,3 +99,13 @@ width: 50px;
 		}
 .padding {padding-right: 80px;}
 .hide{display: block !important;}
+ .page-break { display:block; page-break-before:always; }
+@media print
+{
+ @page {
+  size: letter portrait;
+  margin-left: 6%;
+  margin-right: 6%;
+    }
+  
+}
