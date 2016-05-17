@@ -9,42 +9,7 @@ SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
 SET search_path = public, pg_catalog;
-
---
--- Name: auditusuario(); Type: FUNCTION; Schema: public; Owner: postgres
---
-
-CREATE FUNCTION auditusuario() RETURNS trigger
-    LANGUAGE plpgsql
-    AS $$
-
-    BEGIN
-
-        INSERT INTO auditoria_usuario VALUES (old.usuario, old.pass, old.nivel, old.status);
-
-        RETURN NULL;
-
-    END;
-
-$$;
-
-
-ALTER FUNCTION public.auditusuario() OWNER TO postgres;
 
 --
 -- Name: configuracion_bien_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -126,27 +91,6 @@ CREATE SEQUENCE aignacion_id_seq
 ALTER TABLE aignacion_id_seq OWNER TO postgres;
 
 --
--- Name: aignacion; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE aignacion (
-    id integer DEFAULT nextval('aignacion_id_seq'::regclass) NOT NULL,
-    fecha_asignacion timestamp without time zone,
-    tipo_asignacion smallint,
-    id_personal integer
-);
-
-
-ALTER TABLE aignacion OWNER TO postgres;
-
---
--- Name: TABLE aignacion; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE aignacion IS 'Detalles de asignaciones';
-
-
---
 -- Name: aignación_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -189,35 +133,6 @@ CREATE SEQUENCE auditoria_personal_id_personal_seq
 ALTER TABLE auditoria_personal_id_personal_seq OWNER TO postgres;
 
 --
--- Name: auditoria_usuario; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE auditoria_usuario (
-    usuario character varying(20) NOT NULL,
-    pass character varying(500) NOT NULL,
-    nivel integer NOT NULL,
-    status integer NOT NULL,
-    fecha_modif timestamp without time zone DEFAULT now()
-);
-
-
-ALTER TABLE auditoria_usuario OWNER TO postgres;
-
---
--- Name: TABLE auditoria_usuario; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE auditoria_usuario IS 'Cambios o eliminaciones realizados en la tabla usuario';
-
-
---
--- Name: COLUMN auditoria_usuario.status; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN auditoria_usuario.status IS '0=cerrada;1=abierta';
-
-
---
 -- Name: auditoria_usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -246,10 +161,10 @@ CREATE SEQUENCE bienesgeneral_id_seq
 ALTER TABLE bienesgeneral_id_seq OWNER TO postgres;
 
 --
--- Name: bienesgeneral; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: bienes; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
-CREATE TABLE bienesgeneral (
+CREATE TABLE bienes (
     id integer DEFAULT nextval('bienesgeneral_id_seq'::regclass) NOT NULL,
     cod_general character varying(10),
     cod_subcat character varying(10),
@@ -261,111 +176,112 @@ CREATE TABLE bienesgeneral (
     serial character varying(50),
     tipo_comp character varying(30),
     colores integer,
-    num_bien integer,
+    num_bien character varying(12),
     estado_bien integer,
     status integer DEFAULT 1 NOT NULL,
-    fecha_modif timestamp without time zone DEFAULT now(),
+    fecha_modif timestamp without time zone,
     cat_unid_admin character varying(10),
     per_ini date,
     per_culm date,
     unidad_trabajo character varying(30),
     responsable_pa character varying(50),
     responsable_ad character varying(50),
-    responsable_uso character varying(50)
+    responsable_uso character varying(50),
+    sede character varying(40)
 );
 
 
-ALTER TABLE bienesgeneral OWNER TO postgres;
+ALTER TABLE bienes OWNER TO postgres;
 
 --
--- Name: TABLE bienesgeneral; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE bienes; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON TABLE bienesgeneral IS 'Datos almacenados de los bienes';
-
-
---
--- Name: COLUMN bienesgeneral.cod_general; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN bienesgeneral.cod_general IS 'Codigo categoria general';
+COMMENT ON TABLE bienes IS 'Datos almacenados de los bienes';
 
 
 --
--- Name: COLUMN bienesgeneral.cod_subcat; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN bienes.cod_general; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN bienesgeneral.cod_subcat IS 'Codigo sub-categoria';
-
-
---
--- Name: COLUMN bienesgeneral.cod_catespf; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN bienesgeneral.cod_catespf IS 'Codigo categoria especifica';
+COMMENT ON COLUMN bienes.cod_general IS 'Codigo categoria general';
 
 
 --
--- Name: COLUMN bienesgeneral.estatus_uso_bien; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN bienes.cod_subcat; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN bienesgeneral.estatus_uso_bien IS 'Estatus del uso del bien';
-
-
---
--- Name: COLUMN bienesgeneral.tipo_comp; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN bienesgeneral.tipo_comp IS 'Tipo componente';
+COMMENT ON COLUMN bienes.cod_subcat IS 'Codigo sub-categoria';
 
 
 --
--- Name: COLUMN bienesgeneral.num_bien; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN bienes.cod_catespf; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN bienesgeneral.num_bien IS 'numero de bien';
-
-
---
--- Name: COLUMN bienesgeneral.estado_bien; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN bienesgeneral.estado_bien IS 'Estado del bien';
+COMMENT ON COLUMN bienes.cod_catespf IS 'Codigo categoria especifica';
 
 
 --
--- Name: COLUMN bienesgeneral.cat_unid_admin; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN bienes.estatus_uso_bien; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN bienesgeneral.cat_unid_admin IS 'Categoría de unidad administrativa';
-
-
---
--- Name: COLUMN bienesgeneral.per_ini; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN bienesgeneral.per_ini IS 'Periodo de inicio';
+COMMENT ON COLUMN bienes.estatus_uso_bien IS 'Estatus del uso del bien';
 
 
 --
--- Name: COLUMN bienesgeneral.per_culm; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN bienes.tipo_comp; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN bienesgeneral.per_culm IS 'Periodo de culminación';
-
-
---
--- Name: COLUMN bienesgeneral.unidad_trabajo; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN bienesgeneral.unidad_trabajo IS 'Unidad de Trabajo';
+COMMENT ON COLUMN bienes.tipo_comp IS 'Tipo componente';
 
 
 --
--- Name: COLUMN bienesgeneral.responsable_ad; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN bienes.num_bien; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN bienesgeneral.responsable_ad IS 'Responsable Administrativo';
+COMMENT ON COLUMN bienes.num_bien IS 'numero de bien';
+
+
+--
+-- Name: COLUMN bienes.estado_bien; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN bienes.estado_bien IS 'Estado del bien';
+
+
+--
+-- Name: COLUMN bienes.cat_unid_admin; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN bienes.cat_unid_admin IS 'Categoría de unidad administrativa';
+
+
+--
+-- Name: COLUMN bienes.per_ini; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN bienes.per_ini IS 'Periodo de inicio';
+
+
+--
+-- Name: COLUMN bienes.per_culm; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN bienes.per_culm IS 'Periodo de culminación';
+
+
+--
+-- Name: COLUMN bienes.unidad_trabajo; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN bienes.unidad_trabajo IS 'Unidad de Trabajo';
+
+
+--
+-- Name: COLUMN bienes.responsable_ad; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN bienes.responsable_ad IS 'Responsable Administrativo';
 
 
 --
@@ -454,36 +370,6 @@ COMMENT ON TABLE catgen IS 'Codigo general de los bienes';
 
 
 --
--- Name: detalle_entrada_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE detalle_entrada_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE detalle_entrada_id_seq OWNER TO postgres;
-
---
--- Name: detalle_entrada; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE detalle_entrada (
-    id integer DEFAULT nextval('detalle_entrada_id_seq'::regclass) NOT NULL,
-    id_equipos integer NOT NULL,
-    cantidad integer NOT NULL,
-    fecha_entrada timestamp without time zone NOT NULL,
-    tipo_entrada character varying(40),
-    id_entrada integer
-);
-
-
-ALTER TABLE detalle_entrada OWNER TO postgres;
-
---
 -- Name: detalle_entrada_id_detalle_entrada_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -498,10 +384,10 @@ CREATE SEQUENCE detalle_entrada_id_detalle_entrada_seq
 ALTER TABLE detalle_entrada_id_detalle_entrada_seq OWNER TO postgres;
 
 --
--- Name: detalle_salida_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: detalle_entrada_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE detalle_salida_id_seq
+CREATE SEQUENCE detalle_entrada_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -509,23 +395,7 @@ CREATE SEQUENCE detalle_salida_id_seq
     CACHE 1;
 
 
-ALTER TABLE detalle_salida_id_seq OWNER TO postgres;
-
---
--- Name: detalle_salida; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE detalle_salida (
-    id integer DEFAULT nextval('detalle_salida_id_seq'::regclass) NOT NULL,
-    id_salida_salida integer NOT NULL,
-    id_equipos integer NOT NULL,
-    cantidad integer NOT NULL,
-    fecha_salida timestamp without time zone NOT NULL,
-    tipo_salida character varying(40)
-);
-
-
-ALTER TABLE detalle_salida OWNER TO postgres;
+ALTER TABLE detalle_entrada_id_seq OWNER TO postgres;
 
 --
 -- Name: detalle_salida_id_detallle_salida_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -542,6 +412,20 @@ CREATE SEQUENCE detalle_salida_id_detallle_salida_seq
 ALTER TABLE detalle_salida_id_detallle_salida_seq OWNER TO postgres;
 
 --
+-- Name: detalle_salida_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE detalle_salida_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE detalle_salida_id_seq OWNER TO postgres;
+
+--
 -- Name: entrada_id_entrada_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -554,32 +438,6 @@ CREATE SEQUENCE entrada_id_entrada_seq
 
 
 ALTER TABLE entrada_id_entrada_seq OWNER TO postgres;
-
---
--- Name: entrada; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE entrada (
-    id integer DEFAULT nextval('entrada_id_entrada_seq'::regclass) NOT NULL,
-    fecha_creacion timestamp without time zone DEFAULT now() NOT NULL,
-    fecha_modif timestamp without time zone DEFAULT now(),
-    cantidad integer NOT NULL,
-    fecha_entrada timestamp without time zone NOT NULL,
-    tipo_entrada character varying(40),
-    usuario_entrada character varying(40),
-    observacion character varying(200),
-    id_usuario integer
-);
-
-
-ALTER TABLE entrada OWNER TO postgres;
-
---
--- Name: TABLE entrada; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE entrada IS 'Equipos que ingresan';
-
 
 --
 -- Name: equipo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -617,7 +475,9 @@ CREATE TABLE equipo (
     "serialSim" character varying(20),
     accesorios character varying(50),
     "planCelular" character varying(40),
-    "numeroCelular" character varying(20)
+    "numeroCelular" character varying(20),
+    "estadoUsoEquipo" character varying(30),
+    motivo character varying(150)
 );
 
 
@@ -638,10 +498,30 @@ COMMENT ON COLUMN equipo.status IS '0=cerrada;1=abierta';
 
 
 --
--- Name: personal_id_personal_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: niveles_usuarios; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
-CREATE SEQUENCE personal_id_personal_seq
+CREATE TABLE niveles_usuarios (
+    id integer NOT NULL,
+    codigo integer,
+    nivel character varying(25)
+);
+
+
+ALTER TABLE niveles_usuarios OWNER TO postgres;
+
+--
+-- Name: TABLE niveles_usuarios; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE niveles_usuarios IS 'Niveles de usuario del SCI';
+
+
+--
+-- Name: niveles_usuarios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE niveles_usuarios_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -649,29 +529,48 @@ CREATE SEQUENCE personal_id_personal_seq
     CACHE 1;
 
 
-ALTER TABLE personal_id_personal_seq OWNER TO postgres;
+ALTER TABLE niveles_usuarios_id_seq OWNER TO postgres;
+
+--
+-- Name: niveles_usuarios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE niveles_usuarios_id_seq OWNED BY niveles_usuarios.id;
+
+
+--
+-- Name: personal_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE personal_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE -2147483648
+    MAXVALUE 2147483647
+    CACHE 1;
+
+
+ALTER TABLE personal_id_seq OWNER TO postgres;
 
 --
 -- Name: personal; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
 CREATE TABLE personal (
-    id integer DEFAULT nextval('personal_id_personal_seq'::regclass) NOT NULL,
+    id integer DEFAULT nextval('personal_id_seq'::regclass) NOT NULL,
     ci_per character varying(12) NOT NULL,
     nombres character varying(40),
     apellidos character varying(40),
     cargo character varying(30) NOT NULL,
     telf_pers numeric(12,0) NOT NULL,
-    telf_casa numeric(12,0),
     correo character varying(50) NOT NULL,
     f_nac date,
     fecha_creacion timestamp without time zone DEFAULT now() NOT NULL,
     fecha_modif timestamp without time zone DEFAULT now(),
-    usuario_creacion character varying(20) NOT NULL,
-    usuario_modif character varying(20),
     status integer,
     unidad_trabajo character varying(50),
-    id_usuario integer
+    id_usuario integer,
+    unidad_admin character varying(40)
 );
 
 
@@ -699,6 +598,20 @@ COMMENT ON COLUMN personal.unidad_trabajo IS 'Unidad de Trabajo';
 
 
 --
+-- Name: personal_id_personal_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE personal_id_personal_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE personal_id_personal_seq OWNER TO postgres;
+
+--
 -- Name: responsables_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -711,38 +624,6 @@ CREATE SEQUENCE responsables_id_seq
 
 
 ALTER TABLE responsables_id_seq OWNER TO postgres;
-
---
--- Name: responsables; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE responsables (
-    id integer DEFAULT nextval('responsables_id_seq'::regclass) NOT NULL,
-    nombres character varying(40),
-    apellidos character varying(40),
-    uni_admin character varying(30),
-    fecha_creacion timestamp without time zone,
-    fecha_modif timestamp without time zone DEFAULT now(),
-    status integer,
-    ci_responsable character varying(12)
-);
-
-
-ALTER TABLE responsables OWNER TO postgres;
-
---
--- Name: TABLE responsables; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE responsables IS 'Responsables de inventarios';
-
-
---
--- Name: COLUMN responsables.status; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN responsables.status IS ' 0=cerrada;1=abierta';
-
 
 --
 -- Name: salida_id_salida_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -759,32 +640,6 @@ CREATE SEQUENCE salida_id_salida_seq
 ALTER TABLE salida_id_salida_seq OWNER TO postgres;
 
 --
--- Name: salida; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE salida (
-    id integer DEFAULT nextval('salida_id_salida_seq'::regclass) NOT NULL,
-    fecha_creacion timestamp without time zone DEFAULT now() NOT NULL,
-    fecha_modif timestamp without time zone DEFAULT now(),
-    cantidad integer NOT NULL,
-    fecha_salida timestamp without time zone NOT NULL,
-    tipo_salida character varying(40),
-    usuario_salida character varying(40),
-    observacion character varying(200),
-    id_usuario integer
-);
-
-
-ALTER TABLE salida OWNER TO postgres;
-
---
--- Name: TABLE salida; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE salida IS 'equipos de salen';
-
-
---
 -- Name: solvencia_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -797,26 +652,6 @@ CREATE SEQUENCE solvencia_id_seq
 
 
 ALTER TABLE solvencia_id_seq OWNER TO postgres;
-
---
--- Name: solvencia; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE solvencia (
-    id integer DEFAULT nextval('solvencia_id_seq'::regclass) NOT NULL,
-    fecha_solvencia smallint,
-    id_personal integer
-);
-
-
-ALTER TABLE solvencia OWNER TO postgres;
-
---
--- Name: TABLE solvencia; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE solvencia IS 'Detalles de solvencia';
-
 
 --
 -- Name: sub_categorias_bienes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -883,86 +718,6 @@ CREATE SEQUENCE "ubicacion_id_Ubicacion_seq"
 ALTER TABLE "ubicacion_id_Ubicacion_seq" OWNER TO postgres;
 
 --
--- Name: unidad_admin; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE unidad_admin (
-    id integer DEFAULT nextval('"ubicacion_id_Ubicacion_seq"'::regclass) NOT NULL,
-    nombre character varying(20)
-);
-
-
-ALTER TABLE unidad_admin OWNER TO postgres;
-
---
--- Name: TABLE unidad_admin; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE unidad_admin IS 'Detalles de la Unidad Administrativa donde están ubicados los equipos y el personal';
-
-
---
--- Name: unidad_trabajo; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE unidad_trabajo (
-    id integer NOT NULL,
-    nombre character varying(40) NOT NULL
-);
-
-
-ALTER TABLE unidad_trabajo OWNER TO postgres;
-
---
--- Name: TABLE unidad_trabajo; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE unidad_trabajo IS 'Unidad de Trabajo';
-
-
---
--- Name: unidad_trabajo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE unidad_trabajo_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE unidad_trabajo_id_seq OWNER TO postgres;
-
---
--- Name: unidad_trabajo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE unidad_trabajo_id_seq OWNED BY unidad_trabajo.id;
-
-
---
--- Name: unidad_trabajo_nombre_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE unidad_trabajo_nombre_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE unidad_trabajo_nombre_seq OWNER TO postgres;
-
---
--- Name: unidad_trabajo_nombre_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE unidad_trabajo_nombre_seq OWNED BY unidad_trabajo.nombre;
-
-
---
 -- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -987,7 +742,8 @@ CREATE TABLE usuario (
     nivel integer NOT NULL,
     fecha_creacion timestamp without time zone DEFAULT now(),
     status integer DEFAULT 1 NOT NULL,
-    primer_inicio integer
+    primer_inicio integer,
+    fecha_modif timestamp without time zone
 );
 
 
@@ -1018,13 +774,7 @@ COMMENT ON COLUMN usuario.primer_inicio IS 'Inicio por primera vez. 0 = nunca, 1
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY unidad_trabajo ALTER COLUMN id SET DEFAULT nextval('unidad_trabajo_id_seq'::regclass);
-
-
---
--- Data for Name: aignacion; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
+ALTER TABLE ONLY niveles_usuarios ALTER COLUMN id SET DEFAULT nextval('niveles_usuarios_id_seq'::regclass);
 
 
 --
@@ -1056,13 +806,6 @@ SELECT pg_catalog.setval('auditoria_personal_id_personal_seq', 1, false);
 
 
 --
--- Data for Name: auditoria_usuario; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO auditoria_usuario VALUES ('admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 1, '2016-04-22 10:59:49.741052');
-
-
---
 -- Name: auditoria_usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1070,31 +813,21 @@ SELECT pg_catalog.setval('auditoria_usuario_id_seq', 1, false);
 
 
 --
--- Data for Name: bienesgeneral; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: bienes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO bienesgeneral VALUES (1, NULL, NULL, NULL, 'cszcsz', 1, 'zscsz', 'zscsz', '242343ss', '1', 1, 424, 1, 1, '2016-04-07 11:06:59.460911', '1', '2016-04-21', '2016-04-21', '1', '1', '1', '1');
-INSERT INTO bienesgeneral VALUES (2, NULL, NULL, NULL, 'awdwa', 1, 'dwadaw', 'awdwa', 'awdwa', '2', 1, 12321, 2, 1, '2016-04-07 14:15:57.276499', '2', '2016-04-07', '2016-04-19', '1', '0', '0', '0');
-INSERT INTO bienesgeneral VALUES (3, NULL, NULL, NULL, 'awdwa', 1, 'dwadaw', 'awdwa', 'wasd', '2', 1, 322321312, 2, 1, '2016-04-07 14:16:26.908969', '2', '2016-04-07', '2016-04-19', '1', '0', '0', '0');
-INSERT INTO bienesgeneral VALUES (4, NULL, NULL, NULL, 'wadawd', 2, 'zscsz', 'zscszzs', 'fsfeszh', '1', 1, 6453546, 2, 1, '2016-04-07 14:18:13.346263', '2', '2016-04-21', '2016-04-26', '1', '0', '0', '0');
-INSERT INTO bienesgeneral VALUES (5, NULL, NULL, NULL, 'wdaawdwa', 1, 'adwa', 'awdwaa', 'wahjykugfthgefesrhtjyfhds', '2', 1, 435364, 2, 1, '2016-04-07 14:22:22.435507', '1', '2016-04-04', '2016-04-12', '1', '1', '0', '0');
-INSERT INTO bienesgeneral VALUES (6, NULL, NULL, NULL, 'efse', 1, 'sefes', 'adwad', 'dwadw', '2', 35, 3213, 3, 1, '2016-04-08 10:33:35.995468', '1', '2016-04-20', '2016-04-27', '1', '1', '0', '0');
-INSERT INTO bienesgeneral VALUES (7, NULL, NULL, NULL, 'efesf', 1, 'esf', 'sefs', '13456', '1', 10, 123456, 3, 1, NULL, '16', '2016-04-09', '2016-04-19', '5', '1', '1', '1');
-INSERT INTO bienesgeneral VALUES (8, NULL, NULL, NULL, 'wadwa', 6, 'awdwa', 'awdwa', 'waawd', '1', 13, 1111, 3, 1, '2016-04-14 04:31:37', '17', '2016-04-15', '2016-04-15', '5', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón');
-INSERT INTO bienesgeneral VALUES (9, NULL, NULL, NULL, 'ddwdw', 1, 'wdwd', 'dwdwd', '23213', '1', 15, 112233, 6, 1, '2016-04-21 10:38:10', '19', '2016-04-11', '2016-04-13', '1', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón');
-INSERT INTO bienesgeneral VALUES (10, NULL, NULL, NULL, 'dwdwd', 1, 'fesf', 'awdawd', '23ewds', '2', 19, 223344, 4, 1, '2016-04-22 11:17:51.473785', '19', '2016-04-18', '2016-04-20', '5', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón');
-INSERT INTO bienesgeneral VALUES (11, '12', '122', '23', 'fefsefe', 1, 'ffsf', 'efsf', 'desf3435', '1', 18, 9999, 6, 1, '2016-04-22 14:17:59.781351', '18', '2016-04-11', '2016-04-16', '5', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón');
-INSERT INTO bienesgeneral VALUES (12, '12', '122', '23', 'fefsefe', 1, 'ffsf', 'efsf', 'desf34357', '1', 18, 8888, 6, 1, '2016-04-22 14:19:13.449695', '18', '2016-04-11', '2016-04-16', '5', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón');
-INSERT INTO bienesgeneral VALUES (13, '12', '122', '23', 'hola', 1, 'Siragon', 'fmod', '23wdasd23', '2', 7, 11235, 4, 1, '2016-04-26 08:28:18.323175', '5', '2016-04-11', '2016-04-14', '5', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón');
-INSERT INTO bienesgeneral VALUES (14, '12', '122', '23', 'fwaaw', 1, 'afse', 'efsf', '1122334455', '1', 19, 1122334455, 6, 1, '2016-04-27 10:53:03.666672', '1', '2016-04-15', '2016-04-16', '5', 'Jose Figuera', 'Luis Ricardo Lavado Mogollón', 'Jose Figuera');
-INSERT INTO bienesgeneral VALUES (15, '12', '122', '23', 'dadwa', 1, 'efse', 'eadaw', 'cacadwa', '1', 1, 323432432, 1, 0, '2016-05-02 02:06:23', '5', '2016-05-01', '2016-05-03', '3', 'Jose Figuera', 'Jose Figuera', 'Luis Ricardo Lavado Mogollón');
+INSERT INTO bienes VALUES (17, '12', '122', '23', 'Computadora', 1, 'Siragon', 'Men', '112233', '1', 1, '11223344', 1, 1, '2016-05-09 14:31:50.527912', '2', '2016-05-01', '2016-05-02', 'Telecomunicaciones ', 'Transbar Ca', 'Transbar Ca', 'Transbar Ca', NULL);
+INSERT INTO bienes VALUES (18, '123456', '12343', '21213', 'wdiawd', 3, 'dwadaw', 'dwad', 'ffer23', '2', 4, '2134', 3, 1, '2016-05-09 14:36:36.13766', '4', '2016-05-11', '2016-05-21', 'Presidencia', 'Jose Figuera', 'Jose Figuera', 'Transbar Ca', NULL);
+INSERT INTO bienes VALUES (19, '121213', '12234', '21213', 'wdwdwadwa', 1, 'wadwa', 'wadawd', '1112233', '1', 16, '1112233', 1, 1, '2016-05-10 12:49:56.353963', '7', '2016-05-01', '2016-05-02', 'Compras', 'Transbar Ca', 'Luis Lavado', 'Transbar Ca', NULL);
+INSERT INTO bienes VALUES (20, '12', '12343', '23', 'adwadwa', 4, 'ddawd', 'awdwa', 'awdwad', '1', 3, '445566', 4, 1, '2016-05-12 01:20:39', '5', '2016-05-01', '2016-05-02', 'Telecomunicaciones ', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón', 'Jose Figuera', 'awdwad');
+INSERT INTO bienes VALUES (24, '12', '12343', '23', 'adwadwa', 4, 'ddawd', 'awdwa', 'awdwade', '1', 3, '445566', 4, 1, '2016-05-12 01:24:50', '5', '2016-05-01', '2016-05-02', 'Telecomunicaciones ', 'Luis Ricardo Lavado Mogollón', 'Luis Ricardo Lavado Mogollón', 'Jose Figuera', 'awdwad');
 
 
 --
 -- Name: bienesgeneral_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('bienesgeneral_id_seq', 15, true);
+SELECT pg_catalog.setval('bienesgeneral_id_seq', 24, true);
 
 
 --
@@ -1226,12 +959,11 @@ INSERT INTO configuracion_bien VALUES (84, 18, 'Área Organizacional', 'Categor�
 INSERT INTO configuracion_bien VALUES (85, 19, 'Área de Trabajo', 'Categoría de Unidades Administrativas');
 INSERT INTO configuracion_bien VALUES (86, 20, 'Otra categoría de Unidad', 'Categoría de Unidades Administrativas');
 INSERT INTO configuracion_bien VALUES (67, 1, 'Despacho del Presidente', 'Categoría de Unidades Administrativas');
-INSERT INTO configuracion_bien VALUES (88, 2, 'Telecomunicaciones ', 'Unidad de Trabajo');
 INSERT INTO configuracion_bien VALUES (90, 4, 'Compras', 'Unidad de Trabajo');
 INSERT INTO configuracion_bien VALUES (89, 3, 'Presidencia', 'Unidad de Trabajo');
 INSERT INTO configuracion_bien VALUES (91, 5, 'Recaudación', 'Unidad de Trabajo');
 INSERT INTO configuracion_bien VALUES (87, 1, 'CCO', 'Unidad de Trabajo');
-INSERT INTO configuracion_bien VALUES (92, 45, 'Extraviado', '1');
+INSERT INTO configuracion_bien VALUES (88, 2, 'Telecomunicaciones', 'Unidad de Trabajo');
 
 
 --
@@ -1239,12 +971,6 @@ INSERT INTO configuracion_bien VALUES (92, 45, 'Extraviado', '1');
 --
 
 SELECT pg_catalog.setval('configuracion_bien_id_seq', 92, true);
-
-
---
--- Data for Name: detalle_entrada; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
 
 
 --
@@ -1262,12 +988,6 @@ SELECT pg_catalog.setval('detalle_entrada_id_seq', 1, false);
 
 
 --
--- Data for Name: detalle_salida; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
 -- Name: detalle_salida_id_detallle_salida_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1282,12 +1002,6 @@ SELECT pg_catalog.setval('detalle_salida_id_seq', 1, false);
 
 
 --
--- Data for Name: entrada; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
 -- Name: entrada_id_entrada_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -1298,38 +1012,66 @@ SELECT pg_catalog.setval('entrada_id_entrada_seq', 1, false);
 -- Data for Name: equipo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO equipo VALUES (1, 'wadwadwa', 'awdwadwad', 'awdwad', 'wadwad', 'awdwa', '1', 'dwadwa', 1, 'awdwad', 'awdwad', '2016-04-07 10:26:49', 'wadaw', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO equipo VALUES (2, 'efes', 'sefs', 'efs', '1234', 'Negro', 'Óptimo', 'Despacho del Vicepresidente', 1, 'Luis Ricardo Lavado Mogollón', 'esfesf', '2016-04-13 10:51:06', 'Telecomunicaciones ', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO equipo VALUES (3, 'celular', 'Epson', 'Pavilon', '323213213', 'Negro', 'Regular', 'Gerencia General', 1, 'Luis Ricardo Lavado Mogollón', 'dwadwad', '2016-05-02 02:03:14', 'Recaudación', 'wadwadwa', '4324324', 'wadhawdhawgb', 'esfefaedwdwa', '4324324324');
+INSERT INTO equipo VALUES (1, 'celular', 'HP', 'PAvilon', '12341', 'Azul', 'Regular', 'Presidencia', 1, 'Transbar Ca', 'Todas', '2016-05-03 02:12:21', 'Compras', 'Ninguna', '123213', 'Todos', 'Full', '32131321', NULL, NULL);
+INSERT INTO equipo VALUES (4, 'awdaw', 'awdwa', 'wadaw', 'awdwadwa', 'Palo Rosa', 'Chatarra', 'Intendencia', 0, 'Jose Figuera', 'awdwad', '2016-05-12 01:26:09', 'Compras', '', '', '', '', '', NULL, NULL);
+INSERT INTO equipo VALUES (3, 'celular', 'Epson', 'Pavilon', '323213213', 'Negro', 'Regular', 'Gerencia General', 1, 'Luis Ricardo Lavado Mogollón', 'dwadwad', '2016-05-13 02:38:21', 'Recaudación', 'adwwad', '4324324', 'wadhawdhawgb', 'esfefaedwdwa', '4324324324', 'En proceso de disposición', 'ddwadwadwa');
+INSERT INTO equipo VALUES (2, 'efes', 'sefs', 'efs', '1234', 'Negro', 'Óptimo', 'Dirección General', 1, 'Luis Ricardo Lavado Mogollón', 'esfesf', '2016-05-16 10:05:47', 'Telecomunicaciones ', NULL, '', '', '', '', 'En proceso de disposición', NULL);
 
 
 --
 -- Name: equipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('equipo_id_seq', 3, true);
+SELECT pg_catalog.setval('equipo_id_seq', 4, true);
+
+
+--
+-- Data for Name: niveles_usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO niveles_usuarios VALUES (1, 0, 'Administrados');
+INSERT INTO niveles_usuarios VALUES (2, 1, 'Administrador de Bienes');
+INSERT INTO niveles_usuarios VALUES (3, 2, 'Regular de bienes');
+INSERT INTO niveles_usuarios VALUES (4, 3, 'Responsable');
+
+
+--
+-- Name: niveles_usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('niveles_usuarios_id_seq', 4, true);
 
 
 --
 -- Data for Name: personal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO personal VALUES (1, '23603524', 'Luis Ricardo', 'Lavado Mogollón', 'sefsefes', 432423, 324324, 'adwad', '2016-04-05', '2016-04-06 15:08:05.893788', '2016-04-07 10:24:58.850254', 'dwadwa', 'awdwad', 1, 'sfefsef', 1);
-INSERT INTO personal VALUES (2, '11235813', 'Jose', 'Figuera', 'El Mayor', 324421, 3423, 'nifnig@fig.com', '2016-04-25', '2016-04-26 08:54:42.243163', '2016-04-26 08:54:42.243163', '0', '0', 1, 'CCO', 2);
+INSERT INTO personal VALUES (4, '11223344', 'Luis', 'Lavado', '1', 232132131, 'transbarca@gmail.com', '1996-05-31', '2016-05-09 10:19:09', '2016-05-09 10:19:09', 1, NULL, 7, NULL);
+INSERT INTO personal VALUES (5, '1122334', 'Juan', 'Juans', '1', 11232, 'wadwad@gmail.com', '1986-05-21', '2016-05-12 10:09:33', '2016-05-12 10:09:33', 1, NULL, 8, '12');
+INSERT INTO personal VALUES (6, '12321', 'dwadwa', 'feafwa', '1', 21321, 'wwdwada@gmai.com', '1993-05-20', '2016-05-12 10:12:09', '2016-05-12 10:12:09', 1, NULL, 9, '3');
+INSERT INTO personal VALUES (7, '21321', 'wadwaaw', 'dawd', '1', 2121321, 'daw@fmda.com', '1993-05-18', '2016-05-12 10:15:11', '2016-05-12 10:15:11', 1, NULL, 10, 'Gerencia');
+INSERT INTO personal VALUES (14, '2432423', 'dwadwawa', 'dwaaw', 'dwa', 24324, 'adw', '2016-05-11', '2016-05-12 22:24:00.47127', '2016-05-12 22:24:00.47127', 1, 'dawda', 12, 'wdwa');
+INSERT INTO personal VALUES (15, '1242341', 'adwa', 'awdwa', '1', 3242341, 'dwaadwa@gmaol.com', '1996-05-21', '2016-05-12 10:24:23', '2016-05-12 10:24:23', 1, NULL, 13, 'Dirección General');
+INSERT INTO personal VALUES (16, '1231415', 'awdawdwa', 'dwadwa', '1', 3213123, 'wdwadw@gmail.com', '2016-05-01', '2016-05-13 08:43:52', '2016-05-13 08:43:52', 1, NULL, 14, 'Despacho Viceministro');
+INSERT INTO personal VALUES (17, '1231115', 'dadwa', 'dwadwa', '1', 3213123, 'wdwad2@gmail.com', '2016-05-01', '2016-05-13 08:45:34', '2016-05-13 08:45:34', 1, 'Telecomunicaciones ', 15, 'Despacho Viceministro');
+INSERT INTO personal VALUES (1, '23603524', 'Luis Ricardo', 'Lavado Mogollón', 'sefsefes', 432423, 'adwad', '2016-04-05', '2016-04-06 15:08:05.893788', '2016-04-07 10:24:58.850254', 1, 'Telecomunicaciones', 1, 'Coordinación');
+INSERT INTO personal VALUES (18, '221234', 'DWADWA', 'aefesrrs', '2', 2133123, 'awdwa@gmail.com', '1974-05-21', '2016-05-13 02:26:43', '2016-05-13 02:26:43', 1, 'Presidencia', 16, 'Despacho Viceministro');
+INSERT INTO personal VALUES (2, '11235813', 'Jose', 'Figuera', 'Gerente', 324421, 'nifnig@fig.com', '2016-04-25', '2016-04-26 08:54:42.243163', '2016-05-16 10:11:58', 1, 'CCO', 2, 'Gerencia');
+INSERT INTO personal VALUES (3, '123213', 'Transbar', 'Ca', 'Gerente', 2432423, 'transbarca@transbarca.con', '1985-05-14', '2016-05-03 11:23:54', '2016-05-16 10:15:55', 1, 'Presidencia', NULL, 'Presidencia');
 
 
 --
 -- Name: personal_id_personal_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('personal_id_personal_seq', 2, true);
+SELECT pg_catalog.setval('personal_id_personal_seq', 7, true);
 
 
 --
--- Data for Name: responsables; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Name: personal_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-INSERT INTO responsables VALUES (1, 'Jose', 'dwdwdw', 'djodjod', '2016-04-08 11:42:54.490961', '2016-04-08 11:42:54.490961', 1, NULL);
+SELECT pg_catalog.setval('personal_id_seq', 18, true);
 
 
 --
@@ -1340,22 +1082,10 @@ SELECT pg_catalog.setval('responsables_id_seq', 1, true);
 
 
 --
--- Data for Name: salida; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
 -- Name: salida_id_salida_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('salida_id_salida_seq', 1, false);
-
-
---
--- Data for Name: solvencia; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
 
 
 --
@@ -1400,53 +1130,29 @@ SELECT pg_catalog.setval('"ubicacion_id_Ubicacion_seq"', 1, false);
 
 
 --
--- Data for Name: unidad_admin; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: unidad_trabajo; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Name: unidad_trabajo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('unidad_trabajo_id_seq', 1, false);
-
-
---
--- Name: unidad_trabajo_nombre_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('unidad_trabajo_nombre_seq', 1, false);
-
-
---
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO usuario VALUES (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, '2016-04-06 15:06:59.467127', 1, 1);
-INSERT INTO usuario VALUES (2, 'luisrlavado', '8cb2237d0679ca88db6464eac60da96345513964', 2, '2016-04-26 08:34:33', 1, 0);
-INSERT INTO usuario VALUES (3, 'Jose', '8cb2237d0679ca88db6464eac60da96345513964', 1, '2016-05-02 01:32:03', 1, 0);
+INSERT INTO usuario VALUES (3, 'Jose', '8cb2237d0679ca88db6464eac60da96345513964', 1, '2016-05-02 01:32:03', 1, 1, '2016-05-09 10:11:28');
+INSERT INTO usuario VALUES (2, 'luisrlavado', '8cb2237d0679ca88db6464eac60da96345513964', 2, '2016-04-26 08:34:33', 1, 1, '2016-05-09 10:15:28');
+INSERT INTO usuario VALUES (7, 'luis', 'd033e22ae348aeb5660fc2140aec35850c4da997', 2, '2016-05-09 10:19:08', 1, 1, '2016-05-09 10:30:40');
+INSERT INTO usuario VALUES (8, 'juan', '8cb2237d0679ca88db6464eac60da96345513964', 0, '2016-05-12 10:09:33', 1, 0, '2016-05-12 10:09:33');
+INSERT INTO usuario VALUES (9, 'pims', '8cb2237d0679ca88db6464eac60da96345513964', 0, '2016-05-12 10:12:09', 1, 0, '2016-05-12 10:12:09');
+INSERT INTO usuario VALUES (10, 'awdwa', '7248feaa77e873d31d864b5cf5b4d35a779d07b9', 0, '2016-05-12 10:15:11', 1, 0, '2016-05-12 10:15:11');
+INSERT INTO usuario VALUES (11, 'awdwa1', '7248feaa77e873d31d864b5cf5b4d35a779d07b9', 0, '2016-05-12 10:19:48', 1, 0, '2016-05-12 10:19:48');
+INSERT INTO usuario VALUES (12, 'wadaxa', '8cb2237d0679ca88db6464eac60da96345513964', 0, '2016-05-12 10:20:54', 1, 0, '2016-05-12 10:20:54');
+INSERT INTO usuario VALUES (13, 'wadaxa23', '8cb2237d0679ca88db6464eac60da96345513964', 0, '2016-05-12 10:24:23', 1, 0, '2016-05-12 10:24:23');
+INSERT INTO usuario VALUES (14, 'dwadwa', '8cb2237d0679ca88db6464eac60da96345513964', 0, '2016-05-13 08:43:51', 1, 0, '2016-05-13 08:43:51');
+INSERT INTO usuario VALUES (15, 'dwadwaa', '8cb2237d0679ca88db6464eac60da96345513964', 0, '2016-05-13 08:45:34', 1, 0, '2016-05-13 08:45:34');
+INSERT INTO usuario VALUES (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 0, '2016-04-06 15:06:59.467127', 1, 1, '2016-05-13 11:26:58');
+INSERT INTO usuario VALUES (16, 'dwadwadawd', '231f831d54efcf1bb9c7ba2b191c1675bde79340', 0, '2016-05-13 02:26:43', 1, 0, '2016-05-13 02:26:43');
 
 
 --
 -- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('usuario_id_seq', 3, true);
-
-
---
--- Name: PK_personal; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY personal
-    ADD CONSTRAINT "PK_personal" PRIMARY KEY (id);
+SELECT pg_catalog.setval('usuario_id_seq', 16, true);
 
 
 --
@@ -1455,14 +1161,6 @@ ALTER TABLE ONLY personal
 
 ALTER TABLE ONLY personal
     ADD CONSTRAINT "UN_personal" UNIQUE (ci_per);
-
-
---
--- Name: UN_ubicacion; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY unidad_admin
-    ADD CONSTRAINT "UN_ubicacion" UNIQUE (nombre);
 
 
 --
@@ -1492,18 +1190,10 @@ ALTER TABLE ONLY configuracion_bien
 
 
 --
--- Name: pk_asignacion; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY aignacion
-    ADD CONSTRAINT pk_asignacion PRIMARY KEY (id);
-
-
---
 -- Name: pk_bienes; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
-ALTER TABLE ONLY bienesgeneral
+ALTER TABLE ONLY bienes
     ADD CONSTRAINT pk_bienes PRIMARY KEY (id);
 
 
@@ -1524,30 +1214,6 @@ ALTER TABLE ONLY catgen
 
 
 --
--- Name: pk_detalle_entrada; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY detalle_entrada
-    ADD CONSTRAINT pk_detalle_entrada PRIMARY KEY (id);
-
-
---
--- Name: pk_detalle_salida; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY detalle_salida
-    ADD CONSTRAINT pk_detalle_salida PRIMARY KEY (id);
-
-
---
--- Name: pk_entrada; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY entrada
-    ADD CONSTRAINT pk_entrada PRIMARY KEY (id);
-
-
---
 -- Name: pk_equipo; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1564,27 +1230,11 @@ ALTER TABLE ONLY usuario
 
 
 --
--- Name: pk_salida; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: pk_personal; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
-ALTER TABLE ONLY salida
-    ADD CONSTRAINT pk_salida PRIMARY KEY (id);
-
-
---
--- Name: pk_serial; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY responsables
-    ADD CONSTRAINT pk_serial PRIMARY KEY (id);
-
-
---
--- Name: pk_solvencia; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY solvencia
-    ADD CONSTRAINT pk_solvencia PRIMARY KEY (id);
+ALTER TABLE ONLY personal
+    ADD CONSTRAINT pk_personal PRIMARY KEY (id);
 
 
 --
@@ -1596,22 +1246,6 @@ ALTER TABLE ONLY subcat
 
 
 --
--- Name: pk_ubicacion; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY unidad_admin
-    ADD CONSTRAINT pk_ubicacion PRIMARY KEY (id);
-
-
---
--- Name: un_bien_serial; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY bienesgeneral
-    ADD CONSTRAINT un_bien_serial UNIQUE (serial);
-
-
---
 -- Name: un_equipo; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1620,73 +1254,11 @@ ALTER TABLE ONLY equipo
 
 
 --
--- Name: unidad_trabajo_nombre_key; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: un_serial; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
-ALTER TABLE ONLY unidad_trabajo
-    ADD CONSTRAINT unidad_trabajo_nombre_key UNIQUE (nombre);
-
-
---
--- Name: unidad_trabajo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY unidad_trabajo
-    ADD CONSTRAINT unidad_trabajo_pkey PRIMARY KEY (id);
-
-
---
--- Name: actualizarusuario; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER actualizarusuario AFTER UPDATE ON usuario FOR EACH ROW EXECUTE PROCEDURE auditusuario();
-
-
---
--- Name: auditusuario; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER auditusuario AFTER DELETE ON usuario FOR EACH ROW EXECUTE PROCEDURE auditusuario();
-
-
---
--- Name: entrada_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY detalle_entrada
-    ADD CONSTRAINT entrada_fk FOREIGN KEY (id_entrada) REFERENCES entrada(id) MATCH FULL ON UPDATE CASCADE ON DELETE SET NULL;
-
-
---
--- Name: personal_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY aignacion
-    ADD CONSTRAINT personal_fk FOREIGN KEY (id_personal) REFERENCES personal(id) MATCH FULL ON UPDATE CASCADE ON DELETE SET NULL;
-
-
---
--- Name: personal_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY solvencia
-    ADD CONSTRAINT personal_fk FOREIGN KEY (id_personal) REFERENCES personal(id) MATCH FULL ON UPDATE CASCADE ON DELETE SET NULL;
-
-
---
--- Name: salida_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY detalle_salida
-    ADD CONSTRAINT salida_fk FOREIGN KEY (id_salida_salida) REFERENCES salida(id) MATCH FULL ON UPDATE CASCADE ON DELETE SET NULL;
-
-
---
--- Name: usuario_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY entrada
-    ADD CONSTRAINT usuario_fk FOREIGN KEY (id_usuario) REFERENCES usuario(id) MATCH FULL ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE ONLY bienes
+    ADD CONSTRAINT un_serial UNIQUE (serial);
 
 
 --
@@ -1694,14 +1266,6 @@ ALTER TABLE ONLY entrada
 --
 
 ALTER TABLE ONLY personal
-    ADD CONSTRAINT usuario_fk FOREIGN KEY (id_usuario) REFERENCES usuario(id) MATCH FULL ON UPDATE CASCADE ON DELETE SET NULL;
-
-
---
--- Name: usuario_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY salida
     ADD CONSTRAINT usuario_fk FOREIGN KEY (id_usuario) REFERENCES usuario(id) MATCH FULL ON UPDATE CASCADE ON DELETE SET NULL;
 
 
