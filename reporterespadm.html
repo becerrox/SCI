@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/calendario.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="print.css" type="text/css" media="print">
+    <link rel="stylesheet" media="print and (orientation:landscape)" href="landscape.css">
    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
    <script src="js/sweetalert.min.js"></script>
@@ -26,7 +26,7 @@
 <div id="header"></div>
 <body>
 <div id="cabecera">
-    <img src="images/cabecera.png">
+    <img src="images/cabecera2.png">
   </div>
 <section class="inicio container-fluid">
   <h3>Inventario por Responsable Administrativo</h3>
@@ -46,21 +46,14 @@
           </table>
         </div>
       </article>
+   <!-- <div class="page-break" style="height: 100px;"></div> clase para hacer salto de pagina-->
+    </form>
+</section>
       <article class="row">
         <div class="col-md-2 col-md-offset-5">
           <button id="btnImprimir" type="button" class="btn hidden-print" onclick="window.print()">Imprimir</button>
         </div>
-    </article>
-    <article class="row visible-print">
-    <div id="pie2" class="text-center col-md-12">
-        <p>Av. Florencio Jiménez, KM 3, Edif. Estación Central Simón Bolívar<br>
-      Piso PB,  Barquisimeto, Municipio Iribarren, Edo. Lara.<br>
-      RIF: G-20005347-0<br>
-      www.transbarca.gob.ve<br></p>
-    </div>
-  </article>
-    </form>
-</section>
+    </article>    
    <script src="js/services.js" type="text/javascript"></script> 
     <script src="js/menu.js" type="text/javascript"></script>  
     <script src="js/jquery.js"></script>

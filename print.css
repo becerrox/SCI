@@ -1,3 +1,10 @@
+@page {
+  size: letter portrait;
+  margin-left: 6%;
+  margin-right: 6%;
+  margin-top: 0;
+    }
+
 article{ 
 	border: 2px;
 	border-color: 5px; 
@@ -16,6 +23,7 @@ body .bloque{
 }
 h3{
 	text-align: center;
+  width: 50%;
 	font-size: 16px;
 	font-weight: bold;
 	padding-bottom:20px;
@@ -32,11 +40,17 @@ appearance: none;
 border: none; 
 background: none;
 	}
-#actaentrega , #estatus {
-  top:10%;
+#estatus {
+  text-align: center;
+  top:15%;
   position: absolute;
   z-index:6;
+}
+#actaentrega {
   text-align: center;
+  top:8%;
+  position: absolute;
+
 }
 #bloque2{
 	z-index: 99;
@@ -77,7 +91,10 @@ background: none;
 #tabla {
 	margin: 10px 0;
 }
-
+#tableEquipos{
+  width: 50%;
+  margin-left: 25%;
+}
 .fecha1{
 width: 20px;
         }
@@ -100,12 +117,4 @@ width: 50px;
 .padding {padding-right: 80px;}
 .hide{display: block !important;}
  .page-break { display:block; page-break-before:always; }
-@media print
-{
- @page {
-  size: letter portrait;
-  margin-left: 6%;
-  margin-right: 6%;
-    }
-  
-}
+
