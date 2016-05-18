@@ -31,10 +31,10 @@ Modelos
 
 
 Servicios
-[ ] SedesService
-[ ] CargosService
-[ ] ResponsablesService
-[ ] ConfiguracionEquiposService
+[X] SedesService
+[X] CargosService
+[X] ResponsablesService
+[X] ConfiguracionEquiposService
 [ ] DetallesConfiguracionEquiposService
 [ ] DetallesConfiguracionBienesService
 [ ] NumeroBienService

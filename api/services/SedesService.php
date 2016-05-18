@@ -1,57 +1,52 @@
 <?php
-class NivelesService{
-        public function listar($query = []){
+class SedesService{
+    public function listar($query){
 
           if(empty($query))
-             $niveles=Niveles::find();
+             $sedes=Sedes::find();
           else
           {
-            $niveles=Niveles::find(
+            $sedes=Sedes::find(
                 array(
                     arrayToSQLQuery($query),
                     "bind" => $query)
                 );
           }
 
-          if(count($niveles->toArray())==0){
-                return array("status" => 404, "mensaje" => "No hay registros de niveles");
-          }else{
-                return array("status" => 200, "mensaje" =>$niveles->toArray());
-          }
-        }
-
-        
-        public function nuevo($niv){
-            $niveles=new niveles();
+      if(count($sedes->toArray())==0){
+            return array("status" => 404, "mensaje" => "No hay registros de sedes");
+      }else{
+            return array("status" => 200, "mensaje" =>$sedes->toArray());
+      }
+    }
+        public function nuevo($sed){
+            $sedes=new Sedes();
             $data=array(
-                  "codigo" => $niv->codigo,
-                  "nivel" => $niv->nivel
+                "sede" => $sed->sede
             );
-            if($niveles->save($data)){
+            if($sedes->save($data)){
                     return array("status" => 201, "mensaje" => $data);
             }else{
                 $errors = array();
-                foreach ($niveles->getMessages() as $message) {
+                foreach ($sedes->getMessages() as $message) {
                     $errors[] = $message->getMessage();
                 }
                 return array("status" => 400, "mensaje" =>$errors);
             }
         }
 
-        public function modificar($id,$niv){
-            $modificar=Niveles::find($id);
+        public function modificar($id,$sed){
+            $modificar=Sedes::find($id);
             if(count($modificar)>0){
                 $data=array(
-                  "codigo" => $niv->codigo,
-                  "nivel" => $niv->nivel
+                    "sede" => $sed->sede
                 );
-
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
                 }
                 else{
                      $errors = array();
-                    foreach ($niveles->getMessages() as $message) {
+                    foreach ($sedes->getMessages() as $message) {
                         $errors[] = $message->getMessage();
                     }
                     return array("status" => 400, "mensaje" =>$errors);
@@ -60,11 +55,12 @@ class NivelesService{
                 return array("status" => 404, "mensaje" =>"El registro que intenta modificar no existe");
             }
         }
+
         public function eliminar($id){
-            $niveles=Niveles::find($id);
-            if(count($niveles)){
-                $niveles->delete();
-                return array("status" => 200, "mensaje" => 'niveles Eliminado');
+            $sedes=Sedes::find($id);
+            if(count($sedes)){
+                $sedes->delete();
+                return array("status" => 200, "mensaje" => 'sedes Eliminado');
             }else{
                 return array("status"=>404, "mensaje"=> "El registro intenta modificar no existe");
             }

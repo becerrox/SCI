@@ -1,57 +1,52 @@
 <?php
-class NivelesService{
-        public function listar($query = []){
+class CargosService{
+    public function listar($query){
 
           if(empty($query))
-             $niveles=Niveles::find();
+             $cargos=Cargos::find();
           else
           {
-            $niveles=Niveles::find(
+            $cargos=Cargos::find(
                 array(
                     arrayToSQLQuery($query),
                     "bind" => $query)
                 );
           }
 
-          if(count($niveles->toArray())==0){
-                return array("status" => 404, "mensaje" => "No hay registros de niveles");
-          }else{
-                return array("status" => 200, "mensaje" =>$niveles->toArray());
-          }
-        }
-
-        
-        public function nuevo($niv){
-            $niveles=new niveles();
+      if(count($cargos->toArray())==0){
+            return array("status" => 404, "mensaje" => "No hay registros de cargos");
+      }else{
+            return array("status" => 200, "mensaje" =>$cargos->toArray());
+      }
+    }
+        public function nuevo($carg){
+            $cargos=new Cargos();
             $data=array(
-                  "codigo" => $niv->codigo,
-                  "nivel" => $niv->nivel
+                "cargo" => $carg->cargo
             );
-            if($niveles->save($data)){
+            if($cargos->save($data)){
                     return array("status" => 201, "mensaje" => $data);
             }else{
                 $errors = array();
-                foreach ($niveles->getMessages() as $message) {
+                foreach ($cargos->getMessages() as $message) {
                     $errors[] = $message->getMessage();
                 }
                 return array("status" => 400, "mensaje" =>$errors);
             }
         }
 
-        public function modificar($id,$niv){
-            $modificar=Niveles::find($id);
+        public function modificar($id,$carg){
+            $modificar=Cargos::find($id);
             if(count($modificar)>0){
                 $data=array(
-                  "codigo" => $niv->codigo,
-                  "nivel" => $niv->nivel
+                    "cargo" => $carg->cargo
                 );
-
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
                 }
                 else{
                      $errors = array();
-                    foreach ($niveles->getMessages() as $message) {
+                    foreach ($cargos->getMessages() as $message) {
                         $errors[] = $message->getMessage();
                     }
                     return array("status" => 400, "mensaje" =>$errors);
@@ -60,11 +55,12 @@ class NivelesService{
                 return array("status" => 404, "mensaje" =>"El registro que intenta modificar no existe");
             }
         }
+
         public function eliminar($id){
-            $niveles=Niveles::find($id);
-            if(count($niveles)){
-                $niveles->delete();
-                return array("status" => 200, "mensaje" => 'niveles Eliminado');
+            $cargos=Cargos::find($id);
+            if(count($cargos)){
+                $cargos->delete();
+                return array("status" => 200, "mensaje" => 'cargos Eliminado');
             }else{
                 return array("status"=>404, "mensaje"=> "El registro intenta modificar no existe");
             }
