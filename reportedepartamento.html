@@ -25,15 +25,15 @@
   <!--                    CUERPO PRINCIPAL             -->
 <div id="header"></div>
 <body>
-<div id="cabecera">
-    <img src="images/cabecera.png">
+  <div id="cabecera">
+      <img src="images/cabecera.png">
   </div>
 <!--                 BARRA DE NAVEGACIÓN            -->
-<section class="inicio container-fluid">
- <h3>Inventario de Bienes por Departamento</h3>
-  <!--                FORMULARIO DE REGISTRO        -->
-  <form >
-    <article class="row hidden-print">
+  <section class="inicio container-fluid">
+   <h3>Inventario de Bienes por Departamento</h3>
+    <!--                FORMULARIO DE REGISTRO        -->
+    <form>
+      <article class="row hidden-print">
         <div class="form-group col-md-4 col-md-offset-2">
           <label>Departamento</label>
           <select name="unidad_trabajo" id="unidad_trabajo" class="form-control-2 inputText"/></select>
@@ -42,25 +42,24 @@
           <button id="btnBuscar" type="button" class="btn">Buscar</button>
         </div>
       </article>
-  <article class="row">
-      <div class="col-md-12 table-condensed">  
-      <table id="tableReporteBienes" class="table table-bordered">
-        </table>
+      <article class="row">
+        <div class="col-md-12 table-condensed">  
+          <table id="tableReporteBienes" class="table table-bordered"></table>
         </div>
+      </article>
+  </form>
+  <article class="row">
+    <div class="col-md-2 col-md-offset-5">
+      <button id="btnImprimir" type="button" class="btn hidden-print" onclick="window.print()">Imprimir</button>
+    </div>
   </article>
-</form>
-<article class="row">
-  <div class="col-md-2 col-md-offset-5">
-    <button id="btnImprimir" type="button" class="btn hidden-print" onclick="window.print()">Imprimir</button>
-  </div>
-</article>
 </section>
 <!-- PIE DE PAGINA PARA IMPRESIÓN-->
 <section id="footer" class="row">
   <article id="contenedor" class="col-md-offset-4">
-        <div id="bloque2" class="text-center col-md-12 visible-print">
-          <label class="padding">COORDINACIÓN DE BIENES</label>        
-          <label>JEFE DE LA UNIDAD <br>INVENTARIADA</label>
+    <div id="bloque2" class="text-center col-md-12 visible-print">
+      <label class="padding">COORDINACIÓN DE BIENES</label>        
+        <label>JEFE DE LA UNIDAD <br>INVENTARIADA</label>
       </div>
       </article>
     <article id="firma" class="row visible-print col-md-offset-5">
