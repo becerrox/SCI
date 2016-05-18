@@ -39,13 +39,13 @@
     <div id="contenedor" class="row">       
       <div class="form-group bloque col-md-4 col-xs-6">
           <label>Equipo:</label>
-          <input type="text" name="descripcion" class="form-control-2 capitalize" id="descripcion" data-toggle="tooltip" data-placement="top" title="Computador,Mouse,Teclado" onblur="menuOculto()">
+          <select type="text" name="descripcion" class="form-control-2 capitalize" id="descripcion" data-toggle="tooltip" data-placement="top" title="Computador,Mouse,Teclado" onblur="menuOculto()"></select>
           <label>Marca:</label>
-          <input type="text" name="marca" class="form-control-2 capitalize" id="marca" data-placement="top" title="VIT,HP,Siragon">
+          <select type="text" name="marca" class="form-control-2 capitalize" id="marca" data-placement="top" title="VIT,HP,Siragon"></select>
           <label>Serial:</label>
           <input maxlength="25" name="serial" type="text" class="form-control-2" placeholder="00000000000" id="serial">
           <label>Modelo:</label>
-          <input type="text" name="modelo" class="form-control-2" id="modelo">
+          <select type="text" name="modelo" class="form-control-2" id="modelo"></select>
         </div>
         <div class="form-group bloque col-md-4 col-xs-6">
           <label>Color</label>
@@ -88,7 +88,7 @@
           <label>Línea</label> 
           <input  name="numeroCelular" title="Número de celular asignado" class="form-control-2" id="numeroCelular" maxlength="11" onKeyPress="return soloNumeros(event)"/>          
           <label>Accesorios</label>
-          <input  name="accesorios" class="form-control-2" id="accesorios">              
+          <input  name="accesorios" class="form-control-2" id="accesorios">    
           <label>Plan</label> 
           <input  name="planCelular" class="form-control-2" id="planCelular">
         </div>
