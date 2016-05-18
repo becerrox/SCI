@@ -94,7 +94,7 @@ $(document).ready(function()
         })
 
         //Categoría de Unidades Administrativas 
-        getConfiguracionBy("?tipo=Categoría de Unidades Administrativas").then(function(data){
+        getUnidadAdministrativaBy('').then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -113,8 +113,18 @@ $(document).ready(function()
                 });
         })
 
+        //Tipo de Componente 
+        getConfiguracionBy("?tipo=Tipo de Componente").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#tipo_comp")
+                });
+        })
+
         //Unidad de Trabajo
-        getConfiguracionBy("?tipo=Unidad de Trabajo").then(function(data){
+        getUnidadTrabajoBy('').then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -123,8 +133,57 @@ $(document).ready(function()
                 });
         })        
 
+        //Descripción
+        getConfiguracionEquipoBy("?tipo=Descripción").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#descripcion")
+                });
+        })    
 
-        getPersonalBy('').then(function(data){
+        //Marca
+        getConfiguracionEquipoBy("?tipo=Marca").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#marca")
+                });
+        }) 
+
+        //Modelo
+        getConfiguracionEquipoBy("?tipo=Modelo").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#modelo")
+                });
+        }) 
+
+        //número de bien
+        getConfiguracionEquipoBy('').then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "numero_bien",
+                alias : "descripcion",
+                element : $("#num_bien")
+                });
+        })     
+
+        //Descripción
+        getSedesBy('').then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "sede",
+                alias : "sede",
+                element : $("#sede")
+                });
+        })   
+
+        getResponsablesBy('').then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }
@@ -136,7 +195,7 @@ $(document).ready(function()
                  });
          })              
 
-        getPersonalBy('').then(function(data){
+        getResponsablesBy('').then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }
@@ -148,7 +207,7 @@ $(document).ready(function()
                  });
          })  
 
-        getPersonalBy('').then(function(data){
+        getResponsablesBy('').then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }

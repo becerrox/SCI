@@ -578,6 +578,871 @@ function modificarConfiguracion(data,id)
 	 });	
 }
 
+function registrarSedes(data)
+{
+return new Promise(function(resolver, rechazar) { 
+  $.ajax({
+      type:"POST",
+      processData: false,
+        contentType: 'application/json',
+      url:'api/sedes',
+      data:JSON.stringify(data),
+      success:function(response){
+        resolver(response);
+        swal({
+        title: 'Registrado',
+        text: 'Se ha registrado la sede',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })
+      },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo registrar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function modificarSedes(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/sedes/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Modificado',
+        text: 'Se ha modificado la sede',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+          swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function eliminarSedes(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/sedes/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado la sede',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function registrarCargos(data)
+{
+return new Promise(function(resolver, rechazar) { 
+  $.ajax({
+      type:"POST",
+      processData: false,
+        contentType: 'application/json',
+      url:'api/cargos',
+      data:JSON.stringify(data),
+      success:function(response){
+        resolver(response);
+        swal({
+        title: 'Registrado',
+        text: 'Se ha registrado el cargo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })
+      },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo registrar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function modificarCargos(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/cargos/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Modificado',
+        text: 'Se ha modificado el cargo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+          swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function eliminarCargos(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/cargos/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado el cargo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function registrarResponsables(data)
+{
+return new Promise(function(resolver, rechazar) { 
+  $.ajax({
+      type:"POST",
+      processData: false,
+        contentType: 'application/json',
+      url:'api/responsables',
+      data:JSON.stringify(data),
+      success:function(response){
+        resolver(response);
+        swal({
+        title: 'Registrado',
+        text: 'Se ha registrado el responsable',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })
+      },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo registrar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function modificarResponsables(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/responsables/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Modificado',
+        text: 'Se ha modificado el responsable',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+          swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function eliminarResponsables(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/responsables/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado el responsable',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function registrarConfiguracionEquipo(data)
+{
+return new Promise(function(resolver, rechazar) { 
+  $.ajax({
+      type:"POST",
+      processData: false,
+        contentType: 'application/json',
+      url:'api/confequipo',
+      data:JSON.stringify(data),
+      success:function(response){
+        resolver(response);
+        swal({
+        title: 'Registrado',
+        text: 'Se ha registrado la configuracion',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })
+      },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo registrar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function modificarConfiguracionEquipo(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/confequipo/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Modificado',
+        text: 'Se ha modificado la configuracion',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+          swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function eliminarConfiguracionEquipo(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/confequipo/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado la configuracion',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function registrarDetallesConfiguracionEquipos(data)
+{
+return new Promise(function(resolver, rechazar) { 
+  $.ajax({
+      type:"POST",
+      processData: false,
+        contentType: 'application/json',
+      url:'api/detallesequipos',
+      data:JSON.stringify(data),
+      success:function(response){
+        resolver(response);
+        swal({
+        title: 'Registrado',
+        text: 'Se ha registrado el tipo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })
+      },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo registrar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function modificarDetallesConfiguracionEquipos(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/detallesequipos/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Modificado',
+        text: 'Se ha modificado el tipo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+          swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function eliminarDetallesConfiguracionEquipos(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/detallesequipos/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado el tipo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function registrarDetallesConfiguracionBienes(data)
+{
+return new Promise(function(resolver, rechazar) { 
+  $.ajax({
+      type:"POST",
+      processData: false,
+        contentType: 'application/json',
+      url:'api/detallesbienes',
+      data:JSON.stringify(data),
+      success:function(response){
+        resolver(response);
+        swal({
+        title: 'Registrado',
+        text: 'Se ha registrado el tipo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })
+      },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo registrar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function modificarDetallesConfiguracionBienes(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/detallesbienes/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Modificado',
+        text: 'Se ha modificado el tipo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+          swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function eliminarDetallesConfiguracionBienes(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/detallesbienes/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado el tipo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function registrarNumeroBien(data)
+{
+return new Promise(function(resolver, rechazar) { 
+  $.ajax({
+      type:"POST",
+      processData: false,
+        contentType: 'application/json',
+      url:'api/numerobien',
+      data:JSON.stringify(data),
+      success:function(response){
+        resolver(response);
+        swal({
+        title: 'Registrado',
+        text: 'Se ha registrado el número de bien',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })
+      },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo registrar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function modificarNumeroBien(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/numerobien/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Modificado',
+        text: 'Se ha modificado el número de bien',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+          swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function eliminarNumeroBien(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/numerobien/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado el número de bien',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function registrarUnidadAdministrativa(data)
+{
+return new Promise(function(resolver, rechazar) { 
+  $.ajax({
+      type:"POST",
+      processData: false,
+        contentType: 'application/json',
+      url:'api/unidadadministrativa',
+      data:JSON.stringify(data),
+      success:function(response){
+        resolver(response);
+        swal({
+        title: 'Registrado',
+        text: 'Se ha registrado la unidad administrativa',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })
+      },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo registrar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function modificarUnidadAdministrativa(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/unidadadministrativa/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Modificado',
+        text: 'Se ha modificado la unidad administrativa',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+          swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function eliminarUnidadAdministrativa(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/unidadadministrativa/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado la unidad administrativa',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function registrarUnidadTrabajo(data)
+{
+return new Promise(function(resolver, rechazar) { 
+  $.ajax({
+      type:"POST",
+      processData: false,
+        contentType: 'application/json',
+      url:'api/unidadtrabajo',
+      data:JSON.stringify(data),
+      success:function(response){
+        resolver(response);
+        swal({
+        title: 'Registrado',
+        text: 'Se ha registrado la unidad de trabajo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })
+      },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo registrar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function modificarUnidadTrabajo(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/unidadtrabajo/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Modificado',
+        text: 'Se ha modificado la unidad de trabajo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+          swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function eliminarUnidadTrabajo(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/unidadtrabajo/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado la unidad de trabajo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+        swal({
+        title: 'Error',
+        text: 'No se pudo modificar',
+        type: 'error',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+        })
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+
 //Servicio para traer la data de configuracion, con filtro
 
 function getConfiguracionBy(filtros)
@@ -590,13 +1455,6 @@ function getConfiguracionBy(filtros)
 				success:function(response){
 					resolver(response);
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'El registro no existe o hay un error',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -613,13 +1471,6 @@ function getCatgenBy(filtros)
 				success:function(response){
 					resolver(response);
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'El registro no existe o hay un error',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -636,13 +1487,6 @@ function getSubcatBy(filtros)
 				success:function(response){
 					resolver(response);
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'El registro no existe o hay un error',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -659,13 +1503,6 @@ function getCatespBy(filtros)
 				success:function(response){
 					resolver(response);
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'El registro no existe o hay un error',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -809,6 +1646,152 @@ function getNivelesBy(data)
 			});
 	 });	
 }
+
+
+function getSedesBy(filtros)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"GET",
+          contentType: 'application/json',
+        url:'api/sedes/'+filtros,
+        success:function(response){
+          resolver(response);
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function getCargosBy(filtros)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"GET",
+          contentType: 'application/json',
+        url:'api/cargos/'+filtros,
+        success:function(response){
+          resolver(response);
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function getResponsablesBy(filtros)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"GET",
+          contentType: 'application/json',
+        url:'api/responsables/'+filtros,
+        success:function(response){
+          resolver(response);
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function getConfiguracionEquipoBy(filtros)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"GET",
+          contentType: 'application/json',
+        url:'api/confequipo/'+filtros,
+        success:function(response){
+          resolver(response);
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function getDetallesConfiguracionEquiposBy(filtros)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"GET",
+          contentType: 'application/json',
+        url:'api/detallesequipos/'+filtros,
+        success:function(response){
+          resolver(response);
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function getDetallesConfiguracionBienesBy(filtros)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"GET",
+          contentType: 'application/json',
+        url:'api/detallesbienes/'+filtros,
+        success:function(response){
+          resolver(response);
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function getNumeroBienBy(filtros)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"GET",
+          contentType: 'application/json',
+        url:'api/numerobien/'+filtros,
+        success:function(response){
+          resolver(response);
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function getUnidadAdministrativaBy(filtros)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"GET",
+          contentType: 'application/json',
+        url:'api/unidadadministrativa/'+filtros,
+        success:function(response){
+          resolver(response);
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function getUnidadTrabajoBy(filtros)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"GET",
+          contentType: 'application/json',
+        url:'api/unidadtrabajo/'+filtros,
+        success:function(response){
+          resolver(response);
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
 
 // Función que convierte los datos de un form a un plain json listo para enviar
 

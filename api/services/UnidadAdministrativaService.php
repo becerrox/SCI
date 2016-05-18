@@ -1,63 +1,54 @@
 <?php
-
-class CatespService{
-
+class UnidadAdministrativaService{
     public function listar($query){
 
           if(empty($query))
-             $catesp=Catesp::find();
+             $unidadAdministrativa=UnidadAdministrativa::find();
           else
           {
-            $catesp = Catesp::find(
+            $unidadAdministrativa=UnidadAdministrativa::find(
                 array(
                     arrayToSQLQuery($query),
                     "bind" => $query)
                 );
           }
 
-      if(count($catesp->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de Categoría Específica");
+      if(count($unidadAdministrativa->toArray())==0){
+            return array("status" => 404, "mensaje" => "No hay registros de unidadAdministrativa");
       }else{
-            return array("status" => 200, "mensaje" =>$catesp->toArray());
+            return array("status" => 200, "mensaje" =>$unidadAdministrativa->toArray());
       }
     }
-
-        public function nuevo($cce){
-            $catesp=new Catesp();
-
+        public function nuevo($uniad){
+            $unidadAdministrativa=new UnidadAdministrativa();
             $data=array(
-                "codigo" => $cce->codigo,
-                "descripcion" => $cce->descripcion,
-                "status" => $cce->status,
-                "subcat" => $cce->subcat                
+                "codigo" => $uniad->codigo,
+                "descripcion" => $uniad->descripcion
                 );
-
-            if($catesp->save($data)){
+            if($unidadAdministrativa->save($data)){
                     return array("status" => 201, "mensaje" => $data);
             }else{
                 $errors = array();
-                foreach ($catesp->getMessages() as $message) {
+                foreach ($unidadAdministrativa->getMessages() as $message) {
                     $errors[] = $message->getMessage();
                 }
                 return array("status" => 400, "mensaje" =>$errors);
             }
         }
 
-        public function modificar($id,$us){
-            $modificar=Catesp::find($id);
+        public function modificar($id,$uniad){
+            $modificar=UnidadAdministrativa::find($id);
             if(count($modificar)>0){
-                $data=array(     
-                "codigo" => $cce->codigo,
-                "descripcion" => $cce->descripcion,
-                "status" => $cce->status
-                );
-
+                $data=array(
+                    "codigo" => $uniad->codigo,
+                    "descripcion" => $uniad->descripcion
+                    );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
                 }
                 else{
                      $errors = array();
-                    foreach ($catesp->getMessages() as $message) {
+                    foreach ($unidadAdministrativa->getMessages() as $message) {
                         $errors[] = $message->getMessage();
                     }
                     return array("status" => 400, "mensaje" =>$errors);
@@ -68,17 +59,13 @@ class CatespService{
         }
 
         public function eliminar($id){
-            $catesp=Catesp::find($id);
-            if(count($catesp)){
-                $catesp->delete();
-                return array("status" => 200, "mensaje" => 'Configuración Eliminada');
+            $unidadAdministrativa=UnidadAdministrativa::find($id);
+            if(count($unidadAdministrativa)){
+                $unidadAdministrativa->delete();
+                return array("status" => 200, "mensaje" => 'unidadAdministrativa Eliminado');
             }else{
                 return array("status"=>404, "mensaje"=> "El registro intenta modificar no existe");
             }
        }
-
-
-
-
 }
 ?>

@@ -42,6 +42,15 @@ $(document).ready(function()
              });
         });
 
+        $("#btnGuardarNuevaCongif").click(function()
+        {
+            frm = $("#formNuevaConfig");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            registrarDetallesConfiguracionBienes(dataForm).then(function(data){
+             });
+        });
+
         $("#btnModificar").click(function()
         {
             frm = $("#formCatConfig");
@@ -62,6 +71,18 @@ $(document).ready(function()
                 });
             });
         });  
+
+
+        //Unidad de Trabajo
+        getDetallesConfiguracionBienesBy('').then(function(data){
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#tipo")
+                });
+        })  
 
 });
 

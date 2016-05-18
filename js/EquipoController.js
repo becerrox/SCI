@@ -121,8 +121,39 @@ $(document).ready(function()
                 element : $("#estadoUsoEquipo")
                 });
         })           
+        
+        //Descripción
+        getConfiguracionEquipoBy("?tipo=Descripción").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#descripcion")
+                });
+        })    
 
-        getPersonalBy('').then(function(data){
+        //Marca
+        getConfiguracionEquipoBy("?tipo=Marca").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#marca")
+                });
+        }) 
+
+
+        //Modelo
+        getConfiguracionEquipoBy("?tipo=Modelo").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#modelo")
+                });
+        }) 
+
+        getResponsablesBy('').then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }
@@ -132,7 +163,7 @@ $(document).ready(function()
                  alias : "nombreApellido",
                  element : $("#responsable")
                  });
-         })   
+         })    
 
 });
 
