@@ -20,7 +20,7 @@ em { font-style: sans-serif }
 .no-padding{padding:0px;}
 .margin-t{margin-top:22px;}
 div { position:relative } 
-a{text-decoration:none;}
+a{text-decoration:none; color: #BA0707;}
 a:hover{text-decoration:underline;}
 a:active,a:focus{outline: none;}
 h1{text-transform: uppercase;}
@@ -56,7 +56,7 @@ article, aside, figure, header, hgroup, nav, section {display: block;}
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
-h3{ text-align: center; margin: .5em;}
+h3 , h4{ text-align: center; margin: .5em;}
 html{-webkit-font-smoothing:antialiased;}
 
 a{color:#BA0707;}
@@ -97,12 +97,12 @@ border:none;
   padding: 0;
   margin: 0;
 }
-#actaentrega{
-  top:10%;
-  position: absolute;
-  z-index: 5;
-  text-align: center;
-        }
+#tableEquipos{
+  width: 50%;
+  margin-left: 25%;
+  
+}
+
 #footer{
    z-index: 3;
    position: absolute;
@@ -437,28 +437,16 @@ padding:11px;
 background:#A40000;
 color:#ffffff;
 text-transform:uppercase;
-font-weight:600;
+font-weight:600; 
 }
 .movil-menu:hover{background:##BA0707;
 color:#ffffff;
 text-decoration:none;
-}
+                  }
 
 .centrado{
   left: 50%;
 }
-
-  /*.pie_de_pagina {
-     clear: both;
-   margin-top: auto;
-   background-color: #4b4c4d;   
-   color: #FFFFFF;
-   font-size: 10px;   
-   text-align: center;
- 
-   bottom: 0%; 
-  }*/
-
 .bloque label{display: block;  } /* Pasar elemento de linea a bloque*/
 .grid-1, .grid-2, .grid-3, .grid-4, .grid-5 {width: 20%; 
 
@@ -492,10 +480,12 @@ padding:8px;}
 margin-top:0px;}
 
 nav{margin:0;
-background:none;}
+background:none;
+}
 
 .menu li{display:block;
-margin:0;}
+margin:0;
+}
 
 .menu li a {background:#ffffff;
 color:#797979;
@@ -504,8 +494,8 @@ border-left:3px solid #ffffff;}
 
 .menu li a:hover, .menu li:hover > a{
 background:#f0f0f0;
-color:#797979;
-border-left:3px solid #9CA3DA;}
+color:#FFFFFF;
+border-left:3px solid #BA0707; }
 
 .menu ul {display:block;
 position:relative;
