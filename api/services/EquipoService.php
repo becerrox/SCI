@@ -22,25 +22,25 @@ class EquipoService{
         public function nuevo($eq){
             $equipo=new Equipo();
             $data=array(
-                "descripcion" => $eq->descripcion,
-                "marca" => $eq->marca,
-                "modelo" => $eq->modelo,
-                "serial" => $eq->serial,
-                "color" => $eq->color,
+                "descripcion" => strtoupper($eq->descripcion),
+                "marca" => strtoupper($eq->marca),
+                "modelo" => strtoupper($eq->modelo),
+                "serial" => strtoupper($eq->serial),
+                "color" => strtoupper($eq->color),
                 "estado" => $eq->estado,
-                "unidad_admin" => $eq->unidad_admin,
-                "status" => $eq->status,
-                "responsable" => $eq->responsable,
-                "caracteristicas" => $eq->caracteristicas,
+                "unidad_admin" => strtoupper($eq->unidad_admin),
+                "status" => 1,
+                "responsable" => strtoupper($eq->responsable),
+                "caracteristicas" => strtoupper($eq->caracteristicas),
                 "fecha_modif" => date("Y-m-d h:i:s"),
-                "unidad_trabajo" => $eq->unidad_trabajo,
-                "observaciones" => $eq->observaciones,
-                "serialSim" => $eq->serialSim,
-                "accesorios" => $eq->accesorios,
-                "planCelular" => $eq->planCelular,
-                "numeroCelular" => $eq->numeroCelular,
-                "estadoUsoEquipo" => $eq->estadoUsoEquipo,
-                "motivo" => $eq->motivo
+                "unidad_trabajo" => strtoupper($eq->unidad_trabajo),
+                "observaciones" => strtoupper($eq->observaciones),
+                "serialSim" => strtoupper($eq->serialSim),
+                "accesorios" => strtoupper($eq->accesorios),
+                "planCelular" => strtoupper($eq->planCelular),
+                "numeroCelular" => strtoupper($eq->numeroCelular),
+                "estadoUsoEquipo" => strtoupper($eq->estadoUsoEquipo),
+                "motivo" => strtoupper($eq->motivo)
             );
             if($equipo->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -57,25 +57,25 @@ class EquipoService{
             $modificar=Equipo::find($id);
             if(count($modificar)>0){
                 $data=array(
-                "descripcion" => $eq->descripcion,
-                "marca" => $eq->marca,
-                "modelo" => $eq->modelo,
-                "serial" => $eq->serial,
-                "color" => $eq->color,
-                "estado" => $eq->estado,
-                "unidad_admin" => $eq->unidad_admin,
+                "descripcion" => strtoupper($eq->descripcion),
+                "marca" => strtoupper($eq->marca),
+                "modelo" => strtoupper($eq->modelo),
+                "serial" => strtoupper($eq->serial),
+                "color" => strtoupper($eq->color),
+                "estado" => strtoupper($eq->estado),
+                "unidad_admin" => strtoupper($eq->unidad_admin),
                 "status" => 1,
-                "responsable" => $eq->responsable,
-                "caracteristicas" => $eq->caracteristicas,
+                "responsable" => strtoupper($eq->responsable),
+                "caracteristicas" => strtoupper($eq->caracteristicas),
                 "fecha_modif" => date("Y-m-d h:i:s"),
-                "unidad_trabajo" => $eq->unidad_trabajo,
-                "observaciones" => $eq->observaciones,
-                "serialSim" => $eq->serialSim,
-                "accesorios" => $eq->accesorios,
-                "planCelular" => $eq->planCelular,
-                "numeroCelular" => $eq->numeroCelular,
-                "estadoUsoEquipo" => $eq->estadoUsoEquipo,
-                "motivo" => $eq->motivo
+                "unidad_trabajo" => strtoupper($eq->unidad_trabajo),
+                "observaciones" => strtoupper($eq->observaciones),
+                "serialSim" => strtoupper($eq->serialSim),
+                "accesorios" => strtoupper($eq->accesorios),
+                "planCelular" => strtoupper($eq->planCelular),
+                "numeroCelular" => strtoupper($eq->numeroCelular),
+                "estadoUsoEquipo" => strtoupper($eq->estadoUsoEquipo),
+                "motivo" => strtoupper($eq->motivo)
                 );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
@@ -98,9 +98,9 @@ class EquipoService{
                 $data=array(
                 "status" => 1,
                 "fecha_modif" => date("Y-m-d h:i:s"),
-                "observaciones" => $eq->observaciones,
+                "observaciones" => strtoupper($eq->observaciones),
                 "estadoUsoEquipo" => "En proceso de disposición",
-                "motivo" => $eq->motivo
+                "motivo" => strtoupper($eq->motivo)
                 );
                 if($solvencia->update($data)){
                         return array("status" => 200, "mensaje" => $data);

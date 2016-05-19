@@ -6,7 +6,7 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_configuracion_editar = "";
+        var id_numerobien_editar = "";
 
         $("#header").load("header.html",function()
         {
@@ -33,55 +33,54 @@ $(document).ready(function()
                     }    
         });        
 
-        $("#btnGuardarTipoCongif").click(function()
+        $("#btnGuardarUniAdm").click(function()
         {
-            frm = $("#formCatConfig");
+            frm = $("#formAdmin");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarConfiguracion(dataForm).then(function(data){
+            registrarUnidadAdministrativa(dataForm).then(function(data){
              });
         });
 
-        $("#btnGuardarNuevaCongif").click(function()
+        $("#btnGuardarUniTrab").click(function()
+        {
+            frm = $("#formTrabajo");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            registrarUnidadTrabajo(dataForm).then(function(data){
+             });
+        });        
+
+        $("#btnModificar").click(function()
         {
             frm = $("#formNuevaConfig");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarDetallesConfiguracionBienes(dataForm).then(function(data){
-             });
-        });
-
-        $("#btnModificar").click(function()
-        {
-            frm = $("#formCatConfig");
-            dataForm = getFormData(frm);
-            dataForm.status=1;
-            modificarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
+            modificarNumeroBien(dataForm,id_numerobien_editar).then(function(data){   
             });
         });   
+
+        $("#btnEliminar").click(function()
+        {
+            frm = $("#formNuevaConfig");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            eliminarNumeroBien(dataForm,id_numerobien_editar);
+        });     
 
         $("#buscarConfiguracion").click(function(){
             idConfiguracion = $
             descripcion = $("#buscar").val();
-            getConfiguracionBy("?descripcion="+descripcion).then(function(data){
-                id_configuracion_editar = data[0].id;
+            getNumeroBienBy("?descripcion="+descripcion).then(function(data){
+                id_numerobien_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
-                    form : "#formCatConfig"
+                    form : "#formNuevaConfig"
                 });
             });
         });  
 
 
-        getDetallesConfiguracionBienesBy('').then(function(data){
-            //Despues del retorno del promise, se cargan en el select con jsonToSelect
-            jsonToSelect({        
-                data : data,
-                value : "descripcion",
-                alias : "descripcion",
-                element : $("#tipo")
-                });
-        })  
 
 });
 

@@ -25,7 +25,7 @@ class UnidadTrabajoService{
         public function nuevo($unitra){
             $unidadTrabajo=new UnidadTrabajo();
             $data=array(
-                "descripcion" => $unitra->descripcion
+                "descripcion" => strtoupper($unitra->descripcion)
             );
 
             if($unidadTrabajo->save($data)){
@@ -43,7 +43,7 @@ class UnidadTrabajoService{
             $modificar=UnidadTrabajo::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "descripcion" => $unitra->descripcion
+                    "descripcion" => strtoupper($unitra->descripcion)
                 );
 
                 if($modificar->update($data)){

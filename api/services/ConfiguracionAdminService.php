@@ -22,8 +22,8 @@ class ConfiguracionAdminService{
         public function nuevo($confeq){
             $configuracionAdmin=new ConfiguracionAdmin();
             $data=array(
-                "tipo" => $confeq->tipo,
-                "descripcion" => $confeq->descripcion,
+                "tipo" => strtoupper($confeq->tipo),
+                "descripcion" => strtoupper($confeq->descripcion),
                 "status" => 1
             );
             if($configuracionAdmin->save($data)){
@@ -41,8 +41,8 @@ class ConfiguracionAdminService{
             $modificar=ConfiguracionAdmin::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "descripcion" => $confeq->descripcion,
-                    "tipo" => $confeq->tipo
+                    "descripcion" => strtoupper($confeq->descripcion),
+                    "tipo" => strtoupper($confeq->tipo)
                 );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);

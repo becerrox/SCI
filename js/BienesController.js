@@ -73,7 +73,7 @@ $(document).ready(function()
 
         /* Cargando datas de la api a los selects  */
 
-        getConfiguracionBy("?tipo=Color").then(function(data){
+        getConfiguracionBy("?tipo=COLOR").then(function(data){
             //Despues del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
                 data : data,
@@ -84,7 +84,7 @@ $(document).ready(function()
         })
 
         //Estado del bien 
-        getConfiguracionBy("?tipo=Estado del Bien").then(function(data){
+        getConfiguracionBy("?tipo=ESTADO DEL BIEN").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -104,7 +104,7 @@ $(document).ready(function()
         })
 
         //Estatus de Uso del Bien 
-        getConfiguracionBy("?tipo=Estatus de Uso del Bien").then(function(data){
+        getConfiguracionBy("?tipo=ESTATUS DEL USO DEL BIEN").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -114,7 +114,7 @@ $(document).ready(function()
         })
 
         //Tipo de Componente 
-        getConfiguracionBy("?tipo=Tipo de Componente").then(function(data){
+        getConfiguracionBy("?tipo=TIPO DE COMPONENTE").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -134,7 +134,7 @@ $(document).ready(function()
         })        
 
         //Descripción
-        getConfiguracionEquipoBy("?tipo=Descripción").then(function(data){
+        getConfiguracionEquipoBy("?tipo=DESCRIPCION").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -144,7 +144,7 @@ $(document).ready(function()
         })    
 
         //Marca
-        getConfiguracionEquipoBy("?tipo=Marca").then(function(data){
+        getConfiguracionEquipoBy("?tipo=MARCA").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -154,7 +154,7 @@ $(document).ready(function()
         }) 
 
         //Modelo
-        getConfiguracionEquipoBy("?tipo=Modelo").then(function(data){
+        getConfiguracionEquipoBy("?tipo=MODELO").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -164,7 +164,7 @@ $(document).ready(function()
         }) 
 
         //número de bien
-        getConfiguracionEquipoBy('').then(function(data){
+        getNumeroBienBy('').then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "numero_bien",
@@ -174,11 +174,11 @@ $(document).ready(function()
         })     
 
         //Descripción
-        getSedesBy('').then(function(data){
+        getConfiguracionAdminBy("?tipo=SEDE").then(function(data){
             jsonToSelect({        
                 data : data,
-                value : "sede",
-                alias : "sede",
+                value : "descripcion",
+                alias : "descripcion",
                 element : $("#sede")
                 });
         })   

@@ -1,5 +1,6 @@
  @page {
-  size: letter landscape;
+  page-size:letter;
+  size: landscape;
   margin-left: 6%;
   margin-right: 6%;
     }
@@ -17,16 +18,39 @@ body img{
   position: absolute;
   z-index:6;
   text-align: center;
+  }
+#inventariogeneral{
+  top:10%;
+  position: absolute;
+  z-index:6;
+  text-align: center;
+}
+#tipobien{
+  top:10%;
+  position: absolute;
+  z-index:6;
+  text-align: center;
+}
+#reporteuso{
+  top:10%;
+  position: absolute;
+  z-index:6;
+  text-align: center;
+}
+#repordepart{
+  top:10%;
+  position: absolute;
+  z-index:6;
+  text-align: center;
 }
 body .bloque{
 	margin:0 50px;
 }
 h3{
-	text-align: center;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: bold;
-	padding-bottom:20px;
 }
+h4{ font-weight: bold; }
 input , textarea{
 background: none;
 border:none;
@@ -55,7 +79,13 @@ background: none;
 #header, #buscar {
 	display: none;
 }
+#responsable_adm{
+	top:10%;
+  position: absolute;
+  z-index:6;
+  text-align: center;
 
+}
 #footer{
    z-index: 3;
    position: absolute;

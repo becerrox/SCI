@@ -22,12 +22,12 @@ class ResponsablesService{
         public function nuevo($resp){
             $responsables=new Responsables();
             $data=array(
-                "cedula" => $resp->cedula,
-                "nombres" => $resp->nombres,
-                "apellidos" => $resp->apellidos,
-                "cargo" => $resp->cargo,
-                "unidad_trabajo" => $resp->unidad_trabajo,
-                "unidad_admin" => $resp->unidad_admin,                
+                "cedula" => strtoupper($resp->cedula),
+                "nombres" => strtoupper($resp->nombres),
+                "apellidos" => strtoupper($resp->apellidos),
+                "cargo" => strtoupper($resp->cargo),
+                "unidad_trabajo" => strtoupper($resp->unidad_trabajo),
+                "unidad_admin" => strtoupper($resp->unidad_admin),                
                 "fecha_creacion" => date("Y-m-D h:i:s"),
                 "fecha_modif" => date("Y-m-D h:i:s"),
                 "status" => 1
@@ -47,11 +47,11 @@ class ResponsablesService{
             $modificar=Responsables::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "cedula" => $resp->cedula,
-                    "nombres" => $resp->nombres,
-                    "apellidos" => $resp->apellidos,
-                    "cargo" => $resp->cargo,
-                    "unidad_trabajo" => $resp->unidad_trabajo,
+                    "cedula" => strtoupper($resp->cedula),
+                    "nombres" => strtoupper($resp->nombres),
+                    "apellidos" => strtoupper($resp->apellidos),
+                    "cargo" => strtoupper($resp->cargo),
+                    "unidad_trabajo" => strtoupper($resp->unidad_trabajo),
                     "fecha_modif" => date("Y-m-D h:i:s"),
                     "status" => 1
                 );

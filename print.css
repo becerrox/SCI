@@ -21,13 +21,14 @@ body img{
 body .bloque{
 	margin:0 50px;
 }
-h3{
+h3 {
 	text-align: center;
   width: 50%;
 	font-size: 16px;
 	font-weight: bold;
 	padding-bottom:20px;
 }
+h4{ font-weight: bold; }
 input , textarea{
 background: none;
 border:none;
@@ -40,17 +41,33 @@ appearance: none;
 border: none; 
 background: none;
 	}
-#estatus {
-  text-align: center;
-  top:15%;
-  position: absolute;
-  z-index:6;
-}
 #actaentrega {
   text-align: center;
-  top:8%;
+  top:10%;
   position: absolute;
 
+}
+#tipoequipo{
+	text-align: center;
+  top:10%;
+  position: absolute;
+
+}
+#tipobien{
+	text-align: center;
+  top:10%;
+  position: absolute;
+
+}
+#solvencias{
+  top:10%;
+  position: absolute;
+}
+#solvencias  input {
+	text-align: left;
+}
+#solvencias h3{
+	text-align: center;
 }
 #bloque2{
 	z-index: 99;
@@ -70,12 +87,7 @@ background: none;
 #header, #buscar {
 	display: none;
 }
-/*#estatus{
-	top:5%;
-	position: relative;
-	z-index: 5;
-	text-align: center;
-}*/
+
 #footer{
    z-index: 3;
    position: absolute;

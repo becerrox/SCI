@@ -22,7 +22,7 @@ class DetallesConfiguracionEquiposService{
         public function nuevo($dconfeq){
             $detallesConfiguracionEquipos=new DetallesConfiguracionEquipos();
             $data=array(
-                "descripcion" => $dconfeq->descripcion
+                "descripcion" => strtoupper($dconfeq->descripcion)
             );
             if($detallesConfiguracionEquipos->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -39,7 +39,7 @@ class DetallesConfiguracionEquiposService{
             $modificar=DetallesConfiguracionEquipos::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "descripcion" => $dconfeq->descripcion
+                    "descripcion" => strtoupper($dconfeq->descripcion)
                     );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);

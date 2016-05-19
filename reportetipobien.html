@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8"/>
-    <title>SCI Reporte de Inventario</title>
+    <title>Reporte de Inventario</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" >
     <link rel="stylesheet" type="text/css" href="css/calendario.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="print.css" type="text/css" media="print">
+    <link rel="stylesheet" media="print and (orientation:landscape)" href="landscape.css">
    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
    <script src="js/sweetalert.min.js"></script>   
@@ -25,10 +25,14 @@
   <!--                    CUERPO PRINCIPAL             -->
 <div id="header"></div>
 <body>
+<style type="text/css">
+  @page {
+  size: portrait;}
+</style>
 <div id="cabecera">
-    <img src="images/cabecera.png">
+    <img src="images/reportebieneslands.png">
   </div>
-<section class="inicio container-fluid">
+<section id="tipobien" class="inicio container-fluid">
   <h3>Reporte por Tipo</h3>
     <form>
       <article class="row hidden-print">
@@ -50,25 +54,7 @@
         <div class="col-md-2 col-md-offset-5">
           <button id="btnImprimir" type="button" class="btn hidden-print" onclick="window.print()">Imprimir</button>
         </div>
-    </article>
-    <article id="contenedor" class="row ">
-      <div id="bloque2" class="text-center col-md-12 visible-print">
-        <label>COORDINACIÓN DE BIENES</label>
-    </div>
-    </article>
-  <article id="firma" class="row visible-print">
-    <div class="col-md-12 text-center">
-     <label>_______________________</label>
-    </div>
-  </article>
-    <article class="row visible-print">
-      <div id="pie2" class="text-center col-md-12">
-          <p>Av. Florencio Jiménez, KM 3, Edif. Estación Central Simón Bolívar<br>
-        Piso PB,  Barquisimeto, Municipio Iribarren, Edo. Lara.<br>
-        RIF: G-20005347-0<br>
-        www.transbarca.gob.ve<br></p>
-      </div>
-  </article>  
+    </article>    
     </form>
 </section>
    <script src="js/services.js" type="text/javascript"></script> 

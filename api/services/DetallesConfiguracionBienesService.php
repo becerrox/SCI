@@ -22,7 +22,7 @@ class DetallesConfiguracionBienesService{
         public function nuevo($dconfbie){
             $detallesConfiguracionBienes=new DetallesConfiguracionBienes();
             $data=array(
-                "descripcion" => $dconfbie->descripcion
+                "descripcion" => strtoupper($dconfbie->descripcion)
                 );
             if($detallesConfiguracionBienes->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -39,7 +39,7 @@ class DetallesConfiguracionBienesService{
             $modificar=DetallesConfiguracionBienes::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "descripcion" => $dconfbie->descripcion
+                    "descripcion" => strtoupper($dconfbie->descripcion)
                     );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);

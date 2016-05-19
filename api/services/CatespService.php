@@ -26,10 +26,10 @@ class CatespService{
             $catesp=new Catesp();
 
             $data=array(
-                "codigo" => $cce->codigo,
-                "descripcion" => $cce->descripcion,
-                "status" => $cce->status,
-                "subcat" => $cce->subcat                
+                "codigo" => strtoupper($cce->codigo),
+                "descripcion" => strtoupper($cce->descripcion),
+                "status" => strtoupper($cce->status),
+                "subcat" => strtoupper($cce->subcat)                
                 );
 
             if($catesp->save($data)){
@@ -47,9 +47,9 @@ class CatespService{
             $modificar=Catesp::find($id);
             if(count($modificar)>0){
                 $data=array(     
-                "codigo" => $cce->codigo,
-                "descripcion" => $cce->descripcion,
-                "status" => $cce->status
+                "codigo" => strtoupper($cce->codigo),
+                "descripcion" => strtoupper($cce->descripcion),
+                "status" => strtoupper($cce->status)
                 );
 
                 if($modificar->update($data)){

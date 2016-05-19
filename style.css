@@ -27,8 +27,8 @@ h1{text-transform: uppercase;}
 img.alignleft, img.alignright, img.aligncenter {
     margin-bottom: 11px;
 }
-.uppercase{
-  text-transform: uppercase;
+.capitalize{
+  text-transform: capitalize;
 }
 .alignleft, img.alignleft{
 display: inline;
@@ -219,6 +219,7 @@ section > div > div{
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 2%;
+  overflow: hidden;
 }
 
 

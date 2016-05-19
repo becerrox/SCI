@@ -24,8 +24,8 @@ class NivelesService{
         public function nuevo($niv){
             $niveles=new niveles();
             $data=array(
-                  "codigo" => $niv->codigo,
-                  "nivel" => $niv->nivel
+                  "codigo" => strtoupper($niv->codigo),
+                  "nivel" => strtoupper($niv->nivel)
             );
             if($niveles->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -42,8 +42,8 @@ class NivelesService{
             $modificar=Niveles::find($id);
             if(count($modificar)>0){
                 $data=array(
-                  "codigo" => $niv->codigo,
-                  "nivel" => $niv->nivel
+                  "codigo" => strtoupper($niv->codigo),
+                  "nivel" => strtoupper($niv->nivel)
                 );
 
                 if($modificar->update($data)){

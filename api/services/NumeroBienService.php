@@ -22,8 +22,8 @@ class NumeroBienService{
         public function nuevo($numbie){
             $numeroBien=new NumeroBien();
             $data=array(
-                "numero_bien" => $numbie->numero_bien,
-                "descripcion" => $numbie->descripcion
+                "numero_bien" => strtoupper($numbie->numero_bien),
+                "descripcion" => strtoupper($numbie->descripcion)
                 );
             if($numeroBien->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -40,8 +40,8 @@ class NumeroBienService{
             $modificar=NumeroBien::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "numero_bien" => $numbie->numero_bien,
-                    "descripcion" => $numbie->descripcion
+                    "numero_bien" => strtoupper($numbie->numero_bien),
+                    "descripcion" => strtoupper($numbie->descripcion)
                     );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);

@@ -76,6 +76,16 @@ $(document).ready(function()
                 });
         })
         
+        //Cargo
+        getConfiguracionAdminBy("?tipo=cargo").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#cargo")
+                });
+        })
+
         //Unidad de Trabajo
         getUnidadTrabajoBy('').then(function(data){
             jsonToSelect({        

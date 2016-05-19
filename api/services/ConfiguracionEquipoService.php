@@ -22,8 +22,8 @@ class ConfiguracionEquipoService{
         public function nuevo($confeq){
             $configuracionEquipo=new ConfiguracionEquipo();
             $data=array(
-                "descripcion" => $confeq->descripcion,
-                "tipo" => $confeq->tipo
+                "descripcion" => strtoupper($confeq->descripcion),
+                "tipo" => strtoupper($confeq->tipo)
             );
             if($configuracionEquipo->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -40,8 +40,8 @@ class ConfiguracionEquipoService{
             $modificar=ConfiguracionEquipo::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "descripcion" => $confeq->descripcion,
-                    "tipo" => $confeq->tipo
+                    "descripcion" => strtoupper($confeq->descripcion),
+                    "tipo" => strtoupper($confeq->tipo)
                 );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);

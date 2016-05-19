@@ -26,19 +26,19 @@ public function listar($query){
             $personal=new Personal();
 
             $data=array(
-                "ci_per" => $pe->ci_per,
-                "nombres" => $pe->nombres,
-                "apellidos" => $pe->apellidos,
-                "cargo" => $pe->cargo,
-                "telf_pers" => $pe->telf_pers,
-                "correo" => $pe->correo,
-                "f_nac" => $pe->f_nac,
+                "ci_per" => strtoupper($pe->ci_per),
+                "nombres" => strtoupper($pe->nombres),
+                "apellidos" => strtoupper($pe->apellidos),
+                "cargo" => strtoupper($pe->cargo),
+                "telf_pers" => strtoupper($pe->telf_pers),
+                "correo" => strtoupper($pe->correo),
+                "f_nac" => strtoupper($pe->f_nac),
                 "fecha_creacion" => date("Y-m-d h:i:s"),
                 "fecha_modif" => date("Y-m-d h:i:s"),
                 "status" => 1,
-                "unidad_trabajo" => $pe->unidad_trabajo,
-                "unidad_admin" => $pe->unidad_admin,
-                "id_usuario" => $pe->id_usuario
+                "unidad_trabajo" => strtoupper($pe->unidad_trabajo),
+                "unidad_admin" => strtoupper($pe->unidad_admin),
+                "id_usuario" => strtoupper($pe->id_usuario)
             );
             if($personal->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -55,17 +55,17 @@ public function listar($query){
             $modificar=Personal::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "ci_per" => $pe->ci_per,
-                    "nombres" => $pe->nombres,
-                    "apellidos" => $pe->apellidos,
-                    "cargo" => $pe->cargo,
-                    "telf_pers" => $pe->telf_pers,
-                    "correo" => $pe->correo,
-                    "f_nac" => $pe->f_nac,
+                    "ci_per" => strtoupper($pe->ci_per),
+                    "nombres" => strtoupper($pe->nombres),
+                    "apellidos" => strtoupper($pe->apellidos),
+                    "cargo" => strtoupper($pe->cargo),
+                    "telf_pers" => strtoupper($pe->telf_pers),
+                    "correo" => strtoupper($pe->correo),
+                    "f_nac" => strtoupper($pe->f_nac),
                     "fecha_modif" => date("Y-m-d h:i:s"),
                     "status" => 1,
-                    "unidad_trabajo" => $pe->unidad_trabajo,
-                    "unidad_admin" => $pe->unidad_admin,
+                    "unidad_trabajo" => strtoupper($pe->unidad_trabajo),
+                    "unidad_admin" => strtoupper($pe->unidad_admin),
                     );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);

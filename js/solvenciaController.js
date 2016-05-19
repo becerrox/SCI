@@ -43,7 +43,7 @@ $(document).ready(function()
                     data : data,
                     headers : headers,
                     table : $("#tableTipoEquipo"),
-                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","serialSim","accesorios","planCelular","numeroCelular","estadoUsoEquipo"]
+                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","serialSim","accesorios","planCelular","numeroCelular","estadoUsoEquipo","estadoUsoEquipo","motivo"]
                   });          
             });
         });  
@@ -56,7 +56,7 @@ $(document).ready(function()
                     data : data,
                     headers : headers,
                     table : $("#tableTipoEquipo"),
-                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo"]
+                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","estadoUsoEquipo","motivo"]
                   });          
             });
         });  

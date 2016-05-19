@@ -7,7 +7,7 @@
   <head>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8"/>
-    <title>SCI Registro de Equipos </title>
+    <title>Registro de Equipos </title>
     <meta name="viewport" content="width=device-width, user-scalable=no, 
     initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0"> 
   
@@ -39,9 +39,9 @@
     <div id="contenedor" class="row">       
       <div class="form-group bloque col-md-4 col-xs-6">
           <label>Equipo:</label>
-          <select type="text" name="descripcion" class="form-control-2 " id="descripcion" data-toggle="tooltip" data-placement="top" title="Computador,Mouse,Teclado" onblur="menuOculto()"></select>
+          <select type="text" name="descripcion" class="form-control-2 capitalize" id="descripcion" data-toggle="tooltip" data-placement="top" title="Computador,Mouse,Teclado" onblur="menuOculto()"></select>
           <label>Marca:</label>
-          <select type="text" name="marca" class="form-control-2 " id="marca" data-placement="top" title="VIT,HP,Siragon"></select>
+          <select type="text" name="marca" class="form-control-2 capitalize" id="marca" data-placement="top" title="VIT,HP,Siragon"></select>
           <label>Serial:</label>
           <input maxlength="25" name="serial" type="text" class="form-control-2" placeholder="00000000000" id="serial">
           <label>Modelo:</label>
@@ -78,9 +78,9 @@
           <label>Estatus de uso</label> 
             <select name="estatus_uso_bien" class="form-control-2" id="estatus_uso_bien"></select>
           <label>Características:</label>
-          <textarea type="text" class="form-control-2 uppercase" name="caracteristicas" id="caracteristicas" data-placement="top" title="Por tipo de Equipo"></textarea>
+          <textarea type="text" class="form-control-2" name="caracteristicas" id="caracteristicas" data-placement="top" title="Por tipo de Equipo"></textarea>
           <label>Observaciones:</label>
-          <textarea  type="text" class="form-control-2 uppercase" name="observaciones" id="observaciones" data-placement="top" title="Información extra que desee agregar"></textarea>
+          <textarea  type="text" class="form-control-2" name="observaciones" id="observaciones" data-placement="top" title="Información extra que desee agregar"></textarea>
        </div>
         <div id="celular" class="form-group col-md-12 col-xs-6">
           <label>SIMCARD</label>

@@ -22,10 +22,11 @@ class UnidadAdministrativaService{
         public function nuevo($uniad){
             $unidadAdministrativa=new UnidadAdministrativa();
 
-                $data=array(
-                    "descripcion" => $uniad->descripcion
-                    );
+            $data=array(
+                "descripcion" => $uniad->descripcion
+            );
             if($unidadAdministrativa->save($data)){
+                    $return = ($unidadAdministrativa->toArray());
                     return array("status" => 201, "mensaje" => $return);
             }else{
                 $errors = array();
@@ -40,8 +41,8 @@ class UnidadAdministrativaService{
             $modificar=UnidadAdministrativa::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "codigo" => $uniad->codigo,
-                    "descripcion" => $uniad->descripcion
+                    "codigo" => strtoupper($uniad->codigo),
+                    "descripcion" => strtoupper($uniad->descripcion)
                     );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
