@@ -32,49 +32,48 @@
    <!--               FORMULARIO DE REGISTRO         -->
   <section class="inicio container">
         <h1>Registro de Usuarios</h1>
-        <form id=formUsuario class="row">
-          <div id="contenedor">
-              <div class="col-md-12 col-md-offset-1">
+        <form id="formUsuario">
+          <div id="contenedor" class="row">
+              <div class="col-md-3">
                   <label>Usuario:</label>
                   <input name="usuario" type="text" class="form-control-2" id="usuario" data-toggle="tooltip" title="Nombre de Usuario">
+              </div>
+              <div class="col-md-3">
                   <label>Privilegio:</label>
                   <select name="nivel" id="nivel" class="form-control-2"> 
-                  </select>             
+                  </select>
+              </div>
+              <div class="col-md-3">            
                   <label>Contraseña:</label>
                   <input type="password" class="form-control-2" name="pass1" id="pass1">
+              </div>
+              <div class="col-md-3">
                   <label>Confirmar</label>
-                  <input name="pass" type="password" class="form-control-2" id="pass" data-toggle="tooltip" title="Repetir contraseña">
+                  <input name="pass" type="password" class="form-control-2" id="pass" data-toggle="tooltip" title="Repetir contraseña">                  
               </div>    
-              <div class="form-group col-md-3 col-sm-12 col-xs-12 col-md-offset-5">
-                 <div id="alert2" role="alert"></div>            
-              </div>      
-          </div>   
+          </div>                   
     </form> <!-- Fin registro Usuario--> 
   <form id="formPersonal">  
     <div id="contenedor" class="row text-center">
-      <div class="bloque col-md-4">        
+      <div class="bloque col-md-4 col-xs-12 col-sm-12">        
           <label>Cédula:</label><br>      
           <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" placeholder="00000000" onKeyPress="return soloNumeros(event)"/>      
             <label>Nombres:</label>
-            <input name="nombres" maxlength="30" type="text" class="form-control-2 capitalize"  id="nombres" title="Ej: María Andrea" onkeypress="return soloLetras(event)"/>
+            <input name="nombres" maxlength="30" type="text" class="form-control-2 uppercase"  id="nombres" title="Ej: María Andrea" onkeypress="return soloLetras(event)"/>
             <label>Apellidos:</label>
-            <input name="apellidos" maxlength="25" type="text" class="form-control-2 capitalize" title="Ej: Colmenarez Gil" id="apellidos" onkeypress="return soloLetras(event)"/> 
+            <input name="apellidos" maxlength="25" type="text" class="form-control-2 uppercase" title="Ej: Colmenarez Gil" id="apellidos" onkeypress="return soloLetras(event)"/> 
       </div>            
-      <div class="bloque col-md-4">
+      <div class="bloque col-md-4 col-xs-12">
            <label>Fecha N.:</label>
             <input name="f_nac" maxlength="10" type="text" placeholder="AAAA-MM-DD" class="form-control-2" name="fecha1" id="fecha1"/>     
             <label>Cargo:</label>
             <select name="cargo" id="cargo" class="form-control-2">
-              <option selected disabled>Seleccione</option>
-              <option value="Gerente">Gerente</option>
-              <option value="Coordinador">Coordinador</option>
-              <option value="Responsable">Responsable</option>
             </select> 
             <label>Unidad de Trabajo:</label>
             <select name="unidad_trabajo" id="unidad_trabajo" class="form-control-2">
             </select>                         
       </div>
-      <div class="bloque col-md-4">
+      <div class="bloque col-md-4 col-xs-12">
           <label>Unidad Administrativa</label>
           <select name="unidad_admin" id="unidad_admin" class="form-control-2">
           </select>                
@@ -86,14 +85,17 @@
     </div>
   <div id="contenedor">
    <div class="row">
-      <div class="form-group col-md-12 col-md-offset-7 col-sm-12 col-sm-offset-2 col-xs-12 ">
+      <div class="form-group col-md-12 col-md-offset-6 col-sm-12 col-sm-offset-2 col-xs-12 ">
          <button id="guardarUserPersonal" type="button" class="btn" onclick="Validar_re()" >Guardar</button>
          <button id="modificarUserPersonal" type="button" class="btn">Modificar</button> 
          <button id="eliminarUserPersonal" type="button" class="btn">Eliminar</button> 
-         <div id="alert" role="alert"></div>     
+         <br>
       </div>
     </div>
    </div> <!-- Fin contenedor-->
+         <div class="row">
+           <div id="alert" role="alert" class="col-md-12"></div>
+         </div> 
   </form><!-- Fin registro Datos Personales-->  
  <div class="row ">
      <form class=" form-group col-md-12">      
