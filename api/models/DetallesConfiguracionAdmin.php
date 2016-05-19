@@ -1,6 +1,6 @@
 <?php
 
-/* Entidad Bienes */
+/* Entidad DetallesConfiguracionAdmin */
 
 use Phalcon\Mvc\Model,
     Phalcon\Mvc\Model\Message,
@@ -10,9 +10,10 @@ use Phalcon\Mvc\Model,
     Phalcon\Mvc\Model\Behavior\SoftDelete;
 
 
-class Traslados extends Model{
+class DetallesConfiguracionAdmin extends Model{
+
     public function initialize(){
-      $this->setSource("traslados");
+      $this->setSource("detalles_configuración_admin");
       $this->addBehavior(
             new SoftDelete(
                 array(
@@ -27,9 +28,19 @@ class Traslados extends Model{
  public function validation()
     {
 
-     
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "descripcion",
+                "message" => "Ingrese una descripción"
+                )
+            ));        
 
-
+       $this->validate(new Uniqueness(
+            array(
+                "field"  => "descripcion",
+                "message" => "La unidad debe ser única"
+            )
+        ));
 
         if ($this->validationHasFailed() == true) {
             return false;

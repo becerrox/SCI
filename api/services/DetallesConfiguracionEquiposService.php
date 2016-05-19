@@ -1,52 +1,52 @@
 <?php
-class CargosService{
+class DetallesConfiguracionEquiposService{
     public function listar($query){
 
           if(empty($query))
-             $cargos=Cargos::find();
+             $detallesConfiguracionEquipos=DetallesConfiguracionEquipos::find();
           else
           {
-            $cargos=Cargos::find(
+            $detallesConfiguracionEquipos=DetallesConfiguracionEquipos::find(
                 array(
                     arrayToSQLQuery($query),
                     "bind" => $query)
                 );
           }
 
-      if(count($cargos->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de cargos");
+      if(count($detallesConfiguracionEquipos->toArray())==0){
+            return array("status" => 404, "mensaje" => "No hay registros de detallesConfiguracionEquipos");
       }else{
-            return array("status" => 200, "mensaje" =>$cargos->toArray());
+            return array("status" => 200, "mensaje" =>$detallesConfiguracionEquipos->toArray());
       }
     }
-        public function nuevo($carg){
-            $cargos=new Cargos();
+        public function nuevo($dconfeq){
+            $detallesConfiguracionEquipos=new DetallesConfiguracionEquipos();
             $data=array(
-                "cargo" => $carg->cargo
+                "descripcion" => $dconfeq->descripcion
             );
-            if($cargos->save($data)){
+            if($detallesConfiguracionEquipos->save($data)){
                     return array("status" => 201, "mensaje" => $data);
             }else{
                 $errors = array();
-                foreach ($cargos->getMessages() as $message) {
+                foreach ($detallesConfiguracionEquipos->getMessages() as $message) {
                     $errors[] = $message->getMessage();
                 }
                 return array("status" => 400, "mensaje" =>$errors);
             }
         }
 
-        public function modificar($id,$carg){
-            $modificar=Cargos::find($id);
+        public function modificar($id,$dconfeq){
+            $modificar=DetallesConfiguracionEquipos::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "cargo" => $carg->cargo
-                );
+                    "descripcion" => $dconfeq->descripcion
+                    );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
                 }
                 else{
                      $errors = array();
-                    foreach ($cargos->getMessages() as $message) {
+                    foreach ($detallesConfiguracionEquipos->getMessages() as $message) {
                         $errors[] = $message->getMessage();
                     }
                     return array("status" => 400, "mensaje" =>$errors);
@@ -57,10 +57,10 @@ class CargosService{
         }
 
         public function eliminar($id){
-            $cargos=Cargos::find($id);
-            if(count($cargos)){
-                $cargos->delete();
-                return array("status" => 200, "mensaje" => 'cargos Eliminado');
+            $detallesConfiguracionEquipos=DetallesConfiguracionEquipos::find($id);
+            if(count($detallesConfiguracionEquipos)){
+                $detallesConfiguracionEquipos->delete();
+                return array("status" => 200, "mensaje" => 'detallesConfiguracionEquipos Eliminado');
             }else{
                 return array("status"=>404, "mensaje"=> "El registro intenta modificar no existe");
             }

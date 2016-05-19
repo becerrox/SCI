@@ -60,7 +60,7 @@ $app->delete("/usuarios/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
 
 //Endpoints Equipo
 
-$equipoService = new EquipoService;
+$equipoService = new EquipoService();
 
 $app->get("/equipos",function() use ($app,$equipoService) {
     $query = $app->request->getQuery();
@@ -73,12 +73,6 @@ $app->post("/equipos",function() use ($app,$equipoService){
     $equipo = json_decode($app->request->getRawBody());
     $data = $equipoService->nuevo($equipo);
     response($app,$data['mensaje'],$data['status']);
-});
-
-$app->post("/equipos/token",function() use ($app,$equipoService) {
-    $equipo = json_decode($app->request->getRawBody());
-    $data = $equipoService->solicitarToken($equipo);
-    response($app,$data,$data['status']);
 });
 
 $app->put("/equipos/{id:[0-9]+}",function($id) use ($app,$equipoService) {
@@ -122,13 +116,13 @@ $app->put("/personal/{id:[0-9]+}",function($id) use ($app,$personalService) {
 });
 
 $app->delete("/personal/{id:[0-9]+}",function($id) use ($app,$personalService) {
-    $data = $usuarioService->eliminar($id);
+    $data = $personalService->eliminar($id);
     response($app,$data['mensaje'],$data['status']);
 });
 
 //Endpoints Categoría General
 
-$catgenService = new CatgenService;
+$catgenService = new CatgenService();
 
 $app->get("/catgen",function() use ($app,$catgenService) {
     $query = $app->request->getQuery();
@@ -155,7 +149,7 @@ $app->delete("/catgen/{id:[0-9]+}",function($id) use($app){
 
 //Endpoints subategoría 
 
-$subcatService = new SubcatService;
+$subcatService = new SubcatService();
 
 $app->get("/subcat",function() use ($app,$subcatService) {
     $query = $app->request->getQuery();
@@ -209,7 +203,7 @@ $app->delete("/catesp/{id:[0-9]+}",function($id) use($app){
 
 //Endpoints bienes
 
-$bienesService = new BienesService;
+$bienesService = new BienesService();
 
 $app->get("/bienes",function() use ($app,$bienesService) {
     $query = $app->request->getQuery();
@@ -235,37 +229,37 @@ $app->delete("/bienes/{id:[0-9]+}",function($id) use ($app,$bienesService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
-//Endpoints traslados
+//Endpoints responsables
 
-$trasladosService = new TrasladosService;
+$responsablesService = new ResponsablesService();
 
-$app->get("/traslados",function() use ($app,$trasladosService) {
+$app->get("/responsables",function() use ($app,$responsablesService) {
     $query = $app->request->getQuery();
     unset($query["_url"]);
-    $data = $trasladosService->listar($query);
+    $data = $responsablesService->listar($query);
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->post("/traslados",function() use ($app,$trasladosService){
-    $traslados = json_decode($app->request->getRawBody());
-    $data = $trasladosService->nuevo($traslados);
+$app->post("/responsables",function() use ($app,$responsablesService) {
+    $responsables = json_decode($app->request->getRawBody());
+    $data = $responsablesService->nuevo($responsables);
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->put("/traslados/{id:[0-9]+}",function($id) use ($app,$trasladosService) {
-    $traslados = json_decode($app->request->getRawBody());
-    $data = $trasladosService->modificar($id,$traslados);
+$app->put("/responsables/{id:[0-9]+}",function($id) use ($app,$responsablesService) {
+    $responsables = json_decode($app->request->getRawBody());
+    $data = $responsablesService->modificar($id,$responsables);
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->delete("/traslados/{id:[0-9]+}",function($id) use ($app,$trasladosService) {
-    $data = $bienesService->eliminar($id);
+$app->delete("/responsables/{id:[0-9]+}",function($id) use ($app,$responsablesService) {
+    $data = $responsablesService->eliminar($id);
     response($app,$data['mensaje'],$data['status']);
 });
 
 //Endpoints configuracion
 
-$configuracionService = new ConfiguracionService;
+$configuracionService = new ConfiguracionService();
 
 $app->get("/configuracion",function() use ($app,$configuracionService) {
     $query = $app->request->getQuery();
@@ -274,7 +268,7 @@ $app->get("/configuracion",function() use ($app,$configuracionService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->post("/configuracion",function() use ($app,$configuracionService){
+$app->post("/configuracion",function() use ($app,$configuracionService) {
     $configuracion = json_decode($app->request->getRawBody());
     $data = $configuracionService->nuevo($configuracion);
     response($app,$data['mensaje'],$data['status']);
@@ -286,13 +280,238 @@ $app->put("/configuracion/{id:[0-9]+}",function($id) use ($app,$configuracionSer
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->delete("/configuracion/{id:[0-9]+}",function($id) use($app){
-    echo "eliminacion de configuracion numero $id";
+$app->delete("/configuracion/{id:[0-9]+}",function($id) use ($app,$configuracionService) {
+    $data = $configuracionService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+//Endpoints configuracionEquipo
+
+$configuracionEquipoService = new ConfiguracionEquipoService();
+
+$app->get("/confequipo",function() use ($app,$configuracionEquipoService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $configuracionEquipoService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/confequipo",function() use ($app,$configuracionEquipoService) {
+    $configuracionEquipo = json_decode($app->request->getRawBody());
+    $data = $configuracionEquipoService->nuevo($configuracionEquipo);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/confequipo/{id:[0-9]+}",function($id) use ($app,$configuracionEquipoService) {
+    $configuracionEquipo = json_decode($app->request->getRawBody());
+    $data = $configuracionEquipoService->modificar($id,$configuracionEquipo);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/confequipo/{id:[0-9]+}",function($id) use ($app,$configuracionEquipoService) {
+    $data = $configuracionEquipoService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+//Endpoints configuracionAdmin
+
+$configuracionAdminService = new ConfiguracionAdminService();
+
+$app->get("/configadmin",function() use ($app,$configuracionAdminService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $configuracionAdminService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/configadmin",function() use ($app,$configuracionAdminService) {
+    $configuracionAdmin = json_decode($app->request->getRawBody());
+    $data = $configuracionAdminService->nuevo($configuracionAdmin);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/configadmin/{id:[0-9]+}",function($id) use ($app,$configuracionAdminService) {
+    $configuracionAdmin = json_decode($app->request->getRawBody());
+    $data = $configuracionAdminService->modificar($id,$configuracionAdmin);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/configadmin/{id:[0-9]+}",function($id) use ($app,$configuracionAdminService) {
+    $data = $configuracionAdminService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+//Endpoints detallesConfiguracionAdmin
+
+$detallesConfiguracionAdminService = new DetallesConfiguracionAdminService();
+
+$app->get("/detallesadmin",function() use ($app,$detallesConfiguracionAdminService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $detallesConfiguracionAdminService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/detallesadmin",function() use ($app,$detallesConfiguracionAdminService) {
+    $detallesConfiguracionAdmin = json_decode($app->request->getRawBody());
+    $data = $detallesConfiguracionAdminService->nuevo($detallesConfiguracionAdmin);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/detallesadmin/{id:[0-9]+}",function($id) use ($app,$detallesConfiguracionAdminService) {
+    $detallesConfiguracionAdmin = json_decode($app->request->getRawBody());
+    $data = $detallesConfiguracionAdminService->modificar($id,$detallesConfiguracionAdmin);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/detallesadmin/{id:[0-9]+}",function($id) use ($app,$detallesConfiguracionAdminService) {
+    $data = $detallesConfiguracionAdminService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+//Endpoints detallesConfiguracionEquipos
+
+$detallesConfiguracionEquiposService = new DetallesConfiguracionEquiposService();
+
+$app->get("/detallesequipos",function() use ($app,$detallesConfiguracionEquiposService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $detallesConfiguracionEquiposService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/detallesequipos",function() use ($app,$detallesConfiguracionEquiposService) {
+    $detallesConfiguracionEquipos = json_decode($app->request->getRawBody());
+    $data = $detallesConfiguracionEquiposService->nuevo($detallesConfiguracionEquipos);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/detallesequipos/{id:[0-9]+}",function($id) use ($app,$detallesConfiguracionEquiposService) {
+    $detallesConfiguracionEquipos = json_decode($app->request->getRawBody());
+    $data = $detallesConfiguracionEquiposService->modificar($id,$detallesConfiguracionEquipos);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/detallesequipos/{id:[0-9]+}",function($id) use ($app,$detallesConfiguracionEquiposService) {
+    $data = $detallesConfiguracionEquiposService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+//Endpoints detallesConfiguracionBienes
+
+$detallesConfiguracionBienesService = new DetallesConfiguracionBienesService();
+
+$app->get("/detallesbienes",function() use ($app,$detallesConfiguracionBienesService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $detallesConfiguracionBienesService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/detallesbienes",function() use ($app,$detallesConfiguracionBienesService) {
+    $detallesConfiguracionBienes = json_decode($app->request->getRawBody());
+    $data = $detallesConfiguracionBienesService->nuevo($detallesConfiguracionBienes);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/detallesbienes/{id:[0-9]+}",function($id) use ($app,$detallesConfiguracionBienesService) {
+    $detallesConfiguracionBienes = json_decode($app->request->getRawBody());
+    $data = $detallesConfiguracionBienesService->modificar($id,$detallesConfiguracionBienes);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/detallesbienes/{id:[0-9]+}",function($id) use ($app,$detallesConfiguracionBienesService) {
+    $data = $detallesConfiguracionBienesService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+//Endpoints numeroBien
+
+$numeroBienService = new NumeroBienService();
+
+$app->get("/numerobien",function() use ($app,$numeroBienService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $numeroBienService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/numerobien",function() use ($app,$numeroBienService) {
+    $numeroBien = json_decode($app->request->getRawBody());
+    $data = $numeroBienService->nuevo($numeroBien);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/numerobien/{id:[0-9]+}",function($id) use ($app,$numeroBienService) {
+    $numeroBien = json_decode($app->request->getRawBody());
+    $data = $numeroBienService->modificar($id,$numeroBien);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/numerobien/{id:[0-9]+}",function($id) use ($app,$numeroBienService) {
+    $data = $numeroBienService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+//Endpoints unidadAdministrativa
+
+$unidadAdministrativaService = new UnidadAdministrativaService();
+
+$app->get("/unidadadministrativa",function() use ($app,$unidadAdministrativaService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $unidadAdministrativaService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/unidadadministrativa",function() use ($app,$unidadAdministrativaService) {
+    $unidadAdministrativa = json_decode($app->request->getRawBody());
+    $data = $unidadAdministrativaService->nuevo($unidadAdministrativa);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/unidadadministrativa/{id:[0-9]+}",function($id) use ($app,$unidadAdministrativaService) {
+    $unidadAdministrativa = json_decode($app->request->getRawBody());
+    $data = $unidadAdministrativaService->modificar($id,$unidadAdministrativa);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/unidadadministrativa/{id:[0-9]+}",function($id) use ($app,$unidadAdministrativaService) {
+    $data = $unidadAdministrativaService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+//Endpoints unidadTrabajo
+
+$unidadTrabajoService = new UnidadTrabajoService();
+
+$app->get("/unidadtrabajo",function() use ($app,$unidadTrabajoService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $unidadTrabajoService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/unidadtrabajo",function() use ($app,$unidadTrabajoService) {
+    $unidadTrabajo = json_decode($app->request->getRawBody());
+    $data = $unidadTrabajoService->nuevo($unidadTrabajo);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/unidadtrabajo/{id:[0-9]+}",function($id) use ($app,$unidadTrabajoService) {
+    $unidadTrabajo = json_decode($app->request->getRawBody());
+    $data = $unidadTrabajoService->modificar($id,$unidadTrabajo);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/unidadtrabajo/{id:[0-9]+}",function($id) use ($app,$unidadTrabajoService) {
+    $data = $unidadTrabajoService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
 });
 
 //Endpoints niveles
 
-$nivelesService = new NivelesService;
+$nivelesService = new NivelesService();
 
 $app->get("/niveles",function() use ($app,$nivelesService) {
     $query = $app->request->getQuery();

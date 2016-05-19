@@ -46,11 +46,6 @@ class CatespService{
         public function modificar($id,$us){
             $modificar=Catesp::find($id);
             if(count($modificar)>0){
-                if(isset($us->pass) && $us->pass !== '' && $us->pass !== null && $us->pass !== 'undefined'){
-                    $pass = sha1($us->pass);
-                }else{
-                    $pass = $modificar[0]->pass;
-                }
                 $data=array(     
                 "codigo" => $cce->codigo,
                 "descripcion" => $cce->descripcion,
@@ -58,7 +53,6 @@ class CatespService{
                 );
 
                 if($modificar->update($data)){
-                        unset($data['pass']);
                         return array("status" => 200, "mensaje" => $data);
                 }
                 else{

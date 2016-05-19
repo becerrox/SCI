@@ -13,7 +13,7 @@ use Phalcon\Mvc\Model,
 class ConfiguracionEquipo extends Model{
 
     public function initialize(){
-      $this->setSource("configuracion_equipo");
+      $this->setSource("configuracion_equipos");
       $this->addBehavior(
             new SoftDelete(
                 array(

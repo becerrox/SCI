@@ -1,6 +1,6 @@
 <?php
 
-/* Entidad Sedes */
+/* Entidad ConfiguracionAdmin */
 
 use Phalcon\Mvc\Model,
     Phalcon\Mvc\Model\Message,
@@ -10,10 +10,10 @@ use Phalcon\Mvc\Model,
     Phalcon\Mvc\Model\Behavior\SoftDelete;
 
 
-class Sedes extends Model{
+class ConfiguracionAdmin extends Model{
 
     public function initialize(){
-      $this->setSource("sedes");
+      $this->setSource("configuracion_admin");
       $this->addBehavior(
             new SoftDelete(
                 array(
@@ -30,15 +30,23 @@ class Sedes extends Model{
 
         $this->validate(new PresenceOf(
             array(
-                "field" => "sede",
-                "message" => "La sede debe ser ingresada"
+                "field" => "tipo",
+                "message" => "El tipo es obligatorio"
                 )
             ));
 
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "descripcion",
+                "message" => "La descripción es obligatoria"
+                )
+            ));
+
+
        $this->validate(new Uniqueness(
             array(
-                "field"  => "sede",
-                "message" => "La sede debe ser única"
+                "field"  => "descripcion",
+                "message" => "La descripción debe ser única"
             )
         ));
 

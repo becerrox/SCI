@@ -3,7 +3,7 @@ class ResponsablesService{
     public function listar($query){
 
           if(empty($query))
-             $responsables=Responsables::find();
+             $responsables=Responsables::find("status = 1");
           else
           {
             $responsables=Responsables::find(
@@ -19,7 +19,7 @@ class ResponsablesService{
             return array("status" => 200, "mensaje" =>$responsables->toArray());
       }
     }
-        public function nuevo($sed){
+        public function nuevo($resp){
             $responsables=new Responsables();
             $data=array(
                 "cedula" => $resp->cedula,
@@ -27,8 +27,11 @@ class ResponsablesService{
                 "apellidos" => $resp->apellidos,
                 "cargo" => $resp->cargo,
                 "unidad_trabajo" => $resp->unidad_trabajo,
+                "unidad_admin" => $resp->unidad_admin,                
                 "fecha_creacion" => date("Y-m-D h:i:s"),
-                "fecha_modif" => date("Y-m-D h:i:s")            );
+                "fecha_modif" => date("Y-m-D h:i:s"),
+                "status" => 1
+            );
             if($responsables->save($data)){
                     return array("status" => 201, "mensaje" => $data);
             }else{
@@ -40,7 +43,7 @@ class ResponsablesService{
             }
         }
 
-        public function modificar($id,$sed){
+        public function modificar($id,$resp){
             $modificar=Responsables::find($id);
             if(count($modificar)>0){
                 $data=array(
@@ -49,7 +52,9 @@ class ResponsablesService{
                     "apellidos" => $resp->apellidos,
                     "cargo" => $resp->cargo,
                     "unidad_trabajo" => $resp->unidad_trabajo,
-                    "fecha_modif" => "Y-m-D h:i:s"  );
+                    "fecha_modif" => date("Y-m-D h:i:s"),
+                    "status" => 1
+                );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
                 }
