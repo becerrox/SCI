@@ -24,12 +24,13 @@ class UnidadTrabajoService{
 
         public function nuevo($unitra){
             $unidadTrabajo=new UnidadTrabajo();
-            $data=array(
-                "descripcion" => strtoupper($unitra->descripcion)
-            );
 
+            $data=array(
+                "descripcion" => $unitra->descripcion
+            );
             if($unidadTrabajo->save($data)){
-                    return array("status" => 201, "mensaje" => $data);
+                    $return = ($unidadTrabajo->toArray());
+                    return array("status" => 201, "mensaje" => $return);
             }else{
                 $errors = array();
                 foreach ($unidadTrabajo->getMessages() as $message) {

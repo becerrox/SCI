@@ -41,7 +41,6 @@ class UnidadAdministrativaService{
             $modificar=UnidadAdministrativa::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "codigo" => strtoupper($uniad->codigo),
                     "descripcion" => strtoupper($uniad->descripcion)
                     );
                 if($modificar->update($data)){

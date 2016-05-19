@@ -1519,13 +1519,6 @@ function getUsuariosBy(filtros)
 				success:function(response){
 					resolver(response);
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'El registro no existe o hay un error',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -1565,13 +1558,6 @@ function getBienesBy(filtros)
 				success:function(response){
 					resolver(response);
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'El registro no existe o hay un error',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -1588,13 +1574,6 @@ function getBienesGeneralBy(data)
 				success:function(response){
 					resolver(response);
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'El registro no existe o hay un error',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -1611,13 +1590,6 @@ function getEquiposBy(filtros)
 				success:function(response){
 					resolver(response);
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'El registro no existe o hay un error',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -1634,13 +1606,6 @@ function getNivelesBy(data)
 				success:function(response){
 					resolver(response);
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'El registro no existe o hay un error',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});

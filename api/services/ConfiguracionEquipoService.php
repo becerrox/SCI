@@ -1,4 +1,7 @@
 <?php
+
+setlocale(LC_CTYPE, 'es_ES.UTF8');
+
 class ConfiguracionEquipoService{
     public function listar($query){
 
@@ -22,8 +25,8 @@ class ConfiguracionEquipoService{
         public function nuevo($confeq){
             $configuracionEquipo=new ConfiguracionEquipo();
             $data=array(
-                "descripcion" => strtoupper($confeq->descripcion),
-                "tipo" => strtoupper($confeq->tipo)
+                "descripcion" => mb_strtoupper($confeq->descripcion, "UTF-8"),
+                "tipo" => mb_strtoupper($confeq->tipo, "UTF-8")
             );
             if($configuracionEquipo->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -40,8 +43,8 @@ class ConfiguracionEquipoService{
             $modificar=ConfiguracionEquipo::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "descripcion" => strtoupper($confeq->descripcion),
-                    "tipo" => strtoupper($confeq->tipo)
+                    "descripcion" => mb_strtoupper($confeq->descripcion, "UTF-8"),
+                    "tipo" => mb_strtoupper($confeq->tipo, "UTF-8")
                 );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);

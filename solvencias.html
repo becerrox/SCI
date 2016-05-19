@@ -16,7 +16,7 @@
    <link rel="stylesheet" href="css/calendario.css" type="text/css" media="screen">    
    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
    <link rel="stylesheet" href="css/bootstrap-theme.css">
-   <link media="print" rel="stylesheet" type="text/css" href="print.css">
+   <link rel="stylesheet" media="print and (orientation:portrait)" href="print.css">
    <script src="js/jquery.min.js"></script>
    <script src="js/jquery.js"></script>
    <script src="js/solvenciaController.js" type="text/javascript"></script>
@@ -32,9 +32,9 @@
 <div id="header"></div>
 <body>
 <div id="cabecera">
-    <img src="images/cabecera.png">
+    <img src="images/solvencia.png">
   </div>
-<section class="inicio container">
+<section id="solvencias" class="inicio container">
   <h3>SOLVENCIA DE ENTREGA DE EQUIPOS TECNOLÓGICOS</h3>
     <article id="contenedor" class="row hidden-print">
       <div class="col-md-4 text-center">
@@ -106,30 +106,7 @@
         <button id="btnImprimir" type="button" class="btn hidden-print" onclick="window.print()">Imprimir</button>
       </div>
     </article>
-    <article id="contenedor" class="row">
-      <div id="bloque2" class="text-center col-md-12 visible-print">
-        <label class="padding"> Recibido por: </label>
-        <label>Entregado por:</label>   
-    </div>
-  </article>
-   <article id="firma" class="row visible-print">
-    <div class="col-md-12 text-center">
-      <label class="padding">_____________________</label><label>_____________________</label>
-    </div>
-  </article>
-  <article id="firma" class="row visible-print">
-    <div class="col-md-12 text-center">
-      <label class="padding">C.I.:__________________</label><label>C.I.:__________________</label>
-    </div>
-  </article>
-    <article class="row visible-print">
-      <div id="pie2" class="text-center col-md-12">
-          <p>Av. Florencio Jiménez, KM 3, Edif. Estación Central Simón Bolívar<br>
-        Piso PB,  Barquisimeto, Municipio Iribarren, Edo. Lara.<br>
-        RIF: G-20005347-0<br>
-        www.transbarca.gob.ve<br></p>
-      </div>
-  </article>  
+    
     </form>
 </section>
     <script src="js/menu.js" type="text/javascript"></script>    

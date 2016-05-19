@@ -39,7 +39,9 @@ $(document).ready(function()
             frm = $("#formEquipo");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarEquipo(dataForm);
+            registrarEquipo(dataForm).then(function(data){
+                  console.log("funciona");   
+                });  ;
         });
 
         $("#btnModificar").click(function()
@@ -71,9 +73,7 @@ $(document).ready(function()
             });
         });            
 
-        //Unidad de Trabajo
-        getConfiguracionBy("?tipo=Color").then(function(data){
-            //Despues del retorno del promise, se cargan en el select con jsonToSelect
+        getConfiguracionBy("?tipo=COLOR").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -123,7 +123,7 @@ $(document).ready(function()
         })           
         
         //Descripción
-        getConfiguracionEquipoBy("?tipo=Descripción").then(function(data){
+        getConfiguracionEquipoBy("?tipo=DESCRIPCIóN").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -133,7 +133,7 @@ $(document).ready(function()
         })    
 
         //Marca
-        getConfiguracionEquipoBy("?tipo=Marca").then(function(data){
+        getConfiguracionEquipoBy("?tipo=MARCA").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -144,7 +144,7 @@ $(document).ready(function()
 
 
         //Modelo
-        getConfiguracionEquipoBy("?tipo=Modelo").then(function(data){
+        getConfiguracionEquipoBy("?tipo=MODELO").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",

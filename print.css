@@ -60,14 +60,14 @@ background: none;
 
 }
 #solvencias{
+  text-align: center;
   top:10%;
   position: absolute;
+  left:10%;
 }
-#solvencias  input {
-	text-align: left;
-}
+
 #solvencias h3{
-	text-align: center;
+	
 }
 #bloque2{
 	z-index: 99;

@@ -97,7 +97,7 @@ $(document).ready(function()
         getUnidadAdministrativaBy('').then(function(data){
             jsonToSelect({        
                 data : data,
-                value : "codigo",
+                value : "id",
                 alias : "descripcion",
                 element : $("#cat_unid_admin")
                 });
@@ -127,14 +127,14 @@ $(document).ready(function()
         getUnidadTrabajoBy('').then(function(data){
             jsonToSelect({        
                 data : data,
-                value : "descripcion",
+                value : "id",
                 alias : "descripcion",
                 element : $("#unidad_trabajo")
                 });
         })        
 
         //Descripción
-        getConfiguracionEquipoBy("?tipo=DESCRIPCION").then(function(data){
+        getConfiguracionEquipoBy("?tipo=DESCRIPCIÓN").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",

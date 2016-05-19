@@ -22,7 +22,7 @@ class DetallesConfiguracionAdminService{
         public function nuevo($dconfbie){
             $detallesConfiguracionAdmin=new DetallesConfiguracionAdmin();
             $data=array(
-                "descripcion" => strtoupper($dconfbie->descripcion)
+                "descripcion" => mb_strtoupper($dconfbie->descripcion, "UTF-8")
                 );
             if($detallesConfiguracionAdmin->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -39,7 +39,7 @@ class DetallesConfiguracionAdminService{
             $modificar=DetallesConfiguracionAdmin::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "descripcion" => strtoupper($dconfbie->descripcion)
+                    "descripcion" => mb_strtoupper($dconfbie->descripcion, "UTF-8")
                     );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
