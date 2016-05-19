@@ -26,14 +26,7 @@ class UnidadAdministrativa extends Model{
 
  /* Validaciones */
  public function validation()
-    {
-
-        $this->validate(new PresenceOf(
-            array(
-                "field" => "descripcion",
-                "message" => "Ingrese una descripción"
-                )
-            ));        
+    {    
 
        $this->validate(new Uniqueness(
             array(

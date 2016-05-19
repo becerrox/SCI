@@ -1,12 +1,14 @@
 <?php
+
 class UnidadTrabajoService{
+
     public function listar($query){
 
           if(empty($query))
              $unidadTrabajo=UnidadTrabajo::find();
           else
           {
-            $unidadTrabajo=UnidadTrabajo::find(
+            $unidadTrabajo = UnidadTrabajo::find(
                 array(
                     arrayToSQLQuery($query),
                     "bind" => $query)
@@ -14,17 +16,18 @@ class UnidadTrabajoService{
           }
 
       if(count($unidadTrabajo->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de unidadTrabajo");
+            return array("status" => 404, "mensaje" => "No hay registros de UnidadTrabajo");
       }else{
             return array("status" => 200, "mensaje" =>$unidadTrabajo->toArray());
       }
     }
-        public function nuevo($uniad){
+
+        public function nuevo($unitra){
             $unidadTrabajo=new UnidadTrabajo();
             $data=array(
-                "codigo" => $uniad->codigo,
-                "descripcion" => $uniad->descripcion
-                );
+                "descripcion" => $unitra->descripcion
+            );
+
             if($unidadTrabajo->save($data)){
                     return array("status" => 201, "mensaje" => $data);
             }else{
@@ -36,13 +39,13 @@ class UnidadTrabajoService{
             }
         }
 
-        public function modificar($id,$uniad){
+        public function modificar($id,$unitra){
             $modificar=UnidadTrabajo::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "codigo" => $uniad->codigo,
-                    "descripcion" => $uniad->descripcion
-                    );
+                    "descripcion" => $unitra->descripcion
+                );
+
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
                 }
@@ -62,10 +65,11 @@ class UnidadTrabajoService{
             $unidadTrabajo=UnidadTrabajo::find($id);
             if(count($unidadTrabajo)){
                 $unidadTrabajo->delete();
-                return array("status" => 200, "mensaje" => 'unidadTrabajo Eliminado');
+                return array("status" => 200, "mensaje" => 'UnidadTrabajo Eliminado');
             }else{
                 return array("status"=>404, "mensaje"=> "El registro intenta modificar no existe");
-            }
-       }
+           }
+     }
+
 }
 ?>

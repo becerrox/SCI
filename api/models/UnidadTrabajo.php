@@ -28,13 +28,6 @@ class UnidadTrabajo extends Model{
  public function validation()
     {
 
-        $this->validate(new PresenceOf(
-            array(
-                "field" => "descripcion",
-                "message" => "Ingrese una descripción"
-                )
-            ));        
-
        $this->validate(new Uniqueness(
             array(
                 "field"  => "descripcion",

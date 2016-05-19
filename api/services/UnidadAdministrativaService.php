@@ -21,12 +21,12 @@ class UnidadAdministrativaService{
     }
         public function nuevo($uniad){
             $unidadAdministrativa=new UnidadAdministrativa();
-            $data=array(
-                "codigo" => $uniad->codigo,
-                "descripcion" => $uniad->descripcion
-                );
+
+                $data=array(
+                    "descripcion" => $uniad->descripcion
+                    );
             if($unidadAdministrativa->save($data)){
-                    return array("status" => 201, "mensaje" => $data);
+                    return array("status" => 201, "mensaje" => $return);
             }else{
                 $errors = array();
                 foreach ($unidadAdministrativa->getMessages() as $message) {

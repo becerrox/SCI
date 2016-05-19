@@ -22,8 +22,9 @@ class ConfiguracionAdminService{
         public function nuevo($confeq){
             $configuracionAdmin=new ConfiguracionAdmin();
             $data=array(
+                "tipo" => $confeq->tipo,
                 "descripcion" => $confeq->descripcion,
-                "tipo" => $confeq->tipo
+                "status" => 1
             );
             if($configuracionAdmin->save($data)){
                     return array("status" => 201, "mensaje" => $data);

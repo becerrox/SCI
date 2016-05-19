@@ -20,7 +20,7 @@ class ConfiguracionEquipoService{
       }
     }
         public function nuevo($confeq){
-            $configuracionEquipo=new configuracionEquipo();
+            $configuracionEquipo=new ConfiguracionEquipo();
             $data=array(
                 "descripcion" => $confeq->descripcion,
                 "tipo" => $confeq->tipo
