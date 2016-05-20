@@ -10,7 +10,9 @@ caption, th { text-align:left }
 h1, h2, h3, h4, h5, h6 {font-weight:normal;}
 q:before, q:after { content:''}
 strong { font-weight: bold }
+tr,th{padding: 0 20px;}
 em { font-style: sans-serif }
+
 .sans-serif { font-style: italic; }
 .aligncenter { display:block; margin:0 auto; }
 .alignleft { float:left; margin:10px; }

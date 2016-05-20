@@ -60,7 +60,7 @@ background: none;
 
 }
 #solvencias{
-  text-align: center;
+  text-align: left;
   top:10%;
   position: absolute;
   left:10%;
@@ -95,7 +95,10 @@ background: none;
    bottom: 0;
    top: 530px;
 }
-
+.tabla{margin-left: 20%;}
+.tabla tr, .tabla td{
+  padding: 0 50px;
+}
 #pie2 p{	
 	text-align: center;
 	font-size: 9px;
