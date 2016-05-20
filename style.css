@@ -29,8 +29,8 @@ h1{text-transform: uppercase;}
 img.alignleft, img.alignright, img.aligncenter {
     margin-bottom: 11px;
 }
-.capitalize{
-  text-transform: capitalize;
+.uppercase{
+  text-transform: uppercase;
 }
 .alignleft, img.alignleft{
 display: inline;

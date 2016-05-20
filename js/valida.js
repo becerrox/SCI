@@ -416,7 +416,7 @@ previo=rbutton;
           var unidad_admin = document.getElementById('unidad_admin').value;
           var unidad_trabajo = document.getElementById('unidad_trabajo').value;
           var responsable = document.getElementById('responsable').value;
-          var estatus_uso_bien = document.getElementById('estatus_uso_bien').value;
+          var estadoUsoEquipo = document.getElementById('estadoUsoEquipo').value;
           var caracteristicas = document.getElementById('caracteristicas').value;
           var observaciones = document.getElementById('observaciones').value;
           var serialSim = document.getElementById('serialSim').value;
@@ -425,7 +425,7 @@ previo=rbutton;
           var planCelular = document.getElementById('planCelular').value;
 
 
-          if(descripcion==""){
+          if(descripcion=="0"){
             $('#alert').html('Debes ingresar el campo tipo de equipo').slideDown(500);
             $('#descripcion').focus();
             return false;
@@ -433,7 +433,7 @@ previo=rbutton;
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(marca==""){
+          if(marca=="0"){
             $('#alert').html('Debes ingresar el campo marca').slideDown(500);
             $('#marca').focus();
             return false;
@@ -449,7 +449,7 @@ previo=rbutton;
           else{
             $('#alert').html('').slideUp(300);
           }
-          if(modelo==""){
+          if(modelo=="0"){
             $('#alert').html('Debes ingresar el campo modelo').slideDown(500);
             $('#modelo').focus();
             return false;
@@ -497,9 +497,9 @@ previo=rbutton;
           else{
             $('#alert').html('').slideUp(300);
           }
-         if(estatus_uso_bien=="0"){
+         if(estadoUsoEquipo=="0"){
             $('#alert').html('Debes seleccionar el campo estatus').slideDown(500);
-            $('#estatus_uso_bien').focus();
+            $('#estadoUsoEquipo').focus();
             return false;
           }
           else{

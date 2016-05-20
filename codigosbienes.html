@@ -32,9 +32,9 @@
          <form id="formNuevaConfig" class="col-md-6 form-group bloque">
           <h3>Registrar Código de Bien</h3>    
           <label>Número de Bien</label>
-          <input type="text" name="numero_bien" id="numero_bien" class="form-control-2" data-toggle="tooltip" title="Número del Bien a agregar" onclick="cursorfinal()" value="2-0">
+          <input type="text" name="numero_bien" id="numero_bien" class="form-control-2" data-toggle="tooltip" title="Número del Bien a agregar" onclick="cursorfinal()" onKeyPress="return soloNumerosCod(event)" value="2-">
           <label>Descripción</label>
-          <input type="text" name="descripcion" id="descripcion" class="form-control-2" data-toggle="tooltip" title="Ej: 2-01"><br>
+          <input type="text" name="descripcion" id="descripcion" class="form-control-2 uppercase" data-toggle="tooltip" title="Ej: EQUIPOS TECNOLÓGICOS, OBRAS DE ARTE"><br>
           <button id= "btnGuardarNuevaCongif" type="button" class="btn" onclick="">Guardar</button>                           
          </form> <!--FIN Registro de Nueva Configuración-->        
          <form class="form-group bloque col-md-6">
@@ -54,7 +54,7 @@
     </section>
     <footer id="pie_de_pagina" class="hidden-print">
       <div id="pie3" class="text-center col-md-12">
-            <p>Sistema realizado bajo normas y procedimientos de la <br> Superintendencia de Bienes Públicos (SUDEBIP)publicado en  Gaceta  Oficial<br>N° 40.120 de fecha 28/02/2013
+            <p>SSistema realizado bajo normas y procedimientos de la <br> Superintendencia de Bienes Públicos (SUDEBIP).Publicado en  Gaceta  Oficial<br>N° 40.120 de fecha 28/02/2013.<br>Desarrollado por el Departamento de Telecomunicaciones de TRANSBAR,C.A.
           </p>
       </div>  
     </footer>

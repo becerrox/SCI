@@ -19,7 +19,7 @@ body img{
   z-index:6;
   text-align: center;
   }
-#inventariogeneral{
+#inventariogeneral , #inventariointerno{
   top:10%;
   position: absolute;
   z-index:6;

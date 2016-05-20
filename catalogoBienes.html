@@ -33,7 +33,7 @@
             <label>Cód.Categoría General</label>
             <input name="codigo" id="codigo" maxlength="10" type="text" class="form-control-2" onKeyPress="return soloNumerosCod(event)" data-toggle="tooltip" data-placement="top" title="Debes ingresar un Código General">
             <label>Descripción</label>
-            <input name="descripcion" id="descripción" type="text" class="form-control-2" onKeyPress="return soloLetras(event)">
+            <input name="descripcion" id="descripción" type="text" class="form-control-2 uppercase" onKeyPress="return soloLetras(event)">
             <button id= "btnGuardarCatgen" type="button" class="btn icon-save" onclick="Validar_cb_1()"></button>
           </form>
           <form id="formSubcat" class="form-group bloque">
@@ -44,7 +44,7 @@
               <label>Cód.Sub-Categoría</label>
               <input name="codigo" id="codigo" maxlength="10" type="text" class="form-control-2" onKeyPress="return soloNumerosCod(event)">
               <label>Descripción</label>
-              <input name="descripcion" id="descripción" type="text" class="form-control-2"  onKeyPress="return soloLetras(event)">
+              <input name="descripcion" id="descripción" type="text" class="form-control-2 uppercase"  onKeyPress="return soloLetras(event)">
               <button id= "btnGuardarSubcat" type="button" class="btn icon-save" onclick="Validar_cb_2()"></button>
           </form>
           <form id="formCatesp" class="bloque form-group">
@@ -55,7 +55,7 @@
               <label>Cód.Categoría Específica</label>
               <input name="codigo" maxlength="10" type="text" class="form-control-2" id="codigo" onKeyPress="return soloNumerosCod(event)">
               <label>Descripción</label>
-              <input name="descripcion" type="text" class="form-control-2" id="descripcion" onKeyPress="return soloLetras(event)">
+              <input name="descripcion" type="text" class="form-control-2 uppercase" id="descripcion" onKeyPress="return soloLetras(event)">
               <button id= "btnGuardarCatesp" type="button" class="btn icon-save" onclick="Validar_cb_3()"></button>
           </form>         
         
@@ -64,16 +64,11 @@
           <button id= "btnModificar" type="button" class="btn" onclick="">Modificar</button>
           <button id= "btnEliminar" type="button" class="btn" onclick="">Eliminar</button>
       </div> -->
-       <form name="buscarBien" id="buscarBien" class="form-group bloque col-md-offset-5 col-sm-offset-4 col-xs-offset-12">
-            <h3>Busqueda por Código</h3>            
-            <select type="text" class="form-control-2" id="buscar" data-toggle="tooltip" title="Buscar item a Modificar o Eliminar"></select>
-            <button type="button" class="btn icon-search"></button> 
-          </form>
-        </div> <!-- FIN CONTENEDOR-->       
+      </div> <!-- FIN CONTENEDOR-->       
     </section>  
 <footer id="pie_de_pagina" class="hidden-print">
     <div id="pie3" class="text-center col-md-12">
-          <p>Sistema realizado bajo normas y procedimientos de la <br> Superintendencia de Bienes Públicos (SUDEBIP).Publicado en  Gaceta  Oficial<br>N° 40.120 de fecha 28/02/2013
+          <p>Sistema realizado bajo normas y procedimientos de la <br> Superintendencia de Bienes Públicos (SUDEBIP).Publicado en  Gaceta  Oficial<br>N° 40.120 de fecha 28/02/2013.<br>Desarrollado por el Departamento de Telecomunicaciones de TRANSBAR,C.A.
         </p>
       </div>  
 </footer>    
