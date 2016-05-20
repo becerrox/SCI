@@ -5,7 +5,7 @@ function valida_login(){
     var contraseña = document.getElementById("contraseña").value;         
 
     if(nombre=="") {
-    $('#alert').html('Debes Ingresar un usuario').slideDown(500);
+    $('#alert').html('Debes Ingresar el campo usuario').slideDown(500);
     $('#username').focus();
     return false;
               }
@@ -13,7 +13,7 @@ function valida_login(){
       $('#alert').html('').slideUp(300);
         }
     if(contraseña=="") {
-    $('#alert').html('Debes Ingresar una contraseña').slideDown(500);
+    $('#alert').html('Debes Ingresar el campo contraseña').slideDown(500);
     $('#contraseña').focus();
     return false;
               }
@@ -30,7 +30,7 @@ function busqueda_eq(){
     var equipo = document.getElementById("descripcion").value;
 
     if (equipo=="") {
-    $('#alert').html('Debes Ingresar una Equipo').slideDown(500);
+    $('#alert').html('Debes Ingresar el campo Equipo').slideDown(500);
     $('#descripcion').focus();
     return false;
               }
@@ -43,7 +43,7 @@ function busqueda_res(){
     var responsable = document.getElementById('responsable').value;
 
     if (responsable=="") {
-    $('#alert').html('Debes ingresar un responsable').slideDown(500);
+    $('#alert').html('Debes ingresar el campo responsable').slideDown(500);
     $('#responsable').focus();
     return false;
               }
@@ -117,7 +117,7 @@ function Validar_re(){
           var nivel = document.getElementById('nivel').value;
 
           if(usuario==""){
-            $('#alert').html('Debes ingresar un Usuario').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Usuario').slideDown(500);
             $('#usuario').focus();
             return false;
           }
@@ -133,7 +133,7 @@ function Validar_re(){
             $('#alert').html('').slideUp(300);
           }
           if(pass1==""){
-            $('#alert').html('Debes ingresar una contraseña').slideDown(500);
+            $('#alert').html('Debes ingresar el campo contraseña').slideDown(500);
             $('#pass1').focus();
             return false;
           }
@@ -202,7 +202,7 @@ if(fecha){ // calculamos la edad
         }
       }
           if(ci_per==""){
-            $('#alert').html('Debes ingresar una Cédula').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Cédula').slideDown(500);
             $('#ci_per').focus();
             return false;
           }
@@ -240,7 +240,7 @@ if(fecha){ // calculamos la edad
           }
     }         
       if(cargo=="0"){
-            $('#alert').html('Debes seleccionar un cargo').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo cargo').slideDown(500);
             $('#cargo').focus();
             return false;
           }
@@ -248,7 +248,7 @@ if(fecha){ // calculamos la edad
             $('#alert').html('').slideUp(300);
           }   
      if(unidad_trabajo=="0"){
-            $('#alert').html('Debes seleccionar una opción').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo opción').slideDown(500);
             $('#unidad_trabajo').focus();
             return false;
           }
@@ -256,7 +256,7 @@ if(fecha){ // calculamos la edad
             $('#alert').html('').slideUp(300);
           }
       if(unidad_admin=="0"){
-            $('#alert').html('Debes seleccionar una opción').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo opción').slideDown(500);
             $('#unidad_admin').focus();
             return false;
           }
@@ -264,7 +264,7 @@ if(fecha){ // calculamos la edad
             $('#alert').html('').slideUp(300);
           }  
      if(telf_pers==""){
-            $('#alert').html('Debes ingresar un Teléfono').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Teléfono').slideDown(500);
             $('#telf_pers').focus();
             return false;
           }
@@ -272,7 +272,7 @@ if(fecha){ // calculamos la edad
             $('#alert').html('').slideUp(300);
           } 
      if(correo==""){
-            $('#alert').html('Debes ingresar un correo').slideDown(500);
+            $('#alert').html('Debes ingresar el campo correo').slideDown(500);
             $('#correo').focus();
             return false;
           }
@@ -280,7 +280,7 @@ if(fecha){ // calculamos la edad
             $('#alert').html('').slideUp(300);
           }
           if(Validador(correo)==false){
-            $('#alert').html('Ingresa un correo válido').slideDown(500);
+            $('#alert').html('Ingresa el campo correo válido').slideDown(500);
             $('#correo').focus();
             return false;
           }
@@ -298,7 +298,7 @@ if(fecha){ // calculamos la edad
           var nivel = document.getElementById('nivel').value;
 
           if(usuario==""){
-            $('#alert2').html('Debes ingresar un Usuario').slideDown(500);
+            $('#alert2').html('Debes ingresar el campo Usuario').slideDown(500);
             $('#usuario').focus();
             return false;
           }
@@ -314,7 +314,7 @@ if(fecha){ // calculamos la edad
             $('#alert').html('').slideUp(300);
           }
           if(pass1==""){
-            $('#alert2').html('Debes ingresar una contraseña').slideDown(500);
+            $('#alert2').html('Debes ingresar el campo contraseña').slideDown(500);
             $('#pass1').focus();
             return false;
           }
@@ -398,7 +398,7 @@ previo=rbutton;
         changeYear:true,
       });
     })
-// Habilita y deshabilita elementos de un formulario
+// Habilita y deshabilita elementos de el campo formulario
     function habilita(){
         $(".inputText").removeAttr("disabled");
     }
@@ -426,7 +426,7 @@ previo=rbutton;
 
 
           if(descripcion==""){
-            $('#alert').html('Debes ingresar un tipo de equipo').slideDown(500);
+            $('#alert').html('Debes ingresar el campo tipo de equipo').slideDown(500);
             $('#descripcion').focus();
             return false;
           }
@@ -434,7 +434,7 @@ previo=rbutton;
             $('#alert').html('').slideUp(300);
           }
           if(marca==""){
-            $('#alert').html('Debes ingresar una marca').slideDown(500);
+            $('#alert').html('Debes ingresar el campo marca').slideDown(500);
             $('#marca').focus();
             return false;
           }
@@ -442,7 +442,7 @@ previo=rbutton;
             $('#alert').html('').slideUp(300);
           }
           if(serial==""){
-            $('#alert').html('Debes ingresar un serial').slideDown(500);
+            $('#alert').html('Debes ingresar el campo serial').slideDown(500);
             $('#serial').focus();
             return false;
           }
@@ -450,7 +450,7 @@ previo=rbutton;
             $('#alert').html('').slideUp(300);
           }
           if(modelo==""){
-            $('#alert').html('Debes ingresar un modelo').slideDown(500);
+            $('#alert').html('Debes ingresar el campo modelo').slideDown(500);
             $('#modelo').focus();
             return false;
           }
@@ -458,7 +458,7 @@ previo=rbutton;
             $('#alert').html('').slideUp(300);
           }
           if(color=="0"){
-            $('#alert').html('Debes seleccionar un color').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo color').slideDown(500);
             $('#color_bien').focus();
             return false;
           }
@@ -466,7 +466,7 @@ previo=rbutton;
             $('#alert').html('').slideUp(300);
           }
         if(estado=="0"){
-            $('#alert').html('Debes seleccionar un estado').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo estado').slideDown(500);
             $('#estado').focus();
             return false;
           }
@@ -474,7 +474,7 @@ previo=rbutton;
             $('#alert').html('').slideUp(300);
           }      
         if(unidad_admin=="0"){
-            $('#alert').html('Debes seleccionar una opción').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo opción').slideDown(500);
             $('#unidad_admin').focus();
             return false;
           }
@@ -482,7 +482,7 @@ previo=rbutton;
             $('#alert').html('').slideUp(300);
           } 
         if(unidad_trabajo=="0"){
-            $('#alert').html('Debes seleccionar una opción').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo opción').slideDown(500);
             $('#unidad_trabajo').focus();
             return false;
           }
@@ -490,7 +490,7 @@ previo=rbutton;
             $('#alert').html('').slideUp(300);
           } 
         if(responsable=="0"){
-            $('#alert').html('Debes seleccionar un responsable').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo responsable').slideDown(500);
             $('#responsable').focus();
             return false;
           }
@@ -498,7 +498,7 @@ previo=rbutton;
             $('#alert').html('').slideUp(300);
           }
          if(estatus_uso_bien=="0"){
-            $('#alert').html('Debes seleccionar un estatus').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo estatus').slideDown(500);
             $('#estatus_uso_bien').focus();
             return false;
           }
@@ -524,7 +524,7 @@ previo=rbutton;
 if((equipo=="Celular") || (equipo=="celular")){
 
         if(serialSim==""){
-            $('#alert').html('Debes ingresar un serial').slideDown(500);
+            $('#alert').html('Debes ingresar el campo serial').slideDown(500);
             $('#serialSim').focus();
             return false;
           }
@@ -532,7 +532,7 @@ if((equipo=="Celular") || (equipo=="celular")){
             $('#alert').html('').slideUp(300);
           }
         if(numeroCelular==""){
-            $('#alert').html('Debes ingresar un número').slideDown(500);
+            $('#alert').html('Debes ingresar el campo número').slideDown(500);
             $('#numeroCelular').focus();
             return false;
           }
@@ -548,7 +548,7 @@ if((equipo=="Celular") || (equipo=="celular")){
             $('#alert').html('').slideUp(300);
           }
         if(planCelular==""){
-            $('#alert').html('Debes ingresar un Plan').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Plan').slideDown(500);
             $('#planCelular').focus();
             return false;
           }
@@ -565,7 +565,7 @@ else{
  function Validar_busq(){
   var serial = document.getElementById('serial').value;
     if(serial==""){
-            $('#alert').html('Debes ingresar un serial').slideDown(500);
+            $('#alert').html('Debes ingresar el campo serial').slideDown(500);
             $('#serial').focus();
             return false;
           }
@@ -598,7 +598,7 @@ else{
 
 
           if(desc==""){
-            $('#alert').html('Debes introducir una descripción').slideDown(500);
+            $('#alert').html('Debes introducir el campo descripción').slideDown(500);
             $('#descripcion').focus();
             return false;
           }
@@ -606,7 +606,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
           if(catgen=="0"){
-            $('#alert').html('Debes seleccionar una Categoría General').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo Categoría General').slideDown(500);
             $('#catgen').focus();
             return false;
           }
@@ -614,7 +614,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
           if(subcat=="0"){
-            $('#alert').html('Debes seleccionar una Sub-Categoría').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo Sub-Categoría').slideDown(500);
             $('#subcat').focus();
             return false;
           }
@@ -622,7 +622,7 @@ else{
             $('#alert').html('').slideUp(300);
           } 
           if(catesp=="0"){
-            $('#alert').html('Debes seleccionar una Categoría Específica').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo Categoría Específica').slideDown(500);
             $('#catesp').focus();
             return false;
           }
@@ -630,7 +630,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
           if(estatus=="0"){
-            $('#alert').html('Debes seleccionar un tipo de estatus').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo tipo de estatus').slideDown(500);
             $('#estatus_uso_bien').focus();
             return false;
           }
@@ -638,7 +638,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
           if(marca==""){
-            $('#alert').html('Debes ingresar una marca').slideDown(500);
+            $('#alert').html('Debes ingresar el campo marca').slideDown(500);
             $('#marca').focus();
             return false;
           }
@@ -646,7 +646,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
            if(modelo==""){
-            $('#alert').html('Debes ingresar un modelo').slideDown(500);
+            $('#alert').html('Debes ingresar el campo modelo').slideDown(500);
             $('#modelo').focus();
             return false;
           }
@@ -655,7 +655,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
           if(serial==""){
-            $('#alert').html('Debes ingresar un serial').slideDown(500);
+            $('#alert').html('Debes ingresar el campo serial').slideDown(500);
             $('#serial').focus();
             return false;
           }
@@ -663,7 +663,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
         if(componentes=="0"){
-            $('#alert').html('Debes seleccionar un componente').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo componente').slideDown(500);
             $('#tipo_comp').focus();
             return false;
           }
@@ -671,7 +671,7 @@ else{
             $('#alert').html('').slideUp(300);
           }        
         if(color=="0"){
-            $('#alert').html('Debes seleccionar un color').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo color').slideDown(500);
             $('#colores').focus();
             return false;
           }
@@ -679,7 +679,7 @@ else{
             $('#alert').html('').slideUp(300);
           }          
         if(n_bien==""){
-            $('#alert').html('Debes ingresar un número de bien').slideDown(500);
+            $('#alert').html('Debes ingresar el campo número de bien').slideDown(500);
             $('#num_bien').focus();
             return false;
           }
@@ -687,7 +687,7 @@ else{
             $('#alert').html('').slideUp(300);
           } 
         if(estado_bien=="0"){
-            $('#alert').html('Debes seleccionar a un estado').slideDown(500);
+            $('#alert').html('Debes seleccionar a el campo estado').slideDown(500);
             $('#estado_bien').focus();
             return false;
           }
@@ -695,7 +695,7 @@ else{
             $('#alert').html('').slideUp(300);
           }   
         if(unidades=="0"){
-            $('#alert').html('Debes seleccionar una Unidad Administrativa').slideDown(500);
+            $('#alert').html('Debes seleccionar el campo Unidad Administrativa').slideDown(500);
             $('#cat_unid_admin').focus();
             return false;
           }
@@ -704,7 +704,7 @@ else{
           } 
          
           if(unidad_trabajo==""){
-            $('#alert').html('Debes ingresar una unidad de trabajo').slideDown(500);
+            $('#alert').html('Debes ingresar el campo unidad de trabajo').slideDown(500);
             $('#unidad_trabajo').focus();
             return false;
           }
@@ -712,7 +712,7 @@ else{
             $('#alert').html('').slideUp(300);
           }           
            if(responsable_pa==""){
-            $('#alert').html('Debes ingresar un Responsable Patrimonial').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Responsable Patrimonial').slideDown(500);
             $('#responsable_pa').focus();
             return false;
           }
@@ -720,7 +720,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
            if(responsable_ad==""){
-            $('#alert').html('Debes ingresar un Responsable Administrativo').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Responsable Administrativo').slideDown(500);
             $('#responsable_ad').focus();
             return false;
           }
@@ -728,7 +728,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
           if(responsable_uso==""){
-            $('#alert').html('Debes ingresar un Responsable por Uso').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Responsable por Uso').slideDown(500);
             $('#responsable_uso').focus();
             return false;
           }
@@ -736,7 +736,7 @@ else{
             $('#alert').html('').slideUp(300);
           }          
           if(fecha1==""){
-            $('#alert').html('Debes ingresar una fecha de Inicio').slideDown(500);
+            $('#alert').html('Debes ingresar el campo fecha de Inicio').slideDown(500);
             $('#fecha1').focus();
             return false;
           }
@@ -744,7 +744,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
           if(fecha2==""){
-            $('#alert').html('Debes ingresar una fecha de Culminación').slideDown(500);
+            $('#alert').html('Debes ingresar el campo fecha de Culminación').slideDown(500);
             $('#fecha2').focus();
             return false;
           }
@@ -752,7 +752,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
           if(f_elab==""){
-            $('#alert').html('Debes ingresar una fecha de Elaboración').slideDown(500);
+            $('#alert').html('Debes ingresar el campo fecha de Elaboración').slideDown(500);
             $('#fecha4').focus();
             return false;
           }
@@ -777,7 +777,7 @@ else{
           
 
           if(codigo==""){
-            $('#alert').html('Debes ingresar un Código General').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Código General').slideDown(500);
             $('#codigo').focus();
             return false;
           }
@@ -785,7 +785,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
           if(descripcion==""){
-            $('#alert').html('Debes ingresar una Descripción').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Descripción').slideDown(500);
             $('#descripción').focus();
             return false;
           }
@@ -799,7 +799,7 @@ else{
           var descripcion = document.getElementById('descripcion').value;
                  
          if(codigo==""){
-            $('#alert').html('Debes ingresar una Sub-Categoría').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Sub-Categoría').slideDown(500);
             $('#codigo').focus();
             return false;
           }
@@ -807,7 +807,7 @@ else{
             $('#alert').html('').slideUp(300);
           }
           if(descripcion==""){
-            $('#alert').html('Debes ingresar una descripción').slideDown(500);
+            $('#alert').html('Debes ingresar el campo descripción').slideDown(500);
             $('#descripcin').focus();
             return false;
           }
@@ -822,7 +822,7 @@ function Validar_cb_3(){
 
           
         if(codigo==""){
-            $('#alert').html('Debes ingresar una Categoría').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Categoría').slideDown(500);
             $('#codigo').focus();
             return false;
           }
@@ -830,7 +830,7 @@ function Validar_cb_3(){
             $('#alert').html('').slideUp(300);
           }
           if(descripcion==""){
-            $('#alert').html('Debes ingresar una Descripción').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Descripción').slideDown(500);
             $('#descripcion').focus();
             return false;
           }
@@ -845,7 +845,7 @@ function Validar_clave(){
 
           
         if(pass==""){
-            $('#alert').html('Debes ingresar una Contraseña').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Contraseña').slideDown(500);
             $('#pass').focus();
             return false;
           }
@@ -875,7 +875,7 @@ function Validar_clave(){
 function Validar_cat_con(){
   var descrip = document.getElementById('descrip').value;
   if(descrip==""){
-            $('#alert').html('Debes ingresar una Descripción').slideDown(500);
+            $('#alert').html('Debes ingresar el campo Descripción').slideDown(500);
             $('#descrip').focus();
             return false;
           }
