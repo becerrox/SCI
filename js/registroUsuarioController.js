@@ -74,7 +74,7 @@ $(document).ready(function()
         });           
 
         //Categoría de Unidades Administrativas 
-        getConfiguracionBy("?tipo=Categoría de Unidades Administrativas").then(function(data){
+        getUnidadAdministrativaBy('').then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -84,12 +84,22 @@ $(document).ready(function()
         })
         
         //Unidad de Trabajo
-        getConfiguracionBy("?tipo=Unidad de Trabajo").then(function(data){
+        getUnidadTrabajoBy('').then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
                 alias : "descripcion",
                 element : $("#unidad_trabajo")
+                });
+        })                      
+
+        //Cargo
+        getConfiguracionAdminBy("?tipo=CARGO").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#cargo")
                 });
         })             
 

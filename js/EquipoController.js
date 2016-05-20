@@ -83,7 +83,7 @@ $(document).ready(function()
         })     
 
         //Estado del bien 
-        getConfiguracionBy("?tipo=Estado del Bien").then(function(data){
+        getConfiguracionBy("?tipo=ESTADO DEL BIEN").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -93,27 +93,26 @@ $(document).ready(function()
         })
 
         //Categoría de Unidades Administrativas 
-        getConfiguracionBy("?tipo=Categoría de Unidades Administrativas").then(function(data){
+        getUnidadAdministrativaBy('').then(function(data){
             jsonToSelect({        
                 data : data,
-                value : "descripcion",
+                value : "id",
                 alias : "descripcion",
                 element : $("#unidad_admin")
                 });
         })
-
         //Unidad de Trabajo
-        getConfiguracionBy("?tipo=Unidad de Trabajo").then(function(data){
+        getUnidadTrabajoBy('').then(function(data){
             jsonToSelect({        
                 data : data,
-                value : "descripcion",
+                value : "id",
                 alias : "descripcion",
                 element : $("#unidad_trabajo")
                 });
-        })           
+        })                
 
         //Estatus de Uso del Bien 
-        getConfiguracionBy("?tipo=Estatus de Uso del Bien").then(function(data){
+        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -123,7 +122,7 @@ $(document).ready(function()
         })           
         
         //Descripción
-        getConfiguracionEquipoBy("?tipo=DESCRIPCIóN").then(function(data){
+        getConfiguracionEquipoBy("?tipo=DESCRIPCIÓN").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",

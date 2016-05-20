@@ -23,7 +23,7 @@ class UnidadAdministrativaService{
             $unidadAdministrativa=new UnidadAdministrativa();
 
             $data=array(
-                "descripcion" => $uniad->descripcion
+                "descripcion" => mb_strtoupper($uniad->descripcion, "UTF-8")
             );
             if($unidadAdministrativa->save($data)){
                     $return = ($unidadAdministrativa->toArray());
@@ -41,7 +41,7 @@ class UnidadAdministrativaService{
             $modificar=UnidadAdministrativa::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "descripcion" => strtoupper($uniad->descripcion)
+                    "descripcion" => mb_strtoupper($uniad->descripcion, "UTF-8")
                     );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);

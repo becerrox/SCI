@@ -24,9 +24,9 @@ class ConfiguracionService{
         public function nuevo($conf){
             $configuracion=new Configuracion();
             $data=array(
-                  "codigo" => strtoupper($conf->codigo),
-                  "descripcion" => strtoupper($conf->descripcion),
-                  "tipo" => strtoupper($conf->tipo)
+                  "codigo" => mb_strtoupper($conf->codigo, "UTF-8"),
+                  "descripcion" => mb_strtoupper($conf->descripcion, "UTF-8"),
+                  "tipo" => mb_strtoupper($conf->tipo, "UTF-8")
             );
             if($configuracion->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -43,9 +43,9 @@ class ConfiguracionService{
             $modificar=Configuracion::find($id);
             if(count($modificar)>0){
                 $data=array(
-                  "codigo" => strtoupper($conf->codigo),
-                  "descripcion" => strtoupper($conf->descripcion),
-                  "tipo" => strtoupper($conf->tipo)
+                  "codigo" => mb_strtoupper($conf->codigo, "UTF-8"),
+                  "descripcion" => mb_strtoupper($conf->descripcion, "UTF-8"),
+                  "tipo" => mb_strtoupper($conf->tipo, "UTF-8")
                 );
 
                 if($modificar->update($data)){

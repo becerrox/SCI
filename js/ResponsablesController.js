@@ -1,4 +1,4 @@
-// Controloador de la vista de registro de usuario
+// Controlador de la vista de registro de equipo
 
 if(sessionStorage.dataUsuario==undefined)
 {
@@ -34,58 +34,55 @@ $(document).ready(function()
                     }                
         });        
 
-      $("#guardarUserPersonal").click(function()
+        $("#guardarUserPersonal").click(function()
         {
-            frmUsuario = $("#formPersonal");
-            dataForm = getFormData(frmUsuario);
-            dataForm.status=1;
-            registrarResponsables(dataForm).then(function(data){
-                  console.log("funciona");   
-                });  
-            });
-
-      $("#modificarUserPersonal").click(function()
-        {              
             frm = $("#formPersonal");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            modificarResponsables(dataForm,id_responsable_editar).then(function(data){   
-                  console.log("funciona");
-                });  
-        });     
+            registrarResponsables(dataForm).then(function(data){ 
+            });  
+        });
 
-        $("#buscarUser").click(function(){
-            idUsuario = $
+        $("#modificarUserPersonal").click(function()
+        {
+            frm = $("#formPersonal");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            modificarResponsables(dataForm,id_responsable_editar);
+        });
+
+        $("#eliminarUserPersonal").click(function()
+        {
+            frm = $("#formPersonal");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            eliminarResponsables(dataForm,id_responsable_editar);
+        });
+
+        $("#buscarPersonal").click(function(){
+            idBien = $
             numero = $("#buscar").val();
-            getResponsableslBy("?ci_per="+numero).then(function(data){
+            getBienesBy("?cedula="+numero).then(function(data){
                 id_responsable_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
                     form : "#formPersonal"
                 });
             });
-        });           
+        }); 
+
+        /* Cargando datas de la api a los selects  */
 
         //Categoría de Unidades Administrativas 
         getUnidadAdministrativaBy('').then(function(data){
             jsonToSelect({        
                 data : data,
-                value : "codigo",
+                value : "descripcion",
                 alias : "descripcion",
                 element : $("#unidad_admin")
                 });
         })
         
-        //Cargo
-        getConfiguracionAdminBy("?tipo=cargo").then(function(data){
-            jsonToSelect({        
-                data : data,
-                value : "descripcion",
-                alias : "descripcion",
-                element : $("#cargo")
-                });
-        })
-
         //Unidad de Trabajo
         getUnidadTrabajoBy('').then(function(data){
             jsonToSelect({        
@@ -96,17 +93,16 @@ $(document).ready(function()
                 });
         })             
 
-
-        getPersonalBy('').then(function(data){
-            for(personal in data){
-                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
-                data[personal].ci = data[personal].ci_per;
-            }
+        //Cargo
+        getConfiguracionAdminBy("?tipo=CARGO").then(function(data){
             jsonToSelect({        
-                 data : data,
-                 value : "ci",
-                 alias : "nombreApellido",
-                 element : $("#buscar")              
-                 });                         
-         })                
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#cargo")
+                });
+        })             
+
+
 });
+

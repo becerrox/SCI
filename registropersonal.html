@@ -18,7 +18,7 @@
    <link rel="stylesheet" href="css/bootstrap-theme.css">  
    <script src="js/jquery.min.js"></script>
    <script src="js/jquery.js"></script>   
-   <script src="js/registroResponsableController.js" type="text/javascript"></script>
+   <script src="js/ResponsablesController.js" type="text/javascript"></script>
     <script src="js/valida.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/services.js"></script>
     <script src="js/tooltips.js" type="text/javascript"></script>
@@ -38,7 +38,7 @@
       <div id="contenedor" class="row text-center">
         <div class="bloque col-md-6 col-sm-6 col-xs-12">        
           <label>Cédula:</label><br>      
-          <input name="ci_per" maxlength="8" type="text" class="form-control-2"  id="ci_per" placeholder="00000000" onKeyPress="return soloNumeros(event)"/>      
+          <input name="cedula" maxlength="8" type="text" class="form-control-2"  id="cedula" placeholder="00000000" onKeyPress="return soloNumeros(event)"/>      
           <label>Nombres:</label>
           <input name="nombres" maxlength="30" type="text" class="form-control-2 capitalize"  id="nombres" title="Ej: María Andrea" onkeypress="return soloLetras(event)"/>
           <label>Apellidos:</label>
@@ -70,7 +70,7 @@
       <form class=" form-group col-md-12">      
         <label>Buscar</label>
         <input type="text" class="form-control-2" id="buscar" data-placement="top" title="Ingrese Cédula de la Persona">
-        <button type="button" id="buscarEquipo" class="btn icon-search"></button>
+        <button type="button" id="buscarPersonal" class="btn icon-search"></button>
       </form>
     </div><!-- Fin Botonera BUSCAR--> 
   </section><!-- Seccion Principal--> 

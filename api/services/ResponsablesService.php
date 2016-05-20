@@ -22,14 +22,14 @@ class ResponsablesService{
         public function nuevo($resp){
             $responsables=new Responsables();
             $data=array(
-                "cedula" => strtoupper($resp->cedula),
-                "nombres" => strtoupper($resp->nombres),
-                "apellidos" => strtoupper($resp->apellidos),
-                "cargo" => strtoupper($resp->cargo),
-                "unidad_trabajo" => strtoupper($resp->unidad_trabajo),
-                "unidad_admin" => strtoupper($resp->unidad_admin),                
-                "fecha_creacion" => date("Y-m-D h:i:s"),
-                "fecha_modif" => date("Y-m-D h:i:s"),
+                "cedula" => mb_strtoupper($resp->cedula, "UTF-8"),
+                "nombres" => mb_strtoupper($resp->nombres, "UTF-8"),
+                "apellidos" => mb_strtoupper($resp->apellidos, "UTF-8"),
+                "cargo" => mb_strtoupper($resp->cargo, "UTF-8"),
+                "unidad_trabajo" => mb_strtoupper($resp->unidad_trabajo, "UTF-8"),
+                "unidad_admin" => mb_strtoupper($resp->unidad_admin, "UTF-8"),                
+                "fecha_creacion" => date("Y-m-d h:i:s"),
+                "fecha_modif" => date("Y-m-d h:i:s"),
                 "status" => 1
             );
             if($responsables->save($data)){
@@ -47,12 +47,12 @@ class ResponsablesService{
             $modificar=Responsables::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "cedula" => strtoupper($resp->cedula),
-                    "nombres" => strtoupper($resp->nombres),
-                    "apellidos" => strtoupper($resp->apellidos),
-                    "cargo" => strtoupper($resp->cargo),
-                    "unidad_trabajo" => strtoupper($resp->unidad_trabajo),
-                    "fecha_modif" => date("Y-m-D h:i:s"),
+                    "cedula" => mb_strtoupper($resp->cedula, "UTF-8"),
+                    "nombres" => mb_strtoupper($resp->nombres, "UTF-8"),
+                    "apellidos" => mb_strtoupper($resp->apellidos, "UTF-8"),
+                    "cargo" => mb_strtoupper($resp->cargo, "UTF-8"),
+                    "unidad_trabajo" => mb_strtoupper($resp->unidad_trabajo, "UTF-8"),
+                    "fecha_modif" => date("Y-m-d h:i:s"),
                     "status" => 1
                 );
                 if($modificar->update($data)){

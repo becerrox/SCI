@@ -26,10 +26,10 @@ class SubcatService{
             $subcat=new Subcat();
 
             $data=array(
-                "codigo" => strtoupper($scb->codigo),
-                "descripcion" => strtoupper($scb->descripcion),
-                "status" => strtoupper($scb->status),
-                "catgen" => strtoupper($scb->catgen)                
+                "codigo" => mb_strtoupper($scb->codigo, "UTF-8"),
+                "descripcion" => mb_strtoupper($scb->descripcion, "UTF-8"),
+                "status" => mb_strtoupper($scb->status, "UTF-8"),
+                "catgen" => mb_strtoupper($scb->catgen, "UTF-8")                
                 );
 
             if($subcat->save($data)){
@@ -52,9 +52,9 @@ class SubcatService{
                     $pass = $modificar[0]->pass;
                 }
                 $data=array(     
-                "codigo" => strtoupper($scb->codigo),
-                "descripcion" => strtoupper($scb->descripcion),
-                "status" => strtoupper($scb->status)
+                "codigo" => mb_strtoupper($scb->codigo, "UTF-8"),
+                "descripcion" => mb_strtoupper($scb->descripcion, "UTF-8"),
+                "status" => mb_strtoupper($scb->status, "UTF-8")
                 );
 
                 if($modificar->update($data)){

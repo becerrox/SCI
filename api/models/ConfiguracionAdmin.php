@@ -33,7 +33,7 @@ class ConfiguracionAdmin extends Model{
                 "field" => "tipo",
                 "message" => "El tipo es obligatorio"
                 )
-            ));
+            ));*/
 
         $this->validate(new PresenceOf(
             array(
@@ -48,7 +48,7 @@ class ConfiguracionAdmin extends Model{
                 "field"  => "descripcion",
                 "message" => "La descripción debe ser única"
             )
-        ));*/
+        ));
 
         if ($this->validationHasFailed() == true) {
             return false;

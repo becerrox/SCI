@@ -90,6 +90,27 @@ class Bienes extends Model{
                 )
             ));        
 
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "responsable_pa",
+                "message" => "El responsable patrimonial es obligatoria"
+                )
+            ));                 
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "responsable_ad",
+                "message" => "El responsable administrativo es obligatorio"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "responsable_uso",
+                "message" => "El responsable de uso es obligatorio"
+                )
+            ));        
+
         $this->validate(new Uniqueness(
              array(
                  "field"  => "serial",

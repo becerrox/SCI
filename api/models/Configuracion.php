@@ -42,14 +42,6 @@ class Configuracion extends Model{
                 )
             ));
 
-
-       $this->validate(new Uniqueness(
-            array(
-                "field"  => "codigo",
-                "message" => "El codigo debe ser único"
-            )
-        ));
-
         if ($this->validationHasFailed() == true) {
             return false;
         }

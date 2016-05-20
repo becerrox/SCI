@@ -104,7 +104,7 @@ $(document).ready(function()
         })
 
         //Estatus de Uso del Bien 
-        getConfiguracionBy("?tipo=ESTATUS DEL USO DEL BIEN").then(function(data){
+        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "codigo",

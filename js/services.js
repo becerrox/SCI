@@ -347,6 +347,7 @@ return new Promise(function(resolver, rechazar) {
 				confirmButtonColor: '#D85852'
 				})
 					rechazar(response);
+					console.log(response.message);
 				}
 			});
 	 });	

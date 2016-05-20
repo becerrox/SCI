@@ -26,9 +26,9 @@ class CatgenService{
             $catgen=new Catgen();
 
             $data=array(
-                "codigo" => strtoupper($cgb->codigo),
-                "descripcion" => strtoupper($cgb->descripcion),
-                "status" => strtoupper($cgb->status)
+                "codigo" => mb_strtoupper($cgb->codigo, "UTF-8"),
+                "descripcion" => mb_strtoupper($cgb->descripcion, "UTF-8"),
+                "status" => mb_strtoupper($cgb->status, "UTF-8")
                 );
 
             if($catgen->save($data)){
@@ -51,9 +51,9 @@ class CatgenService{
                     $pass = $modificar[0]->pass;
                 }
                 $data=array(     
-                "codigo" => strtoupper($cgb->codigo),
-                "descripcion" => strtoupper($cgb->descripcion),
-                "status" => strtoupper($cgb->status)
+                "codigo" => mb_strtoupper($cgb->codigo, "UTF-8"),
+                "descripcion" => mb_strtoupper($cgb->descripcion, "UTF-8"),
+                "status" => mb_strtoupper($cgb->status, "UTF-8")
                 );
 
                 if($modificar->update($data)){

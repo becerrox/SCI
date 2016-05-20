@@ -26,13 +26,13 @@ class Equipo extends Model{
  public function validation()
     {
 
-/*        $this->validate(new PresenceOf(
+        $this->validate(new PresenceOf(
             array(
                 "field" => "serial",
                 "message" => "El serial es obligatorio"
                 )
             ));
-*/
+
         $this->validate(new PresenceOf(
             array(
                 "field" => "marca",
@@ -54,13 +54,13 @@ class Equipo extends Model{
                 )
             ));
 
- /*       $this->validate(new PresenceOf(
+        $this->validate(new PresenceOf(
             array(
                 "field" => "responsable",
                 "message" => "El responsable es obligatorio"
                 )
             ));
-*/
+
         $this->validate(new PresenceOf(
             array(
                 "field" => "estado",

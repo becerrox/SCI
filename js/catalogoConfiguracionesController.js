@@ -83,5 +83,15 @@ $(document).ready(function()
                 });
         })  
 
+        //Cargo
+        getConfiguracionBy('').then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#buscar")
+                });
+        })              
+
 });
 
