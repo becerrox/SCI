@@ -83,7 +83,6 @@ $(document).ready(function()
                 });
         })  
 
-        //Cargo
         getConfiguracionBy('').then(function(data){
             jsonToSelect({        
                 data : data,

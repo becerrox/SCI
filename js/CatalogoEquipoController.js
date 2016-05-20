@@ -90,5 +90,15 @@ $(document).ready(function()
                 });
         })  
 
+        getConfiguracionEquipoBy('').then(function(data){
+            //Despues del retorno del promise, se cargan en el select con jsonToSelect
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#buscar")
+                });
+        })          
+
 });
 

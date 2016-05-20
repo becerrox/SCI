@@ -90,5 +90,14 @@ $(document).ready(function()
                 });
         })  
 
+        getConfiguracionAdminBy('').then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#buscar")
+                });
+        })               
+
 });
 
