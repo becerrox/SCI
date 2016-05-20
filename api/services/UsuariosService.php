@@ -82,7 +82,7 @@ class UsuariosService{
             if(count($modificar)>0){
                 $data=array(                  
                     "pass" => sha1($us->pass),
-                    "primer_inicio" => 1,
+                    "primer_inicio" => $us->primer_inicio,
                     "fecha_modif" => date("Y-m-d h:i:s")
                 );
                 if($modificar->update($data)){

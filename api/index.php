@@ -80,12 +80,12 @@ $app->put("/equipos/{id:[0-9]+}",function($id) use ($app,$equipoService) {
     $data = $equipoService->modificar($id,$equipo);
     response($app,$data['mensaje'],$data['status']);
 });
-/*
-$app->put("/equipos/{id:[0-9]+}",function($id) use ($app,$equipoService) {
+
+$app->put("/equiposs/{id:[0-9]+}",function($id) use ($app,$equipoService) {
     $equipo = json_decode($app->request->getRawBody());
     $data = $equipoService->solvencia($id,$equipo);
     response($app,$data['mensaje'],$data['status']);
-});*/
+});
 
 $app->delete("/equipos/{id:[0-9]+}",function($id) use ($app,$equipoService) {
     $data = $equipoService->eliminar($id);

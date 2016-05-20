@@ -48,13 +48,6 @@ return new Promise(function(resolver, rechazar) {
 				confirmButtonColor: '#D85852'
 			})
 			},error:function(response){
-				swal({
-				title: 'Error',
-				text: 'No se pudo registrar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -80,13 +73,6 @@ function modificarEquipos(data,id)
 				confirmButtonColor: '#D85852'
 			})
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'No se pudo modificar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -100,7 +86,7 @@ function solventarEquipos(data,id)
 				type:"PUT",
 				processData: false,
 	    		contentType: 'application/json',
-				url:'api/equipos/'+id,
+				url:'api/equiposs/'+id,
 				data:JSON.stringify(data),
 				success:function(response){
 				resolver(response);
@@ -112,13 +98,6 @@ function solventarEquipos(data,id)
 				confirmButtonColor: '#D85852'
 			})
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'No se pudo solventar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -144,14 +123,7 @@ function eliminarEquipos(data,id)
 				confirmButtonColor: '#D85852'
 			})				
 				},error:function(response){
-				swal({
-				title: 'Error',
-				text: 'No se pudo modificar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
-					rechazar(response);
+						rechazar(response);
 				}
 			});
 	 });	
@@ -176,13 +148,6 @@ return new Promise(function(resolver, rechazar) {
 				confirmButtonColor: '#D85852'
 			})
 			},error:function(response){
-				swal({
-				title: 'Error',
-				text: 'No se pudo registrar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -208,13 +173,6 @@ function modificarUsuario(data,id)
 				confirmButtonColor: '#D85852'
 				})
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'No se pudo modificar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -243,13 +201,6 @@ function modificarUsuarioPass(data,id)
 			location.href='inicio.html';
 				})
 			},error:function(response){
-				swal({
-				title: 'Error',
-				text: 'Error al registrar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -275,13 +226,6 @@ return new Promise(function(resolver, rechazar) {
 				confirmButtonColor: '#D85852'
 			})
 			},error:function(response){
-				swal({
-				title: 'Error',
-				text: 'No se pudo registrar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -307,13 +251,6 @@ function modificarPersonal(data,id)
 				confirmButtonColor: '#D85852'
 				})
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'No se pudo modificar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -339,13 +276,6 @@ return new Promise(function(resolver, rechazar) {
 				confirmButtonColor: '#D85852'
 			})
 			},error:function(response){
-				swal({
-				title: 'Error',
-				text: 'No se pudo registrar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 					console.log(response.message);
 				}
@@ -372,13 +302,6 @@ function modificarBien(data,id)
 				confirmButtonColor: '#D85852'
 			})				
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'No se pudo modificar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -404,14 +327,7 @@ function eliminarBien(data,id)
 				confirmButtonColor: '#D85852'
 			})				
 				},error:function(response){
-				swal({
-				title: 'Error',
-				text: 'No se pudo modificar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
-					rechazar(response);
+						rechazar(response);
 				}
 			});
 	 });	
@@ -436,13 +352,6 @@ return new Promise(function(resolver, rechazar) {
 				confirmButtonColor: '#D85852'
 			})
 			},error:function(response){
-				swal({
-				title: 'Error',
-				text: 'No se pudo registrar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -468,13 +377,6 @@ return new Promise(function(resolver, rechazar) {
 				confirmButtonColor: '#D85852'
 			})
 			},error:function(response){
-				swal({
-				title: 'Error',
-				text: 'No se pudo registrar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -501,13 +403,6 @@ return new Promise(function(resolver, rechazar) {
 			})
 
 			},error:function(response){
-				swal({
-				title: 'Error',
-				text: 'No se pudo registrar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -534,13 +429,6 @@ return new Promise(function(resolver, rechazar) {
 			})
 
 			},error:function(response){
-				swal({
-				title: 'Error',
-				text: 'No se pudo registrar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -566,13 +454,6 @@ function modificarConfiguracion(data,id)
 				confirmButtonColor: '#D85852'
 			})				
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'No se pudo modificar',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});
@@ -598,13 +479,6 @@ return new Promise(function(resolver, rechazar) {
         confirmButtonColor: '#D85852'
       })
       },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo registrar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -630,13 +504,7 @@ function modificarConfiguracionAdmin(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-          swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
+
           rechazar(response);
         }
       });
@@ -662,13 +530,6 @@ function eliminarConfiguracionAdmin(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -694,13 +555,6 @@ return new Promise(function(resolver, rechazar) {
         confirmButtonColor: '#D85852'
       })
       },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo registrar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -726,13 +580,7 @@ function modificarResponsables(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-          swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
+
           rechazar(response);
         }
       });
@@ -758,13 +606,6 @@ function eliminarResponsables(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -790,13 +631,6 @@ return new Promise(function(resolver, rechazar) {
         confirmButtonColor: '#D85852'
       })
       },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo registrar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -822,13 +656,7 @@ function modificarConfiguracionEquipo(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-          swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
+
           rechazar(response);
         }
       });
@@ -854,13 +682,6 @@ function eliminarConfiguracionEquipo(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -886,13 +707,6 @@ return new Promise(function(resolver, rechazar) {
         confirmButtonColor: '#D85852'
       })
       },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo registrar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -918,13 +732,7 @@ function modificarDetallesConfiguracionEquipos(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-          swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
+
           rechazar(response);
         }
       });
@@ -950,13 +758,6 @@ function eliminarDetallesConfiguracionEquipos(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -982,13 +783,6 @@ return new Promise(function(resolver, rechazar) {
         confirmButtonColor: '#D85852'
       })
       },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo registrar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -1014,13 +808,7 @@ function modificarDetallesConfiguracionAdmin(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-          swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
+
           rechazar(response);
         }
       });
@@ -1046,13 +834,6 @@ function eliminarDetallesConfiguracionAdmin(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -1078,13 +859,6 @@ return new Promise(function(resolver, rechazar) {
         confirmButtonColor: '#D85852'
       })
       },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo registrar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -1110,13 +884,7 @@ function modificarDetallesConfiguracionBienes(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-          swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
+
           rechazar(response);
         }
       });
@@ -1142,13 +910,6 @@ function eliminarDetallesConfiguracionBienes(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -1174,13 +935,6 @@ return new Promise(function(resolver, rechazar) {
         confirmButtonColor: '#D85852'
       })
       },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo registrar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -1206,13 +960,7 @@ function modificarNumeroBien(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-          swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
+
           rechazar(response);
         }
       });
@@ -1238,13 +986,6 @@ function eliminarNumeroBien(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -1270,13 +1011,6 @@ return new Promise(function(resolver, rechazar) {
         confirmButtonColor: '#D85852'
       })
       },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo registrar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -1302,13 +1036,7 @@ function modificarUnidadAdministrativa(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-          swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
+
           rechazar(response);
         }
       });
@@ -1334,13 +1062,6 @@ function eliminarUnidadAdministrativa(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -1366,13 +1087,6 @@ return new Promise(function(resolver, rechazar) {
         confirmButtonColor: '#D85852'
       })
       },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo registrar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -1398,13 +1112,7 @@ function modificarUnidadTrabajo(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-          swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
+
           rechazar(response);
         }
       });
@@ -1430,13 +1138,6 @@ function eliminarUnidadTrabajo(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-        swal({
-        title: 'Error',
-        text: 'No se pudo modificar',
-        type: 'error',
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#D85852'
-        })
           rechazar(response);
         }
       });
@@ -1536,13 +1237,6 @@ function getPersonalBy(filtros)
 				success:function(response){
 					resolver(response);
 				},error:function(response){
-					swal({
-				title: 'Error',
-				text: 'El registro no existe o hay un error',
-				type: 'error',
-				confirmButtonText: 'Aceptar',
-				confirmButtonColor: '#D85852'
-				})
 					rechazar(response);
 				}
 			});

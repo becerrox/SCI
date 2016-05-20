@@ -39,6 +39,7 @@ $(document).ready(function()
             idEquipo = $
             numero = $("#serial").val();
             getEquiposBy("?serial="+numero).then(function(data){
+                id_equipo_editar = data[0].id;
                 jsonToTableTraspuesto({
                     data : data,
                     headers : headers,
@@ -52,6 +53,7 @@ $(document).ready(function()
             idEquipo = $
             numero = $("#serialCelular").val();
             getEquiposBy("?serial="+numero).then(function(data){
+                id_equipo_editar = data[0].id;
                 jsonToTableTraspuesto({
                     data : data,
                     headers : headers,
@@ -66,7 +68,7 @@ $(document).ready(function()
             frm = $("#solvencia");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            modificarEquipos(dataForm,id_equipo_editar).then(function(data){   
+            solventarEquipos(dataForm,id_equipo_editar).then(function(data){   
             });
         });   
 

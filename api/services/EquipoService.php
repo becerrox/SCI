@@ -99,7 +99,7 @@ class EquipoService{
                 "status" => 1,
                 "fecha_modif" => date("Y-m-d h:i:s"),
                 "observaciones" => mb_strtoupper($eq->observaciones, "UTF-8"),
-                "estadoUsoEquipo" => "En proceso de disposición",
+                "estadoUsoEquipo" => "EN PROCESO DE DISPOCISIÓN",
                 "motivo" => mb_strtoupper($eq->motivo, "UTF-8")
                 );
                 if($solvencia->update($data)){

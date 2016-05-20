@@ -1,7 +1,5 @@
 <?php
 
-setlocale(LC_CTYPE, 'es_ES.UTF8');
-
 class ConfiguracionEquipoService{
     public function listar($query){
 
