@@ -36,16 +36,16 @@ $(document).ready(function()
 
         $("#btnBuscar").click(function(){
             idBien = $
-            numero = $("#responsable_uso").val();
-            getBienesBy("?responsable_uso="+numero).then(function(data){
+            valor = $("#descripcion").val();
+            getEquiposBy("?estadoUsoEquipo="+valor).then(function(data){
                 id_bien_buscar = data[0].id;
                 jsonToTable({
                     data : data,
                     headers : headers,
-                    table : $("#tableReporteResUso"),
-                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm", "unidad_trabajo","sede"],
+                    table : $("#tableTipoEquipo"),
+                    invisibleFields : ["unidad_admin","id","status","fecha_modif","serialSim","accesorios","planCelular","numeroCelular","motivo"],
                     limit : data.length,
-                    showCount : true                  
+                    showCount : true            
                   });
                 jsonToForm({
                     data : data[0],
@@ -56,19 +56,16 @@ $(document).ready(function()
 
         /* Cargando datas de la api a los selects  */     
 
-        getResponsablesBy('').then(function(data){
-            for(personal in data){
-                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
-            }
+        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN").then(function(data){
             jsonToSelect({        
-                 data : data,
-                 value : "nombreApellido",
-                 alias : "nombreApellido",
-                 element : $("#responsable_uso")
-                 });
-         })          
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#descripcion")
+                });
+        })        
 
-headers = [ "Código General", "Código de Sub-categoría", "Código de Categoría Específica", "Descripción", "Estatus Uso Bien", "Marca", "Modelo", "Serial", "Tipo Componentes", "Colores", "Número de bien", "Estado bien", "Categoria de unidad administrativa"];
+headers = ["Descripción","Marca","Modelo","Serial","Color","Estado","Responsable","Características","Ubicación","Observaciones"];
 
 });
 

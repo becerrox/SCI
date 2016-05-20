@@ -54,7 +54,7 @@ function busqueda_res(){
  function menuOculto()
 {
    var equipo = document.getElementById("descripcion").value;
-   if((equipo=="Celular") || (equipo=="celular")) {
+   if((equipo=="CELULAR") || (equipo=="CELULAR")) {
 
      document.getElementById("celular").style.visibility = "visible";
      

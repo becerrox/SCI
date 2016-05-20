@@ -56,7 +56,7 @@ $(document).ready(function()
 
         /* Cargando datas de la api a los selects  */     
 
-        getPersonalBy('').then(function(data){
+        getResponsablesBy('').then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }

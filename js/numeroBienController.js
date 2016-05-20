@@ -71,7 +71,15 @@ $(document).ready(function()
             });
         });  
 
-
+        //número de bien
+        getNumeroBienBy('').then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#buscar")
+                });
+        })     
 
 });
 

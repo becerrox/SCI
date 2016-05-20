@@ -36,16 +36,16 @@ $(document).ready(function()
 
         $("#btnBuscar").click(function(){
             idBien = $
-            numero = $("#responsable_uso").val();
-            getBienesBy("?responsable_uso="+numero).then(function(data){
+            numero = $("#descripcion").val();
+            getEquiposBy("?descripcion="+numero).then(function(data){
                 id_bien_buscar = data[0].id;
                 jsonToTable({
                     data : data,
                     headers : headers,
-                    table : $("#tableReporteResUso"),
-                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm", "unidad_trabajo","sede"],
+                    table : $("#tableTipoEquipo"),
+                    invisibleFields : ["id","status","fecha_modif","descripcion","color","unidad_admin","estadoUsoEquipo","motivo"],
                     limit : data.length,
-                    showCount : true                  
+                    showCount : true            
                   });
                 jsonToForm({
                     data : data[0],
@@ -56,19 +56,18 @@ $(document).ready(function()
 
         /* Cargando datas de la api a los selects  */     
 
-        getResponsablesBy('').then(function(data){
-            for(personal in data){
-                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
-            }
-            jsonToSelect({        
-                 data : data,
-                 value : "nombreApellido",
-                 alias : "nombreApellido",
-                 element : $("#responsable_uso")
-                 });
-         })          
+        getEquiposBy("?descripcion=CELULAR").then(function(data){
+            jsonToTable({
+                data : data,
+                headers : headers,
+                table : $("#tableTipoEquipo"),
+                invisibleFields : ["id","status","fecha_modif","descripcion","color","unidad_admin","motivo"],
+                limit : data.length,
+                showCount : true            
+              });            
+        })              
 
-headers = [ "Código General", "Código de Sub-categoría", "Código de Categoría Específica", "Descripción", "Estatus Uso Bien", "Marca", "Modelo", "Serial", "Tipo Componentes", "Colores", "Número de bien", "Estado bien", "Categoria de unidad administrativa"];
+headers = [ "Marca","Modelo","Serial","Estado","Responsable","Caracteristicas","Ubicación","Observaciones","Serial Sim","Accesorios","Plan","Número","Estado de Uso"];
 
 });
 

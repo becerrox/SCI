@@ -56,7 +56,7 @@ $(document).ready(function()
 
         /* Cargando datas de la api a los selects  */     
 
-        getConfiguracionBy("?tipo=Unidad de Trabajo").then(function(data){
+        getUnidadTrabajoBy('').then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",

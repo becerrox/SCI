@@ -127,7 +127,7 @@ $(document).ready(function()
         getUnidadTrabajoBy('').then(function(data){
             jsonToSelect({        
                 data : data,
-                value : "id",
+                value : "descripcion",
                 alias : "descripcion",
                 element : $("#unidad_trabajo")
                 });

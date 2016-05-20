@@ -43,7 +43,7 @@ $(document).ready(function()
                     data : data,
                     headers : headers,
                     table : $("#tableTipoEquipo"),
-                    invisibleFields : ["id","status","fecha_modif"],
+                    invisibleFields : ["descripcion","unidad_admin","id","status","fecha_modif","serialSim","accesorios","planCelular","numeroCelular","estadoUsoEquipo","motivo"],
                     limit : data.length,
                     showCount : true            
                   });
@@ -65,7 +65,7 @@ $(document).ready(function()
                 });
         })              
 
-headers = [ "descripcion","marca","modelo","serial","color","estado","unidad_admin","responsable","caracteristicas","unidad_trabajo","observaciones","serialSim","accesorios","planCelular","numeroCelular","estadoUsoEquipo"];
+headers = [ "Marca","Modelo","Serial","Color","Estado","Responsable","Características","Ubicación","Observaciones"];
 
 });
 
