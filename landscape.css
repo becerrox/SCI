@@ -124,3 +124,4 @@ width: 50px;
 		}
 .padding {padding-right: 80px;}
 .hide{display: block !important;}
+.page-break { display:block; page-break-before:always; }
