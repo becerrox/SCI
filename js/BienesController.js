@@ -1,4 +1,4 @@
-// Controlador de la vista de registro de equipo
+// Controlador de la vista de registro de Bienes
 
 if(sessionStorage.dataUsuario==undefined)
 {

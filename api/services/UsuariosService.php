@@ -32,7 +32,10 @@ class UsuariosService{
                     "fecha_creacion" => date("Y-m-d h:i:s"),
                     "status" => 1,
                     "primer_inicio" => 0,
-                    "fecha_modif" => date("Y-m-d h:i:s")
+                    "fecha_modif" => date("Y-m-d h:i:s"),
+                    "pregunta" => $us->pregunta,
+                    "respuesta" => $us->respuesta
+
             );
             if($usuario->save($data)){
                     $return = ($usuario->toArray());

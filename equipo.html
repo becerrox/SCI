@@ -37,7 +37,7 @@
   <!--                FORMULARIO DE REGISTRO        -->
     <form id="formEquipo">
     <div id="contenedor" class="row">       
-      <div class="form-group bloque col-md-4 col-xs-6">
+      <div class="form-group bloque col-md-4 col-xs-12">
           <label>Equipo:</label>
           <select type="text" name="descripcion" class="form-control-2 uppercase" id="descripcion" data-toggle="tooltip" data-placement="top" title="Computador,Mouse,Teclado" onblur="menuOculto()"></select>
           <label>Marca:</label>
@@ -47,7 +47,7 @@
           <label>Modelo:</label>
           <select type="text" name="modelo" class="form-control-2" id="modelo"></select>
         </div>
-        <div class="form-group bloque col-md-4 col-xs-6">
+        <div class="form-group bloque col-md-4 col-xs-12">
           <label>Color</label>
           <select name="color" class="form-control-2" id="color">
           </select>        
@@ -61,7 +61,7 @@
           <select name="unidad_trabajo" class="form-control-2" id="unidad_trabajo">
            </select>      
         </div>
-        <div class="form-group bloque col-md-4 col-xs-6">
+        <div class="form-group bloque col-md-4 col-xs-12">
           <label>Responsable</label>  
           <select name="responsable" class="form-control-2" id="responsable">
           </select>
@@ -72,15 +72,15 @@
           <label>Observaciones:</label>
           <textarea  type="text" class="form-control-2 uppercase" name="observaciones" id="observaciones" data-placement="top" title="Información extra que desee agregar"></textarea>
        </div>
-        <div id="celular" class="form-group col-md-12 col-xs-6">
+        <div id="celular" class="form-group col-md-12 col-xs-12">
           <label>SIMCARD</label>
           <input name="serialSim" class="form-control-2" id="serialSim" maxlength="16" onKeyPress="return soloNumeros(event)">
           <label>Línea</label> 
           <input  name="numeroCelular" title="Número de celular asignado" class="form-control-2" id="numeroCelular" maxlength="11" onKeyPress="return soloNumeros(event)"/>          
           <label>Accesorios</label>
-          <input  name="accesorios" class="form-control-2" id="accesorios">    
+          <input  name="accesorios" class="form-control-2 uppercase" id="accesorios">    
           <label>Plan</label> 
-          <input  name="planCelular" class="form-control-2" id="planCelular">
+          <input  name="planCelular" class="form-control-2 uppercase" id="planCelular">
         </div>
     </div> <!--Fin Contenedor -->
     <div class="form-group bloque col-md-6 col-xs-12 col-md-offset-3">
