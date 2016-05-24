@@ -40,31 +40,15 @@ $(document).ready(function()
             dataForm = getFormData(frmUsuario);
             dataForm.status=1;
             registrarUsuario(dataForm).then(function(data){
-              numero = data.id;              
-              frm = $("#formPersonal");
-              dataForm = getFormData(frm);
-              dataForm.status=1;
-              dataForm.id_usuario = numero;
-                registrarPersonal(dataForm).then(function(data){
                   console.log("funciona");   
-                });  
             });
         });
 
-      $("#modificarUserPersonal").click(function()
-        {              
-            frm = $("#formPersonal");
-            dataForm = getFormData(frm);
-            dataForm.status=1;
-            modificarPersonal(dataForm,id_usuario_editar).then(function(data){   
-                  console.log("funciona");
-                });  
-        });     
 
         $("#buscarUser").click(function(){
             idUsuario = $
             numero = $("#buscar").val();
-            getPersonalBy("?ci_per="+numero).then(function(data){
+            getUsuarioBy("?ci_per="+numero).then(function(data){
                 id_usuario_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
@@ -113,7 +97,7 @@ $(document).ready(function()
                 });
         })                  
 
-        getPersonalBy('').then(function(data){
+/*        getPersonalBy('').then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
                 data[personal].ci = data[personal].ci_per;
@@ -124,5 +108,5 @@ $(document).ready(function()
                  alias : "nombreApellido",
                  element : $("#buscar")              
                  });                         
-         })                
+         })     */           
 });

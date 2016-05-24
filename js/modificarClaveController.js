@@ -16,7 +16,7 @@ $(document).ready(function()
                     if (dataUsuarios.primer_inicio==0)
                     {
                         idUsuario = $
-                        numero = datosUsuario.data_personal.id_usuario;
+                        numero = datosUsuario.data_personal.id;
                         getUsuariosBy("?id="+numero).then(function(data){
                             id_usuario_editar = data[0].id;
                         });                                  
@@ -28,7 +28,7 @@ $(document).ready(function()
                     if (dataUsuarios.primer_inicio==1)
                     {
                         idUsuario = $
-                        numero = datosUsuario.data_personal.id_usuario;
+                        numero = datosUsuario.data_personal.id;
                         getUsuariosBy("?id="+numero).then(function(data){
                             id_usuario_editar = data[0].id;
                         });                               
@@ -60,7 +60,7 @@ $(document).ready(function()
             dataForm = getFormData(frm);
             dataForm.status=1;
             dataForm.primer_inicio=1;
-            modificarPass(dataForm,id_usuario_editar).then(function(data){ 
+            modificarUsuarioPass(dataForm,id_usuario_editar).then(function(data){ 
              });
         });
 

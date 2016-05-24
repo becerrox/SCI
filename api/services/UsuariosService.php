@@ -26,16 +26,24 @@ class UsuariosService{
             $usuario=new Usuario();
 
             $data=array(
-                    "usuario" => $us->usuario,
-                    "pass" => sha1($us->pass),
-                    "nivel" => $us->nivel,
-                    "fecha_creacion" => date("Y-m-d h:i:s"),
-                    "status" => 1,
-                    "primer_inicio" => 0,
-                    "fecha_modif" => date("Y-m-d h:i:s"),
-                    "pregunta" => $us->pregunta,
-                    "respuesta" => $us->respuesta
-
+                "usuario" => $us->usuario,
+                "pass" => sha1($us->pass),
+                "nivel" => $us->nivel,
+                "primer_inicio" => 0,
+                "fecha_modif" => date("Y-m-d h:i:s"),
+                "pregunta" => mb_strtoupper($us->pregunta, "UTF-8"),
+                "respuesta" => mb_strtoupper($us->respuesta, "UTF-8"),
+                "ci_per" => mb_strtoupper($us->ci_per, "UTF-8"),
+                "nombres" => mb_strtoupper($us->nombres, "UTF-8"),
+                "apellidos" => mb_strtoupper($us->apellidos, "UTF-8"),
+                "cargo" => mb_strtoupper($us->cargo, "UTF-8"),
+                "telf_pers" => mb_strtoupper($us->telf_pers, "UTF-8"),
+                "correo" => mb_strtoupper($us->correo, "UTF-8"),
+                "f_nac" => mb_strtoupper($us->f_nac, "UTF-8"),
+                "status" => 1,
+                "unidad_trabajo" => mb_strtoupper($us->unidad_trabajo, "UTF-8"),
+                "unidad_admin" => mb_strtoupper($us->unidad_admin, "UTF-8"),
+                "fecha_creacion" => date("Y-m-d h:i:s")
             );
             if($usuario->save($data)){
                     $return = ($usuario->toArray());
@@ -55,12 +63,22 @@ class UsuariosService{
           if(count((array) $us)){
               if(count($modificar)>0){
                   $data=array(                    
-                      "usuario" => $us->usuario,
-                      "pass" => sha1($us->pass),
-                      "nivel" => $us->nivel,
-                      "status" => $us->status,
-                      "primer_inicio" => $us->primer_inicio,
-                      "fecha_modif" => date("Y-m-d h:i:s")
+                    "usuario" => $us->usuario,
+                    "pass" => sha1($us->pass),
+                    "nivel" => $us->nivel,
+                    "fecha_modif" => date("Y-m-d h:i:s"),
+                    "pregunta" => mb_strtoupper($us->pregunta, "UTF-8"),
+                    "respuesta" => mb_strtoupper($us->respuesta, "UTF-8"),
+                    "ci_per" => mb_strtoupper($us->ci_per, "UTF-8"),
+                    "nombres" => mb_strtoupper($us->nombres, "UTF-8"),
+                    "apellidos" => mb_strtoupper($us->apellidos, "UTF-8"),
+                    "cargo" => mb_strtoupper($us->cargo, "UTF-8"),
+                    "telf_pers" => mb_strtoupper($us->telf_pers, "UTF-8"),
+                    "correo" => mb_strtoupper($us->correo, "UTF-8"),
+                    "f_nac" => mb_strtoupper($us->f_nac, "UTF-8"),
+                    "status" => 1,
+                    "unidad_trabajo" => mb_strtoupper($us->unidad_trabajo, "UTF-8"),
+                    "unidad_admin" => mb_strtoupper($us->unidad_admin, "UTF-8"),
                   );
                   if($modificar->update($data)){                                            
                           return array("status" => 200, "mensaje" => $data);                    
@@ -129,7 +147,7 @@ class UsuariosService{
                     $datos=array(
                         "id" => $user[0]->id,
                         "status" => 200,
-                        "data_personal" => (Personal::findFirst("id_usuario = ".$user[0]->id)), 
+                        "data_personal" => (Usuario::findFirst("id = ".$user[0]->id)), 
                         "usuario" => $user[0]->usuario,
                         "nivel" => $user[0]->nivel,
                         "primer_inicio" => $user[0]->primer_inicio,

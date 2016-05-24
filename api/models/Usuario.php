@@ -39,6 +39,69 @@ class Usuario extends Model{
                 "message" => "El campo pass es obligatorio"
                 )
             ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "ci_per",
+                "message" => "La cédula es obligatoria"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "nombres",
+                "message" => "El campo nombre es obligatorio"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "apellidos",
+                "message" => "El campo apellidos es obligatorio"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "cargo",
+                "message" => "El campo cargo es obligatorio"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "telf_pers",
+                "message" => "El campo teléfono personal es obligatorio"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "correo",
+                "message" => "El campo correo es obligatorio"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "f_nac",
+                "message" => "El campo fecha de nacimiento es obligatorio"
+                )
+            ));
+
+       $this->validate(new Uniqueness(
+            array(
+                "field"  => "ci_per",
+                "message" => "La cédula debe ser única"
+            )
+        ));
+
+       $this->validate(new Uniqueness(
+            array(
+                "field"  => "correo",
+                "message" => "El correo debe ser único"
+            )
+        ));
             
        $this->validate(new Uniqueness(
             array(

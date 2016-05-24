@@ -92,34 +92,6 @@ $app->delete("/equipos/{id:[0-9]+}",function($id) use ($app,$equipoService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
-//Endpoints personal
-
-$personalService = new PersonalService();
-
-$app->get("/personal",function() use ($app,$personalService) {
-    $query = $app->request->getQuery();
-    unset($query["_url"]);
-    $data = $personalService->listar($query);
-    response($app,$data['mensaje'],$data['status']);
-});
-
-$app->post("/personal",function() use ($app,$personalService) {
-    $personal = json_decode($app->request->getRawBody());
-    $data = $personalService->nuevo($personal);
-    response($app,$data['mensaje'],$data['status']);
-});
-
-$app->put("/personal/{id:[0-9]+}",function($id) use ($app,$personalService) {
-    $personal = json_decode($app->request->getRawBody());
-    $data = $personalService->modificar($id,$personal);
-    response($app,$data['mensaje'],$data['status']);
-});
-
-$app->delete("/personal/{id:[0-9]+}",function($id) use ($app,$personalService) {
-    $data = $personalService->eliminar($id);
-    response($app,$data['mensaje'],$data['status']);
-});
-
 //Endpoints Categoría General
 
 $catgenService = new CatgenService();
