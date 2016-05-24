@@ -564,10 +564,10 @@ else{
  //Validacion Registro de Bienes, para busqueda por serial
 
  function Validar_busq(){
-  var serial = document.getElementById('serial').value;
+  var serial = document.getElementById('buscar').value;
     if(serial==""){
             $('#alert').html('Debes ingresar el campo serial').slideDown(500);
-            $('#serial').focus();
+            $('#buscar').focus();
             return false;
           }
           else{
