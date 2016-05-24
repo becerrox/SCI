@@ -47,8 +47,11 @@
              <div class="form-group bloque ">         
                  <label>Correo Electrónico:</label> 
                  <input name="correo" type="email" class="form-control-2" id="correo" data-toggle="tooltip" title="Introduzca el correo con el cual se registró">
+                <span>
+                 <button id="buscarConfiguracion" type="button" class="btn icon-search" style="width:20px; "></button>             
+                </span>
                  <label>Pregunta de Seguridad:</label>
-                 <select name="pregunta" id="pregunta" class="form-control-2">
+                 <select name="pregunta" id="pregunta" class="form-control-2" disabled/>
                   <option value="0">Seleccione</option>
                   <option value="1">Lugar de Nacimiento de la Madre</option>
                   <option value="2">Mejor amigo de la Infancia</option>
@@ -58,7 +61,7 @@
                   <option value="6">Ocupación del abuelo</option>
                 </select>              
                 <label>Respuesta</label>
-                <input name="respuesta" type="text" class="form-control-2 uppercase" id="respuesta" data-toggle="tooltip" title="Escribir respuesta">
+                <input name="respuesta" type="text" class="form-control-2 uppercase" id="respuesta" data-toggle="tooltip" title="Escribir respuesta" disabled/>
                 <br>
              </div>
              <div class="row">

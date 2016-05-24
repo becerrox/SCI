@@ -1,10 +1,13 @@
+<?php 
+require_once("../dompdf/dompdf_config.inc.php");
+/*include("config.php");
+*/
 
-<!DOCTYPE html>
+$html= '<!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><!--<![endif]-->
-$html='
 <html lang="es">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -50,4 +53,12 @@ $html='
     <script src="js/bootstrap.min.js"></script>  
     <script src="js/valida.js"></script>
 </body>
-</html>
+</html>';
+
+$codigo=utf8_decode($html);
+$dompdf=new DOMPDF();
+$dompdf->load_html($html);
+ini_set("memory_limit","128M");
+$dompdf->render();
+$dompdf->stream("reporte.pdf");
+?>

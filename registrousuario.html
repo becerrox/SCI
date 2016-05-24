@@ -38,7 +38,7 @@
                 <div class="row">
                 <div class="col-md-4 bloque">
                   <label>Usuario:</label>
-                  <input name="usuario" type="text" class="form-control-2" id="usuario" data-toggle="tooltip" title="Nombre de Usuario">
+                  <input name="usuario" type="text" class="form-control-2 uppercase" id="usuario" data-toggle="tooltip" title="Nombre de Usuario" onkeypress="return soloLetras(event)">
                   <label>Privilegio:</label>
                   <select name="nivel" id="nivel" class="form-control-2"> 
                   </select>

@@ -22,6 +22,7 @@ function valida_login(){
       
         }
  }
+
 function cursorfinal(){
   var numero_bien = document.getElementById("numero_bien").value; 
 cursorfinal(numero_bien.value.length);
