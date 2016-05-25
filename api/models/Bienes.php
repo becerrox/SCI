@@ -30,91 +30,105 @@ class Bienes extends Model{
         $this->validate(new PresenceOf(
             array(
                 "field" => "serial",
-                "message" => "El serial es obligatorio"
+                "message" => " serial"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "per_ini",
+                "message" => " período de inicio"
+                )
+            ));
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "per_culm",
+                "message" => " período de culminación"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "marca",
-                "message" => "La marca es obligatoria"
+                "message" => " marca"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "descripcion",
-                "message" => "El equipo es obligatorio"
+                "message" => " equipo"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "modelo",
-                "message" => "El modelo es obligatoria"
+                "message" => " modelo"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "estatus_uso_bien",
-                "message" => "El estatus del uso de bien es obligatorio"
+                "message" => " estatus del uso de bien"
                 )
             ));        
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "cat_unid_admin",
-                "message" => "La unidad administrativa es obligatoria"
+                "message" => " unidad administrativa"
                 )
             ));         
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "num_bien",
-                "message" => "El número de bien es obligatoria"
+                "message" => " número de bien"
                 )
             ));                 
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "colores",
-                "message" => "El campo color es obligatorio"
+                "message" => " campo color"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "unidad_trabajo",
-                "message" => "El campo de unidad de trabajo es obligatorio"
+                "message" => " campo de unidad de trabajo"
                 )
             ));        
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "responsable_pa",
-                "message" => "El responsable patrimonial es obligatoria"
+                "message" => " responsable patrimonial"
                 )
             ));                 
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "responsable_ad",
-                "message" => "El responsable administrativo es obligatorio"
+                "message" => " responsable administrativo"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "responsable_uso",
-                "message" => "El responsable de uso es obligatorio"
+                "message" => " responsable de uso"
                 )
             ));        
 
         $this->validate(new Uniqueness(
              array(
                  "field"  => "serial",
-                 "message" => "El serial debe ser único"
+                 "message" => " serial debe ser único"
              )
          ));
 

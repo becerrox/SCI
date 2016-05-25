@@ -26,7 +26,7 @@ class UsuariosService{
             $usuario=new Usuario();
 
             $data=array(
-                "usuario" => $us->usuario,
+                "usuario" => mb_strtoupper($us->usuario , "UTF-8"),
                 "pass" => sha1($us->pass),
                 "nivel" => $us->nivel,
                 "primer_inicio" => 0,
@@ -37,7 +37,7 @@ class UsuariosService{
                 "nombres" => mb_strtoupper($us->nombres, "UTF-8"),
                 "apellidos" => mb_strtoupper($us->apellidos, "UTF-8"),
                 "cargo" => mb_strtoupper($us->cargo, "UTF-8"),
-                "telf_pers" => mb_strtoupper($us->telf_pers, "UTF-8"),
+                "telf_pers" => str_pad($us->telf_pers, 11, '0', STR_PAD_LEFT),
                 "correo" => mb_strtoupper($us->correo, "UTF-8"),
                 "f_nac" => mb_strtoupper($us->f_nac, "UTF-8"),
                 "status" => 1,
@@ -63,7 +63,7 @@ class UsuariosService{
           if(count((array) $us)){
               if(count($modificar)>0){
                   $data=array(                    
-                    "usuario" => $us->usuario,
+                    "usuario" => mb_strtoupper($us->usuario , "UTF-8"),
                     "pass" => sha1($us->pass),
                     "nivel" => $us->nivel,
                     "fecha_modif" => date("Y-m-d h:i:s"),
@@ -73,7 +73,7 @@ class UsuariosService{
                     "nombres" => mb_strtoupper($us->nombres, "UTF-8"),
                     "apellidos" => mb_strtoupper($us->apellidos, "UTF-8"),
                     "cargo" => mb_strtoupper($us->cargo, "UTF-8"),
-                    "telf_pers" => mb_strtoupper($us->telf_pers, "UTF-8"),
+                    "telf_pers" => str_pad($us->telf_pers, 11, '0', STR_PAD_LEFT),
                     "correo" => mb_strtoupper($us->correo, "UTF-8"),
                     "f_nac" => mb_strtoupper($us->f_nac, "UTF-8"),
                     "status" => 1,
@@ -99,6 +99,30 @@ class UsuariosService{
         }
 
         public function modificarPass($id,$us){
+            $modificar=Usuario::find($id);
+            if(count($modificar)>0){
+                $data=array(                  
+                    "pass" => sha1($us->pass),
+                    "primer_inicio" => $us->primer_inicio,
+                    "fecha_modif" => date("Y-m-d h:i:s")
+                );
+                if($modificar->update($data)){
+                                            
+                        return array("status" => 200, "mensaje" => $data);                    
+                }
+                else{
+                     $errors = array();
+                    foreach ($usuario->getMessages() as $message) {
+                        $errors[] = $message->getMessage();
+                    }
+                    return array("status" => 400, "mensaje" =>$errors);               
+                }
+            }else{
+                return array("status" => 404, "mensaje" =>"El registro que intenta modificar no existe");               
+            }
+        }
+
+        public function recuperarUsuario($id,$us){
             $modificar=Usuario::find($id);
             if(count($modificar)>0){
                 $data=array(                  

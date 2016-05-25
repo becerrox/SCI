@@ -149,6 +149,15 @@ return new Promise(function(resolver, rechazar) {
 			})
 			},error:function(response){
 					rechazar(response);
+					var error_campos = response.responseJSON; 
+						swal({
+				          title: 'AVISO',
+						  text: "Los siguientes campos son requeridos: " + error_campos,
+				          type: 'info',
+				          confirmButtonText: 'Aceptar',
+				          confirmButtonColor: '#D85852'
+						});					
+					console.log(response.responseJSON);
 				}
 			});
 	 });	
@@ -199,6 +208,34 @@ function modificarUsuarioPass(data,id)
 			},
 			function(){
 			location.href='inicio.html';
+				})
+			},error:function(response){
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function recuperarUsuario(data,id)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"PUT",
+				processData: false,
+	    		contentType: 'application/json',
+				url:'api/usuarios/'+id,
+				data:JSON.stringify(data),
+			success:function(response){
+				resolver(response);
+				swal({
+				title: 'Cambiado',
+				text: 'Contraseña cambiada satisfactoriamente',
+				type: 'success',
+				confirmButtonText: 'Aceptar',
+				confirmButtonColor: '#D85852'
+			},
+			function(){
+			location.href='index.html';
 				})
 			},error:function(response){
 					rechazar(response);
@@ -277,7 +314,15 @@ return new Promise(function(resolver, rechazar) {
 			})
 			},error:function(response){
 					rechazar(response);
-					console.log(response.message);
+					var error_campos = response.responseJSON; 
+						swal({
+				          title: 'AVISO',
+						  text: "Los siguientes campos son requeridos: " + error_campos,
+				          type: 'info',
+				          confirmButtonText: 'Aceptar',
+				          confirmButtonColor: '#D85852'
+						});					
+					console.log(response.responseJSON);
 				}
 			});
 	 });	
@@ -1220,6 +1265,29 @@ function getUsuariosBy(filtros)
 				url:'api/usuarios/'+filtros,
 				success:function(response){
 					resolver(response);
+				},error:function(response){
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
+function getUsuariosRecuperarBy(filtros)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"GET",
+	    		contentType: 'application/json',
+				url:'api/usuarios/'+filtros,
+				success:function(response){
+					resolver(response);
+					swal({
+					title: 'Encontrado',
+					text: 'Correo coindice en la base de datos',
+					type: 'info',
+					confirmButtonText: 'Aceptar',
+					confirmButtonColor: '#D85852'
+				})					
 				},error:function(response){
 					rechazar(response);
 				}

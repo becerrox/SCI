@@ -52,7 +52,7 @@ $(document).ready(function()
                 id_usuario_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
-                    form : "#formPersonal"
+                    form : "#formUsuario"
                 });
             });
         });           
