@@ -49,6 +49,14 @@ return new Promise(function(resolver, rechazar) {
 			})
 			},error:function(response){
 					rechazar(response);
+          var error_campos = response.responseJSON; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });               
 				}
 			});
 	 });	
@@ -152,7 +160,7 @@ return new Promise(function(resolver, rechazar) {
 					var error_campos = response.responseJSON; 
 						swal({
 				          title: 'AVISO',
-						  text: "Los siguientes campos son requeridos: " + error_campos,
+					     	  text: "Los siguientes campos son requeridos: " + error_campos,
 				          type: 'info',
 				          confirmButtonText: 'Aceptar',
 				          confirmButtonColor: '#D85852'
@@ -264,6 +272,14 @@ return new Promise(function(resolver, rechazar) {
 			})
 			},error:function(response){
 					rechazar(response);
+          var error_campos = response.responseJSON; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });     
 				}
 			});
 	 });	
@@ -317,12 +333,11 @@ return new Promise(function(resolver, rechazar) {
 					var error_campos = response.responseJSON; 
 						swal({
 				          title: 'AVISO',
-						  text: "Los siguientes campos son requeridos: " + error_campos,
+						      text: "Los siguientes campos son requeridos: " + error_campos,
 				          type: 'info',
 				          confirmButtonText: 'Aceptar',
 				          confirmButtonColor: '#D85852'
 						});					
-					console.log(response.responseJSON);
 				}
 			});
 	 });	
@@ -525,6 +540,14 @@ return new Promise(function(resolver, rechazar) {
       })
       },error:function(response){
           rechazar(response);
+          var error_campos = response.responseJSON; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });     
         }
       });
    });  
@@ -549,7 +572,6 @@ function modificarConfiguracionAdmin(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-
           rechazar(response);
         }
       });
@@ -601,6 +623,14 @@ return new Promise(function(resolver, rechazar) {
       })
       },error:function(response){
           rechazar(response);
+          var error_campos = response.responseJSON; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });               
         }
       });
    });  
@@ -625,7 +655,6 @@ function modificarResponsables(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-
           rechazar(response);
         }
       });
@@ -701,7 +730,6 @@ function modificarConfiguracionEquipo(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-
           rechazar(response);
         }
       });
@@ -777,7 +805,6 @@ function modificarDetallesConfiguracionEquipos(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-
           rechazar(response);
         }
       });
@@ -853,7 +880,6 @@ function modificarDetallesConfiguracionAdmin(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-
           rechazar(response);
         }
       });
@@ -929,7 +955,6 @@ function modificarDetallesConfiguracionBienes(data,id)
         confirmButtonColor: '#D85852'
       })        
         },error:function(response){
-
           rechazar(response);
         }
       });
@@ -981,6 +1006,14 @@ return new Promise(function(resolver, rechazar) {
       })
       },error:function(response){
           rechazar(response);
+          var error_campos = response.responseJSON; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });     
         }
       });
    });  

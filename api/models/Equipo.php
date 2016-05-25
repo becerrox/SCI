@@ -12,6 +12,7 @@ use Phalcon\Mvc\Model,
 
 class Equipo extends Model{
     public function initialize(){
+      $this->setSource("equipo");
       $this->addBehavior(
             new SoftDelete(
                 array(
@@ -29,77 +30,77 @@ class Equipo extends Model{
         $this->validate(new PresenceOf(
             array(
                 "field" => "serial",
-                "message" => "El serial es obligatorio"
+                "message" => " serial"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "marca",
-                "message" => "La marca es obligatoria"
+                "message" => " marca"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "descripcion",
-                "message" => "El equipo es obligatorio"
+                "message" => " equipo"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "modelo",
-                "message" => "El modelo es obligatoria"
+                "message" => " modelo"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "responsable",
-                "message" => "El responsable es obligatorio"
+                "message" => " responsable"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "estado",
-                "message" => "La estado es obligatoria"
+                "message" => " estado"
                 )
             ));
 
-/*        $this->validate(new PresenceOf(
+        $this->validate(new PresenceOf(
             array(
                 "field" => "unidad_admin",
-                "message" => "La unidad administrativa es obligatoria"
+                "message" => " unidad administrativa"
                 )
-            ));         */
+            ));         
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "color",
-                "message" => "El campo color es obligatorio"
+                "message" => " color"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "caracteristicas",
-                "message" => "El campo caracteristicas es obligatorio"
+                "message" => " caracteristicas"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "unidad_trabajo",
-                "message" => "El campo de unidad de trabajo es obligatorio"
+                "message" => " unidad de trabajo"
                 )
             ));        
 
         $this->validate(new Uniqueness(
              array(
                  "field"  => "serial",
-                 "message" => "El serial debe ser único"
+                 "message" => " serial debe ser único"
              )
          ));
 

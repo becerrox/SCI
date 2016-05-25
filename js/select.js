@@ -46,6 +46,32 @@ if(config.headers.indexOf("Item")==-1)
     $(config.table).html(content)
 }
 
+function jsonToTableUsuario(config){
+    tableHeaders = "<thead><tr>";
+    tableContent = "<tbody>";
+    if(config.showCount)
+if(config.headers.indexOf("Nº")==-1)
+    config.headers.unshift("Nº");
+  for(key in config.headers){     
+      tableHeaders += "<th>"+config.headers[key]+"</th>";
+  }
+  for(var index=0;index<config.limit;index++)
+  {
+      tableContent += "<tr>";
+      if(config.showCount)
+        tableContent+="<td>"+(index+1)+"</td>";
+    for (var i in config.data[index]){
+            if(config.invisibleFields.indexOf(i)==-1)
+              tableContent += "<td>"+config.data[index][i]+"</td>";      
+    }  
+          tableContent += "</tr>";
+}
+    tableHeaders += "</tr></thead>";
+    tableContent += "</tr>";
+    content = tableHeaders + tableContent;
+    $(config.table).html(content)
+}
+
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }

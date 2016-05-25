@@ -1,14 +1,12 @@
 <?php
-
 class BienesService{
-
     public function listar($query){
 
           if(empty($query))
              $bienes=Bienes::find("status = 1");
           else
           {
-            $bienes = Bienes::find(
+            $bienes=Bienes::find(
                 array(
                     arrayToSQLQuery($query),
                     "bind" => $query)
@@ -21,7 +19,6 @@ class BienesService{
             return array("status" => 200, "mensaje" =>$bienes->toArray());
       }
     }
-
         public function nuevo($bie){
             $bienes=new Bienes();
             $data=array(
@@ -48,7 +45,6 @@ class BienesService{
                 "responsable_uso" => mb_strtoupper($bie->responsable_uso, "UTF-8"),
                 "sede" => mb_strtoupper($bie->sede, "UTF-8"),  
             );
-
             if($bienes->save($data)){
                     return array("status" => 201, "mensaje" => $data);
             }else{
