@@ -9,7 +9,7 @@ $(document).ready(function(){
 			processData: false,
     		contentType: 'application/json',
 			url:'api/usuarios/token',
-			data:JSON.stringify({usuario:Usuario,pass:Contrasena}),
+			data:JSON.stringify({usuario:Usuario.toUpperCase(),pass:Contrasena}),
 			success:function(response){
 				if(response.id!=undefined)
 				{
@@ -236,8 +236,8 @@ function recuperarUsuario(data,id)
 			success:function(response){
 				resolver(response);
 				swal({
-				title: 'Cambiado',
-				text: 'Contraseña cambiada satisfactoriamente',
+				title: 'Recuperado',
+				text: 'Usuario recuperado satisfactoriamente',
 				type: 'success',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
@@ -246,7 +246,15 @@ function recuperarUsuario(data,id)
 			location.href='index.html';
 				})
 			},error:function(response){
+        console.log(response);
 					rechazar(response);
+          swal({
+          title: 'Error',
+          text: 'La pregunta o la respuesta no coinciden',
+          type: 'info',
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: '#D85852'
+        })                      
 				}
 			});
 	 });	

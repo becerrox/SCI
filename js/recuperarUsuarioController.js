@@ -15,14 +15,24 @@ $(document).ready(function()
 
 
         $("#btnSolicitar").click(function(){
-            if (document.getElementById("pregunta").value == id_usuario_recuperar.pregunta && document.getElementById("respuesta").value == id_usuario_recuperar.respuesta) {
+            if (document.getElementById("pregunta").value.toUpperCase() == id_usuario_recuperar.pregunta && document.getElementById("respuesta").value.toUpperCase() == id_usuario_recuperar.respuesta) {
                 frm = $("#formRecuperar");
                 dataForm = getFormData(frm);
                 dataForm.status=1;
                 dataForm.pass=12345
                 dataForm.primer_inicio=0
-                recuperarUsuario(dataForm,id_usuario_editar,id_usuario_recuperar).then(function(data){   
+                recuperarUsuario(dataForm,id_usuario_editar,id_usuario_recuperar).then(function(data){
                 });
+            }
+            else {
+                  swal({
+                  title: 'Error',
+                  text: 'La pregunta o la respuesta no coinciden',
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+                })   
+            console.log("Funciona");
             }
         });
 });        
