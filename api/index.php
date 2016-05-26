@@ -55,6 +55,12 @@ $app->put("/usuarios/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
 
 $app->put("/usuarios/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
     $usuario = json_decode($app->request->getRawBody());
+    $data = $usuarioService->modificarPregunta($id,$usuario);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/usuarios/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
+    $usuario = json_decode($app->request->getRawBody());
     $data = $usuarioService->recuperarUsuario($id,$usuario);
     response($app,$data['mensaje'],$data['status']);
 });
@@ -90,6 +96,12 @@ $app->put("/equipos/{id:[0-9]+}",function($id) use ($app,$equipoService) {
 $app->put("/equiposs/{id:[0-9]+}",function($id) use ($app,$equipoService) {
     $equipo = json_decode($app->request->getRawBody());
     $data = $equipoService->solvencia($id,$equipo);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/equiposss/{id:[0-9]+}",function($id) use ($app,$equipoService) {
+    $equipo = json_decode($app->request->getRawBody());
+    $data = $equipoService->retiro($id,$equipo);
     response($app,$data['mensaje'],$data['status']);
 });
 

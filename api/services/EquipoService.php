@@ -117,6 +117,29 @@ class EquipoService{
             }
         }
 
+        public function retiro($id,$eq){
+            $solvencia=Equipo::find($id);
+            if(count($solvencia)>0){
+                $data=array(
+                "status" => 1,
+                "fecha_modif" => date("Y-m-d h:i:s"),
+                "responsable" => mb_strtoupper($eq->responsable, "UTF-8")                
+                );
+                if($solvencia->update($data)){
+                        return array("status" => 200, "mensaje" => $data);
+                }
+                else{
+                     $errors = array();
+                    foreach ($equipo->getMessages() as $message) {
+                        $errors[] = $message->getMessage();
+                    }
+                    return array("status" => 400, "mensaje" =>$errors);
+                }
+            }else{
+                return array("status" => 404, "mensaje" =>"El registro que intenta solventar no existe");
+            }
+        }        
+
         public function eliminar($id){
             $equipo=Equipo::find($id);
             if(count($equipo)){

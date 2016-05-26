@@ -38,7 +38,7 @@ $(document).ready(function()
             });
         });  
 
-        $("#btnImprimir").click(function()
+        $("#btnGuardar").click(function()
         {
             frm = $("#solvencia");
             dataForm = getFormData(frm);
@@ -50,7 +50,7 @@ $(document).ready(function()
         $("#buscarResp").click(function(){
             idBien = $
             numero = $("#responsable").val();
-            getPersonalBy("?ci_per="+numero).then(function(data){
+            getResponsablesBy("?cedula="+numero).then(function(data){
                 id_personal_buscar = data[0].id;
                 jsonToForm({
                     data : data[0],
@@ -74,10 +74,10 @@ headers = [];
         })                
   
 
-        getPersonalBy('').then(function(data){
+        getResponsablesBy('').then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
-                data[personal].ci = data[personal].ci_per;
+                data[personal].ci = data[personal].cedula;
             }
             jsonToSelect({        
                  data : data,

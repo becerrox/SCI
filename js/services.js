@@ -2,14 +2,14 @@
 // Servicio de login
 $(document).ready(function(){
 	$("#Iniciar").click(function(){
-		var Usuario=$('#username').val();
+		var Usuario=$('#username').val().toUpperCase();
 		var Contrasena=$("#contrasena").val();
 		$.ajax({
 			type:"POST",
 			processData: false,
     		contentType: 'application/json',
 			url:'api/usuarios/token',
-			data:JSON.stringify({usuario:Usuario.toUpperCase(),pass:Contrasena}),
+			data:JSON.stringify({usuario:Usuario,pass:Contrasena}),
 			success:function(response){
 				if(response.id!=undefined)
 				{
@@ -87,6 +87,31 @@ function modificarEquipos(data,id)
 	 });	
 }
 
+function retiroEquipos(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/equiposss/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Asignado',
+        text: 'Se ha asignado el equipo',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
 function solventarEquipos(data,id)
 {
 	return new Promise(function(resolver, rechazar) { 
@@ -99,7 +124,7 @@ function solventarEquipos(data,id)
 				success:function(response){
 				resolver(response);
 				swal({
-				title: 'Modificado',
+				title: 'Solventado',
 				text: 'Se ha solventado el equipo',
 				type: 'success',
 				confirmButtonText: 'Aceptar',
@@ -222,6 +247,34 @@ function modificarUsuarioPass(data,id)
 				}
 			});
 	 });	
+}
+
+function modificarPregunta(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/usuarios/'+id,
+        data:JSON.stringify(data),
+      success:function(response){
+        resolver(response);
+        swal({
+        title: 'Cambiada',
+        text: 'Pregunta y respuestas cambiadas',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      },
+      function(){
+      location.href='inicio.html';
+        })
+      },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
 }
 
 function recuperarUsuario(data,id)

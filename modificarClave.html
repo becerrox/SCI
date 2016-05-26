@@ -27,7 +27,7 @@
 <!--                 BARRA DE NAVEGACIÓN            -->
     <div id="header"></div>
     <section class="inicio container col-md-6 col-md-offset-3 col-xs-12">
-       <h1>Cambiar Contraseña</h1>   
+       <h2 class="text-center">Cambiar Contraseña</h2>   
       <div id="contenedor" class="row">
     <!--                FORMULARIO DE CAMBIO        -->
           <form id="formCambioClave" class="col-md-8 col-md-offset-2 col-sm-offset-5">
@@ -40,6 +40,31 @@
            </div>
            <div class="col-md-4 col-md-offset-4 col-xs-6  col-sm-8 col-sm-offset-2 col-xs-offset-3 ">
                 <button id= "btnGuardar" type="button" class="btn bloque" onclick="Validar_clave()">Cambiar</button>
+           </div>
+          </form>
+      </div> <!--          Fin Contenedor -->     
+    </section>
+    <section class="inicio container col-md-6 col-md-offset-3 col-xs-12">
+       <h2 id="titulo2" class="text-center">Cambiar Pregunta y Respuesta de seguridad</h2>   
+      <div id="contenedor" class="row">
+    <!--                FORMULARIO DE CAMBIO        -->
+          <form id="formCambioPregunta" class="col-md-8 col-md-offset-2 col-sm-offset-5">
+           <div class="form-group bloque ">         
+              <select name="pregunta" id="pregunta" class="form-control-2"/>
+                <option value="0">Seleccione</option>
+                <option value="1">Lugar de Nacimiento de la Madre</option>
+                <option value="2">Mejor amigo de la Infancia</option>
+                <option value="3">Nombre de la primera mascota</option>
+                <option value="4">Profesor Favorito</option>
+                <option value="5">Personaje histórico favorito</option>
+                <option value="6">Ocupación del abuelo</option>
+              </select>              
+                <label>Respuesta</label>
+                <input name="respuesta" type="text" class="form-control-2 uppercase" id="respuesta" data-toggle="tooltip" title="Escribir respuesta"/>
+              <br>
+           </div>
+           <div class="col-md-4 col-md-offset-4 col-xs-6  col-sm-8 col-sm-offset-2 col-xs-offset-3 ">
+                <button id= "btnGuardarPregunta" type="button" class="btn bloque" onclick="Pregunta()">Cambiar</button>
            </div>
           </form>
       </div> <!--          Fin Contenedor -->     

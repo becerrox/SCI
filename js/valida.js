@@ -23,6 +23,29 @@ function valida_login(){
         }
  }
 
+function Pregunta(){
+    var pregunta = document.getElementById("pregunta").value; 
+    var respuesta = document.getElementById("respuesta").value;
+
+    if(pregunta=="0") {
+    $('#alert').html('Debes seleccionar el campo Pregunta').slideDown(500);
+    $('#pregunta').focus();
+    return false;
+              }
+    else{
+      $('#alert').html('').slideUp(300);
+        }
+    if(respuesta=="") {
+    $('#alert').html('Debes introducir el campo Respuesta').slideDown(500);
+    $('#respuesta').focus();
+    return false;
+              }
+    else{
+      $('#alert').html('').slideUp(300);
+        }
+
+
+}
 function cursorfinal(){
   var numero_bien = document.getElementById("numero_bien").value; 
 cursorfinal(numero_bien.value.length);
@@ -848,7 +871,7 @@ function Validar_clave(){
         if(pass==""){
             $('#alert').html('Debes ingresar el campo Contraseña').slideDown(500);
             $('#pass').focus();
-            return false;
+            return false;       
           }
           else{
             $('#alert').html('').slideUp(300);

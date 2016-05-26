@@ -122,6 +122,30 @@ class UsuariosService{
             }
         }
 
+        public function modificarPregunta($id,$us){
+            $modificar=Usuario::find($id);
+            if(count($modificar)>0){
+                $data=array(                  
+                    "pregunta" => mb_strtoupper($us->pregunta, "UTF-8"),
+                    "respuesta" => mb_strtoupper($us->respuesta, "UTF-8"),
+                    "fecha_modif" => date("Y-m-d h:i:s")
+                );
+                if($modificar->update($data)){
+                                            
+                        return array("status" => 200, "mensaje" => $data);                    
+                }
+                else{
+                     $errors = array();
+                    foreach ($usuario->getMessages() as $message) {
+                        $errors[] = $message->getMessage();
+                    }
+                    return array("status" => 400, "mensaje" =>$errors);               
+                }
+            }else{
+                return array("status" => 404, "mensaje" =>"El registro que intenta modificar no existe");               
+            }
+        }
+
         public function recuperarUsuario($id,$us){
             $modificar=Usuario::find($id);
             if(count($modificar)>0){

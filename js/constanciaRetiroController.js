@@ -8,10 +8,13 @@ if(sessionStorage.dataUsuario==undefined)
 $(document).ready(function()
 {
 
+    var id_equipo_editar = "";
+
         $("#buscarEquipo").click(function(){
             idEquipo = $
             numero = $("#serial").val();
             getEquiposBy("?serial="+numero).then(function(data){
+                id_equipo_editar = data[0].id;
                 jsonToTableTraspuesto({
                     data : data,
                     headers : headers,
@@ -25,6 +28,7 @@ $(document).ready(function()
             idEquipo = $
             numero = $("#serialCelular").val();
             getEquiposBy("?serial="+numero).then(function(data){
+                id_equipo_editar = data[0].id;
                 jsonToTableTraspuesto({
                     data : data,
                     headers : headers,
@@ -37,13 +41,25 @@ $(document).ready(function()
         $("#buscarResp").click(function(){
             idEquipo = $
             numero = $("#responsable").val();
-            getPersonalBy("?ci_per="+numero).then(function(data){
+            getResponsablesBy("?cedula="+numero).then(function(data){
                 jsonToForm({
                     data : data[0],
                     form : "#formResponsable"
                 });                
             });
-        });  
+        }); 
+
+        $("#btnGuardar").click(function()
+        {
+            var responsb = document.getElementById("responsable").value.toUpperCase();
+
+            frm = $("#constanciaRetiro");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            dataForm.responsable=responsb;
+            retiroEquipos(dataForm,id_equipo_editar).then(function(data){   
+            });
+        });            
 
 headers = [];
 
@@ -51,22 +67,13 @@ headers = [];
 
 
 
-        /* Cargando datas de la api a los selects  */
-
-        getConfiguracionBy("?tipo=Unidad de Trabajo").then(function(data){
-            jsonToSelect({        
-                data : data,
-                value : "descripcion",
-                alias : "descripcion",
-                element : $("#unidad_adm")
-                });
-        })                
+        /* Cargando datas de la api a los selects  */           
   
 
-        getPersonalBy('').then(function(data){
+        getResponsablesBy('').then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
-                data[personal].ci = data[personal].ci_per;
+                data[personal].ci = data[personal].cedula;
             }
             jsonToSelect({        
                  data : data,
