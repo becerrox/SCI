@@ -1314,15 +1314,23 @@ function getUsuariosRecuperarBy(filtros)
 				url:'api/usuarios/'+filtros,
 				success:function(response){
 					resolver(response);
+					var nombreUsuario = response[0].usuario;
 					swal({
 					title: 'Encontrado',
-					text: 'Correo coindice en la base de datos',
+					text: 'Correo coindice en la base de datos.'+'    Su nombre de usuario es: ' + nombreUsuario,
 					type: 'info',
 					confirmButtonText: 'Aceptar',
 					confirmButtonColor: '#D85852'
 				})					
 				},error:function(response){
 					rechazar(response);
+					swal({
+					title: 'No Encontrado',
+					text: 'El correo no coindice en la base de datos',
+					type: 'error',
+					confirmButtonText: 'Aceptar',
+					confirmButtonColor: '#D85852'
+				})										
 				}
 			});
 	 });	

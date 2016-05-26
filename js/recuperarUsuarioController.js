@@ -23,6 +23,6 @@ $(document).ready(function()
                 dataForm.primer_inicio=0
                 recuperarUsuario(dataForm,id_usuario_editar,id_usuario_recuperar).then(function(data){   
                 });
-            }        
+            }
         });
-});    
+});        

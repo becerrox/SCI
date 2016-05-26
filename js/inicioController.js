@@ -21,15 +21,23 @@ $(document).ready(function()
                     {
                         document.getElementById("equipos").style.display = "none";
                         document.getElementById("reporte_equipos").style.display = "none";  
-                        document.getElementById("registro_usuarios").style.display = "none";  
                     }
-                if (datosUsuario.nivel==2) //Nivel Regular Usuario de Bienes
+                if (datosUsuario.nivel==2) //Nivel 
                     {
                         document.getElementById("equipos").style.display = "none";
                         document.getElementById("reporte_equipos").style.display = "none";
                         document.getElementById("registro_usuarios").style.display = "none";
-                        document.getElementById("reporte_equipos").style.display = "none";
                         document.getElementById("btnEliminar").style.display = "none";
-                    }        
+                    }
+                if (datosUsuario.nivel==3) //Nivel 
+                    {
+                        document.getElementById("equipos").style.display = "none";
+                        document.getElementById("reporte_equipos").style.display = "none";
+                        document.getElementById("registro_usuarios").style.display = "none";
+                        document.getElementById("btnEliminar").style.display = "none";
+                        document.getElementById("inventario").style.display = "none";
+                        document.getElementById("administrador").style.display = "none";
+                    }
+
         });        
 });
