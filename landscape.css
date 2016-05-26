@@ -12,8 +12,11 @@ article{
 	border: 2px;
 	border-color: 5px; 
 	   }
+#departamento{
+  visibility: visible;
 
-#estatus {
+}
+#estatus , #usuarios{
   top:10%;
   position: absolute;
   z-index:6;
