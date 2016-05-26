@@ -29,8 +29,8 @@ $(document).ready(function()
                 }
                 else (
                     swal({
-                    title: 'Chimbo',
-                    text: 'Chimbooooooo',
+                    title: 'Aviso',
+                    text: 'Pregunta o respuesta no coinciden',
                     type: 'info',
                     confirmButtonText: 'Aceptar',
                     confirmButtonColor: '#D85852'

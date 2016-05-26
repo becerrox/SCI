@@ -51,7 +51,7 @@ $(document).ready(function()
 
         $("#btnGuardar").click(function()
         {
-            var responsb = document.getElementById("responsable").value.toUpperCase();
+            var responsb = document.getElementById("nombres").value.toUpperCase() + " " + document.getElementById("apellidos").value.toUpperCase();
 
             frm = $("#constanciaRetiro");
             dataForm = getFormData(frm);

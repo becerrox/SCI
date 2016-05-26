@@ -290,7 +290,7 @@ function recuperarUsuario(data,id)
 				resolver(response);
 				swal({
 				title: 'Recuperado',
-				text: 'Usuario recuperado satisfactoriamente',
+				text: 'Usuario recuperado satisfactoriamente. Su nueva contraseña generada es: 12345',
 				type: 'success',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
