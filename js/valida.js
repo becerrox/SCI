@@ -119,6 +119,12 @@ function busqueda_res(){
 return ((key >= 48 && key <= 57) || (key==8) || (key==118))  
 
 } 
+ function soloNumeros2(e){
+
+  var key = window.Event ? e.which : e.keyCode
+return ((key >= 48 && key <= 57) || (key==8) || (key==118) || (key==45))  
+
+} 
 
 function Validador(email){
           var tester = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-]+)\.)+([a-zA-Z0-9]{2,4})+$/;
