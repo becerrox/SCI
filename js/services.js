@@ -308,7 +308,7 @@ function recuperarUsuario(data,id)
 				resolver(response);
 				swal({
 				title: 'Recuperado',
-				text: 'Usuario recuperado satisfactoriamente. Su nueva contraseña generada es: 12345',
+				text: 'Usuario recuperado satisfactoriamente. Su nueva contraseña generada es: 12345.',
 				type: 'success',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
@@ -1548,8 +1548,8 @@ function getUsuariosRecuperarBy(filtros)
 					var nombreUsuario = response[0].usuario;
 					swal({
 					title: 'Encontrado',
-					text: 'Correo coindice en la base de datos.'+'    Su nombre de usuario es: ' + nombreUsuario,
-					type: 'info',
+					text: 'Correo coindice en la base de datos.'+'    Su nombre de usuario es: ' + '"' + nombreUsuario + '"' + '. ' + 'Ingrese su pregunta y respuesta para recuperar la contraseña',
+					type: 'success',
 					confirmButtonText: 'Aceptar',
 					confirmButtonColor: '#D85852'
 				})					
