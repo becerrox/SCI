@@ -1,4 +1,4 @@
-// Controlador de la vista de catalogo de configuraciones
+// Controlador de la vista configuración de unidades administrativas-trabajo
 if(sessionStorage.dataUsuario==undefined)
 {
     location.href="index.html";

@@ -110,6 +110,34 @@ $app->delete("/equipos/{id:[0-9]+}",function($id) use ($app,$equipoService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
+//Endpoints reporteSolvencia
+
+$reporteSolvenciaService = new ReporteSolvenciaService();
+
+$app->get("/reportesolvencias",function() use ($app,$reporteSolvenciaService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $reporteSolvenciaService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/reportesolvencias",function() use ($app,$reporteSolvenciaService){
+    $reporteSolvencia = json_decode($app->request->getRawBody());
+    $data = $reporteSolvenciaService->nuevo($reporteSolvencia);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/reportesolvencias/{id:[0-9]+}",function($id) use ($app,$reporteSolvenciaService) {
+    $reporteSolvencia = json_decode($app->request->getRawBody());
+    $data = $reporteSolvenciaService->modificar($id,$reporteSolvencia);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/reportesolvencias/{id:[0-9]+}",function($id) use ($app,$reporteSolvenciaService) {
+    $data = $reporteSolvenciaService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
+});
+
 //Endpoints Categoría General
 
 $catgenService = new CatgenService();
@@ -468,6 +496,62 @@ $app->put("/unidadadministrativa/{id:[0-9]+}",function($id) use ($app,$unidadAdm
 
 $app->delete("/unidadadministrativa/{id:[0-9]+}",function($id) use ($app,$unidadAdministrativaService) {
     $data = $unidadAdministrativaService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+//Endpoints Unidades
+
+$unidadesService = new UnidadesService();
+
+$app->get("/unidades",function() use ($app,$unidadesService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $unidadesService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/unidades",function() use ($app,$unidadesService) {
+    $unidades = json_decode($app->request->getRawBody());
+    $data = $unidadesService->nuevo($unidades);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/unidades/{id:[0-9]+}",function($id) use ($app,$unidadesService) {
+    $unidades = json_decode($app->request->getRawBody());
+    $data = $unidadesService->modificar($id,$unidades);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/unidades/{id:[0-9]+}",function($id) use ($app,$unidadesService) {
+    $data = $unidadesService->eliminar($id);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+//Endpoints dependencias
+
+$dependenciasService = new DependenciasService();
+
+$app->get("/dependencias",function() use ($app,$dependenciasService) {
+    $query = $app->request->getQuery();
+    unset($query["_url"]);
+    $data = $dependenciasService->listar($query);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->post("/dependencias",function() use ($app,$dependenciasService) {
+    $dependencias = json_decode($app->request->getRawBody());
+    $data = $dependenciasService->nuevo($dependencias);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->put("/dependencias/{id:[0-9]+}",function($id) use ($app,$dependenciasService) {
+    $dependencias = json_decode($app->request->getRawBody());
+    $data = $dependenciasService->modificar($id,$dependencias);
+    response($app,$data['mensaje'],$data['status']);
+});
+
+$app->delete("/dependencias/{id:[0-9]+}",function($id) use ($app,$dependenciasService) {
+    $data = $dependenciasService->eliminar($id);
     response($app,$data['mensaje'],$data['status']);
 });
 

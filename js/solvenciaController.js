@@ -62,17 +62,19 @@ $(document).ready(function()
 
 headers = [];
 
-        /* Cargando datas de la api a los selects  */
+            frm = $("#solvencia");
+            dataForm = getFormData(frm);
+            dataForm.status=1;
+            registrarReporteSolvencia(dataForm).then(function(data){   
+/*                var idReporte = data.id;
+*/                console.log(data.id);
+                $("#id_solvencia").html(data.id);
 
-        getConfiguracionBy("?tipo=Unidad de Trabajo").then(function(data){
-            jsonToSelect({        
-                data : data,
-                value : "descripcion",
-                alias : "descripcion",
-                element : $("#unidad_adm")
-                });
-        })                
-  
+            });
+
+
+
+        /* Cargando datas de la api a los selects  */         
 
         getResponsablesBy('').then(function(data){
             for(personal in data){

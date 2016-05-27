@@ -29,6 +29,24 @@ $(document).ready(function(){
 	});
 });
 
+function registrarReporteSolvencia(data)
+{
+return new Promise(function(resolver, rechazar) {	
+	$.ajax({
+			type:"POST",
+			processData: false,
+    		contentType: 'application/json',
+			url:'api/reportesolvencias',
+			data:JSON.stringify(data),
+			success:function(response){
+				resolver(response);
+			},error:function(response){
+					rechazar(response);
+				}
+			});
+	 });	
+}
+
 function registrarEquipo(data)
 {
 return new Promise(function(resolver, rechazar) {	
@@ -1131,6 +1149,158 @@ function eliminarNumeroBien(data,id)
    });  
 }
 
+function registrarDependencias(data)
+{
+return new Promise(function(resolver, rechazar) { 
+  $.ajax({
+      type:"POST",
+      processData: false,
+        contentType: 'application/json',
+      url:'api/dependencias',
+      data:JSON.stringify(data),
+      success:function(response){
+        resolver(response);
+        swal({
+        title: 'Registrado',
+        text: 'Se ha registrado la unidad',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })
+      },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function modificarDependencias(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/dependencias/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Modificado',
+        text: 'Se ha modificado la unidad',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function eliminarDependencias(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/dependencias/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado la unidad',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function registrarUnidades(data)
+{
+return new Promise(function(resolver, rechazar) { 
+  $.ajax({
+      type:"POST",
+      processData: false,
+        contentType: 'application/json',
+      url:'api/unidades',
+      data:JSON.stringify(data),
+      success:function(response){
+        resolver(response);
+        swal({
+        title: 'Registrado',
+        text: 'Se ha registrado la unidad',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })
+      },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function modificarUnidades(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"PUT",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/unidades/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Modificado',
+        text: 'Se ha modificado la unidad',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function eliminarUnidades(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/unidades/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado la unidad',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      })        
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
 function registrarUnidadAdministrativa(data)
 {
 return new Promise(function(resolver, rechazar) { 
@@ -1629,6 +1799,54 @@ function getUnidadTrabajoBy(filtros)
         type:"GET",
           contentType: 'application/json',
         url:'api/unidadtrabajo/'+filtros,
+        success:function(response){
+          resolver(response);
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function getUnidadesBy(filtros)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"GET",
+          contentType: 'application/json',
+        url:'api/unidades/'+filtros,
+        success:function(response){
+          resolver(response);
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function getDependenciasBy(filtros)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"GET",
+          contentType: 'application/json',
+        url:'api/dependencias/'+filtros,
+        success:function(response){
+          resolver(response);
+        },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
+function getReporteSolvenciaBy(filtros)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"GET",
+          contentType: 'application/json',
+        url:'api/reportesolvencia/'+filtros,
         success:function(response){
           resolver(response);
         },error:function(response){
