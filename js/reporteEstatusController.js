@@ -32,7 +32,7 @@ $(document).ready(function()
 
         /* Cargando datas de la api a los selects  */     
 
-        getConfiguracionEquipoBy("?tipo=ESTATUS DE USO DEL BIEN").then(function(data){
+        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "codigo",
