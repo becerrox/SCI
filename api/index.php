@@ -53,7 +53,7 @@ $app->put("/usuarios/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
     response($app,$data['mensaje'],$data['status']);
 });
 
-$app->put("/usuarios/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
+$app->put("/usuariosos/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
     $usuario = json_decode($app->request->getRawBody());
     $data = $usuarioService->modificarPregunta($id,$usuario);
     response($app,$data['mensaje'],$data['status']);
