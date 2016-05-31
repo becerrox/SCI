@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8"/>
-    <title>Configuración de Bienes</title>
+    <title>Configuración de Componentes</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, 
     initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0"> 
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" >
@@ -28,25 +28,17 @@
 <body>
   <div id="header"></div>
     <section class="inicio">
-      <h1>CATÁLOGO CONFIGURACIÓN DE BIENES</h1>
-      <div id="contenedor">
-        <form id="formNuevaConfig" class="col-md-4 form-group bloque">
-          <h3>Registrar Nueva Configuración</h3>    
-          <label>Tipo</label>
-          <input type="text" name="descripcion" id="descripcion" class="form-control-2" data-toggle="tooltip" title="Ej:COLOR,COMPONENTES"></input>
-          <button id= "btnGuardarNuevaCongif" type="button" class="btn icon-save" onclick=""></button>                             
-        </form> <!--FIN Registro de Nueva Configuración--> 
-        <form id="formCatConfig" class="col-md-4 form-group bloque">
-          <h3>Registrar Tipo de Configuración</h3>    
-          <label>Tipo</label>
-          <select name="tipo" id="tipo" class="form-control-2"></select>      
+      <h1>CATÁLOGO DE COMPONENTES </h1>
+      <div id="contenedor" class="row">       
+        <form id="formCatConfig" class="col-md-4 col-md-offset-4 form-group bloque">
+          <h3>Registrar Nuevo Componente</h3>
           <label>Descripción</label>
           <input type="text" name="descripcion" id="descripcion" class="form-control-2" data-toggle="tooltip" title="Ej:Si el tipo es COLOR se registra ROJO"></input>  
           <label>Código</label>
           <input type="text" name="codigo" id="codigo" class="form-control-2" data-toggle="tooltip" title="Código del Item"></input><br>
           <button id= "btnGuardarTipoCongif" type="button" class="btn icon-save" onclick=""></button>                             
-        </form> <!--FIN Registro--> 
-        <form class="form-group bloque col-md-4">
+        </form> <!--FIN Registro-->
+        <form class="form-group bloque col-md-4 col-md-offset-4">
           <h3>Actualizar o Borrar</h3>
           <label>Buscar</label>
           <select type="text" class="form-control-2" id="buscar" data-toggle="tooltip" title="Buscar item a Modificar o Eliminar "></select>
