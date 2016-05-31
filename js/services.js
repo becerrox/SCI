@@ -329,9 +329,6 @@ function recuperarUsuario(data,id)
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
 			},
-			function(){
-			location.href='index.html';
-	      },
       function(){
       location.reload();
         })
@@ -528,8 +525,15 @@ return new Promise(function(resolver, rechazar) {
       location.reload();
         })
       },error:function(response){
-					rechazar(response);
-				}
+          rechazar(response);
+          var error_campos = response.responseText; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });    				}
 			});
 	 });	
 }
@@ -556,8 +560,15 @@ return new Promise(function(resolver, rechazar) {
       location.reload();
         })
       },error:function(response){
-					rechazar(response);
-				}
+          rechazar(response);
+          var error_campos = response.responseText; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });    				}
 			});
 	 });	
 }
@@ -584,8 +595,15 @@ return new Promise(function(resolver, rechazar) {
       location.reload();
         })
       },error:function(response){
-					rechazar(response);
-				}
+          rechazar(response);
+          var error_campos = response.responseText; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });    				}
 			});
 	 });	
 }
@@ -612,8 +630,15 @@ return new Promise(function(resolver, rechazar) {
       location.reload();
         })
       },error:function(response){
-					rechazar(response);
-				}
+          rechazar(response);
+          var error_campos = response.responseText; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });    				}
 			});
 	 });	
 }
@@ -669,7 +694,7 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-          var error_campos = response.responseJSON; 
+          var error_campos = response.responseText; 
             swal({
                   title: 'AVISO',
                   text: "Los siguientes campos son requeridos: " + error_campos,
@@ -853,7 +878,14 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-        }
+          var error_campos = response.responseText; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });            }
       });
    });  
 }
@@ -937,7 +969,15 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-        }
+          var error_campos = response.responseText; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            }); 
+          }
       });
    });  
 }
@@ -1021,7 +1061,14 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-        }
+          var error_campos = response.responseText; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });            }
       });
    });  
 }
@@ -1105,7 +1152,14 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-        }
+          var error_campos = response.responseText; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });            }
       });
    });  
 }
@@ -1282,7 +1336,14 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-        }
+          var error_campos = response.responseText; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });            }
       });
    });  
 }
@@ -1367,7 +1428,14 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-        }
+          var error_campos = response.responseText; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });            }
       });
    });  
 }
@@ -1452,7 +1520,14 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-        }
+          var error_campos = response.responseText; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });            }
       });
    });  
 }
@@ -1537,7 +1612,14 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-        }
+          var error_campos = response.responseText; 
+            swal({
+                  title: 'AVISO',
+                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  type: 'info',
+                  confirmButtonText: 'Aceptar',
+                  confirmButtonColor: '#D85852'
+            });            }
       });
    });  
 }
