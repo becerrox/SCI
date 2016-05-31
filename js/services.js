@@ -100,8 +100,11 @@ function modificarEquipos(data,id)
 				type: 'success',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-			})
-				},error:function(response){
+      },
+      function(){
+      location.reload();
+        })
+      },error:function(response){
 					rechazar(response);
 				}
 			});
@@ -150,8 +153,8 @@ function solventarEquipos(data,id)
 				type: 'success',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-			})
-				},error:function(response){
+        })
+      },error:function(response){
 					rechazar(response);
 				}
 			});
@@ -175,8 +178,11 @@ function eliminarEquipos(data,id)
 				type: 'success',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-			})				
-				},error:function(response){
+      },
+      function(){
+      location.reload();
+        })
+      },error:function(response){
 						rechazar(response);
 				}
 			});
@@ -237,8 +243,11 @@ function modificarUsuario(data,id)
 				type: 'success',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-				})
-				},error:function(response){
+      },
+      function(){
+      location.reload();
+        })
+      },error:function(response){
 					rechazar(response);
 				}
 			});
@@ -263,9 +272,7 @@ function modificarUsuarioPass(data,id)
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
 			},
-			function(){
-			location.href='inicio.html';
-	      },
+
       function(){
       location.reload();
         })
@@ -396,8 +403,11 @@ function modificarPersonal(data,id)
 				type: 'success',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-				})
-				},error:function(response){
+      },
+      function(){
+      location.reload();
+        })
+      },error:function(response){
 					rechazar(response);
 				}
 			});
@@ -457,8 +467,11 @@ function modificarBien(data,id)
 				type: 'success',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-			})				
-				},error:function(response){
+      },
+      function(){
+      location.reload();
+        })
+      },error:function(response){
 					rechazar(response);
 				}
 			});
@@ -482,8 +495,11 @@ function eliminarBien(data,id)
 				type: 'success',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-			})				
-				},error:function(response){
+      },
+      function(){
+      location.reload();
+        })
+      },error:function(response){
 						rechazar(response);
 				}
 			});
@@ -619,8 +635,11 @@ function modificarConfiguracion(data,id)
 				type: 'success',
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
-			})				
-				},error:function(response){
+      },
+      function(){
+      location.reload();
+        })
+      },error:function(response){
 					rechazar(response);
 				}
 			});
@@ -1427,7 +1446,10 @@ return new Promise(function(resolver, rechazar) {
         type: 'success',
         confirmButtonText: 'Aceptar',
         confirmButtonColor: '#D85852'
-      })
+      },
+      function(){
+      location.reload();
+        })
       },error:function(response){
           rechazar(response);
         }
@@ -1509,7 +1531,10 @@ return new Promise(function(resolver, rechazar) {
         type: 'success',
         confirmButtonText: 'Aceptar',
         confirmButtonColor: '#D85852'
-      })
+      },
+      function(){
+      location.reload();
+        })
       },error:function(response){
           rechazar(response);
         }
