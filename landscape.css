@@ -1,0 +1,133 @@
+ @page {
+  page-size:letter;
+  size: landscape;  
+
+ }
+
+body{
+
+
+}
+article{ 
+	border: 2px;
+	border-color: 5px; 
+	   }
+#departamento{
+  visibility: visible;
+
+}
+#estatus , #usuarios{
+  top:10%;
+  position: absolute;
+  z-index:6;
+  text-align: center;
+  }
+#inventariogeneral , #inventariointerno{
+  top:10%;
+  text-align: center;
+  position: absolute;
+  z-index: 6;
+}
+
+#tipobien , #tipoequipo , #respadm{
+  top:10%;
+  position: absolute;
+  z-index:6;
+  text-align: center;
+}
+h3{ text-align: center; }
+#reporteuso{
+  top:10%;
+  position: absolute;
+  z-index:6;
+  text-align: center;
+}
+#repordepart{
+  top:10%;
+  position: absolute;
+  z-index:6;
+  text-align: center;
+}
+body .bloque{
+	margin:0 50px;
+}
+h3{
+	font-size: 16px;
+	font-weight: bold;
+}
+h4{ font-weight: bold; }
+input , textarea{
+background: none;
+border:none;
+-webkit-appearance: field;
+	}
+select {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+border: none; 
+background: none;
+	     }
+#cabecera img{
+	width:100%;
+  height: 100%; 
+  position: fixed;
+
+}
+#bloque2{
+	z-index: 99;
+	padding-top: 225px;
+	font-size: 10px
+}
+#fecha-elab{
+	padding-left:50%;
+}
+#firma{padding-top: 20px;}
+#header, #buscar {
+	display: none;
+}
+#responsable_adm , #listausuarios{
+	top:10%;
+  position: absolute;
+  z-index:6;
+  text-align: center;
+
+}
+#footer{
+   z-index: 3;
+   position: absolute;
+   text-align: center;
+   bottom: 0;
+   top: 400px;
+}
+
+#pie2 p{	
+	text-align: center;
+	font-size: 9px;
+	}
+#tabla {
+	margin: 10px 0;
+}
+
+.fecha1{
+width: 20px;
+        }
+.fecha2{
+width: 50px;
+        }
+.fecha3{
+  width: 70px;
+}
+.bordes{
+  border-width: 1px; 
+  border-style: solid;
+  padding: 0;
+  margin: 0;
+	}
+.bloque label{display: inline;}
+.linea p{
+	display: inline;	
+		}
+.padding {padding-right: 80px;}
+.hide{display: block !important;}
+.page-break { display:block; page-break-before:always; }

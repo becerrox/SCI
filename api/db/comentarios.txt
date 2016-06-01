@@ -1,0 +1,10 @@
+-- TIPOS
+-- forma adquision
+-- colores
+-- estatus de uso de bien
+-- condiciones fisicas
+-- marca
+
+
+
+-- valores que van en la columna configuracion

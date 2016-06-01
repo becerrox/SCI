@@ -1,0 +1,47 @@
+// Controlador de la vista de registro de equipo
+
+if(sessionStorage.dataUsuario==undefined)
+{
+    location.href="index.html";
+}
+
+$(document).ready(function()
+{
+        var id_bien_buscar = "";
+
+        $("#btnBuscar").click(function(){
+            idBien = $
+            numero = $("#estatus_uso_bien").val();
+            getBienesBy("?estatus_uso_bien="+numero).then(function(data){
+                id_bien_buscar = data[0].id;
+                jsonToTable({
+                    data : data,
+                    headers : headers,
+                    table : $("#tableEstatus"),
+                    invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm", "unidad_trabajo","sede"],
+                    limit : data.length,
+                    showCount : true            
+                  });
+                jsonToForm({
+                    data : data[0],
+                    form : "#reporte"
+                });                
+            });
+        }); 
+
+
+        /* Cargando datas de la api a los selects  */     
+
+        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "codigo",
+                alias : "descripcion",
+                element : $("#estatus_uso_bien")
+                });
+        })              
+
+headers = [ "Código General", "Código de Sub-categoría", "Código de Categoría Específica", "Descripción", "Estatus Uso Bien", "Marca", "Modelo", "Serial", "Tipo Componentes", "Colores", "Número de bien", "Estado bien", "Categoria de unidad administrativa"];
+
+});
+
