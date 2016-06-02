@@ -1,7 +1,7 @@
 function jsonToSelect(obj)
 {
     var selectString="";
-    selectString = '<option selected disabled>Seleccione</option>' + '<option value="No aplica">No aplica</option>';
+    selectString = '<option selected disabled>SELECCIONE</option>' + '<option value="NO APLICA">NO APLICA</option>';
     // selectString = ;
     for(var i=0; i<obj.data.length;i++){
         selectString += '<option value="'+obj.data[i][obj.value]+'">'+obj.data[i][obj.alias]+'</option>';

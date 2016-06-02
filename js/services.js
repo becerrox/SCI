@@ -670,6 +670,34 @@ function modificarConfiguracion(data,id)
 	 });	
 }
 
+function eliminarConfiguracion(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/configuracion/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado la configuración',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      },
+      function(){
+      location.reload();
+        })
+      },error:function(response){
+          rechazar(response);
+        }
+      });
+   });  
+}
+
 function registrarConfiguracionAdmin(data)
 {
 return new Promise(function(resolver, rechazar) { 

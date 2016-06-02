@@ -10,53 +10,52 @@ $(document).ready(function()
 
         $("#btnGuardar").click(function()
         {
-            frm = $("#formCatConfig");
+            frm = $("#formMarcas");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            registrarConfiguracion(dataForm).then(function(data){
+            dataForm.tipo="MARCA";
+            registrarConfiguracionEquipo(dataForm).then(function(data){
              });
         });
 
         $("#btnModificar").click(function()
         {
-            frm = $("#formCatConfig");
+            frm = $("#formMarcas");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            modificarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
+            modificarConfiguracionEquipo(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   
+
+        $("#btnEliminar").click(function()
+        {
+            frm = $("#formMarcas");
+            dataForm = getFormData(frm);
+            dataForm.status=0;
+            eliminarConfiguracionEquipo(dataForm,id_configuracion_editar);
+        });     
 
         $("#buscarConfiguracion").click(function(){
             idConfiguracion = $
             descripcion = $("#buscar").val();
-            getConfiguracionBy("?descripcion="+descripcion).then(function(data){
+            getConfiguracionEquipoBy("?descripcion="+descripcion).then(function(data){
                 id_configuracion_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
-                    form : "#formCatConfig"
+                    form : "#formMarcas"
                 });
             });
         });  
 
-
-        getDetallesConfiguracionBienesBy('').then(function(data){
+        getConfiguracionEquipoBy("?tipo=MARCA").then(function(data){
             //Despues del retorno del promise, se cargan en el select con jsonToSelect
-            jsonToSelect({        
-                data : data,
-                value : "descripcion",
-                alias : "descripcion",
-                element : $("#tipo")
-                });
-        })  
-
-        getConfiguracionBy('').then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
                 alias : "descripcion",
                 element : $("#buscar")
                 });
-        })              
+        })          
 
 });
 

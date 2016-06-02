@@ -5,7 +5,7 @@ class UsuariosService{
     public function listar($query){
 
           if(empty($query))
-             $usuario=Usuario::find();
+             $usuario=Usuario::find("status = 1");
           else
           {
             $usuario=Usuario::find(

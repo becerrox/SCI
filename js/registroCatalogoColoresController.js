@@ -1,4 +1,4 @@
-// Controlador de la vista de catalogo de descripciones
+// Controlador de la vista de catalogo de colores
 if(sessionStorage.dataUsuario==undefined)
 {
     location.href="index.html";
@@ -10,19 +10,29 @@ $(document).ready(function()
 
         $("#btnGuardar").click(function()
         {
-            frm = $("#formCatConfig");
+            frm = $("#formColores");
             dataForm = getFormData(frm);
             dataForm.status=1;
+            dataForm.tipo="COLOR";
             registrarConfiguracion(dataForm).then(function(data){
              });
         });
 
         $("#btnModificar").click(function()
         {
-            frm = $("#formCatConfig");
+            frm = $("#formColores");
             dataForm = getFormData(frm);
             dataForm.status=1;
             modificarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
+            });
+        });   
+
+        $("#btnEliminar").click(function()
+        {
+            frm = $("#formColores");
+            dataForm = getFormData(frm);
+            dataForm.status=0;
+            eliminarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   
 
@@ -33,23 +43,13 @@ $(document).ready(function()
                 id_configuracion_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
-                    form : "#formCatConfig"
+                    form : "#formColores"
                 });
             });
         });  
 
 
-        getDetallesConfiguracionBienesBy('').then(function(data){
-            //Despues del retorno del promise, se cargan en el select con jsonToSelect
-            jsonToSelect({        
-                data : data,
-                value : "descripcion",
-                alias : "descripcion",
-                element : $("#tipo")
-                });
-        })  
-
-        getConfiguracionBy('').then(function(data){
+        getConfiguracionBy("?tipo=COLOR").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",

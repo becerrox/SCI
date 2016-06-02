@@ -3,7 +3,7 @@ class ConfiguracionService{
         public function listar($query = []){
 
           if(empty($query))
-             $configuracion=Configuracion::find();
+             $configuracion=Configuracion::find("status = 1");
           else
           {
             $configuracion = Configuracion::find(
@@ -26,7 +26,8 @@ class ConfiguracionService{
             $data=array(
                   "codigo" => mb_strtoupper($conf->codigo, "UTF-8"),
                   "descripcion" => mb_strtoupper($conf->descripcion, "UTF-8"),
-                  "tipo" => mb_strtoupper($conf->tipo, "UTF-8")
+                  "tipo" => mb_strtoupper($conf->tipo, "UTF-8"),
+                  "status" => 1
             );
             if($configuracion->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -45,7 +46,8 @@ class ConfiguracionService{
                 $data=array(
                   "codigo" => mb_strtoupper($conf->codigo, "UTF-8"),
                   "descripcion" => mb_strtoupper($conf->descripcion, "UTF-8"),
-                  "tipo" => mb_strtoupper($conf->tipo, "UTF-8")
+                  "tipo" => mb_strtoupper($conf->tipo, "UTF-8"),
+                  "status" => 1
                 );
 
                 if($modificar->update($data)){
