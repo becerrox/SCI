@@ -26,7 +26,8 @@ class UnidadTrabajoService{
             $unidadTrabajo=new UnidadTrabajo();
 
             $data=array(
-                "descripcion" => mb_strtoupper($unitra->descripcion, "UTF-8")
+                "descripcion" => mb_strtoupper($unitra->descripcion, "UTF-8"),
+                "status" => 1
             );
             if($unidadTrabajo->save($data)){
                     $return = ($unidadTrabajo->toArray());
@@ -44,7 +45,8 @@ class UnidadTrabajoService{
             $modificar=UnidadTrabajo::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "descripcion" => mb_strtoupper($unitra->descripcion, "UTF-8")
+                    "descripcion" => mb_strtoupper($unitra->descripcion, "UTF-8"),
+                    "status" => 1
                 );
 
                 if($modificar->update($data)){
