@@ -210,6 +210,7 @@ section > div > div{
  }
  section .inicio{
   background: url(images/fondoinicio.png); 
+  width: auto;
  }
  .inicio{
   overflow:hidden;
@@ -481,6 +482,9 @@ padding:8px;}
 
 @media (max-width: 768px) {
 
+#fondo img{
+  width: auto;
+}
 .mainWrap{width:auto;padding:0px 20px;}
 
 .menu{display:none;}

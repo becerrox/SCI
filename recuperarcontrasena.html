@@ -43,15 +43,16 @@
        <h1>Recuperar Contraseña</h1>   
       <div id="contenedor" class="row">
     <!--                FORMULARIO DE CAMBIO        -->
-          <form class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+          <form>
              <div class="form-group bloque ">         
                  <label>Usuario:</label> 
                  <input name="usuario" type="text" class="form-control-2" id="usuario" data-toggle="tooltip" title="Introduzca el usuario con el cual se registró">
                  <br>
                  <button id="btnBuscar" type="button" class="btn" style="width:100px;">Buscar</button>             
             </div>
-          </form>      
-          <form id="formRecuperar" class="col-md-12 col-lg-12 col-sm-12 col-xs-12">          
+          </form>            
+          <form id="formRecuperar" class="bloque form-group">          
                  <label>Pregunta de Seguridad:</label>
                  <select name="pregunta" id="pregunta" class="form-control-2"/>
                   <option value="0">Seleccione</option>
@@ -64,18 +65,19 @@
                 </select>              
                 <label>Respuesta</label>
                 <input name="respuesta" type="text" class="form-control-2 uppercase" id="respuesta" data-toggle="tooltip" title="Escribir respuesta"/>
-                <br>
              </div>
+        </div>
              <div class="row">
-               <div class="col-md-2 col-md-offset-5 col-sm-4 col-xs-4 col-xs-offset-4">
+               <article class="col-md-2 col-md-offset-5 col-sm-4 col-xs-4 col-xs-offset-4">
                   <button id="btnSolicitar" type="button" class="btn bloque">Solicitar</button>
-               </div>
-                <div class="col-md-2 col-md-offset-5 col-sm-4 col-xs-4 col-xs-offset-4">
+               </article>
+                <article class="col-md-2 col-md-offset-5 col-sm-4 col-xs-4 col-xs-offset-4">
                 <br>
                   <a id="volver" type="button" class="btn bloque" href="index.html">Volver</a>
-               </div>
+               </article>
              </div>
         </form>
+       </div>
       </div> <!--          Fin Contenedor -->     
     </section>
       <div class="bloque col-md-6 col-md-offset-3">    
