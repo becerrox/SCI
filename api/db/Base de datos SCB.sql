@@ -12,72 +12,6 @@ SET client_min_messages = warning;
 SET search_path = public, pg_catalog;
 
 --
--- Name: configuracion_bien_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE configuracion_bien_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE configuracion_bien_id_seq OWNER TO postgres;
-
-SET default_tablespace = '';
-
-SET default_with_oids = false;
-
---
--- Name: configuracion_bien; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE configuracion_bien (
-    id integer DEFAULT nextval('configuracion_bien_id_seq'::regclass) NOT NULL,
-    codigo integer NOT NULL,
-    descripcion character varying(100),
-    tipo character varying(50),
-    status integer DEFAULT 1
-);
-
-
-ALTER TABLE configuracion_bien OWNER TO postgres;
-
---
--- Name: TABLE configuracion_bien; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE configuracion_bien IS 'forma adquision, colores, estatus de uso de bien, condiciones fisicas, categoria de unidades administrativas';
-
-
---
--- Name: COLUMN configuracion_bien.tipo; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN configuracion_bien.tipo IS 'forma adquision, colores, estatus de uso de bien, condiciones fisicas, marca';
-
-
---
--- Name: Colores; Type: VIEW; Schema: public; Owner: postgres
---
-
-CREATE VIEW "Colores" AS
- SELECT configuracion_bien.descripcion
-   FROM configuracion_bien
-  WHERE ((configuracion_bien.tipo)::text = 'Color'::text);
-
-
-ALTER TABLE "Colores" OWNER TO postgres;
-
---
--- Name: VIEW "Colores"; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON VIEW "Colores" IS 'Colores';
-
-
---
 -- Name: aignacion_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -118,6 +52,10 @@ CREATE SEQUENCE bienesgeneral_id_seq
 
 
 ALTER TABLE bienesgeneral_id_seq OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
 
 --
 -- Name: bienes; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -329,6 +267,84 @@ COMMENT ON TABLE catgen IS 'Codigo general de los bienes';
 
 
 --
+-- Name: configuracion_admin_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE configuracion_admin_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE -2147483648
+    MAXVALUE 2147483647
+    CACHE 1;
+
+
+ALTER TABLE configuracion_admin_id_seq OWNER TO postgres;
+
+--
+-- Name: configuracion_admin; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE configuracion_admin (
+    id integer DEFAULT nextval('configuracion_admin_id_seq'::regclass) NOT NULL,
+    tipo character varying(60),
+    descripcion character varying(60),
+    status integer DEFAULT 1
+);
+
+
+ALTER TABLE configuracion_admin OWNER TO postgres;
+
+--
+-- Name: TABLE configuracion_admin; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE configuracion_admin IS 'Tabla de configuración para Sedes y Cargos';
+
+
+--
+-- Name: configuracion_bien_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE configuracion_bien_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE configuracion_bien_id_seq OWNER TO postgres;
+
+--
+-- Name: configuracion_bien; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE configuracion_bien (
+    id integer DEFAULT nextval('configuracion_bien_id_seq'::regclass) NOT NULL,
+    codigo integer NOT NULL,
+    descripcion character varying(100),
+    tipo character varying(50),
+    status integer DEFAULT 1
+);
+
+
+ALTER TABLE configuracion_bien OWNER TO postgres;
+
+--
+-- Name: TABLE configuracion_bien; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE configuracion_bien IS 'forma adquision, colores, estatus de uso de bien, condiciones fisicas, categoria de unidades administrativas';
+
+
+--
+-- Name: COLUMN configuracion_bien.tipo; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN configuracion_bien.tipo IS 'forma adquision, colores, estatus de uso de bien, condiciones fisicas, marca';
+
+
+--
 -- Name: configuracion_equipos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -368,27 +384,6 @@ ALTER TABLE configuracion_equipos_id_seq OWNER TO postgres;
 --
 
 ALTER SEQUENCE configuracion_equipos_id_seq OWNED BY configuracion_equipos.id;
-
-
---
--- Name: configuracion_admin; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE configuracion_admin (
-    id integer DEFAULT nextval('configuracion_equipos_id_seq'::regclass) NOT NULL,
-    tipo character varying(60),
-    descripcion character varying(60),
-    status integer DEFAULT 1
-);
-
-
-ALTER TABLE configuracion_admin OWNER TO postgres;
-
---
--- Name: TABLE configuracion_admin; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE configuracion_admin IS 'Tabla de configuración para Marcas, Modelos, descripción';
 
 
 --
@@ -1093,6 +1088,14 @@ ALTER TABLE ONLY niveles_usuarios
 
 
 --
+-- Name: pk_configadmin; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY configuracion_admin
+    ADD CONSTRAINT pk_configadmin PRIMARY KEY (id);
+
+
+--
 -- Name: pk_configu; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1106,14 +1109,6 @@ ALTER TABLE ONLY configuracion_bien
 
 ALTER TABLE ONLY configuracion_equipos
     ADD CONSTRAINT pk_configuracion PRIMARY KEY (id);
-
-
---
--- Name: pk_configuracion_admin; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY configuracion_admin
-    ADD CONSTRAINT pk_configuracion_admin PRIMARY KEY (id);
 
 
 --

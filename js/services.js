@@ -711,7 +711,7 @@ return new Promise(function(resolver, rechazar) {
         resolver(response);
         swal({
         title: 'Registrado',
-        text: 'Se ha registrado el cargo',
+        text: 'Se ha registrado la configuración',
         type: 'success',
         confirmButtonText: 'Aceptar',
         confirmButtonColor: '#D85852'
@@ -747,7 +747,7 @@ function modificarConfiguracionAdmin(data,id)
         resolver(response);
         swal({
         title: 'Modificado',
-        text: 'Se ha modificado el cargo',
+        text: 'Se ha modificado la configuración',
         type: 'success',
         confirmButtonText: 'Aceptar',
         confirmButtonColor: '#D85852'
@@ -775,7 +775,7 @@ function eliminarConfiguracionAdmin(data,id)
         resolver(response);
         swal({
         title: 'Eliminado',
-        text: 'Se ha eliminado el cargo',
+        text: 'Se ha eliminado la configuración',
         type: 'success',
         confirmButtonText: 'Aceptar',
         confirmButtonColor: '#D85852'
