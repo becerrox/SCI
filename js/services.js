@@ -346,6 +346,34 @@ function recuperarUsuario(data,id)
 	 });	
 }
 
+function eliminarUsuario(data,id)
+{
+  return new Promise(function(resolver, rechazar) { 
+    $.ajax({
+        type:"DELETE",
+        processData: false,
+          contentType: 'application/json',
+        url:'api/usuarios/'+id,
+        data:JSON.stringify(data),
+        success:function(response){
+        resolver(response);
+        swal({
+        title: 'Eliminado',
+        text: 'Se ha eliminado el usuario',
+        type: 'success',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#D85852'
+      },
+      function(){
+      location.reload();
+        })
+      },error:function(response){
+            rechazar(response);
+        }
+      });
+   });  
+}
+
 function registrarPersonal(data)
 {
 return new Promise(function(resolver, rechazar) {	
