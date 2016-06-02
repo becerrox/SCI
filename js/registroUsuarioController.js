@@ -19,7 +19,7 @@ $(document).ready(function()
             });
         });
 
-        $("#btnModificar").click(function()
+        $("#modificarUserPersonal").click(function()
         {
             frm = $("#formUsuario");
             dataForm = getFormData(frm);
@@ -28,7 +28,7 @@ $(document).ready(function()
             });
         });     
 
-        $("#btnEliminar").click(function()
+        $("#eliminarUserPersonal").click(function()
         {
             frm = $("#formUsuario");
             dataForm = getFormData(frm);
