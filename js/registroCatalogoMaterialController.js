@@ -23,6 +23,7 @@ $(document).ready(function()
             frm = $("#formMaterial");
             dataForm = getFormData(frm);
             dataForm.status=1;
+            dataForm.tipo="TIPO DE COMPONENTE";
             modificarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   

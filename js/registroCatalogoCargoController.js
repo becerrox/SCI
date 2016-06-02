@@ -23,6 +23,7 @@ $(document).ready(function()
             frm = $("#formCargos");
             dataForm = getFormData(frm);
             dataForm.status=1;
+            dataForm.tipo="CARGO";
             modificarConfiguracionAdmin(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   

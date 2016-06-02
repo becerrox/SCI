@@ -23,6 +23,7 @@ $(document).ready(function()
             frm = $("#formEstadoUso");
             dataForm = getFormData(frm);
             dataForm.status=1;
+            dataForm.tipo="ESTADO DEL BIEN";
             modificarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   

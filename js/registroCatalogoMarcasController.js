@@ -23,6 +23,7 @@ $(document).ready(function()
             frm = $("#formMarcas");
             dataForm = getFormData(frm);
             dataForm.status=1;
+            dataForm.tipo="MARCA";
             modificarConfiguracionEquipo(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   

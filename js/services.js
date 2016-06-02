@@ -369,6 +369,7 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
 					rechazar(response);
+					console.log(response);
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
@@ -525,7 +526,7 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-          var error_campos = response.responseText; 
+          var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
                   text: "Los siguientes campos son requeridos: " + error_campos,
@@ -560,7 +561,8 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-          var error_campos = response.responseText; 
+					console.log(response);
+          var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
                   text: "Los siguientes campos son requeridos: " + error_campos,
@@ -595,7 +597,7 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-          var error_campos = response.responseText; 
+          var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
                   text: "Los siguientes campos son requeridos: " + error_campos,
@@ -630,7 +632,7 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-          var error_campos = response.responseText; 
+          var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
                   text: "Los siguientes campos son requeridos: " + error_campos,
@@ -721,7 +723,7 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-          var error_campos = response.responseText; 
+          var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
                   text: "Los siguientes campos son requeridos: " + error_campos,
@@ -905,7 +907,7 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-          var error_campos = response.responseText; 
+          var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
                   text: "Los siguientes campos son requeridos: " + error_campos,
@@ -1090,7 +1092,7 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-          var error_campos = response.responseText; 
+          var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
                   text: "Los siguientes campos son requeridos: " + error_campos,
@@ -1182,7 +1184,7 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-          var error_campos = response.responseText; 
+          var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
                   text: "Los siguientes campos son requeridos: " + error_campos,
@@ -1274,7 +1276,7 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-          var error_campos = response.responseText; 
+          var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
                   text: "Los siguientes campos son requeridos: " + error_campos,
@@ -1366,7 +1368,7 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-          var error_campos = response.responseText; 
+          var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
                   text: "Los siguientes campos son requeridos: " + error_campos,
