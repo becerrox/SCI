@@ -24,6 +24,7 @@ $(document).ready(function()
             frm = $("#formUsuario");
             dataForm = getFormData(frm);
             dataForm.status=1;
+            dataForm.primer_inicio=1;
             modificarUsuario(dataForm,id_usuario_editar).then(function(data){   
             });
         });     
