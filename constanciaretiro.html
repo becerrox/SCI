@@ -39,19 +39,25 @@
   <form id="constancia">
     <h4 class="text-center">Constancia de Recepción de Equipo Tecnológico</h4>
     <article id="contenedor" class="row hidden-print">
-      <div class="col-md-4 text-center">
+      <div class="col-md-3 text-center bloque">
+        <label>Marca:</label>
+          <select type="text" name="marca" class="form-control-2 uppercase" id="marca" data-placement="top" title="VIT,HP,Siragon"></select>
+      </div>
+      <div class="col-md-3 text-center bloque">
+          <label>Modelo:</label>
+          <select type="text" name="modelo" class="form-control-2" id="modelo"></select>
+      </div>
+      <div class="col-md-3 text-center bloque">
+          <label>Serial:</label>
+          <select maxlength="25" name="serial" type="text" class="form-control-2" id="serial"></select>        
+      </div>
+    <!--<div class="col-md-4 text-center">
         <label>Equipo</label>
         <input maxlength="25" name="serial" type="text" class="form-control-2" id="serial" data-placement="top" title="Introduzca SERIAL" >     
         <br>
         <button type="button" id="buscarEquipo" class="btn btn-small" style="width:100px; margin-left:50px;">Buscar</button>
-      </div>
-      <div class="col-md-4 text-center">
-        <label>Celular</label>
-        <input maxlength="25" name="serialCelular" type="text" class="form-control-2" id="serialCelular" data-placement="top" title="Introduzca SERIAL">     
-        <br>
-        <button type="button" id="buscarCelular" class="btn" style="width:100px; margin-left:50px;">Buscar</button>
-      </div>
-      <div class="col-md-4 text-center">
+      </div>-->
+      <div class="col-md-3 text-center">
         <form id="constanciaRetiro">
         <label>Responsable</label>
         <select name="responsable" type="text" class="form-control-2" id="responsable"></select>  
