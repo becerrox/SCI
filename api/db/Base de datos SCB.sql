@@ -9,20 +9,6 @@ SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
 SET search_path = public, pg_catalog;
 
 --
@@ -51,7 +37,8 @@ CREATE TABLE configuracion_bien (
     id integer DEFAULT nextval('configuracion_bien_id_seq'::regclass) NOT NULL,
     codigo integer NOT NULL,
     descripcion character varying(100),
-    tipo character varying(50)
+    tipo character varying(50),
+    status integer DEFAULT 1
 );
 
 
@@ -348,7 +335,8 @@ COMMENT ON TABLE catgen IS 'Codigo general de los bienes';
 CREATE TABLE configuracion_equipos (
     id integer NOT NULL,
     tipo character varying(60),
-    descripcion character varying(60)
+    descripcion character varying(60),
+    status integer DEFAULT 1
 );
 
 
@@ -389,7 +377,8 @@ ALTER SEQUENCE configuracion_equipos_id_seq OWNED BY configuracion_equipos.id;
 CREATE TABLE configuracion_admin (
     id integer DEFAULT nextval('configuracion_equipos_id_seq'::regclass) NOT NULL,
     tipo character varying(60),
-    descripcion character varying(60)
+    descripcion character varying(60),
+    status integer DEFAULT 1
 );
 
 
@@ -485,105 +474,6 @@ CREATE SEQUENCE detalle_salida_id_seq
 
 
 ALTER TABLE detalle_salida_id_seq OWNER TO postgres;
-
---
--- Name: detalles_configuracion_bienes; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE detalles_configuracion_bienes (
-    id integer NOT NULL,
-    descripcion character varying(60)
-);
-
-
-ALTER TABLE detalles_configuracion_bienes OWNER TO postgres;
-
---
--- Name: TABLE detalles_configuracion_bienes; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE detalles_configuracion_bienes IS 'Detalles para los tipos de configuración de bienes';
-
-
---
--- Name: detalles_configuracion_bienes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE detalles_configuracion_bienes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE detalles_configuracion_bienes_id_seq OWNER TO postgres;
-
---
--- Name: detalles_configuracion_bienes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE detalles_configuracion_bienes_id_seq OWNED BY detalles_configuracion_bienes.id;
-
-
---
--- Name: detalles_configuración_equipos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE "detalles_configuración_equipos" (
-    id integer NOT NULL,
-    descripcion character varying(60)
-);
-
-
-ALTER TABLE "detalles_configuración_equipos" OWNER TO postgres;
-
---
--- Name: TABLE "detalles_configuración_equipos"; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE "detalles_configuración_equipos" IS 'Tabla para los tipos de configuración de los equipos';
-
-
---
--- Name: detalles_configuración_equipos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE "detalles_configuración_equipos_id_seq"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE "detalles_configuración_equipos_id_seq" OWNER TO postgres;
-
---
--- Name: detalles_configuración_equipos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE "detalles_configuración_equipos_id_seq" OWNED BY "detalles_configuración_equipos".id;
-
-
---
--- Name: detalles_configuración_admin; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE "detalles_configuración_admin" (
-    id integer DEFAULT nextval('"detalles_configuración_equipos_id_seq"'::regclass) NOT NULL,
-    descripcion character varying(60)
-);
-
-
-ALTER TABLE "detalles_configuración_admin" OWNER TO postgres;
-
---
--- Name: TABLE "detalles_configuración_admin"; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE "detalles_configuración_admin" IS 'Tabla para los tipos de configuración de los equipos';
-
 
 --
 -- Name: entrada_id_entrada_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -953,7 +843,8 @@ ALTER TABLE "ubicacion_id_Ubicacion_seq" OWNER TO postgres;
 
 CREATE TABLE unidad_admin (
     id integer NOT NULL,
-    descripcion character varying(60)
+    descripcion character varying(60),
+    status integer DEFAULT 1
 );
 
 
@@ -993,7 +884,8 @@ ALTER SEQUENCE unidad_admin_id_seq OWNED BY unidad_admin.id;
 
 CREATE TABLE unidad_trabajo (
     id integer NOT NULL,
-    descripcion character varying(60)
+    descripcion character varying(60),
+    status integer DEFAULT 1
 );
 
 
@@ -1122,20 +1014,6 @@ ALTER TABLE ONLY configuracion_equipos ALTER COLUMN id SET DEFAULT nextval('conf
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY detalles_configuracion_bienes ALTER COLUMN id SET DEFAULT nextval('detalles_configuracion_bienes_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY "detalles_configuración_equipos" ALTER COLUMN id SET DEFAULT nextval('"detalles_configuración_equipos_id_seq"'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
 ALTER TABLE ONLY niveles_usuarios ALTER COLUMN id SET DEFAULT nextval('niveles_usuarios_id_seq'::regclass);
 
 
@@ -1172,433 +1050,6 @@ ALTER TABLE ONLY unidad_trabajo ALTER COLUMN id SET DEFAULT nextval('unidad_trab
 --
 
 ALTER TABLE ONLY unidades ALTER COLUMN id SET DEFAULT nextval('unidades_id_seq'::regclass);
-
-
---
--- Name: aignacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('aignacion_id_seq', 1, false);
-
-
---
--- Name: aignación_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('"aignación_id_seq"', 1, false);
-
-
---
--- Data for Name: bienes; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO bienes VALUES (25, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 1, 'HUAWEI', 'EDX-443', 'SCDWWEQ243', '1', 1, '02', 1, 1, '2016-05-19 11:09:23', '3', '2016-05-01', '2016-05-02', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (26, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 3, 'HUAWEI', 'EDX-443', 'efes324', '1', 1, '2', 12, 1, '2016-05-20 02:26:21', '3', '2016-05-01', '2016-05-03', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (27, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 3, 'HUAWEI', 'EDX-443', 'efes325', '1', 1, '2', 12, 1, '2016-05-20 02:26:33', '3', '2016-05-01', '2016-05-03', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (28, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 3, 'HUAWEI', 'EDX-443', 'efes326', '1', 1, '02', 12, 1, '2016-05-20 02:27:45', '3', '2016-05-01', '2016-05-03', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (30, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 1, 'HUAWEI', 'NO APLICA', '33334', '1', 1, '3', 12, 1, '2016-05-23 11:47:50', '3', '2016-05-09', '2016-05-17', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (31, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 1, 'HUAWEI', 'NO APLICA', '3333433', '1', 1, '2-0100', 12, 1, '2016-05-23 11:49:06', '3', '2016-05-09', '2016-05-17', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (32, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 1, 'HUAWEI', 'NO APLICA', '333343333', '1', 1, '3', 12, 1, '2016-05-23 11:51:13', '3', '2016-05-09', '2016-05-17', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (33, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 1, 'HUAWEI', 'NO APLICA', 'S3', '1', 1, '5', 12, 1, '2016-05-23 11:51:26', '3', '2016-05-09', '2016-05-17', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (34, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 1, 'HUAWEI', 'EDX-443', 'SDASD', '1', 1, '2-0100', 12, 1, '2016-05-23 01:13:21', '3', '2016-05-11', '2016-05-17', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (35, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 1, 'HUAWEI', 'EDX-443', 'SDASDH', '1', 1, '2-0100', 12, 1, '2016-05-23 01:14:27', '3', '2016-05-11', '2016-05-17', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (36, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 1, 'HUAWEI', 'EDX-443', 'QQ', '1', 1, '2-0100', 12, 1, '2016-05-23 01:15:29', '3', '2016-05-11', '2016-05-17', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (37, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 1, 'HUAWEI', 'EDX-443', 'QQ4', '1', 1, '2-0100', 12, 1, '2016-05-23 01:15:59', '3', '2016-05-11', '2016-05-17', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (38, '2000-00000', '2010-00000', '2010-00001', 'CELULAR', 1, 'HUAWEI', 'EDX-443', '33232', '1', 1, '2-0100', 12, 1, '2016-05-23 01:16:35', '3', '2016-05-11', '2016-05-25', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (39, '2000-00000', '2010-00000', '2010-00001', 'CELULAR', 1, 'HUAWEI', 'EDX-443', 'SDSW3', '1', 1, '2-0100', 12, 1, '2016-05-23 01:18:07', '3', '2016-05-11', '2016-05-25', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (40, '2000-00000', '2010-00000', '2010-00001', 'CELULAR', 1, 'HUAWEI', 'EDX-443', '112', '1', 1, '2-0100', 12, 1, '2016-05-23 01:19:53', '3', '2016-05-11', '2016-05-25', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'LUIS LAVADO', 'LUIS LAVADO', 'ECSB');
-INSERT INTO bienes VALUES (29, '2000-00000', '2010-00000', '2010-00001', 'LAPTOP', 1, 'HUAWEI', 'EDX-443', '3333', '1', 1, '2-0100', 12, 1, '2016-05-24 02:04:20', '3', '2016-05-09', '2016-05-17', 'TELECOMUNICACIONES', 'LUIS LAVADO', 'NO APLICA', 'NO APLICA', 'ECSB');
-
-
---
--- Name: bienesgeneral_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('bienesgeneral_id_seq', 40, true);
-
-
---
--- Name: categoria_general_bienes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('categoria_general_bienes_id_seq', 1, true);
-
-
---
--- Data for Name: catesp; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO catesp VALUES (2, '2010-00001', 'RECLINABLE', 1, '2010-00000');
-
-
---
--- Name: catesp_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('catesp_id_seq', 2, true);
-
-
---
--- Data for Name: catgen; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO catgen VALUES (6, '2000-00000', 'MUEBLES', 1);
-
-
---
--- Name: catgen_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('catgen_id_seq', 6, true);
-
-
---
--- Data for Name: configuracion_admin; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO configuracion_admin VALUES (13, 'SEDE', 'ECSB');
-INSERT INTO configuracion_admin VALUES (17, 'CARGO', 'GERENTE');
-
-
---
--- Data for Name: configuracion_bien; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO configuracion_bien VALUES (100, 1, 'BLANCO/MARRÓN', 'COLOR');
-INSERT INTO configuracion_bien VALUES (101, 1, 'PLÁSTICO', 'TIPO DE COMPONENTE');
-INSERT INTO configuracion_bien VALUES (102, 1, 'EN USO', 'ESTATUS DE USO DEL BIEN');
-INSERT INTO configuracion_bien VALUES (103, 12, 'ÓPTIMO', 'ESTADO DEL BIEN');
-INSERT INTO configuracion_bien VALUES (104, 3, 'EN PROCESO DE DISPOCISIÓN', 'ESTATUS DE USO DEL BIEN');
-
-
---
--- Name: configuracion_bien_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('configuracion_bien_id_seq', 104, true);
-
-
---
--- Data for Name: configuracion_equipos; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO configuracion_equipos VALUES (18, 'MODELO', 'EDX-443');
-INSERT INTO configuracion_equipos VALUES (19, 'MARCA', 'HUAWEI');
-INSERT INTO configuracion_equipos VALUES (20, 'DESCRIPCIÓN', 'LAPTOP');
-INSERT INTO configuracion_equipos VALUES (21, 'DESCRIPCIÓN', 'CELULAR');
-
-
---
--- Name: configuracion_equipos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('configuracion_equipos_id_seq', 21, true);
-
-
---
--- Data for Name: dependencias; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO dependencias VALUES (1, 'GERENCIA DE TELECOMUNICACIONES', NULL, 'GERENCIA DE TELECOMUNICACIONES');
-
-
---
--- Name: dependencias_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('dependencias_id_seq', 1, true);
-
-
---
--- Name: detalle_entrada_id_detalle_entrada_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('detalle_entrada_id_detalle_entrada_seq', 1, false);
-
-
---
--- Name: detalle_entrada_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('detalle_entrada_id_seq', 1, false);
-
-
---
--- Name: detalle_salida_id_detallle_salida_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('detalle_salida_id_detallle_salida_seq', 1, false);
-
-
---
--- Name: detalle_salida_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('detalle_salida_id_seq', 1, false);
-
-
---
--- Data for Name: detalles_configuracion_bienes; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO detalles_configuracion_bienes VALUES (7, 'ESTATUS DE USO DEL BIEN');
-INSERT INTO detalles_configuracion_bienes VALUES (8, 'ESTADO DEL BIEN');
-INSERT INTO detalles_configuracion_bienes VALUES (9, 'COLOR');
-INSERT INTO detalles_configuracion_bienes VALUES (10, 'TIPO DE COMPONENTE');
-
-
---
--- Name: detalles_configuracion_bienes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('detalles_configuracion_bienes_id_seq', 10, true);
-
-
---
--- Data for Name: detalles_configuración_admin; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO "detalles_configuración_admin" VALUES (18, 'SEDE');
-INSERT INTO "detalles_configuración_admin" VALUES (19, 'CARGO');
-
-
---
--- Data for Name: detalles_configuración_equipos; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO "detalles_configuración_equipos" VALUES (20, 'MODELO');
-INSERT INTO "detalles_configuración_equipos" VALUES (21, 'MARCA');
-INSERT INTO "detalles_configuración_equipos" VALUES (22, 'DESCRIPCIÓN');
-
-
---
--- Name: detalles_configuración_equipos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('"detalles_configuración_equipos_id_seq"', 22, true);
-
-
---
--- Name: entrada_id_entrada_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('entrada_id_entrada_seq', 1, false);
-
-
---
--- Data for Name: equipo; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO equipo VALUES (12, 'LAPTOP', 'HUAWEI', 'EDX-443', '3333', 'BLANCO/MARRÓN', 'ÓPTIMO', 'GERENCIA', 1, 'LUIS LAVADO', '2GB RAM', '2016-05-24 02:07:42', 'TELECOMUNICACIONES', 'NUEVO', '', '', '', '', 'EN USO', '');
-INSERT INTO equipo VALUES (13, 'CELULAR', 'HUAWEI', 'EDX-443', 'dwadwa423', 'BLANCO/MARRÓN', 'ÓPTIMO', 'GERENCIA', 1, 'NO APLICA', 'OCTACORE', '2016-05-24 02:12:41', 'TELECOMUNICACIONES', '', '2412421', 'AUDÍFONOS', 'FULL', '04161112233', 'EN PROCESO DE DISPOCISIÓN', '');
-
-
---
--- Name: equipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('equipo_id_seq', 13, true);
-
-
---
--- Data for Name: niveles_usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO niveles_usuarios VALUES (2, 1, 'Administrador de Bienes');
-INSERT INTO niveles_usuarios VALUES (1, 0, 'Administrador del sistema');
-INSERT INTO niveles_usuarios VALUES (3, 2, 'Encargado de bienes');
-INSERT INTO niveles_usuarios VALUES (4, 3, 'Responsable de bienes');
-
-
---
--- Name: niveles_usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('niveles_usuarios_id_seq', 4, true);
-
-
---
--- Data for Name: numero_bien; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO numero_bien VALUES (1, '2-0100', 'COMPUTACIÓN');
-
-
---
--- Name: numero_bien_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('numero_bien_id_seq', 3, true);
-
-
---
--- Name: numero_biennns; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('numero_biennns', 0, true);
-
-
---
--- Name: personal_id_personal_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('personal_id_personal_seq', 7, true);
-
-
---
--- Name: personal_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('personal_id_seq', 22, true);
-
-
---
--- Data for Name: reporteSolvencia; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO "reporteSolvencia" VALUES (1, '2016-05-26 10:18:59');
-INSERT INTO "reporteSolvencia" VALUES (2, '2016-05-26 10:20:41');
-INSERT INTO "reporteSolvencia" VALUES (3, '2016-05-26 10:21:04');
-INSERT INTO "reporteSolvencia" VALUES (4, '2016-05-26 10:22:03');
-INSERT INTO "reporteSolvencia" VALUES (5, '2016-05-26 10:22:37');
-INSERT INTO "reporteSolvencia" VALUES (6, '2016-05-26 10:23:24');
-INSERT INTO "reporteSolvencia" VALUES (7, '2016-05-26 10:24:21');
-INSERT INTO "reporteSolvencia" VALUES (8, '2016-05-26 10:25:51');
-INSERT INTO "reporteSolvencia" VALUES (9, '2016-05-26 10:26:22');
-INSERT INTO "reporteSolvencia" VALUES (10, '2016-05-26 10:28:36');
-INSERT INTO "reporteSolvencia" VALUES (11, '2016-05-26 10:29:30');
-INSERT INTO "reporteSolvencia" VALUES (12, '2016-05-26 10:30:23');
-INSERT INTO "reporteSolvencia" VALUES (13, '2016-05-26 10:32:30');
-INSERT INTO "reporteSolvencia" VALUES (14, '2016-05-26 10:32:56');
-INSERT INTO "reporteSolvencia" VALUES (15, '2016-05-26 10:34:53');
-INSERT INTO "reporteSolvencia" VALUES (16, '2016-05-26 10:36:31');
-INSERT INTO "reporteSolvencia" VALUES (17, '2016-05-26 11:08:31');
-INSERT INTO "reporteSolvencia" VALUES (18, '2016-05-26 11:12:05');
-INSERT INTO "reporteSolvencia" VALUES (19, '2016-05-26 11:14:46');
-INSERT INTO "reporteSolvencia" VALUES (20, '2016-05-26 11:16:38');
-INSERT INTO "reporteSolvencia" VALUES (21, '2016-05-26 11:17:47');
-INSERT INTO "reporteSolvencia" VALUES (22, '2016-05-26 11:18:49');
-INSERT INTO "reporteSolvencia" VALUES (23, '2016-05-26 11:21:41');
-
-
---
--- Name: reportesolvencia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('reportesolvencia_id_seq', 23, true);
-
-
---
--- Data for Name: responsables; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO responsables VALUES (2, 'LUIS', 'LAVADO', 23603524, 'GERENTE', 'TELECOMUNICACIONES', 'GERENCIA', '2016-05-19 08:27:18', '2016-05-19 08:27:18', 1);
-
-
---
--- Name: responsables_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('responsables_id_seq', 2, true);
-
-
---
--- Name: salida_id_salida_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('salida_id_salida_seq', 1, false);
-
-
---
--- Name: solvencia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('solvencia_id_seq', 1, false);
-
-
---
--- Name: sub_categorias_bienes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('sub_categorias_bienes_id_seq', 5, true);
-
-
---
--- Data for Name: subcat; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO subcat VALUES (8, '2010-00000', 'NORMAL', 1, '2000-00000');
-
-
---
--- Name: subcat_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('subcat_id_seq', 8, true);
-
-
---
--- Name: ubicacion_id_Ubicacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('"ubicacion_id_Ubicacion_seq"', 1, false);
-
-
---
--- Data for Name: unidad_admin; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO unidad_admin VALUES (3, 'GERENCIA');
-
-
---
--- Name: unidad_admin_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('unidad_admin_id_seq', 3, true);
-
-
---
--- Data for Name: unidad_trabajo; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO unidad_trabajo VALUES (3, 'TELECOMUNICACIONES');
-
-
---
--- Name: unidad_trabajo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('unidad_trabajo_id_seq', 3, true);
-
-
---
--- Data for Name: unidades; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO unidades VALUES (1, 'GERENCIA DE TELECOMUNICACIONES', NULL);
-
-
---
--- Name: unidades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('unidades_id_seq', 1, true);
-
-
---
--- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO usuario VALUES (23, 'luisrlavado', 'd033e22ae348aeb5660fc2140aec35850c4da997', 0, 1, '2016-05-24 08:41:57', '1', '1231', '1231412', 'DAWDW', 'DWNDO', 'GERENTE', 12345, 'DWADWA@GMAIL.COM', '1992-05-20', 1, 'TELECOMUNICACIONES', 'GERENCIA', '2016-05-24 08:41:24');
-INSERT INTO usuario VALUES (22, 'ADMIN', '8cb2237d0679ca88db6464eac60da96345513964', 0, 1, '2016-05-26 08:14:49', '1', 'BIEN', '11223344', 'Luis', 'Lavado', 'Gerente', 4167390457, 'LUIS@GMAIL.COM', '2016-05-23', 1, '1', '2', '2016-05-24 15:20:55.327181');
-
-
---
--- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('usuario_id_seq', 23, true);
 
 
 --
@@ -1642,14 +1093,6 @@ ALTER TABLE ONLY niveles_usuarios
 
 
 --
--- Name: pk_admin; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY "detalles_configuración_admin"
-    ADD CONSTRAINT pk_admin PRIMARY KEY (id);
-
-
---
 -- Name: pk_configu; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1671,22 +1114,6 @@ ALTER TABLE ONLY configuracion_equipos
 
 ALTER TABLE ONLY configuracion_admin
     ADD CONSTRAINT pk_configuracion_admin PRIMARY KEY (id);
-
-
---
--- Name: pk_detalles; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY "detalles_configuración_equipos"
-    ADD CONSTRAINT pk_detalles PRIMARY KEY (id);
-
-
---
--- Name: pk_detalles_1; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY detalles_configuracion_bienes
-    ADD CONSTRAINT pk_detalles_1 PRIMARY KEY (id);
 
 
 --
