@@ -233,7 +233,7 @@ function modificarUsuario(data,id)
 				type:"PUT",
 				processData: false,
 	    		contentType: 'application/json',
-				url:'api/usuarios/'+id,
+				url:'api/usuariosss/'+id,
 				data:JSON.stringify(data),
 				success:function(response){
 				resolver(response);
