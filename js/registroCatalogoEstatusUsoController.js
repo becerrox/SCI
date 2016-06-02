@@ -10,7 +10,7 @@ $(document).ready(function()
 
         $("#btnGuardar").click(function()
         {
-            frm = $("#formColores");
+            frm = $("#formEstatusUso");
             dataForm = getFormData(frm);
             dataForm.status=1;
             dataForm.tipo="ESTATUS DE USO DEL BIEN";
@@ -20,7 +20,7 @@ $(document).ready(function()
 
         $("#btnModificar").click(function()
         {
-            frm = $("#formColores");
+            frm = $("#formEstatusUso");
             dataForm = getFormData(frm);
             dataForm.status=1;
             modificarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
@@ -29,7 +29,7 @@ $(document).ready(function()
 
         $("#btnEliminar").click(function()
         {
-            frm = $("#formColores");
+            frm = $("#formEstatusUso");
             dataForm = getFormData(frm);
             dataForm.status=0;
             eliminarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
@@ -43,7 +43,7 @@ $(document).ready(function()
                 id_configuracion_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
-                    form : "#formColores"
+                    form : "#formEstatusUso"
                 });
             });
         });  

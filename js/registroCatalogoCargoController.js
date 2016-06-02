@@ -10,7 +10,7 @@ $(document).ready(function()
 
         $("#btnGuardar").click(function()
         {
-            frm = $("#formCargo");
+            frm = $("#formCargos");
             dataForm = getFormData(frm);
             dataForm.status=1;
             dataForm.tipo="CARGO";
@@ -20,7 +20,7 @@ $(document).ready(function()
 
         $("#btnModificar").click(function()
         {
-            frm = $("#formCargo");
+            frm = $("#formCargos");
             dataForm = getFormData(frm);
             dataForm.status=1;
             modificarConfiguracionAdmin(dataForm,id_configuracion_editar).then(function(data){   
@@ -29,20 +29,20 @@ $(document).ready(function()
 
         $("#btnEliminar").click(function()
         {
-            frm = $("#formCargo");
+            frm = $("#formCargos");
             dataForm = getFormData(frm);
             dataForm.status=0;
             eliminarConfiguracionAdmin(dataForm,id_configuracion_editar);
         });     
 
-        $("#buscarConfiguracion").click(function(){
+        $("#buscarCargo").click(function(){
             idConfiguracion = $
             descripcion = $("#buscar").val();
             getConfiguracionAdminBy("?descripcion="+descripcion).then(function(data){
                 id_configuracion_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
-                    form : "#formCargo"
+                    form : "#formCargos"
                 });
             });
         });  
