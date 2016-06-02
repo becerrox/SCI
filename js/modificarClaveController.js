@@ -25,6 +25,7 @@ $(document).ready(function()
                         document.getElementById("administrador").style.visibility = "hidden";
                         document.getElementById("formCambioPregunta").style.visibility = "hidden";
                         document.getElementById("titulo2").style.visibility = "hidden";
+                        document.getElementById("catalogo").style.visibility = "hidden";
                     }
                     if (dataUsuarios.primer_inicio==1)
                     {

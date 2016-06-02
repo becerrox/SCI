@@ -3,16 +3,24 @@ $(document).ready(function()
         var id_usuario_recuperar = "";
         var id_usuario_editar = "";
 
+        document.getElementById("formRecuperar").style.display = "none";
+        document.getElementById("btnSolicitar").style.display = "none";
+        
 
         $("#btnBuscar").click(function(){
             idUsuario = $
-            numero = $("#correo").val().toUpperCase();
-            getUsuariosRecuperarBy("?correo="+numero).then(function(data){
+            numero = $("#usuario").val().toUpperCase();
+            getUsuariosRecuperarBy("?usuario="+numero).then(function(data){
                 id_usuario_recuperar = data[0];
                 id_usuario_editar = data[0].id
+                console.log(id_usuario_recuperar.usuario);
+                if (numero == id_usuario_recuperar.usuario) 
+                    {
+                        document.getElementById("formRecuperar").style.display = "inline";
+                        document.getElementById("btnSolicitar").style.display = "inline";
+                    }
             });
         });
-
 
         $("#btnSolicitar").click(function(){
             var preguntas = document.getElementById("pregunta").value.toUpperCase();

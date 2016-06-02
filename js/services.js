@@ -272,9 +272,8 @@ function modificarUsuarioPass(data,id)
 				confirmButtonText: 'Aceptar',
 				confirmButtonColor: '#D85852'
 			},
-
       function(){
-      location.reload();
+      location.href='inicio.html';
         })
       },error:function(response){
 					rechazar(response);
@@ -330,7 +329,7 @@ function recuperarUsuario(data,id)
 				confirmButtonColor: '#D85852'
 			},
       function(){
-      location.reload();
+    			location.href='index.html';
         })
       },error:function(response){
         console.log(response);
@@ -1764,6 +1763,40 @@ function getUsuariosBy(filtros)
 	 });	
 }
 
+function getUsuariosNombreBy(filtros)
+{
+	return new Promise(function(resolver, rechazar) { 
+		$.ajax({
+				type:"GET",
+	    		contentType: 'application/json',
+				url:'api/usuarios/'+filtros,
+				success:function(response){
+					resolver(response);
+					var nombreUsuario = response[0].usuario;
+					swal({
+					title: 'Encontrado',
+					text: 'Correo coindice en la base de datos.'+'    Su nombre de usuario es: ' + '"' + nombreUsuario + '"' + '. ' ,
+					type: 'success',
+					confirmButtonText: 'Aceptar',
+					confirmButtonColor: '#D85852'
+				},
+			    function(){
+    			location.href='inicio.html';
+        			})					
+				},error:function(response){
+					rechazar(response);
+					swal({
+					title: 'No Encontrado',
+					text: 'El correo no coindice en la base de datos',
+					type: 'error',
+					confirmButtonText: 'Aceptar',
+					confirmButtonColor: '#D85852'
+				})										
+				}
+			});
+	 });	
+}
+
 function getUsuariosRecuperarBy(filtros)
 {
 	return new Promise(function(resolver, rechazar) { 
@@ -1776,7 +1809,7 @@ function getUsuariosRecuperarBy(filtros)
 					var nombreUsuario = response[0].usuario;
 					swal({
 					title: 'Encontrado',
-					text: 'Correo coindice en la base de datos.'+'    Su nombre de usuario es: ' + '"' + nombreUsuario + '"' + '. ' + 'Ingrese su pregunta y respuesta para recuperar la contraseña',
+					text: 'Usuario encontrado.  ' + 'Ingrese su pregunta y respuesta para recuperar la contraseña',
 					type: 'success',
 					confirmButtonText: 'Aceptar',
 					confirmButtonColor: '#D85852'
@@ -1785,8 +1818,8 @@ function getUsuariosRecuperarBy(filtros)
 					rechazar(response);
 					swal({
 					title: 'No Encontrado',
-					text: 'El correo no coindice en la base de datos',
-					type: 'error',
+					text: 'El usuario se escribió de forma incorrecta o no existe',
+					type: 'info',
 					confirmButtonText: 'Aceptar',
 					confirmButtonColor: '#D85852'
 				})										
