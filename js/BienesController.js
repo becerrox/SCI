@@ -140,6 +140,8 @@ $(document).ready(function()
 
         //número de bien
         getNumeroBienBy('').then(function(data){
+        var contador = data;
+        console.log(data.length);
             jsonToSelect({        
                 data : data,
                 value : "numero_bien",
