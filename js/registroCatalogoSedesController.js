@@ -23,6 +23,7 @@ $(document).ready(function()
             frm = $("#formSede");
             dataForm = getFormData(frm);
             dataForm.status=1;
+            dataForm.tipo="SEDE";
             modificarConfiguracionAdmin(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   

@@ -23,6 +23,7 @@ $(document).ready(function()
             frm = $("#formDescripcion");
             dataForm = getFormData(frm);
             dataForm.status=1;
+            dataForm.tipo="DESCRIPCIÓN";
             modificarConfiguracionEquipo(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   

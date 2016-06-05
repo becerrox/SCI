@@ -37,6 +37,7 @@ $(document).ready(function()
                         document.getElementById("btnEliminar").style.display = "none";
                         document.getElementById("inventario").style.display = "none";
                         document.getElementById("administrador").style.display = "none";
+                        document.getElementById("catalogo").style.display = "none";
                     }
 
         });        

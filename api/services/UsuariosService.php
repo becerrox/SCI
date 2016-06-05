@@ -66,6 +66,7 @@ class UsuariosService{
                     "usuario" => mb_strtoupper($us->usuario , "UTF-8"),
                     "pass" => sha1($us->pass),
                     "nivel" => $us->nivel,
+                    "primer_inicio" => 1,
                     "fecha_modif" => date("Y-m-d h:i:s"),
                     "pregunta" => mb_strtoupper($us->pregunta, "UTF-8"),
                     "respuesta" => mb_strtoupper($us->respuesta, "UTF-8"),

@@ -35,12 +35,6 @@ class Responsables extends Model{
                 )
             ));        
 
-        $this->validate(new PresenceOf(
-            array(
-                "field" => "nombres",
-                "message" => "Ingrese una cédula"
-                )
-            ));        
 
         $this->validate(new PresenceOf(
             array(
@@ -70,12 +64,6 @@ class Responsables extends Model{
                 )
             ));        
 
-       $this->validate(new Uniqueness(
-            array(
-                "field"  => "cedula",
-                "message" => "La cédula debe ser única"
-            )
-        ));
 
         if ($this->validationHasFailed() == true) {
             return false;

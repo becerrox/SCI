@@ -23,6 +23,7 @@ $(document).ready(function()
             frm = $("#formColores");
             dataForm = getFormData(frm);
             dataForm.status=1;
+            dataForm.tipo="COLOR";
             modificarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   
