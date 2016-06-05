@@ -5,7 +5,7 @@ class SubcatService{
     public function listar($query){
 
           if(empty($query))
-             $subcat=Subcat::find();
+             $subcat=Subcat::find("status = 1");
           else
           {
             $subcat = Subcat::find(

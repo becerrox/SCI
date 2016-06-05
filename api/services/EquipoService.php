@@ -139,7 +139,6 @@ class EquipoService{
                 return array("status" => 404, "mensaje" =>"El registro que intenta solventar no existe");
             }
         }        
-
         public function eliminar($id){
             $equipo=Equipo::find($id);
             if(count($equipo)){

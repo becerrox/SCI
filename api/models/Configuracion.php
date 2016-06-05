@@ -31,16 +31,30 @@ class Configuracion extends Model{
         $this->validate(new PresenceOf(
             array(
                 "field" => "codigo",
-                "message" => "El código es obligatorio"
+                "message" => " código"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "descripcion",
-                "message" => "La descripción es obligatoria"
+                "message" => " descripción"
                 )
             ));
+
+       $this->validate(new Uniqueness(
+            array(
+                "field"  => "descripcion",
+                "message" => "La descripción debe ser única"
+            )
+        ));
+
+       $this->validate(new Uniqueness(
+            array(
+                "field"  => "codigo",
+                "message" => "El código debe ser único"
+            )
+        ));
 
         if ($this->validationHasFailed() == true) {
             return false;

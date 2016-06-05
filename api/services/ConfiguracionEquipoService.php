@@ -4,7 +4,7 @@ class ConfiguracionEquipoService{
     public function listar($query){
 
           if(empty($query))
-             $configuracionEquipo=ConfiguracionEquipo::find();
+             $configuracionEquipo=ConfiguracionEquipo::find("status = 1");
           else
           {
             $configuracionEquipo=ConfiguracionEquipo::find(

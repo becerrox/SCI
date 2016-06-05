@@ -3,7 +3,7 @@ class NumeroBienService{
     public function listar($query){
 
           if(empty($query))
-             $numeroBien=NumeroBien::find();
+             $numeroBien=NumeroBien::find("status = 1");
           else
           {
             $numeroBien=NumeroBien::find(

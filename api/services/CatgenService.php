@@ -5,7 +5,7 @@ class CatgenService{
     public function listar($query){
 
           if(empty($query))
-             $catgen=Catgen::find();
+             $catgen=Catgen::find("status = 1");
           else
           {
             $catgen = Catgen::find(

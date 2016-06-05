@@ -48,7 +48,7 @@ $(document).ready(function()
 
         /* Cargando datas de la api a los selects  */
 
-        getConfiguracionBy("?tipo=COLOR").then(function(data){
+        getConfiguracionBy("?tipo=COLOR&status=1").then(function(data){
             //Despues del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
                 data : data,
@@ -59,7 +59,7 @@ $(document).ready(function()
         })
 
         //Estado del bien 
-        getConfiguracionBy("?tipo=ESTADO DEL BIEN").then(function(data){
+        getConfiguracionBy("?tipo=ESTADO DEL BIEN&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -69,7 +69,7 @@ $(document).ready(function()
         })
 
         //Categoría de Unidades Administrativas 
-        getUnidadAdministrativaBy('').then(function(data){
+        getUnidadAdministrativaBy("?status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "id",
@@ -79,7 +79,7 @@ $(document).ready(function()
         })
 
         //Estatus de Uso del Bien 
-        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN").then(function(data){
+        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -89,7 +89,7 @@ $(document).ready(function()
         })
 
         //Tipo de Componente 
-        getConfiguracionBy("?tipo=TIPO DE COMPONENTE").then(function(data){
+        getConfiguracionBy("?tipo=TIPO DE COMPONENTE&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "codigo",
@@ -99,7 +99,7 @@ $(document).ready(function()
         })
 
         //Unidad de Trabajo
-        getUnidadTrabajoBy('').then(function(data){
+        getUnidadTrabajoBy("?status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -109,7 +109,7 @@ $(document).ready(function()
         })        
 
         //Descripción
-        getConfiguracionEquipoBy("?tipo=DESCRIPCIÓN").then(function(data){
+        getConfiguracionEquipoBy("?tipo=DESCRIPCIÓN&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -119,7 +119,7 @@ $(document).ready(function()
         })    
 
         //Marca
-        getConfiguracionEquipoBy("?tipo=MARCA").then(function(data){
+        getConfiguracionEquipoBy("?tipo=MARCA&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -129,7 +129,7 @@ $(document).ready(function()
         }) 
 
         //Modelo
-        getConfiguracionEquipoBy("?tipo=MODELO").then(function(data){
+        getConfiguracionEquipoBy("?tipo=MODELO&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -139,7 +139,7 @@ $(document).ready(function()
         }) 
 
         //número de bien
-        getNumeroBienBy('').then(function(data){
+        getNumeroBienBy("?status=1").then(function(data){
         var contador = data;
         console.log(data.length);
             jsonToSelect({        
@@ -151,7 +151,7 @@ $(document).ready(function()
         })     
 
         //Descripción
-        getConfiguracionAdminBy("?tipo=SEDE").then(function(data){
+        getConfiguracionAdminBy("?tipo=SEDE&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -160,7 +160,7 @@ $(document).ready(function()
                 });
         })   
 
-        getResponsablesBy('').then(function(data){
+        getResponsablesBy("?status=1").then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }
@@ -172,7 +172,7 @@ $(document).ready(function()
                  });
          })              
 
-        getResponsablesBy('').then(function(data){
+        getResponsablesBy("?status=1").then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }
@@ -184,7 +184,7 @@ $(document).ready(function()
                  });
          })  
 
-        getResponsablesBy('').then(function(data){
+        getResponsablesBy("?status=1").then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }

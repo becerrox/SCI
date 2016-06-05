@@ -5,7 +5,7 @@ class CatespService{
     public function listar($query){
 
           if(empty($query))
-             $catesp=Catesp::find();
+             $catesp=Catesp::find("status = 1");
           else
           {
             $catesp = Catesp::find(

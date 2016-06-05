@@ -32,7 +32,7 @@ $(document).ready(function()
         {
             frm = $("#formColores");
             dataForm = getFormData(frm);
-            dataForm.status=0;
+            dataForm.status=1;
             eliminarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   
@@ -50,7 +50,7 @@ $(document).ready(function()
         });  
 
 
-        getConfiguracionBy("?tipo=COLOR").then(function(data){
+        getConfiguracionBy("?tipo=COLOR&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",

@@ -5,7 +5,7 @@ class UnidadTrabajoService{
     public function listar($query){
 
           if(empty($query))
-             $unidadTrabajo=UnidadTrabajo::find();
+             $unidadTrabajo=UnidadTrabajo::find("status = 1");
           else
           {
             $unidadTrabajo = UnidadTrabajo::find(

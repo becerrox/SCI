@@ -73,7 +73,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -215,12 +215,11 @@ return new Promise(function(resolver, rechazar) {
 					var error_campos = response.responseJSON; 
 						swal({
 				          title: 'AVISO',
-					     	  text: "Los siguientes campos son requeridos: " + error_campos,
+					     	  text: "Verifique siguientes campos: " + error_campos,
 				          type: 'info',
 				          confirmButtonText: 'Aceptar',
 				          confirmButtonColor: '#D85852'
 						});					
-					console.log(response.responseJSON);
 				}
 			});
 	 });	
@@ -332,7 +331,6 @@ function recuperarUsuario(data,id)
     			location.href='index.html';
         })
       },error:function(response){
-        console.log(response);
 					rechazar(response);
           swal({
           title: 'Error',
@@ -401,7 +399,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -465,7 +463,7 @@ return new Promise(function(resolver, rechazar) {
 					var error_campos = response.responseJSON; 
 						swal({
 				          title: 'AVISO',
-						      text: "Los siguientes campos son requeridos: " + error_campos,
+						      text: "Verifique siguientes campos: " + error_campos,
 				          type: 'info',
 				          confirmButtonText: 'Aceptar',
 				          confirmButtonColor: '#D85852'
@@ -557,7 +555,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -589,11 +587,11 @@ return new Promise(function(resolver, rechazar) {
         })
       },error:function(response){
           rechazar(response);
-					console.log(response);
+					console.log(response.responseText);
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -628,7 +626,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -663,7 +661,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -754,7 +752,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -846,7 +844,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -938,7 +936,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -1030,7 +1028,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -1123,7 +1121,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -1215,7 +1213,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -1307,7 +1305,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
@@ -1399,7 +1397,7 @@ return new Promise(function(resolver, rechazar) {
           var error_campos = response.responseJSON; 
             swal({
                   title: 'AVISO',
-                  text: "Los siguientes campos son requeridos: " + error_campos,
+                  text: "Verifique siguientes campos: " + error_campos,
                   type: 'info',
                   confirmButtonText: 'Aceptar',
                   confirmButtonColor: '#D85852'
