@@ -40,7 +40,7 @@ $(document).ready(function()
         $("#buscarConfiguracion").click(function(){
             idConfiguracion = $
             descripcion = $("#buscar").val();
-            getConfiguracionBy("?descripcion="+descripcion).then(function(data){
+            getConfiguracionBy("?descripcion="+descripcion+"&status=1").then(function(data){
                 id_configuracion_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
@@ -50,7 +50,7 @@ $(document).ready(function()
         });  
 
 
-        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN").then(function(data){
+        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",

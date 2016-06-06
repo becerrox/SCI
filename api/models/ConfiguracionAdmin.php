@@ -31,7 +31,7 @@ class ConfiguracionAdmin extends Model{
         $this->validate(new PresenceOf(
             array(
                 "field" => "descripcion",
-                "message" => "La descripción es obligatoria"
+                "message" => " descripción"
                 )
             ));
 

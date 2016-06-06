@@ -12,7 +12,7 @@ $(document).ready(function()
         $("#btnBuscar").click(function(){
             idBien = $
             numero = $("#responsable_uso").val();
-            getBienesBy("?responsable_uso="+numero).then(function(data){
+            getBienesBy("?responsable_uso="+numero+"&status=1").then(function(data){
                 id_bien_buscar = data[0].id;
                 jsonToTable({
                     data : data,
@@ -31,7 +31,7 @@ $(document).ready(function()
 
         /* Cargando datas de la api a los selects  */     
 
-        getResponsablesBy('').then(function(data){
+        getResponsablesBy("?status=1").then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }

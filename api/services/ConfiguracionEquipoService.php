@@ -1,5 +1,4 @@
 <?php
-
 class ConfiguracionEquipoService{
     public function listar($query){
 
@@ -15,7 +14,7 @@ class ConfiguracionEquipoService{
           }
 
       if(count($configuracionEquipo->toArray())==0){
-            return array("status" => 404, "mensaje" => "No hay registros de configuracionEquipo");
+            return array("status" => 404, "mensaje" => "No hay registros de ConfiguracionEquipo");
       }else{
             return array("status" => 200, "mensaje" =>$configuracionEquipo->toArray());
       }
@@ -42,9 +41,9 @@ class ConfiguracionEquipoService{
             $modificar=ConfiguracionEquipo::find($id);
             if(count($modificar)>0){
                 $data=array(
-                    "descripcion" => mb_strtoupper($confeq->descripcion, "UTF-8"),
-                    "tipo" => mb_strtoupper($confeq->tipo, "UTF-8"),
-                    "status" => 1
+                "descripcion" => mb_strtoupper($confeq->descripcion, "UTF-8"),
+                "tipo" => mb_strtoupper($confeq->tipo, "UTF-8"),
+                "status" => 1
                 );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
@@ -65,7 +64,7 @@ class ConfiguracionEquipoService{
             $configuracionEquipo=ConfiguracionEquipo::find($id);
             if(count($configuracionEquipo)){
                 $configuracionEquipo->delete();
-                return array("status" => 200, "mensaje" => 'configuracionEquipo Eliminado');
+                return array("status" => 200, "mensaje" => 'ConfiguracionEquipo Eliminado');
             }else{
                 return array("status"=>404, "mensaje"=> "El registro intenta modificar no existe");
             }

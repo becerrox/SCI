@@ -37,7 +37,7 @@ $(document).ready(function()
         $("#buscarUnidad").click(function(){
             idConfiguracion = $
             descripcion = $("#buscar").val();
-            getUnidadAdministrativaBy("?descripcion="+descripcion).then(function(data){
+            getUnidadAdministrativaBy("?descripcion="+descripcion+"&status=1").then(function(data){
                 id_unidad_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
@@ -46,7 +46,7 @@ $(document).ready(function()
             });
         });  
 
-        getUnidadAdministrativaBy('').then(function(data){
+        getUnidadAdministrativaBy("?status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",

@@ -32,7 +32,7 @@ $(document).ready(function()
         {
             frm = $("#formColores");
             dataForm = getFormData(frm);
-            dataForm.status=1;
+            dataForm.status=0;
             eliminarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   
@@ -40,7 +40,7 @@ $(document).ready(function()
         $("#buscarConfiguracion").click(function(){
             idConfiguracion = $
             descripcion = $("#buscar").val();
-            getConfiguracionBy("?descripcion="+descripcion).then(function(data){
+            getConfiguracionBy("?descripcion="+descripcion+"&status=1").then(function(data){
                 id_configuracion_editar = data[0].id;
                 jsonToForm({
                     data : data[0],

@@ -46,7 +46,7 @@ $(document).ready(function()
             });
         });  
 
-        getUnidadTrabajoBy('').then(function(data){
+        getUnidadTrabajoBy("&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",

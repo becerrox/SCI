@@ -50,7 +50,7 @@ $(document).ready(function()
         $("#buscarResp").click(function(){
             idBien = $
             numero = $("#responsable").val();
-            getResponsablesBy("?cedula="+numero).then(function(data){
+            getResponsablesBy("?cedula="+numero+"&status=1").then(function(data){
                 id_personal_buscar = data[0].id;
                 jsonToForm({
                     data : data[0],
@@ -76,7 +76,7 @@ headers = [];
 
         /* Cargando datas de la api a los selects  */         
 
-        getResponsablesBy('').then(function(data){
+        getResponsablesBy("?status=1").then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
                 data[personal].ci = data[personal].cedula;

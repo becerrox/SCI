@@ -40,7 +40,7 @@ $(document).ready(function()
         $("#buscarUser").click(function(){
             idUsuario = $
             numero = $("#buscar").val();
-            getUsuariosBy("?ci_per="+numero).then(function(data){
+            getUsuariosBy("?ci_per="+numero+"&status=1").then(function(data){
                 id_usuario_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
@@ -50,7 +50,7 @@ $(document).ready(function()
         });           
 
         //Categoría de Unidades Administrativas 
-        getUnidadAdministrativaBy('').then(function(data){
+        getUnidadAdministrativaBy("?status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -60,7 +60,7 @@ $(document).ready(function()
         })
         
         //Unidad de Trabajo
-        getUnidadTrabajoBy('').then(function(data){
+        getUnidadTrabajoBy("?status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -70,7 +70,7 @@ $(document).ready(function()
         })                      
 
         //Cargo
-        getConfiguracionAdminBy("?tipo=CARGO").then(function(data){
+        getConfiguracionAdminBy("?tipo=CARGO&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -89,7 +89,7 @@ $(document).ready(function()
                 });
         })                  
           
-        getUsuariosBy('').then(function(data){
+        getUsuariosBy("?status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "ci_per",

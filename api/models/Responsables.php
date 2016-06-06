@@ -31,7 +31,7 @@ class Responsables extends Model{
         $this->validate(new PresenceOf(
             array(
                 "field" => "cedula",
-                "message" => "Ingrese una cédula"
+                "message" => " cédula"
                 )
             ));        
 
@@ -39,31 +39,37 @@ class Responsables extends Model{
         $this->validate(new PresenceOf(
             array(
                 "field" => "apellidos",
-                "message" => "Ingrese el nombre"
+                "message" => " nombre"
                 )
             ));        
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "cargo",
-                "message" => "Ingrese el apellido"
+                "message" => " apellido"
                 )
             ));        
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "unidad_admin",
-                "message" => "Ingrese la unidad aministrativa"
+                "message" => " unidad aministrativa"
                 )
             ));        
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "unidad_trabajo",
-                "message" => "Ingrese la unidad de trabajo"
+                "message" => " unidad de trabajo"
                 )
             ));        
 
+       $this->validate(new Uniqueness(
+            array(
+                "field"  => "cedula",
+                "message" => "La cédula debe ser única"
+            )
+        ));
 
         if ($this->validationHasFailed() == true) {
             return false;

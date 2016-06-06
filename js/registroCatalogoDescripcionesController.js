@@ -39,7 +39,7 @@ $(document).ready(function()
         $("#buscarConfiguracion").click(function(){
             idConfiguracion = $
             descripcion = $("#buscar").val();
-            getConfiguracionEquipoBy("?descripcion="+descripcion).then(function(data){
+            getConfiguracionEquipoBy("?descripcion="+descripcion+"&status=1").then(function(data){
                 id_configuracion_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
@@ -48,7 +48,7 @@ $(document).ready(function()
             });
         });  
 
-        getConfiguracionEquipoBy("?tipo=DESCRIPCIÓN").then(function(data){
+        getConfiguracionEquipoBy("?tipo=DESCRIPCIÓN&status=1").then(function(data){
             //Despues del retorno del promise, se cargan en el select con jsonToSelect
             jsonToSelect({        
                 data : data,
