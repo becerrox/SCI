@@ -87,6 +87,16 @@ headers = [];
                 });                 
          })  
 
-               
+        //Descripción
+        getConfiguracionEquipoBy("?tipo=DESCRIPCIÓN&status=1").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#descripcion")
+                });
+        })    
+
+
 });
 

@@ -39,7 +39,7 @@ $(document).ready(function()
         $("#buscarCargo").click(function(){
             idConfiguracion = $
             descripcion = $("#buscar").val();
-            getConfiguracionAdminBy("?descripcion="+descripcion"&status=1").then(function(data){
+            getConfiguracionAdminBy("?descripcion="+descripcion+"&status=1").then(function(data){
                 id_configuracion_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
@@ -48,7 +48,7 @@ $(document).ready(function()
             });
         });  
 
-        getConfiguracionAdminBy("?tipo=CARGO+&status=1").then(function(data){
+        getConfiguracionAdminBy("?tipo=CARGO&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",

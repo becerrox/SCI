@@ -17,6 +17,15 @@ $(document).ready(function()
                 location.href="index.html";    
              });
 
+                if (datosUsuario.nivel==3) //Nivel 
+                    {
+                        document.getElementById("equipos").style.display = "none";
+                        document.getElementById("reporte_equipos").style.display = "none";
+                        document.getElementById("registro_usuarios").style.display = "none";
+                        document.getElementById("inventario").style.display = "none";
+                        document.getElementById("administrador").style.display = "none";
+                        document.getElementById("catalogo").style.display = "none";
+                    }
                 if (datosUsuario.nivel==1) //Nivel Administrador de Bienes
                     {
                         document.getElementById("equipos").style.display = "none";
@@ -28,16 +37,6 @@ $(document).ready(function()
                         document.getElementById("reporte_equipos").style.display = "none";
                         document.getElementById("registro_usuarios").style.display = "none";
                         document.getElementById("btnEliminar").style.display = "none";
-                    }
-                if (datosUsuario.nivel==3) //Nivel 
-                    {
-                        document.getElementById("equipos").style.display = "none";
-                        document.getElementById("reporte_equipos").style.display = "none";
-                        document.getElementById("registro_usuarios").style.display = "none";
-                        document.getElementById("btnEliminar").style.display = "none";
-                        document.getElementById("inventario").style.display = "none";
-                        document.getElementById("administrador").style.display = "none";
-                        document.getElementById("catalogo").style.display = "none";
                     }
 
         });        
