@@ -70,7 +70,7 @@ headers = [];
         /* Cargando datas de la api a los selects  */           
   
 
-        getResponsablesBy('').then(function(data){
+        getResponsablesBy("?status=1").then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
                 data[personal].ci = data[personal].cedula;
