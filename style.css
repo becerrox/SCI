@@ -48,6 +48,9 @@ display: inline;
     margin-left: auto;
     margin-right: auto;
 }
+#pie_de_pagina .pie{
+  color:black; margin-top:20px;
+}
 article, aside, figure, header, hgroup, nav, section {display: block;}
 
 
