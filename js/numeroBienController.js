@@ -34,18 +34,6 @@ $(document).ready(function()
             eliminarNumeroBien(dataForm,id_numerobien_editar);
         });     
 
-        $("#buscarConfiguracion").click(function(){
-            idConfiguracion = $
-            descripcion = $("#buscar").val();
-            getNumeroBienBy("?descripcion="+descripcion).then(function(data){
-                id_numerobien_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formNuevaConfig"
-                });
-            });
-        });  
-
         //número de bien
         getNumeroBienBy('').then(function(data){
             jsonToSelect({        
@@ -58,3 +46,15 @@ $(document).ready(function()
 
 });
 
+
+        function cargarCodigo(){
+            idConfiguracion = $
+            descripcion = $("#buscar").val();
+            getNumeroBienBy("?descripcion="+descripcion).then(function(data){
+                id_numerobien_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formNuevaConfig"
+                });
+            });
+        }  

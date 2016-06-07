@@ -34,18 +34,6 @@ $(document).ready(function()
             eliminarUnidadTrabajo(dataForm,id_unidad_editar);
         });     
 
-        $("#buscarUnidad").click(function(){
-            idConfiguracion = $
-            descripcion = $("#buscar").val();
-            getUnidadTrabajoBy("?descripcion="+descripcion).then(function(data){
-                id_unidad_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formTrabajo"
-                });
-            });
-        });  
-
         getUnidadTrabajoBy("&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
@@ -57,3 +45,15 @@ $(document).ready(function()
 
 });
 
+
+        function cargarUnidad(){
+            idConfiguracion = $
+            descripcion = $("#buscar").val();
+            getUnidadTrabajoBy("?descripcion="+descripcion).then(function(data){
+                id_unidad_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formTrabajo"
+                });
+            });
+        }

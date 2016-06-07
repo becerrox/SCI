@@ -34,17 +34,6 @@ $(document).ready(function()
             eliminarResponsables(dataForm,id_responsable_editar);
         });
 
-        $("#buscarPersonal").click(function(){
-            idBien = $
-            numero = $("#buscar").val();
-            getResponsablesBy("?cedula="+numero).then(function(data){
-                id_responsable_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formPersonal"
-                });
-            });
-        }); 
 
         /* Cargando datas de la api a los selects  */
 
@@ -93,3 +82,15 @@ $(document).ready(function()
 
 });
 
+
+        function cargarPersonal(){
+            idBien = $
+            numero = $("#buscar").val();
+            getResponsablesBy("?cedula="+numero).then(function(data){
+                id_responsable_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formPersonal"
+                });
+            });
+        }

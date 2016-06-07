@@ -37,19 +37,6 @@ $(document).ready(function()
             });
         });   
 
-        $("#buscarConfiguracion").click(function(){
-            idConfiguracion = $
-            descripcion = $("#buscar").val();
-            getConfiguracionBy("?descripcion="+descripcion+"&status=1").then(function(data){
-                id_configuracion_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formColores"
-                });
-            });
-        });  
-
-
         getConfiguracionBy("?tipo=COLOR&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
@@ -61,3 +48,15 @@ $(document).ready(function()
 
 });
 
+
+        function cargarConfiguracion(){
+            idConfiguracion = $
+            descripcion = $("#buscar").val();
+            getConfiguracionBy("?descripcion="+descripcion+"&status=1").then(function(data){
+                id_configuracion_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formColores"
+                });
+            });
+        }

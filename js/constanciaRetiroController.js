@@ -26,14 +26,6 @@ $(document).ready(function()
         });  
 
         $("#buscarResp").click(function(){
-            idEquipo = $
-            numero = $("#responsable").val();
-            getResponsablesBy("?cedula="+numero).then(function(data){
-                jsonToForm({
-                    data : data[0],
-                    form : "#formResponsable"
-                });                
-            });
         }); 
 
         $("#btnGuardar").click(function(){
@@ -55,6 +47,9 @@ headers = [];
         /* Cargando datas de la api a los selects  */           
   
 
+
+});
+
         getResponsablesBy("?status=1").then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
@@ -71,7 +66,17 @@ headers = [];
                     form : "#constancia"
                 });                 
          })
-});
+
+        function cargarPersonal(){
+            idEquipo = $
+            numero = $("#responsable").val();
+            getResponsablesBy("?cedula="+numero).then(function(data){
+                jsonToForm({
+                    data : data[0],
+                    form : "#formResponsable"
+                });                
+            });
+        }
 
         getConfiguracionEquipoBy("?tipo=DESCRIPCIÓN&status=1").then(function(data){
             jsonToSelect({        
@@ -108,6 +113,7 @@ headers = [];
                     });
             })
         }
+
 
         function buscarEquipo(){
             idEquipo = $
