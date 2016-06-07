@@ -119,11 +119,11 @@ function busqueda_res(){
 return ((key >= 48 && key <= 57) || (key==8) || (key==118))  
 
 } 
- function soloNumeros2(e){
+//Solo permite ingresar numero hexadecimales
+ function soloHexa(e){
 
   var key = window.Event ? e.which : e.keyCode
-return ((key >= 48 && key <= 57) || (key==8) || (key==118) || (key==45))  
-
+return ((key >= 48 && key <= 57) || (key==8) || (key>=97 && key<=102) || (key>=65 && key<=70))
 } 
 
 function Validador(email){
@@ -389,7 +389,6 @@ return false;
 
 //]]>
 
-  
 function uncheckRadio(rbutton){
   var era;
 var previo=null;
@@ -405,6 +404,7 @@ previo=rbutton;
       $("#fecha1").datepicker({
         changeMonth:true,
         changeYear:true,
+
       });
       $("#fecha6").datepicker({
         changeMonth:false,
@@ -428,9 +428,10 @@ previo=rbutton;
         changeYear:true,
       });
     })
+
 // Habilita y deshabilita elementos de el campo formulario
     function habilita(){
-        $(".inputText").removeAttr("disabled");
+        $(".inputText").removeAttr("disabled");        
     }
     function deshabilita(){
         $(".inputText").attr("disabled","disabled");
@@ -450,6 +451,7 @@ previo=rbutton;
           var caracteristicas = document.getElementById('caracteristicas').value;
           var observaciones = document.getElementById('observaciones').value;
           var serialSim = document.getElementById('serialSim').value;
+          var imei = document.getElementById('imei').value;
           var numeroCelular = document.getElementById('numeroCelular').value;
           var accesorios = document.getElementById('accesorios').value;
           var planCelular = document.getElementById('planCelular').value;
@@ -552,10 +554,17 @@ previo=rbutton;
             $('#alert').html('').slideUp(300);
           }
 if((equipo=="Celular") || (equipo=="celular")){
-
         if(serialSim==""){
             $('#alert').html('Debes ingresar el campo serial').slideDown(500);
             $('#serialSim').focus();
+            return false;
+          }
+          else{
+            $('#alert').html('').slideUp(300);
+          }
+        if(imei==""){
+            $('#alert').html('Debes ingresar el campo IMEI').slideDown(500);
+            $('#imei').focus();
             return false;
           }
           else{

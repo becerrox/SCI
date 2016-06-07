@@ -5,7 +5,7 @@ class DependenciasService{
     public function listar($query){
 
           if(empty($query))
-             $dependencias=Dependencias::find();
+             $dependencias=Dependencias::find("status = 1");
           else
           {
             $dependencias=Dependencias::find(

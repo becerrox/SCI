@@ -58,7 +58,7 @@ class Bienes extends Model{
         $this->validate(new PresenceOf(
             array(
                 "field" => "descripcion",
-                "message" => " equipo"
+                "message" => " descripción"
                 )
             ));
 
@@ -129,6 +129,13 @@ class Bienes extends Model{
              array(
                  "field"  => "serial",
                  "message" => " serial debe ser único"
+             )
+         ));
+
+        $this->validate(new Uniqueness(
+             array(
+                 "field"  => "num_bien",
+                 "message" => " número de bien debe ser único"
              )
          ));
 

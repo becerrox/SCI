@@ -12,7 +12,7 @@ $(document).ready(function()
         $("#btnBuscar").click(function(){
             idBien = $
             numero = $("#estatus_uso_bien").val();
-            getBienesBy("?estatus_uso_bien="+numero).then(function(data){
+            getBienesBy("?estatus_uso_bien="+numero+"&status=1").then(function(data){
                 id_bien_buscar = data[0].id;
                 jsonToTable({
                     data : data,
@@ -32,7 +32,7 @@ $(document).ready(function()
 
         /* Cargando datas de la api a los selects  */     
 
-        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN").then(function(data){
+        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "codigo",

@@ -23,6 +23,7 @@ $(document).ready(function()
             frm = $("#formSede");
             dataForm = getFormData(frm);
             dataForm.status=1;
+            dataForm.tipo="SEDE";
             modificarConfiguracionAdmin(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   
@@ -35,19 +36,7 @@ $(document).ready(function()
             eliminarConfiguracionAdmin(dataForm,id_configuracion_editar);
         });     
 
-        $("#buscarConfiguracion").click(function(){
-            idConfiguracion = $
-            descripcion = $("#buscar").val();
-            getConfiguracionAdminBy("?descripcion="+descripcion).then(function(data){
-                id_configuracion_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formSede"
-                });
-            });
-        });  
-
-        getConfiguracionAdminBy("?tipo=SEDE").then(function(data){
+        getConfiguracionAdminBy("?tipo=SEDE&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -58,3 +47,15 @@ $(document).ready(function()
 
 });
 
+
+        function cargarConfiguracion(){
+            idConfiguracion = $
+            descripcion = $("#buscar").val();
+            getConfiguracionAdminBy("?descripcion="+descripcion+"&status=1").then(function(data){
+                id_configuracion_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formSede"
+                });
+            });
+        }

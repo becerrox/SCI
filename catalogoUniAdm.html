@@ -33,14 +33,13 @@
            <form id="formTrabajo" class="col-md-12 col-md-offset-4 form-group bloque col-lg-12">
               <h3>Registrar Unidad Administrativa</h3>          
               <label>Descripción</label>
-              <input type="text" name="descripcion" id="descripcion" class="form-control-2 uppercase" data-toggle="tooltip" title="Nombre de la nueva Unidad Administrativa, Ej:Coorinación, Gerencia"><br>
+              <input type="text" name="descripcion" id="descripcion" class="form-control-2 uppercase" data-toggle="tooltip" title="Nombre de la nueva Unidad Administrativa, Ej:Coordinación, Gerencia"><br>
               <button id= "btnGuardar" type="button" class="btn" onclick="">Guardar</button>
             </form> <!--FIN Registro de Nueva Unidad-->             
            <form class="form-group bloque col-md-12 col-lg-12 col-md-offset-4">
               <h3>Actualizar o Borrar</h3>
               <label>Buscar</label>
-              <select type="text" class="form-control-2" id="buscar" data-toggle="tooltip" title="Buscar item a Modificar o Eliminar "></select>
-              <button id="buscarUnidad" type="button" class="btn icon-search"></button>             
+              <select type="text" class="form-control-2" id="buscar" data-toggle="tooltip" title="Buscar item a Modificar o Eliminar" onchange="cargarUnidad()"></select>
               <div class="row">
                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
                   <button id= "btnModificar" type="button" class="btn" onclick="">Modificar</button>

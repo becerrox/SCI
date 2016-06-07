@@ -10,6 +10,7 @@ $(document).ready(function()
 
         var id_equipo_editar = "";
 
+                $("#fecha1").html(today);
         $("#buscarEquipo").click(function(){
             idEquipo = $
             numero = $("#serial").val();
@@ -50,7 +51,7 @@ $(document).ready(function()
         $("#buscarResp").click(function(){
             idBien = $
             numero = $("#responsable").val();
-            getResponsablesBy("?cedula="+numero).then(function(data){
+            getResponsablesBy("?cedula="+numero+"&status=1").then(function(data){
                 id_personal_buscar = data[0].id;
                 jsonToForm({
                     data : data[0],
@@ -76,7 +77,7 @@ headers = [];
 
         /* Cargando datas de la api a los selects  */         
 
-        getResponsablesBy('').then(function(data){
+        getResponsablesBy("?status=1").then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
                 data[personal].ci = data[personal].cedula;
@@ -88,6 +89,22 @@ headers = [];
                  element : $("#responsable")
                  });                
          })  
+
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+if(dd<10) {
+    dd='0'+dd
+} 
+
+if(mm<10) {
+    mm='0'+mm
+} 
+
+today = yyyy+'/'+mm+'/'+dd;
+
 
 });
 

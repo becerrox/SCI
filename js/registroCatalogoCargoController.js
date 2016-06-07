@@ -36,19 +36,7 @@ $(document).ready(function()
             eliminarConfiguracionAdmin(dataForm,id_configuracion_editar);
         });     
 
-        $("#buscarCargo").click(function(){
-            idConfiguracion = $
-            descripcion = $("#buscar").val();
-            getConfiguracionAdminBy("?descripcion="+descripcion).then(function(data){
-                id_configuracion_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formCargos"
-                });
-            });
-        });  
-
-        getConfiguracionAdminBy("?tipo=CARGO").then(function(data){
+        getConfiguracionAdminBy("?tipo=CARGO&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -59,3 +47,15 @@ $(document).ready(function()
 
 });
 
+
+        function cargarConfiguracion(){
+            idConfiguracion = $
+            descripcion = $("#buscar").val();
+            getConfiguracionAdminBy("?descripcion="+descripcion+"&status=1").then(function(data){
+                id_configuracion_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formCargos"
+                });
+            });
+        }

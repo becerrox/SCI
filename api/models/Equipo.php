@@ -103,7 +103,14 @@ class Equipo extends Model{
                  "message" => " serial debe ser único"
              )
          ));
-
+/*
+        $this->validate(new Uniqueness(
+             array(
+                 "field"  => "imei",
+                 "message" => " imei debe ser único"
+             )
+         ));
+*/
         if ($this->validationHasFailed() == true) {
             return false;
         }

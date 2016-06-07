@@ -29,14 +29,28 @@ class Subcat extends Model{
         $this->validate(new PresenceOf(
             array(
                 "field" => "codigo",
-                "message" => "El campo subcategoría es obligatorio"
+                "message" => " subcategoría"
                 )
             ));
-            
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "descripcion",
+                "message" => " descripción"
+                )
+            ));
+                        
        $this->validate(new Uniqueness(
             array(
                 "field"  => "codigo",
                 "message" => "El Código de la subcategoría debe ser único"
+            )
+        ));
+
+       $this->validate(new Uniqueness(
+            array(
+                "field"  => "descripcion",
+                "message" => "La descripción de la subcategoría debe ser única"
             )
         ));
 

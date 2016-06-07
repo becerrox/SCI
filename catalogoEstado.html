@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8"/>
-    <title>Configuración de Estado del Bien</title>
+    <title>Configuración de Estado del bien</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, 
     initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0"> 
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" >
@@ -33,7 +33,7 @@
         <form id="formEstadoUso" class="col-md-4 col-md-offset-4 col-sm-12 form-group bloque ">
           <h3>Registrar Nuevo Estado de Uso</h3>
           <label>Descripción</label>
-          <input type="text" name="descripcion" id="descripcion" class="form-control-2" data-toggle="tooltip" title="Ej:En uso, Por asignar" onkeypress="return soloLetras(event)"></input>  
+          <input type="text" name="descripcion" id="descripcion" class="form-control-2" data-toggle="tooltip" title="Ej:Óptimo, Deteriorado" onkeypress="return soloLetras(event)"></input>  
           <label>Código</label>
           <input type="text" name="codigo" id="codigo" class="form-control-2" data-toggle="tooltip" title="Código del Item" onkeypress="return soloNumeros(event)"></input><br>
           <button id= "btnGuardar" type="button" class="btn icon-save" onclick=""></button>                             
@@ -41,8 +41,7 @@
         <form class="form-group bloque col-md-4 col-md-offset-4 col-sm-12">
           <h3>Actualizar o Borrar</h3>
           <label>Buscar</label>
-          <select type="text" class="form-control-2" id="buscar" data-toggle="tooltip" title="Buscar item a Modificar o Eliminar "></select>
-          <button id="buscarConfiguracion" type="button" class="btn icon-search"></button>
+          <select type="text" class="form-control-2" id="buscar" data-toggle="tooltip" title="Buscar item a Modificar o Eliminar" onchange="cargarConfiguracion()"></select>
         </form><!--FIN Modificación-->   
       </div><!--FIN CONTENEDOR-->        
         <div class="row">

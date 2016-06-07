@@ -41,7 +41,7 @@ $app->post("/usuarios/token",function() use ($app,$usuarioService) {
     response($app,$data,$data['status']);
 });
 
-$app->put("/usuarios/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
+$app->put("/usuariosss/{id:[0-9]+}",function($id) use ($app,$usuarioService) {
     $usuario = json_decode($app->request->getRawBody());
     $data = $usuarioService->modificar($id,$usuario);
     response($app,$data['mensaje'],$data['status']);

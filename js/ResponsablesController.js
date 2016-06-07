@@ -34,22 +34,11 @@ $(document).ready(function()
             eliminarResponsables(dataForm,id_responsable_editar);
         });
 
-        $("#buscarPersonal").click(function(){
-            idBien = $
-            numero = $("#buscar").val();
-            getBienesBy("?cedula="+numero).then(function(data){
-                id_responsable_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formPersonal"
-                });
-            });
-        }); 
 
         /* Cargando datas de la api a los selects  */
 
         //Categoría de Unidades Administrativas 
-        getUnidadAdministrativaBy('').then(function(data){
+        getUnidadAdministrativaBy("?status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -59,7 +48,7 @@ $(document).ready(function()
         })
         
         //Unidad de Trabajo
-        getUnidadTrabajoBy('').then(function(data){
+        getUnidadTrabajoBy("?status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -69,7 +58,7 @@ $(document).ready(function()
         })             
 
         //Cargo
-        getConfiguracionAdminBy("?tipo=CARGO").then(function(data){
+        getConfiguracionAdminBy("?tipo=CARGO&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -78,6 +67,30 @@ $(document).ready(function()
                 });
         })             
 
+        getResponsablesBy("?status=1").then(function(data){
+            for(personal in data){
+                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
+                data[personal].ci = data[personal].cedula;
+            }
+            jsonToSelect({        
+                 data : data,
+                 value : "ci",
+                 alias : "nombreApellido",
+                 element : $("#buscar")
+                 });
+         })        
 
 });
 
+
+        function cargarPersonal(){
+            idBien = $
+            numero = $("#buscar").val();
+            getResponsablesBy("?cedula="+numero).then(function(data){
+                id_responsable_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formPersonal"
+                });
+            });
+        }

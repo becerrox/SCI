@@ -1,20 +1,12 @@
  @page {
   page-size:letter;
-  size: landscape;  
-
- }
-
-body{
-
-
-}
+  size: landscape;}
 article{ 
 	border: 2px;
 	border-color: 5px; 
 	   }
 #departamento{
   visibility: visible;
-
 }
 #estatus , #usuarios{
   top:10%;
@@ -35,7 +27,10 @@ article{
   z-index:6;
   text-align: center;
 }
-h3{ text-align: center; }
+h3{ text-align: center;
+    padding-left: 60%; }
+h4{ text-align: center;
+    padding-left: 45%; }
 #reporteuso{
   top:10%;
   position: absolute;

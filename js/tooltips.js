@@ -9,5 +9,9 @@ $(document).ready(function(){
         title : ''
     });
 });
-
+$(document).ready(function(){
+    $(".inicio select").tooltip({
+        title : ''
+    });
+});
 

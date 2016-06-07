@@ -30,14 +30,28 @@ class catesp extends Model{
         $this->validate(new PresenceOf(
             array(
                 "field" => "codigo",
-                "message" => "El campo categoría específica es obligatorio"
+                "message" => " categoría específica"
                 )
             ));
-            
+
+        $this->validate(new PresenceOf(
+            array(
+                "field" => "descripcion",
+                "message" => " descripción"
+                )
+            ));
+                         
        $this->validate(new Uniqueness(
             array(
                 "field"  => "codigo",
                 "message" => "El Código de la categoría específica debe ser único"
+            )
+        ));
+
+       $this->validate(new Uniqueness(
+            array(
+                "field"  => "descripcion",
+                "message" => "La descripción debe ser única"
             )
         ));
 

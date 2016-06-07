@@ -48,6 +48,9 @@ display: inline;
     margin-left: auto;
     margin-right: auto;
 }
+#pie_de_pagina .pie{
+  color:black; margin-top:20px;
+}
 article, aside, figure, header, hgroup, nav, section {display: block;}
 
 
@@ -210,6 +213,7 @@ section > div > div{
  }
  section .inicio{
   background: url(images/fondoinicio.png); 
+  width: auto;
  }
  .inicio{
   overflow:hidden;
@@ -481,6 +485,9 @@ padding:8px;}
 
 @media (max-width: 768px) {
 
+#fondo img{
+  width: auto;
+}
 .mainWrap{width:auto;padding:0px 20px;}
 
 .menu{display:none;}

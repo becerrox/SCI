@@ -31,21 +31,21 @@ class NumeroBien extends Model{
         $this->validate(new PresenceOf(
             array(
                 "field" => "numero_bien",
-                "message" => "El numero de bien se debe ingresar"
+                "message" => " número de bien"
                 )
             ));
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "descripcion",
-                "message" => "Ingrese una descripción"
+                "message" => " descripción"
                 )
             ));        
 
        $this->validate(new Uniqueness(
             array(
                 "field"  => "numero_bien",
-                "message" => "El numero de bien debe ser único"
+                "message" => "El número de bien debe ser único"
             )
         ));
 

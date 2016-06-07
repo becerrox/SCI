@@ -3,7 +3,7 @@ class ConfiguracionAdminService{
     public function listar($query){
 
           if(empty($query))
-             $configuracionAdmin=ConfiguracionAdmin::find();
+             $configuracionAdmin=ConfiguracionAdmin::find("status = 1");
           else
           {
             $configuracionAdmin=ConfiguracionAdmin::find(

@@ -11,7 +11,7 @@ $(document).ready(function()
         $("#header").load("header.html",function()
         {
             var datosUsuario = JSON.parse(sessionStorage.dataUsuario);
-            $("#nombreUsuario").html(datosUsuario.data_personal.nombres + " " + datosUsuario.data_personal.apellidos);    
+            $("#nombreUsuario").html(datosUsuario.data_personal.nombres + " " + datosUsuario.data_personal.apellidos); 
                     if (dataUsuarios.primer_inicio==0)
                     {
                         idUsuario = $
@@ -34,20 +34,21 @@ $(document).ready(function()
                         getUsuariosBy("?id="+numero).then(function(data){
                             id_usuario_editar = data[0].id;
                         });                               
-                if (datosUsuario.nivel==1) //Nivel Administrador de Bienes
-                    {
-                        document.getElementById("equipos").style.display = "none";
-                        document.getElementById("reporte_equipos").style.display = "none";     
-                        document.getElementById("registro_usuarios").style.display = "none";  
-                    }
-                if (datosUsuario.nivel==2) //Nivel Regular Usuario de Bienes
-                    {
-                        document.getElementById("equipos").style.display = "none";
-                        document.getElementById("reporte_equipos").style.display = "none";
-                        document.getElementById("registro_usuarios").style.display = "none";
-                        document.getElementById("reporte_equipos").style.display = "none";
-                        document.getElementById("btnEliminar").style.display = "none";
-                    }                                    }                    
+                        if (datosUsuario.nivel==1) //Nivel Administrador de Bienes
+                            {
+                                document.getElementById("equipos").style.display = "none";
+                                document.getElementById("reporte_equipos").style.display = "none";     
+                                document.getElementById("registro_usuarios").style.display = "none";  
+                            }
+                        if (datosUsuario.nivel==2) //Nivel Regular Usuario de Bienes
+                            {
+                                document.getElementById("equipos").style.display = "none";
+                                document.getElementById("reporte_equipos").style.display = "none";
+                                document.getElementById("registro_usuarios").style.display = "none";
+                                document.getElementById("reporte_equipos").style.display = "none";
+                                document.getElementById("btnEliminar").style.display = "none";
+                            }
+                    }                    
 
             $("#cerrarSesionButton").click(function(){
                 sessionStorage.removeItem("dataUsuario");
@@ -61,7 +62,6 @@ $(document).ready(function()
             var pass = document.getElementById('pass').value;
             var pass2 = document.getElementById('pass2').value;
 
-                  
         if(pass==""){
             $('#alert').html('Debes ingresar el campo Contraseña').slideDown(500);
             $('#pass').focus();
@@ -85,6 +85,10 @@ $(document).ready(function()
                 dataForm.status=1;
                 dataForm.primer_inicio=1;
                 modificarUsuarioPass(dataForm,id_usuario_editar).then(function(data){ 
+                    dataUsuarioObject = JSON.parse(sessionStorage.dataUsuario);
+                    dataUsuarioObject.primer_inicio = 1;
+                    sessionStorage.dataUsuario = JSON.stringify(dataUsuarioObject); 
+                    console.log(sessionStorage.dataUsuario.primer_inicio);
                  });                    
             }
         });

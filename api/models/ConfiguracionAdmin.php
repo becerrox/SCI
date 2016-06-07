@@ -27,21 +27,13 @@ class ConfiguracionAdmin extends Model{
  /* Validaciones */
  public function validation()
     {
-/*
-        $this->validate(new PresenceOf(
-            array(
-                "field" => "tipo",
-                "message" => "El tipo es obligatorio"
-                )
-            ));*/
 
         $this->validate(new PresenceOf(
             array(
                 "field" => "descripcion",
-                "message" => "La descripción es obligatoria"
+                "message" => " descripción"
                 )
             ));
-
 
        $this->validate(new Uniqueness(
             array(

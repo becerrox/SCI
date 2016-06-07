@@ -7,7 +7,7 @@
   <head>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8"/>
-    <title>Catálogo Codigos de Bienes</title>
+    <title>Catálogo de Categorías de Número de Bien</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, 
     initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0"> 
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" >
@@ -28,11 +28,11 @@
 <body>
     <div id="header"></div>
     <section class="inicio">
-      <h1>Catálogo Códigos de Bienes</h1>
+      <h1>Catálogo de Categorías de Número de Bien</h1>
         <div id="contenedor">
          <form id="formNuevaConfig" class="col-md-6 form-group bloque">
-          <h3>Registrar Código de Bien</h3>    
-          <label>Número de Bien</label>
+          <h3>Registrar Categoría</h3>    
+          <label>Categoría</label>
           <input type="text" name="numero_bien" id="numero_bien" class="form-control-2" data-toggle="tooltip" title="Número del Bien a agregar" onclick="cursorfinal()" onKeyPress="return soloNumerosCod(event)" value="2-">
           <label>Descripción</label>
           <input type="text" name="descripcion" id="descripcion" class="form-control-2 uppercase" data-toggle="tooltip" title="Ej: EQUIPOS TECNOLÓGICOS, OBRAS DE ARTE"><br>
@@ -41,8 +41,7 @@
          <form class="form-group bloque col-md-6">
             <h3>Actualizar o Borrar</h3>
             <label>Buscar</label>
-            <select type="text" class="form-control-2" id="buscar" data-toggle="tooltip" title="Buscar item a Modificar o Eliminar "></select>
-            <button id="buscarConfiguracion" type="button" class="btn icon-search"></button>                      
+            <select type="text" class="form-control-2" id="buscar" data-toggle="tooltip" title="Buscar item a Modificar o Eliminar" onchange="cargarCodigo()"></select>
             <div class="row">
               <div class="form-group col-md-12 col-sm-12 col-xs-12">
                 <button id= "btnModificar" type="button" class="btn" onclick="">Modificar</button>

@@ -48,7 +48,7 @@ $(document).ready(function()
             });
         });            
 
-        getConfiguracionBy("?tipo=COLOR").then(function(data){
+        getConfiguracionBy("?tipo=COLOR&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -58,7 +58,7 @@ $(document).ready(function()
         })     
 
         //Estado del bien 
-        getConfiguracionBy("?tipo=ESTADO DEL BIEN").then(function(data){
+        getConfiguracionBy("?tipo=ESTADO DEL BIEN&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -68,7 +68,7 @@ $(document).ready(function()
         })
 
         //Categoría de Unidades Administrativas 
-        getUnidadAdministrativaBy('').then(function(data){
+        getUnidadAdministrativaBy("?status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -77,7 +77,7 @@ $(document).ready(function()
                 });
         })
         //Unidad de Trabajo
-        getUnidadTrabajoBy('').then(function(data){
+        getUnidadTrabajoBy("?status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -87,7 +87,7 @@ $(document).ready(function()
         })                
 
         //Estatus de Uso del Bien 
-        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN").then(function(data){
+        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -97,7 +97,7 @@ $(document).ready(function()
         })           
         
         //Descripción
-        getConfiguracionEquipoBy("?tipo=DESCRIPCIÓN").then(function(data){
+        getConfiguracionEquipoBy("?tipo=DESCRIPCIÓN&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -107,7 +107,7 @@ $(document).ready(function()
         })    
 
         //Marca
-        getConfiguracionEquipoBy("?tipo=MARCA").then(function(data){
+        getConfiguracionEquipoBy("?tipo=MARCA&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -118,7 +118,7 @@ $(document).ready(function()
 
 
         //Modelo
-        getConfiguracionEquipoBy("?tipo=MODELO").then(function(data){
+        getConfiguracionEquipoBy("?tipo=MODELO&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -127,7 +127,7 @@ $(document).ready(function()
                 });
         }) 
 
-        getResponsablesBy('').then(function(data){
+        getResponsablesBy("?status=1").then(function(data){
             for(personal in data){
                 data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
             }

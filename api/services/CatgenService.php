@@ -5,7 +5,7 @@ class CatgenService{
     public function listar($query){
 
           if(empty($query))
-             $catgen=Catgen::find();
+             $catgen=Catgen::find("status = 1");
           else
           {
             $catgen = Catgen::find(
@@ -28,7 +28,7 @@ class CatgenService{
             $data=array(
                 "codigo" => mb_strtoupper($cgb->codigo, "UTF-8"),
                 "descripcion" => mb_strtoupper($cgb->descripcion, "UTF-8"),
-                "status" => mb_strtoupper($cgb->status, "UTF-8")
+                "status" => 1
                 );
 
             if($catgen->save($data)){
@@ -53,7 +53,7 @@ class CatgenService{
                 $data=array(     
                 "codigo" => mb_strtoupper($cgb->codigo, "UTF-8"),
                 "descripcion" => mb_strtoupper($cgb->descripcion, "UTF-8"),
-                "status" => mb_strtoupper($cgb->status, "UTF-8")
+                "status" => 1
                 );
 
                 if($modificar->update($data)){

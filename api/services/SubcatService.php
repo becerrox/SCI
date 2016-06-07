@@ -5,7 +5,7 @@ class SubcatService{
     public function listar($query){
 
           if(empty($query))
-             $subcat=Subcat::find();
+             $subcat=Subcat::find("status = 1");
           else
           {
             $subcat = Subcat::find(
@@ -28,7 +28,7 @@ class SubcatService{
             $data=array(
                 "codigo" => mb_strtoupper($scb->codigo, "UTF-8"),
                 "descripcion" => mb_strtoupper($scb->descripcion, "UTF-8"),
-                "status" => mb_strtoupper($scb->status, "UTF-8"),
+                "status" => 1,
                 "catgen" => mb_strtoupper($scb->catgen, "UTF-8")                
                 );
 
@@ -54,7 +54,7 @@ class SubcatService{
                 $data=array(     
                 "codigo" => mb_strtoupper($scb->codigo, "UTF-8"),
                 "descripcion" => mb_strtoupper($scb->descripcion, "UTF-8"),
-                "status" => mb_strtoupper($scb->status, "UTF-8")
+                "status" => 1
                 );
 
                 if($modificar->update($data)){

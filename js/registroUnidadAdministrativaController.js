@@ -34,19 +34,7 @@ $(document).ready(function()
             eliminarUnidadAdministrativa(dataForm,id_unidad_editar);
         });     
 
-        $("#buscarUnidad").click(function(){
-            idConfiguracion = $
-            descripcion = $("#buscar").val();
-            getUnidadAdministrativaBy("?descripcion="+descripcion).then(function(data){
-                id_unidad_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formTrabajo"
-                });
-            });
-        });  
-
-        getUnidadAdministrativaBy('').then(function(data){
+        getUnidadAdministrativaBy("?status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
@@ -57,3 +45,15 @@ $(document).ready(function()
 
 });
 
+
+        function cargarUnidad(){
+            idConfiguracion = $
+            descripcion = $("#buscar").val();
+            getUnidadAdministrativaBy("?descripcion="+descripcion+"&status=1").then(function(data){
+                id_unidad_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formTrabajo"
+                });
+            });
+        }

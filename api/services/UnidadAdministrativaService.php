@@ -3,7 +3,7 @@ class UnidadAdministrativaService{
     public function listar($query){
 
           if(empty($query))
-             $unidadAdministrativa=UnidadAdministrativa::find();
+             $unidadAdministrativa=UnidadAdministrativa::find("status = 1");
           else
           {
             $unidadAdministrativa=UnidadAdministrativa::find(

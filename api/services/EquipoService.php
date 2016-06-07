@@ -40,7 +40,8 @@ class EquipoService{
                 "planCelular" => mb_strtoupper($eq->planCelular, "UTF-8"),
                 "numeroCelular" => mb_strtoupper($eq->numeroCelular, "UTF-8"),
                 "estadoUsoEquipo" => mb_strtoupper($eq->estadoUsoEquipo, "UTF-8"),
-                "motivo" => mb_strtoupper($eq->motivo, "UTF-8")
+                "motivo" => mb_strtoupper($eq->motivo, "UTF-8"),
+                "serialTelefono" => $eq->serialTelefono
             );
             if($equipo->save($data)){
                     return array("status" => 201, "mensaje" => $data);
@@ -75,7 +76,8 @@ class EquipoService{
                 "planCelular" => mb_strtoupper($eq->planCelular, "UTF-8"),
                 "numeroCelular" => mb_strtoupper($eq->numeroCelular, "UTF-8"),
                 "estadoUsoEquipo" => mb_strtoupper($eq->estadoUsoEquipo, "UTF-8"),
-                "motivo" => mb_strtoupper($eq->motivo, "UTF-8")
+                "motivo" => mb_strtoupper($eq->motivo, "UTF-8"),
+                "serialTelefono" => $eq->serialTelefono
                 );
                 if($modificar->update($data)){
                         return array("status" => 200, "mensaje" => $data);
@@ -139,7 +141,6 @@ class EquipoService{
                 return array("status" => 404, "mensaje" =>"El registro que intenta solventar no existe");
             }
         }        
-
         public function eliminar($id){
             $equipo=Equipo::find($id);
             if(count($equipo)){

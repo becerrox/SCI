@@ -5,7 +5,7 @@ class UnidadesService{
     public function listar($query){
 
           if(empty($query))
-             $unidades=Unidades::find();
+             $unidades=Unidades::find("status = 1");
           else
           {
             $unidades=Unidades::find(

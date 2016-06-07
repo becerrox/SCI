@@ -5,7 +5,7 @@ class CatespService{
     public function listar($query){
 
           if(empty($query))
-             $catesp=Catesp::find();
+             $catesp=Catesp::find("status = 1");
           else
           {
             $catesp = Catesp::find(
@@ -28,7 +28,7 @@ class CatespService{
             $data=array(
                 "codigo" => mb_strtoupper($cce->codigo, "UTF-8"),
                 "descripcion" => mb_strtoupper($cce->descripcion, "UTF-8"),
-                "status" => mb_strtoupper($cce->status, "UTF-8"),
+                "status" => 1,
                 "subcat" => mb_strtoupper($cce->subcat, "UTF-8")                
                 );
 
@@ -49,7 +49,7 @@ class CatespService{
                 $data=array(     
                 "codigo" => mb_strtoupper($cce->codigo, "UTF-8"),
                 "descripcion" => mb_strtoupper($cce->descripcion, "UTF-8"),
-                "status" => mb_strtoupper($cce->status, "UTF-8")
+                "status" => 1
                 );
 
                 if($modificar->update($data)){
