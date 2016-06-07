@@ -40,6 +40,6 @@ $(document).ready(function()
                     form : "#reporte"
                 });                
             });
-        } 
+        }
 
 headers = [ "Código General", "Código de Sub-categoría", "Código de Categoría Específica", "Descripción", "Estatus Uso Bien", "Marca", "Modelo", "Serial", "Tipo Componentes", "Colores", "Número de bien", "Estado bien", "Categoria de unidad administrativa"];
