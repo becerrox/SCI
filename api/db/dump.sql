@@ -9,6 +9,20 @@ SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
 SET search_path = public, pg_catalog;
 
 --
@@ -507,11 +521,11 @@ CREATE TABLE equipo (
     descripcion character varying(100),
     marca character varying(30),
     modelo character varying(30),
-    serial character varying(30) NOT NULL,
+    serial character varying(30),
     color character varying(25),
     estado character varying(100),
     unidad_admin character varying(50),
-    status integer DEFAULT 1 NOT NULL,
+    status integer,
     responsable character varying(50),
     caracteristicas character varying(150),
     fecha_modif timestamp without time zone,
@@ -522,7 +536,8 @@ CREATE TABLE equipo (
     "planCelular" character varying(40),
     "numeroCelular" character varying(20),
     "estadoUsoEquipo" character varying(30),
-    motivo character varying(150)
+    motivo character varying(150),
+    "serialTelefono" character varying(17)
 );
 
 
@@ -590,7 +605,8 @@ ALTER SEQUENCE niveles_usuarios_id_seq OWNED BY niveles_usuarios.id;
 CREATE TABLE numero_bien (
     id integer NOT NULL,
     numero_bien character varying(15),
-    descripcion character varying(50)
+    descripcion character varying(50),
+    status integer
 );
 
 
@@ -1048,6 +1064,383 @@ ALTER TABLE ONLY unidades ALTER COLUMN id SET DEFAULT nextval('unidades_id_seq':
 
 
 --
+-- Name: aignacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('aignacion_id_seq', 1, false);
+
+
+--
+-- Name: aignación_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"aignación_id_seq"', 1, false);
+
+
+--
+-- Data for Name: bienes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO bienes VALUES (1, '2000-00000', '12', '2010-00001', 'CELULAR', 2, 'VIT', 'EVOLUCION', 'AWDW432', '1', 2, '123213', 3, 1, '2016-06-06 10:35:15', '2', '2016-06-13', '2016-06-16', 'BIENES', 'NANCY MOGOLLÓN', 'NANCY MOGOLLÓN', 'NANCY MOGOLLÓN', 'ECSB');
+
+
+--
+-- Name: bienesgeneral_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('bienesgeneral_id_seq', 1, true);
+
+
+--
+-- Name: categoria_general_bienes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('categoria_general_bienes_id_seq', 1, false);
+
+
+--
+-- Data for Name: catesp; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO catesp VALUES (1, '2010-00001', 'PRESIDENCIAL', 1, '2010-00000');
+INSERT INTO catesp VALUES (2, '2014-00014', 'ESPECIALES', 1, '2014-00000');
+
+
+--
+-- Name: catesp_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('catesp_id_seq', 2, true);
+
+
+--
+-- Data for Name: catgen; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO catgen VALUES (1, '2000-00000', 'MUEBLES', 1);
+
+
+--
+-- Name: catgen_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('catgen_id_seq', 1, true);
+
+
+--
+-- Data for Name: configuracion_admin; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO configuracion_admin VALUES (1, 'SEDE', 'ECSB', 1);
+INSERT INTO configuracion_admin VALUES (2, 'CARGO', 'GERENTE', 1);
+INSERT INTO configuracion_admin VALUES (3, 'CARGO', 'COORDINADOR', 1);
+
+
+--
+-- Name: configuracion_admin_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('configuracion_admin_id_seq', 3, true);
+
+
+--
+-- Data for Name: configuracion_bien; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO configuracion_bien VALUES (1, 1, 'NEGRO', 'COLOR', 1);
+INSERT INTO configuracion_bien VALUES (2, 2, 'ROJO', 'COLOR', 1);
+INSERT INTO configuracion_bien VALUES (3, 3, 'AZUL', 'COLOR', 1);
+INSERT INTO configuracion_bien VALUES (4, 1, 'ÓPTIMO', 'ESTADO DEL BIEN', 1);
+INSERT INTO configuracion_bien VALUES (5, 2, 'DAÑADO', 'ESTADO DEL BIEN', 1);
+INSERT INTO configuracion_bien VALUES (6, 3, 'REPARADO', 'ESTADO DEL BIEN', 1);
+INSERT INTO configuracion_bien VALUES (7, 1, 'EN USO', 'ESTATUS DE USO DEL BIEN', 1);
+INSERT INTO configuracion_bien VALUES (8, 2, 'POR ASIGNAR', 'ESTATUS DE USO DEL BIEN', 1);
+INSERT INTO configuracion_bien VALUES (9, 1, 'FIBRA DE CARBONO', 'TIPO DE COMPONENTE', 1);
+
+
+--
+-- Name: configuracion_bien_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('configuracion_bien_id_seq', 9, true);
+
+
+--
+-- Data for Name: configuracion_equipos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO configuracion_equipos VALUES (1, 'DESCRIPCIÓN', 'LAPTOP', 1);
+INSERT INTO configuracion_equipos VALUES (2, 'DESCRIPCIÓN', 'CELULAR', 1);
+INSERT INTO configuracion_equipos VALUES (3, 'DESCRIPCIÓN', 'COMPUTADORA', 1);
+INSERT INTO configuracion_equipos VALUES (4, 'MARCA', 'SIRAGON', 1);
+INSERT INTO configuracion_equipos VALUES (5, 'MARCA', 'VIT', 1);
+INSERT INTO configuracion_equipos VALUES (6, 'MARCA', 'HP', 1);
+INSERT INTO configuracion_equipos VALUES (7, 'MODELO', 'P2402', 1);
+INSERT INTO configuracion_equipos VALUES (8, 'MODELO', 'PAVILION', 1);
+INSERT INTO configuracion_equipos VALUES (9, 'MODELO', 'EVOLUCION', 1);
+
+
+--
+-- Name: configuracion_equipos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('configuracion_equipos_id_seq', 9, true);
+
+
+--
+-- Data for Name: dependencias; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Name: dependencias_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('dependencias_id_seq', 1, false);
+
+
+--
+-- Name: detalle_entrada_id_detalle_entrada_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('detalle_entrada_id_detalle_entrada_seq', 1, false);
+
+
+--
+-- Name: detalle_entrada_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('detalle_entrada_id_seq', 1, false);
+
+
+--
+-- Name: detalle_salida_id_detallle_salida_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('detalle_salida_id_detallle_salida_seq', 1, false);
+
+
+--
+-- Name: detalle_salida_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('detalle_salida_id_seq', 1, false);
+
+
+--
+-- Name: entrada_id_entrada_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('entrada_id_entrada_seq', 1, false);
+
+
+--
+-- Data for Name: equipo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO equipo VALUES (1, 'CELULAR', 'SIRAGON', 'EVOLUCION', '423aedw', 'NEGRO', 'ÓPTIMO', 'COORDINACIÓN', 1, 'LUIS LAVADO', '8GB, 2GB RAM, 1.9 GHZ', '2016-06-06 02:01:53', 'TELECOMUNICACIONES', 'NUEVO', '11234432', 'TODOS', 'FULL', '04121245215', 'EN USO', '', NULL);
+INSERT INTO equipo VALUES (2, 'COMPUTADORA', 'VIT', 'P2402', 'a0001341', 'AZUL', 'ÓPTIMO', 'GERENCIA', 1, 'NANCY MOGOLLÓN', 'WDADW', '2016-06-06 02:06:58', 'FINANZAS', 'WADWD', '', '', '', '', 'EN USO', '', NULL);
+INSERT INTO equipo VALUES (3, 'CELULAR', 'HP', 'EVOLUCION', '32rf324', 'ROJO', 'REPARADO', 'COORDINACIÓN', 1, 'NANCY MOGOLLÓN', 'WADWA12EWDA', '2016-06-06 03:05:07', 'BIENES', 'DASDWS', '21321441', 'DADWAD', 'FSDFE', '002133213', 'POR ASIGNAR', '', '1232112fa');
+
+
+--
+-- Name: equipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('equipo_id_seq', 3, true);
+
+
+--
+-- Data for Name: niveles_usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Name: niveles_usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('niveles_usuarios_id_seq', 1, false);
+
+
+--
+-- Data for Name: numero_bien; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO numero_bien VALUES (1, '2-02', 'COMPUTACIÓN', 1);
+
+
+--
+-- Name: numero_bien_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('numero_bien_id_seq', 1, true);
+
+
+--
+-- Name: numero_biennns; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('numero_biennns', 1, false);
+
+
+--
+-- Name: personal_id_personal_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('personal_id_personal_seq', 1, false);
+
+
+--
+-- Name: personal_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('personal_id_seq', 1, false);
+
+
+--
+-- Data for Name: reporteSolvencia; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO "reporteSolvencia" VALUES (1, '2016-06-06 09:08:45');
+INSERT INTO "reporteSolvencia" VALUES (2, '2016-06-06 09:39:20');
+INSERT INTO "reporteSolvencia" VALUES (3, '2016-06-06 09:40:10');
+INSERT INTO "reporteSolvencia" VALUES (4, '2016-06-06 09:41:38');
+INSERT INTO "reporteSolvencia" VALUES (5, '2016-06-06 09:41:58');
+INSERT INTO "reporteSolvencia" VALUES (6, '2016-06-06 09:46:52');
+INSERT INTO "reporteSolvencia" VALUES (7, '2016-06-06 09:48:34');
+INSERT INTO "reporteSolvencia" VALUES (8, '2016-06-06 09:52:15');
+INSERT INTO "reporteSolvencia" VALUES (9, '2016-06-06 11:27:13');
+INSERT INTO "reporteSolvencia" VALUES (10, '2016-06-06 11:41:39');
+
+
+--
+-- Name: reportesolvencia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('reportesolvencia_id_seq', 10, true);
+
+
+--
+-- Data for Name: responsables; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO responsables VALUES (1, 'LUIS', 'LAVADO', 23603524, 'COORDINADOR', 'TELECOMUNICACIONES', 'COORDINACIÓN', '2016-06-06 01:59:51', '2016-06-06 01:59:51', 1);
+INSERT INTO responsables VALUES (2, 'NANCY', 'MOGOLLÓN', 8587797, 'GERENTE', 'FINANZAS', 'GERENCIA', '2016-06-06 02:00:16', '2016-06-06 02:00:16', 1);
+
+
+--
+-- Name: responsables_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('responsables_id_seq', 2, true);
+
+
+--
+-- Name: salida_id_salida_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('salida_id_salida_seq', 1, false);
+
+
+--
+-- Name: solvencia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('solvencia_id_seq', 1, false);
+
+
+--
+-- Name: sub_categorias_bienes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('sub_categorias_bienes_id_seq', 1, false);
+
+
+--
+-- Data for Name: subcat; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO subcat VALUES (1, '2010-00000', 'SILLA', 1, '2000-00000');
+INSERT INTO subcat VALUES (2, '12', 'MESAS', 1, '2012-00000');
+INSERT INTO subcat VALUES (3, '2014-00000', 'BANCOS', 1, '2000-00000');
+
+
+--
+-- Name: subcat_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('subcat_id_seq', 3, true);
+
+
+--
+-- Name: ubicacion_id_Ubicacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"ubicacion_id_Ubicacion_seq"', 1, false);
+
+
+--
+-- Data for Name: unidad_admin; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO unidad_admin VALUES (1, 'COORDINACIÓN', 1);
+INSERT INTO unidad_admin VALUES (2, 'GERENCIA', 1);
+
+
+--
+-- Name: unidad_admin_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('unidad_admin_id_seq', 2, true);
+
+
+--
+-- Data for Name: unidad_trabajo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO unidad_trabajo VALUES (1, 'TELECOMUNICACIONES', 1);
+INSERT INTO unidad_trabajo VALUES (2, 'CCO', 1);
+INSERT INTO unidad_trabajo VALUES (3, 'FINANZAS', 1);
+INSERT INTO unidad_trabajo VALUES (4, 'BIENES', 1);
+
+
+--
+-- Name: unidad_trabajo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('unidad_trabajo_id_seq', 4, true);
+
+
+--
+-- Data for Name: unidades; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Name: unidades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('unidades_id_seq', 1, false);
+
+
+--
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO usuario VALUES (1, 'ADMIN', 'd033e22ae348aeb5660fc2140aec35850c4da997', 0, 1, '2016-06-06 03:11:03', '1', 'AQUI', '22333444', 'ADMINISTRADOR', 'PRUEBA', 'GERENTE', 4123334455, 'ADMIN@GMAIL.COM', '2016-06-05', 1, 'CCO', 'GERENCIA', '2016-06-06 13:01:20.715836');
+
+
+--
+-- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('usuario_id_seq', 1, true);
+
+
+--
 -- Name: id_bienes; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1205,14 +1598,6 @@ ALTER TABLE ONLY usuario
 
 ALTER TABLE ONLY configuracion_bien
     ADD CONSTRAINT un_descrp UNIQUE (descripcion);
-
-
---
--- Name: un_numero_bien; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY numero_bien
-    ADD CONSTRAINT un_numero_bien UNIQUE (numero_bien);
 
 
 --

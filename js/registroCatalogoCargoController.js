@@ -1,4 +1,4 @@
-// Controlador de la vista de catalogo de colores
+// Controlador de la vista de catalogo de configuraciones
 if(sessionStorage.dataUsuario==undefined)
 {
     location.href="index.html";
@@ -10,53 +10,52 @@ $(document).ready(function()
 
         $("#btnGuardar").click(function()
         {
-            frm = $("#formColores");
+            frm = $("#formCargos");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            dataForm.tipo="COLOR";
-            registrarConfiguracion(dataForm).then(function(data){
+            dataForm.tipo="CARGO";
+            registrarConfiguracionAdmin(dataForm).then(function(data){
              });
         });
 
         $("#btnModificar").click(function()
         {
-            frm = $("#formColores");
+            frm = $("#formCargos");
             dataForm = getFormData(frm);
             dataForm.status=1;
-            modificarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
+            dataForm.tipo="CARGO";
+            modificarConfiguracionAdmin(dataForm,id_configuracion_editar).then(function(data){   
             });
         });   
 
         $("#btnEliminar").click(function()
         {
-            frm = $("#formColores");
+            frm = $("#formCargos");
             dataForm = getFormData(frm);
             dataForm.status=0;
-            eliminarConfiguracion(dataForm,id_configuracion_editar).then(function(data){   
-            });
-        });   
+            eliminarConfiguracionAdmin(dataForm,id_configuracion_editar);
+        });     
 
-        $("#buscarConfiguracion").click(function(){
+        $("#buscarCargo").click(function(){
             idConfiguracion = $
             descripcion = $("#buscar").val();
-            getConfiguracionBy("?descripcion="+descripcion).then(function(data){
+            getConfiguracionAdminBy("?descripcion="+descripcion).then(function(data){
                 id_configuracion_editar = data[0].id;
                 jsonToForm({
                     data : data[0],
-                    form : "#formColores"
+                    form : "#formCargos"
                 });
             });
         });  
 
-
-        getConfiguracionBy("?tipo=COLOR").then(function(data){
+        getConfiguracionAdminBy("?tipo=CARGO").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
                 alias : "descripcion",
                 element : $("#buscar")
                 });
-        })              
+        })               
 
 });
 

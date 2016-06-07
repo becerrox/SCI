@@ -18,7 +18,7 @@
    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
    <script src="js/jquery.min.js"></script>
    <script src="js/inicioController.js" type="text/javascript"></script>
-   <script src="js/registroUnidadAdministrativaController.js" type="text/javascript"></script>
+   <script src="js/registroCatalogoCargoController.js" type="text/javascript"></script>
    <script src="js/sweetalert.min.js" type="text/javascript"></script>
    <script src="js/tooltips.js"></script>
    <script src="js/select.js" type="text/javascript"></script>
@@ -27,20 +27,20 @@
 <body>
     <div id="header"></div>
     <section class="inicio container">
-      <h1>Catálogo de Unidades Administrativas</h1>
+      <h1>Catálogo de Cargos</h1>
         <div id="contenedor" >    
           <div class="row">       
-           <form id="formTrabajo" class="col-md-12 col-md-offset-4 form-group bloque col-lg-12">
-              <h3>Registrar Unidad Administrativa</h3>          
+           <form id="" class="col-md-12 col-md-offset-4 form-group bloque col-lg-12">
+              <h3>Registrar Cargo</h3>          
               <label>Descripción</label>
-              <input type="text" name="descripcion" id="descripcion" class="form-control-2 uppercase" data-toggle="tooltip" title="Nombre de la nueva Unidad Administrativa, Ej:Coorinación, Gerencia"><br>
+              <input type="text" name="descripcion" id="descripcion" class="form-control-2 uppercase" data-toggle="tooltip" title="Nombre del Cargo, Ej:Coordinador, Gerente"><br>
               <button id= "btnGuardar" type="button" class="btn" onclick="">Guardar</button>
             </form> <!--FIN Registro de Nueva Unidad-->             
-           <form class="form-group bloque col-md-12 col-lg-12 col-md-offset-4">
+           <form class="form-group bloque col-md-12 col-lg-12">
               <h3>Actualizar o Borrar</h3>
               <label>Buscar</label>
               <select type="text" class="form-control-2" id="buscar" data-toggle="tooltip" title="Buscar item a Modificar o Eliminar "></select>
-              <button id="buscarUnidad" type="button" class="btn icon-search"></button>             
+              <button id="buscarCargo" type="button" class="btn icon-search"></button>             
               <div class="row">
                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
                   <button id= "btnModificar" type="button" class="btn" onclick="">Modificar</button>

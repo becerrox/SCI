@@ -16,11 +16,11 @@
    <link rel="stylesheet" href="css/calendario.css" type="text/css" media="screen">    
    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" >
    <link rel="stylesheet" href="css/bootstrap-theme.css">
-   <link rel="stylesheet" media="print and (orientation:portrait)" href="print.css">
+   <link rel="stylesheet" media="print" href="print.css">
    <script src="js/jquery.min.js"></script>
    <script src="js/jquery.js"></script>
    <script src="js/solvenciaController.js" type="text/javascript"></script>
-      <script src="js/inicioController.js" type="text/javascript"></script>
+    <script src="js/inicioController.js" type="text/javascript"></script>
     <script src="js/valida.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/services.js"></script>
     <script src="js/tooltips.js" type="text/javascript"></script>
@@ -32,32 +32,43 @@
   <!--                    CUERPO PRINCIPAL             -->
 <div id="header"></div>
 <body>
+<style type="text/css">
+    @page {
+    page-size:letter;
+    size: portrait;
+    margin: 0;
+    
+    }
+</style>
 <div id="cabecera">
     <img src="images/solvencia.png">
   </div>
 <section id="solvencias" class="inicio container">
 <div class="row">
-  <h3 class="text-center col-md-12">SOLVENCIA DE ENTREGA DE EQUIPOS TECNOLÓGICOS</h3>
+  <h4>SOLVENCIA DE ENTREGA DE EQUIPOS TECNOLÓGICOS</h4>
 </div>
-    <article id="contenedor" class="row hidden-print">
-      <div class="col-md-4 text-center">
-        <label>Equipo</label>
-        <input maxlength="25" name="serial" type="text" class="form-control-2" id="serial" data-placement="top" title="Introduzca SERIAL" >     
-        <br>
-        <button type="button" id="buscarEquipo" class="btn btn-small" style="width:100px; margin-left:50px;">Buscar</button>      
-        </div>
-      <div class="col-md-4 text-center">
-        <label>Celular</label>
-        <input maxlength="25" name="serialCelular" type="text" class="form-control-2" id="serialCelular" data-placement="top" title="Introduzca SERIAL" >     
-        <br>
-        <button type="button" id="buscarCelular" class="btn" style="width:100px; margin-left:50px;">Buscar</button>
-       </div>
-      <div class="col-md-4 text-center">
+        <article id="contenedor" class="row hidden-print">   
+      <div class="col-md-3 text-center">        
         <label>Responsable</label>
-        <select name="responsable" type="text" class="form-control-2" id="responsable" ></select>  
-        <br>
-        <button type="button" id="buscarResp" class="btn" onclick="menuOculto()" style="width:100px; margin-left:80px;">Buscar</button>
+        <select name="responsable" type="text" class="form-control-2" id="responsable"></select>       
       </div>
+      <div class="col-md-3 text-center">        
+        <label>Modelo</label>
+        <select name="responsable" type="text" class="form-control-2" id="responsable"></select>       
+      </div>
+      <div class="col-md-3 text-center">        
+        <label>Descripción:</label>
+          <select type="text" name="descripcion" class="form-control-2 uppercase" id="descripcion" data-placement="top"></select>
+      </div>
+      <div class="col-md-3 text-center">
+        <form id="formSolvencia">        
+          <label>Serial</label>
+        <select name="serial" type="text" class="form-control-2" id="serial"></select>   
+        <br>
+        <button type="button" id="buscarResp" class="btn" onclick="menuOculto()" style="width:100px; margin-left:80px;">Buscar</button> 
+          
+      </form>
+      </div> 
     </article>
     <form id="solvencia">
       <article id="contenedor" class="row">
@@ -72,7 +83,7 @@
           <input name="fecha1" maxlength="10" type="text" class="form-control-2" id="fecha1"/>
         </div>    
       </article>
-      <article id="contenedor" class="row">
+      <article id="contenedor" class="row solv">
       <div class="col-md-10 col-md-offset-1">
         <div class="bordes">
           <label>Nombres y Apellidos:</label>
@@ -89,7 +100,7 @@
         </div>
         <div class="bordes">
           <label>Motivo de la Entrega:</label>
-          <input name="motivo" maxlength="10" type="text" class="form-control-2" id="motivo"/>
+          <input name="motivo" maxlength="10" type="text" class="form-control-2" id="motivo" dataplacement="top" title="Especificar el motivo por el cual se está devolviendo el equipo"/>
       </div>
     </div>
     </article>
@@ -99,11 +110,11 @@
           </table>
         </div>
     </article>
-    <article id="contenedor" class="row">
+    <article id="contenedor" class="row solv">
         <div class="col-md-10 col-md-offset-1">
           <div class="bordes">
             <label>Observaciones</label>
-            <input type="text" class="form-control-2" name="observaciones" id="observaciones"/> 
+            <input type="text" class="form-control-2" name="observaciones" id="observaciones" dataplacement="top" title="Detalles que quiera acotar"/> 
           </div>
         </div>
     </article>
