@@ -11,23 +11,6 @@ $(document).ready(function()
     var id_equipo_editar = "";
 
 
-        $("#buscarCelular").click(function(){
-            idEquipo = $
-            numero = $("#serialCelular").val();
-            getEquiposBy("?serial="+numero).then(function(data){
-                id_equipo_editar = data[0].id;
-                jsonToTableTraspuesto({
-                    data : data,
-                    headers : headers,
-                    table : $("#tableEquipos"),
-                    invisibleFields : ["id","estado","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","estadoUsoEquipo","motivo"]
-                  });              
-            });
-        });  
-
-        $("#buscarResp").click(function(){
-        }); 
-
         $("#btnGuardar").click(function(){
             var responsb = document.getElementById("nombres").value.toUpperCase() + " " + document.getElementById("apellidos").value.toUpperCase();
 

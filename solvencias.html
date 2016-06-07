@@ -50,23 +50,21 @@
         <article id="contenedor" class="row hidden-print">   
       <div class="col-md-3 text-center">        
         <label>Responsable</label>
-        <select name="responsable" type="text" class="form-control-2" id="responsable"></select>       
-      </div>
-      <div class="col-md-3 text-center">        
-        <label>Modelo</label>
-        <select name="responsable" type="text" class="form-control-2" id="responsable"></select>       
+        <select name="responsable" type="text" class="form-control-2" id="responsable" onchange="cargarEquipos(), cargarPersonal()"></select>
       </div>
       <div class="col-md-3 text-center">        
         <label>Descripción:</label>
-          <select type="text" name="descripcion" class="form-control-2 uppercase" id="descripcion" data-placement="top"></select>
+          <select type="text" name="descripcion" class="form-control-2 uppercase" id="descripcion" data-placement="top" onchange="cargarModelos()"></select>
+      </div>
+      <div class="col-md-3 text-center">        
+        <label>Modelo</label>
+        <select name="modelo" type="text" class="form-control-2" id="modelo" onchange="cargarSerial()"></select>       
       </div>
       <div class="col-md-3 text-center">
         <form id="formSolvencia">        
           <label>Serial</label>
-        <select name="serial" type="text" class="form-control-2" id="serial"></select>   
-        <br>
-        <button type="button" id="buscarResp" class="btn" onclick="menuOculto()" style="width:100px; margin-left:80px;">Buscar</button> 
-          
+        <select name="serial" type="text" class="form-control-2" id="serial" onchange="buscarEquipo()"></select>   
+        <br>          
       </form>
       </div> 
     </article>

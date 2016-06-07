@@ -7,9 +7,22 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_bien_buscar = "";
+        /* Cargando datas de la api a los selects  */     
 
-        $("#btnBuscar").click(function(){
+        getConfiguracionEquipoBy("?tipo=DESCRIPCIÓN&status=1").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#descripcion")
+                });
+        })
+
+});
+
+
+
+        function cargarTabla(){
             idBien = $
             numero = $("#descripcion").val();
             getEquiposBy("?descripcion="+numero+"&status=1").then(function(data){
@@ -18,7 +31,7 @@ $(document).ready(function()
                     data : data,
                     headers : headers,
                     table : $("#tableTipoEquipo"),
-                    invisibleFields : ["descripcion","unidad_admin","id","status","fecha_modif","serialSim","accesorios","planCelular","numeroCelular","motivo"],
+                    invisibleFields : ["descripcion","unidad_admin","id","status","fecha_modif","serialSim","accesorios","planCelular","numeroCelular","motivo", "serialTelefono"],
                     limit : data.length,
                     showCount : true            
                   });
@@ -27,20 +40,6 @@ $(document).ready(function()
                     form : "#reporte"
                 });                
             });
-        }); 
-
-        /* Cargando datas de la api a los selects  */     
-
-        getEquiposBy("?status=1").then(function(data){
-            jsonToSelect({        
-                data : data,
-                value : "descripcion",
-                alias : "descripcion",
-                element : $("#descripcion")
-                });
-        })              
+        }
 
 headers = [ "Marca","Modelo","Serial","Color","Estado","Responsable","Características","Ubicación","Observaciones","Estado Uso"];
-
-});
-

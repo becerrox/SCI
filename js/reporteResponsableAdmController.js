@@ -7,9 +7,24 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_bien_buscar = "";
+        /* Cargando datas de la api a los selects  */     
 
-        $("#btnBuscar").click(function(){
+        getResponsablesBy("?status=1").then(function(data){
+            for(personal in data){
+                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
+            }
+            jsonToSelect({        
+                 data : data,
+                 value : "nombreApellido",
+                 alias : "nombreApellido",
+                 element : $("#responsable_ad")
+                 });
+         })          
+
+});
+
+
+        function cargarTabla(){
             idBien = $
             numero = $("#responsable_ad").val();
             getBienesBy("?responsable_ad="+numero+"&status=1").then(function(data){
@@ -27,23 +42,6 @@ $(document).ready(function()
                     form : "#reporte"
                 });                
             });
-        }); 
-
-        /* Cargando datas de la api a los selects  */     
-
-        getResponsablesBy("?status=1").then(function(data){
-            for(personal in data){
-                data[personal].nombreApellido = data[personal].nombres + " "+data[personal].apellidos;
-            }
-            jsonToSelect({        
-                 data : data,
-                 value : "nombreApellido",
-                 alias : "nombreApellido",
-                 element : $("#responsable_ad")
-                 });
-         })          
+        } 
 
 headers = [ "Código General", "Código de Sub-categoría", "Código de Categoría Específica", "Descripción", "Estatus Uso Bien", "Marca", "Modelo", "Serial", "Tipo Componentes", "Colores", "Número de bien", "Estado bien", "Categoria de unidad administrativa"];
-
-});
-

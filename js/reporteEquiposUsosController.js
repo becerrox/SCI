@@ -7,9 +7,23 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_bien_buscar = "";
 
-        $("#btnBuscar").click(function(){
+        /* Cargando datas de la api a los selects  */     
+
+        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN&status=1").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#descripcion")
+                });
+        })        
+
+});
+
+
+
+        function cargarTabla(){
             idBien = $
             valor = $("#descripcion").val();
             getEquiposBy("?estadoUsoEquipo="+valor+"&status=1").then(function(data){
@@ -27,20 +41,6 @@ $(document).ready(function()
                     form : "#reporte"
                 });                
             });
-        }); 
-
-        /* Cargando datas de la api a los selects  */     
-
-        getConfiguracionBy("?tipo=ESTATUS DE USO DEL BIEN&status=1").then(function(data){
-            jsonToSelect({        
-                data : data,
-                value : "descripcion",
-                alias : "descripcion",
-                element : $("#descripcion")
-                });
-        })        
+        }
 
 headers = ["Descripción","Marca","Modelo","Serial","Color","Estado","Responsable","Características","Ubicación","Observaciones"];
-
-});
-

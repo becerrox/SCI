@@ -6,9 +6,25 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_bien_buscar = "";
+ 
 
-        $("#btnBuscar").click(function(){
+        /* Cargando datas de la api a los selects  */     
+
+        getEquiposBy("?status=1").then(function(data){
+            jsonToSelect({        
+                data : data,
+                value : "descripcion",
+                alias : "descripcion",
+                element : $("#descripcion")
+                });
+        })           
+
+rows=["4"];
+});
+
+
+
+        function cargarTabla(){
             idBien = $
             numero = $("#descripcion").val();
             getBienesBy("?descripcion="+numero+"&status=1").then(function(data){
@@ -26,20 +42,6 @@ $(document).ready(function()
                     form : "#reporte"
                 });                
             });
-        }); 
+        }
 
-        /* Cargando datas de la api a los selects  */     
-
-        getEquiposBy("?status=1").then(function(data){
-            jsonToSelect({        
-                data : data,
-                value : "descripcion",
-                alias : "descripcion",
-                element : $("#descripcion")
-                });
-        })           
-
-headers = [ "Código General", "Código de Sub-categoría", "Código de Categoría Específica", "Descripción", "Estatus Uso Bien", "Marca", "Modelo", "Serial", "Tipo Componentes", "Colores", "Número de bien", "Estado bien", "Categoria de unidad administrativa"];
-rows=["4"];
-});
-
+headers = [ "Código General", "Código de Sub-categoría", "Código de Categoría Específica", "Descripción", "Estatus Uso Bien", "Marca", "Modelo", "Serial", "Tipo Componentes", "Colores", "Número de bien", "Estado bien", "Categoria de unidad administrativa"];        
