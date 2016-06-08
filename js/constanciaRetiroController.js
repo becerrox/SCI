@@ -5,11 +5,11 @@ if(sessionStorage.dataUsuario==undefined)
     location.href="index.html";
 }
 
-$(document).ready(function()
-{
-
     var id_equipo_editar = "";
 
+
+$(document).ready(function()
+{
 
         $("#btnGuardar").click(function(){
             var responsb = document.getElementById("nombres").value.toUpperCase() + " " + document.getElementById("apellidos").value.toUpperCase();

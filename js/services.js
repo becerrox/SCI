@@ -1638,6 +1638,13 @@ function getBienesBy(filtros)
 					resolver(response);
 				},error:function(response){
 					rechazar(response);
+              swal({
+                title: 'AVISO',
+                text: "No Existe",
+                type: 'info',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#D85852'
+              });           
 				}
 			});
 	 });	
@@ -1670,6 +1677,13 @@ function getEquiposBy(filtros)
 					resolver(response);
 				},error:function(response){
 					rechazar(response);
+              swal({
+                title: 'AVISO',
+                text: "No Existe",
+                type: 'info',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#D85852'
+              });           
 				}
 			});
 	 });	

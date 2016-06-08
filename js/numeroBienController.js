@@ -6,7 +6,6 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_numerobien_editar = "";
 
         $("#btnGuardarNuevaCongif").click(function()
         {
@@ -46,6 +45,7 @@ $(document).ready(function()
 
 });
 
+        var id_numerobien_editar = "";
 
         function cargarCodigo(){
             idConfiguracion = $

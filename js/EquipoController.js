@@ -7,7 +7,6 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_equipo_editar = "";
 
         $("#btnGuardar").click(function()
         {
@@ -39,13 +38,25 @@ $(document).ready(function()
         $("#buscarEquipo").click(function(){
             idEquipo = $
             numero = $("#buscar").val();
-            getEquiposBy("?serial="+numero).then(function(data){
-                id_equipo_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formEquipo"
+            if (numero == ""){
+                getEquiposBy('').then(function(data){
+                    jsonToSelect({        
+                        data : data,
+                        value : "serial",
+                        alias : "serial",
+                        element : $("#buscarSerial")
+                        });
                 });
-            });
+            }
+            else{
+                getEquiposBy("?serial="+numero).then(function(data){
+                    id_equipo_editar = data[0].id;
+                    jsonToForm({
+                        data : data[0],
+                        form : "#formEquipo"
+                    });
+                });
+            }
         });            
 
         getConfiguracionBy("?tipo=COLOR&status=1").then(function(data){
@@ -141,3 +152,16 @@ $(document).ready(function()
 
 });
 
+        var id_equipo_editar = "";
+
+        function cargarEquipos(){
+            idEquipo = $
+            numeros = $("#buscarSerial").val();
+                getEquiposBy("?serial="+numeros).then(function(data){
+                    id_equipo_editar = data[0].id;
+                    jsonToForm({
+                        data : data[0],
+                        form : "#formEquipo"
+                    });
+                });            
+        }

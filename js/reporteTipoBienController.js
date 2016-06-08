@@ -10,14 +10,14 @@ $(document).ready(function()
 
         /* Cargando datas de la api a los selects  */     
 
-        getEquiposBy("?status=1").then(function(data){
+        getConfiguracionEquipoBy("?tipo=DESCRIPCIÓN&status=1").then(function(data){
             jsonToSelect({        
                 data : data,
                 value : "descripcion",
                 alias : "descripcion",
                 element : $("#descripcion")
                 });
-        })           
+        })       
 
 rows=["4"];
 });
@@ -36,11 +36,7 @@ rows=["4"];
                     invisibleFields : ["id", "fecha_modif", "status", "responsable_pa", "responsable_ad", "responsable_uso",  "per_ini", "per_culm", "unidad_trabajo","sede"],
                     limit : data.length,
                     showCount : true                
-                  });
-                jsonToForm({
-                    data : data[0],
-                    form : "#reporte"
-                });                
+                  });          
             });
         }
 

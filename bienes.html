@@ -67,15 +67,16 @@
           <label>Color</label>
           <select name="colores" class="form-control-2" id="colores">
           </select>
-          <label>Nº Bien</label>
+          <label>Tipo de Bien</label>
           <select name="categoriaBien" class="form-control-2" id="categoriaBien">
-          </select>          
+          </select>
+           <label>Nº de Bien</label>    
           <input name="bien" maxlength="4" type="text" class="form-control-2" placeholder="0000" id="bien" data-placement="top" title="0000" onkeypress="return soloNumeros(event)"></input><br>
+      </div>
+     <div class="form-group bloque col-md-2 col-xs-12">
           <label>Estado del Bien</label>
           <select name="estado_bien" class="form-control-2" id="estado_bien" data-placement="top" title="Condiciones físicas en las que se encuentra el bien">
           </select>          
-      </div>
-     <div class="form-group bloque col-md-2 col-xs-12">
           <label>Unidad Admin.</label> 
           <select name="cat_unid_admin" class="form-control-2" id="cat_unid_admin">        
           </select>              
@@ -85,11 +86,11 @@
           <label>Responsable Patrimonial</label>          
           <select name="responsable_pa" class="form-control-2" id="responsable_pa">
            </select>           
+      </div>
+      <div class="form-group bloque col-md-2 col-xs-12">
           <label>Responsable Administrativo</label>  
           <select name="responsable_ad" class="form-control-2" id="responsable_ad">            
           </select>           
-      </div>
-      <div class="form-group bloque col-md-2 col-xs-12">
           <label>Responsable de Uso</label>
           <select name="responsable_uso" class="form-control-2" id="responsable_uso">
           </select>
@@ -119,6 +120,12 @@
      <button type="button" id="buscarBien" class="btn icon-search" onclick="Validar_busq()" ></button>
       </div>     
     </form><!--FIN Modificación-->
+    <div class="row">
+      <form class=" form-group col-md-4 col-md-offset-4">       
+        <select id="buscarNumero" onchange="cargarNumeroBien()">    
+        </select>
+      </form>
+    </div><!-- Fin Botonera BUSCAR--> 
    </section>
 <footer id="pie_de_pagina" class="hidden-print">
     <div id="pie3" class="text-center col-md-12">

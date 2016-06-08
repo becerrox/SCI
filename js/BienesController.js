@@ -7,7 +7,6 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_bien_editar = "";
 
         $("#btnGuardar").click(function()
         {
@@ -41,14 +40,26 @@ $(document).ready(function()
         $("#buscarBien").click(function(){
             idBien = $
             numero = $("#buscar").val();
-            getBienesBy("?num_bien="+numero).then(function(data){
-                id_bien_editar = data[0].id;
-                numeros = data[0].num_bien;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formBienes"
+            if (numero == ""){
+                getBienesBy('').then(function(data){
+                    jsonToSelect({        
+                        data : data,
+                        value : "num_bien",
+                        alias : "num_bien",
+                        element : $("#buscarNumero")
+                        });
                 });
-            });
+            }
+            else{
+                getBienesBy("?num_bien="+numero).then(function(data){
+                    id_bien_editar = data[0].id;
+                    numeros = data[0].num_bien;
+                    jsonToForm({
+                        data : data[0],
+                        form : "#formBienes"
+                    });
+                });
+            }
         }); 
 
         /* Cargando datas de la api a los selects  */
@@ -145,8 +156,6 @@ $(document).ready(function()
 
         //número de bien
         getNumeroBienBy("?status=1").then(function(data){
-        var contador = data;
-        console.log(data.length);
             jsonToSelect({        
                 data : data,
                 value : "numero_bien",
@@ -231,4 +240,18 @@ $(document).ready(function()
                 });
         })                        
 });
+        var id_bien_editar = "";
 
+        function cargarNumeroBien(){
+            idBien = $
+            numeros = $("#buscarNumero").val();
+                getBienesBy("?num_bien="+numeros).then(function(data){
+                    id_bien_editar = data[0].id;
+                    console.log(id_bien_editar);
+                    numeros = data[0].num_bien;
+                    jsonToForm({
+                        data : data[0],
+                        form : "#formBienes"
+                    });
+                });            
+        }

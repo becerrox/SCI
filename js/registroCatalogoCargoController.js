@@ -6,7 +6,6 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_configuracion_editar = "";
 
         $("#btnGuardar").click(function()
         {
@@ -47,6 +46,7 @@ $(document).ready(function()
 
 });
 
+        var id_configuracion_editar = "";
 
         function cargarConfiguracion(){
             idConfiguracion = $

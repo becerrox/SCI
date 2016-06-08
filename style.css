@@ -305,8 +305,8 @@ width: 120px; height:30px;
   width:150px;
 }
 #test .sub-menu > li {background: rgba(255,255,225,.5);}
-#contenedor #cedula{
-  width:100px;
+#buscarUser{
+  width: 30px;
 }
 .form-group{
   position: relative;
