@@ -18,6 +18,13 @@ $(document).ready(function()
             dataForm = getFormData(frm);
             dataForm.status=1;
             solventarEquipos(dataForm,id_equipo_editar).then(function(data){   
+                    frm = $("#solvencia");
+                    dataForm = getFormData(frm);
+                    dataForm.status=1;
+                    registrarReporteSolvencia(dataForm).then(function(data){   
+                        console.log(data.id);
+                        $("#id_solvencia").html(data.id);
+                    });
             });
         });   
 
