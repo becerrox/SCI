@@ -7,7 +7,6 @@ if(sessionStorage.dataUsuario==undefined)
 
 $(document).ready(function()
 {
-        var id_usuario_editar = "";
 
       $("#guardarUserPersonal").click(function()
         {
@@ -25,6 +24,7 @@ $(document).ready(function()
             dataForm = getFormData(frm);
             dataForm.status=1;
             dataForm.primer_inicio=1;
+            dataForm.pass = passw;
             modificarUsuario(dataForm,id_usuario_editar).then(function(data){   
             });
         });     
@@ -38,15 +38,7 @@ $(document).ready(function()
         });     
 
         $("#buscarUser").click(function(){
-            idUsuario = $
-            numero = $("#buscar").val();
-            getUsuariosBy("?ci_per="+numero+"&status=1").then(function(data){
-                id_usuario_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formUsuario"
-                });
-            });
+
         });           
 
         //Categoría de Unidades Administrativas 
@@ -99,3 +91,21 @@ $(document).ready(function()
         })          
 
 });
+
+
+        var id_usuario_editar = "";
+        var passw = "";
+
+        function cargarUsuarios(){
+            idUsuario = $
+            numero = $("#buscar").val();
+            getUsuariosBy("?ci_per="+numero+"&status=1").then(function(data){
+                id_usuario_editar = data[0].id;
+                passw = data[0].pass;
+                console.log(passw);
+                jsonToForm({
+                    data : data[0],
+                    form : "#formUsuario"
+                });
+            });
+        }    

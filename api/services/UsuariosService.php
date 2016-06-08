@@ -18,7 +18,12 @@ class UsuariosService{
       if(count($usuario->toArray())==0){
             return array("status" => 404, "mensaje" => "No hay registros de usuario");
       }else{
-            return array("status" => 200, "mensaje" =>$usuario->toArray());
+                $usuarioReturn = $usuario->toArray();
+            for($i=0;$i<count($usuarioReturn);$i++)
+            {
+                    unset($usuarioReturn[$i]['pass']);
+            }
+            return array("status" => 200, "mensaje" =>$usuarioReturn);
       }
     }
 
