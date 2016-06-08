@@ -34,7 +34,7 @@ $(document).ready(function()
                     data : data,
                     headers : headers,
                     table : $("#tableTipoEquipo"),
-                    invisibleFields : ["unidad_admin","id","status","fecha_modif","serialSim","accesorios","planCelular","numeroCelular","estadoUsoEquipo","motivo", "serialTelefono"],
+                    invisibleFields : ["unidad_admin","id","status","fecha_modif","serialSim","accesorios","planCelular","numeroCelular","estadoUsoEquipo","motivo", "imei"],
                     limit : data.length,
                     showCount : true            
                   });

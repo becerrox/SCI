@@ -1684,6 +1684,7 @@ function getEquiposBy(filtros)
                 confirmButtonText: 'Aceptar',
                 confirmButtonColor: '#D85852'
               });           
+              console.log(response);
 				}
 			});
 	 });	
