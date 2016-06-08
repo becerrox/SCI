@@ -11,11 +11,14 @@ $(document).ready(function()
 
         $("#btnGuardar").click(function()
         {
+        var cat = document.getElementById("categoriaBien").value;
+        var num = document.getElementById("bien").value
             frm = $("#formBienes");
             dataForm = getFormData(frm);
             dataForm.status=1;
+            dataForm.num_bien=cat+"-"+num;
             registrarBienes(dataForm).then(function(data){ 
-            });  
+            });
         });
 
         $("#btnModificar").click(function()
@@ -23,6 +26,7 @@ $(document).ready(function()
             frm = $("#formBienes");
             dataForm = getFormData(frm);
             dataForm.status=1;
+            dataForm.num_bien=numeros;
             modificarBien(dataForm,id_bien_editar);
         });
 
@@ -37,8 +41,9 @@ $(document).ready(function()
         $("#buscarBien").click(function(){
             idBien = $
             numero = $("#buscar").val();
-            getBienesBy("?serial="+numero).then(function(data){
+            getBienesBy("?num_bien="+numero).then(function(data){
                 id_bien_editar = data[0].id;
+                numeros = data[0].num_bien;
                 jsonToForm({
                     data : data[0],
                     form : "#formBienes"
@@ -146,7 +151,7 @@ $(document).ready(function()
                 data : data,
                 value : "numero_bien",
                 alias : "descripcion",
-                element : $("#num_bien")
+                element : $("#categoriaBien")
                 });
         })     
 

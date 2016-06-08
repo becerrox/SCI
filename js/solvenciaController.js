@@ -10,35 +10,6 @@ $(document).ready(function()
 
         var id_equipo_editar = "";
 
-                $("#fecha1").html(today);
-        $("#buscarEquipo").click(function(){
-            idEquipo = $
-            numero = $("#serial").val();
-            getEquiposBy("?serial="+numero).then(function(data){
-                id_equipo_editar = data[0].id;
-                jsonToTableTraspuesto({
-                    data : data,
-                    headers : headers,
-                    table : $("#tableTipoEquipo"),
-                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","serialSim","accesorios","planCelular","numeroCelular","estadoUsoEquipo","estadoUsoEquipo","motivo"]
-                  });          
-            });
-        });  
-
-        $("#buscarCelular").click(function(){
-            idEquipo = $
-            numero = $("#serialCelular").val();
-            getEquiposBy("?serial="+numero).then(function(data){
-                id_equipo_editar = data[0].id;
-                jsonToTableTraspuesto({
-                    data : data,
-                    headers : headers,
-                    table : $("#tableTipoEquipo"),
-                    invisibleFields : ["id","color","unidad_admin","status","responsable","fecha_modif","unidad_trabajo","estadoUsoEquipo","motivo"]
-                  });          
-            });
-        });  
-
         $("#btnGuardar").click(function()
         {
             frm = $("#solvencia");
@@ -63,7 +34,8 @@ headers = [];
 
         /* Cargando datas de la api a los selects  */         
 
-        var cedulaid = "";
+        var nomb = "";
+        var apell = "";
 
         getResponsablesBy("?status=1").then(function(data){
             for(personal in data){
@@ -75,32 +47,22 @@ headers = [];
                  value : "nombreApellido",
                  alias : "nombreApellido",
                  element : $("#responsable")
-                 });    
+                 }); 
          })  
-
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1;
-var yyyy = today.getFullYear();
-
-if(dd<10) {
-    dd='0'+dd
-} 
-
-if(mm<10) {
-    mm='0'+mm
-} 
-
-today = yyyy+'/'+mm+'/'+dd;
 
 
 });
 
-
         function cargarPersonal(){
             idBien = $
             numero = $("#responsable").val();
-            getResponsablesBy("?cedula="+numero+"&status=1").then(function(data){
+            res = numero.split(" ");
+            resnom1 = res[0];
+            resnom2 = res[1];
+            resapll1 = res[2];
+            resapll2 = res[3];
+            console.log(res[0,1]);
+            getResponsablesBy("?nombres="+resnom1+" "+resnom2+"&apellidos="+resapll1+" "+resapll2+"&status=1").then(function(data){
                 id_personal_buscar = data[0].id;
                 jsonToForm({
                     data : data[0],

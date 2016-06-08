@@ -5,9 +5,24 @@ if(sessionStorage.dataUsuario==undefined)
     location.href="index.html";
 }
 
+        var id_responsable_editar = "";
+
+
+        function cargarPersonal(){
+            idBien = $
+            numero = $("#buscar").val();
+            getResponsablesBy("?cedula="+numero).then(function(data){
+                id_responsable_editar = data[0].id;
+                jsonToForm({
+                    data : data[0],
+                    form : "#formPersonal"
+                });
+            });
+        }
+
+
 $(document).ready(function()
 {
-        var id_responsable_editar = "";
 
         $("#guardarUserPersonal").click(function()
         {
@@ -82,15 +97,3 @@ $(document).ready(function()
 
 });
 
-
-        function cargarPersonal(){
-            idBien = $
-            numero = $("#buscar").val();
-            getResponsablesBy("?cedula="+numero).then(function(data){
-                id_responsable_editar = data[0].id;
-                jsonToForm({
-                    data : data[0],
-                    form : "#formPersonal"
-                });
-            });
-        }

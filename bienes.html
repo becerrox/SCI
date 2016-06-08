@@ -66,10 +66,11 @@
           </select>
           <label>Color</label>
           <select name="colores" class="form-control-2" id="colores">
-            <option value="0"></option>
           </select>
           <label>Nº Bien</label>
-          <input name="num_bien" maxlength="25" type="text" class="form-control-2" placeholder="2-000-0000" id="num_bien" data-placement="top" title="2-000-0000"  onKeyPress="return soloNumeros2(event)" > 
+          <select name="categoriaBien" class="form-control-2" id="categoriaBien">
+          </select>          
+          <input name="bien" maxlength="4" type="text" class="form-control-2" placeholder="0000" id="bien" data-placement="top" title="0000" onkeypress="return soloNumeros(event)"></input><br>
           <label>Estado del Bien</label>
           <select name="estado_bien" class="form-control-2" id="estado_bien" data-placement="top" title="Condiciones físicas en las que se encuentra el bien">
           </select>          

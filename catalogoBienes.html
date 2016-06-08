@@ -32,7 +32,7 @@
         <form id="formCatgen" class="form-group bloque col-md-offset-3 col-sm-offset-6 col-xs-offset-6">
            <h3>Registrar</h3>
             <label>Cód.Categoría General</label>
-            <input name="codigo" id="codigo1" maxlength="10" type="text" class="form-control-2" onKeyPress="return soloNumerosCod(event)" data-toggle="tooltip" data-placement="top" title="Debes ingresar un Código General">
+            <input name="codigo" id="codigo1" maxlength="2" type="text" class="form-control-2" onKeyPress="return soloNumerosCod(event)" data-toggle="tooltip" data-placement="top" title="Debes ingresar un Código General">
             <label>Descripción</label>
             <input name="descripcion" id="descripcion" type="text" class="form-control-2 uppercase" onKeyPress="return soloLetras(event)">
             <button id= "btnGuardarCatgen" type="button" class="btn icon-save" onclick="Validar_cb_1()"></button>
@@ -43,7 +43,7 @@
               <select name="catgen" class="form-control-2" id="catgen">
               </select>
               <label>Cód.Sub-Categoría</label>
-              <input name="codigo" id="codigo2" maxlength="10" type="text" class="form-control-2" onKeyPress="return soloNumerosCod(event)">
+              <input name="codigo" id="codigo2" maxlength="2" type="text" class="form-control-2" onKeyPress="return soloNumerosCod(event)">
               <label>Descripción</label>
               <input name="descripcion" id="descripcion" type="text" class="form-control-2 uppercase"  onKeyPress="return soloLetras(event)">
               <button id= "btnGuardarSubcat" type="button" class="btn icon-save" onclick="Validar_cb_2()"></button>
@@ -54,7 +54,7 @@
               <select name="subcat" class="form-control-2" id="subcat">
               </select>            
               <label>Cód.Categoría Específica</label>
-              <input name="codigo" maxlength="10" type="text" class="form-control-2" id="codigo3" onKeyPress="return soloNumerosCod(event)">
+              <input name="codigo" maxlength="5" type="text" class="form-control-2" id="codigo3" onKeyPress="return soloNumerosCod(event)">
               <label>Descripción</label>
               <input name="descripcion" type="text" class="form-control-2 uppercase" id="descripcion" onKeyPress="return soloLetras(event)">
               <button id= "btnGuardarCatesp" type="button" class="btn icon-save" onclick="Validar_cb_3()"></button>
