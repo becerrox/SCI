@@ -30,7 +30,7 @@ h3 {
 }
 h4{  }
 h4{ text-align: center;
-    padding-left: 15%;
+    padding-left: 8%;
     padding-bottom: 20px;
     font-weight: bold; }
 input , textarea{
@@ -45,6 +45,7 @@ appearance: none;
 border: none; 
 background: none;
 	}
+
 #actaentrega {
   text-align: center;
   top:10%;
@@ -67,7 +68,7 @@ background: none;
   text-align: left;
   top:10%;
   position: absolute;
-  left:10%;
+  
 }
 
 .solv {
